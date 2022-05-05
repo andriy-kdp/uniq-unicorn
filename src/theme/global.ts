@@ -6,7 +6,7 @@ export default createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
 }
-html: { 
+html { 
   font-size: 62.5%;
   height: 100vh;
 }
