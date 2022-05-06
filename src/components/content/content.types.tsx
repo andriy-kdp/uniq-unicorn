@@ -6,4 +6,7 @@ export type ContentProps = {
   justify?: CSSProperties["justifyContent"];
   align?: CSSProperties["alignItems"];
   m?: CSSProperties["margin"];
+  w?: CSSProperties["width"];
+  h?: CSSProperties["height"];
+  pos?: CSSProperties["position"];
 };

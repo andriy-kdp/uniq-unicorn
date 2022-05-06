@@ -1,13 +1,14 @@
-import React from "react";
 import {
   LogoContainer,
   MenuItemContainer,
   MenuPartContainer,
 } from "./header.styles";
-import { ReactComponent as MainLogo } from "../../../assets/logo.svg";
-import { Content } from "../../content/content.component";
 import { MenuItemType, MenuPartProps } from "./header.types";
+
+import { Content } from "../../content/content.component";
 import { Link } from "../../link/link.styles";
+import { ReactComponent as MainLogo } from "../../../assets/logo.svg";
+import React from "react";
 
 const menuLeft: MenuItemType[] = [
   {
@@ -53,7 +54,9 @@ export const Header = () => {
     <Content direction={"row"} justify={"center"}>
       <MenuPart menuItems={menuLeft} />
       <LogoContainer>
-        <MainLogo />
+        <Link to={"/"}>
+          <MainLogo />
+        </Link>
       </LogoContainer>
       <MenuPart menuItems={menuRight} right />
     </Content>

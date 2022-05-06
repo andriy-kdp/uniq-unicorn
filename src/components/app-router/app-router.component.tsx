@@ -1,9 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import React, { useMemo } from "react";
+
+import { MainPage } from "../../pages/main/main.page";
 import { RouteItemType } from "./app-router.types";
 
 const routesList: RouteItemType[] = [
-  { path: "/", Component: <h1>Main page</h1> },
+  { path: "/", Component: <MainPage /> },
   { path: "/test", Component: <h1>Test page</h1> },
 ];
 
