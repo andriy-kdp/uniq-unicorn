@@ -2,7 +2,6 @@ import { Benefits } from "../../components/benefits/benefits.component";
 import { ReactComponent as BgImg } from "../../assets/images/backgrounds/home-page/main_background.svg";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
 import { ReactComponent as CardsImg } from "../../assets/images/backgrounds/home-page/cards.svg";
-import { Content } from "../../components/content/content.component";
 import { MainHeader } from "./main.styles";
 import { ReactComponent as MapImage } from "../../assets/images/backgrounds/home-page/map_base_markers.svg";
 import MockVideo from "../../assets/images/backgrounds/home-page/mock_video.jpg";
@@ -18,7 +17,7 @@ export const MainPage: React.FC = (): JSX.Element => {
           <CardsImg />
         </Wrap>
 
-        <Content justify={"center"} pos={"absolute"} h={"100%"}>
+        <Section content justify={"center"} pos={"absolute"} h={"100%"}>
           <Wrap
             sx={{
               maxWidth: "60%",
@@ -33,20 +32,23 @@ export const MainPage: React.FC = (): JSX.Element => {
           <Wrap sx={{ marginTop: "1.5rem" }}>
             <ButtonArrow>Get started</ButtonArrow>
           </Wrap>
-        </Content>
+        </Section>
       </Section>
+
       <Section>
-        <Content>
+        <Section content>
           <Benefits />
-        </Content>
+        </Section>
       </Section>
+
       <Section>
-        <Content>
+        <Section content>
           <img src={MockVideo} alt="Video here" style={{ width: "100%" }} />
-        </Content>
+        </Section>
       </Section>
+
       <Section>
-        <Content>
+        <Section content>
           <Wrap sx={{ textTransform: "uppercase" }}>
             <h2>Open Accounts, Send and Receive Payments in 28 currencies</h2>
           </Wrap>
@@ -54,7 +56,7 @@ export const MainPage: React.FC = (): JSX.Element => {
           <Wrap sx={{ marginLeft: "auto" }}>
             <ButtonArrow>Open Account</ButtonArrow>
           </Wrap>
-        </Content>
+        </Section>
       </Section>
     </>
   );

@@ -1,9 +1,9 @@
-import { ContentProps } from "./content.types";
+import { ContentProps } from "./section.types";
 import styled from "styled-components";
 
-export const Content = styled.div<ContentProps>`
+export const Section = styled.div<ContentProps>`
   position: ${(props) => props.pos || "relative"};
-  max-width: ${(props) => props.w || "114rem"};
+  max-width: 144rem;
   width: 100%;
   margin: ${(props) => props.m || "0 auto"};
   height: ${(props) => props.h || "inherit"};
@@ -12,4 +12,10 @@ export const Content = styled.div<ContentProps>`
   justify-content: ${(props) => props.justify || "flex-start"};
   align-items: ${(props) => props.align || "flex-start"};
   padding: ${(props) => props.p || "0"};
+  ${(props) =>
+    props.content &&
+    `
+  max-width: 114rem;
+
+  `}
 `;

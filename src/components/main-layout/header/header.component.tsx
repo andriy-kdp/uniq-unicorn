@@ -5,10 +5,10 @@ import {
 } from "./header.styles";
 import { MenuItemType, MenuPartProps } from "./header.types";
 
-import { Content } from "../../content/content.component";
 import { Link } from "../../link/link.styles";
 import { ReactComponent as MainLogo } from "../../../assets/logo.svg";
 import React from "react";
+import { Section } from "../../section/section.component";
 
 const menuLeft: MenuItemType[] = [
   {
@@ -51,7 +51,7 @@ const MenuPart: React.FC<MenuPartProps> = ({
 
 export const Header = () => {
   return (
-    <Content direction={"row"} justify={"center"}>
+    <Section direction={"row"} justify={"center"}>
       <MenuPart menuItems={menuLeft} />
       <LogoContainer>
         <Link to={"/"}>
@@ -59,6 +59,6 @@ export const Header = () => {
         </Link>
       </LogoContainer>
       <MenuPart menuItems={menuRight} right />
-    </Content>
+    </Section>
   );
 };

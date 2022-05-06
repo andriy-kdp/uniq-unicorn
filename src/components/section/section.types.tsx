@@ -9,4 +9,5 @@ export type ContentProps = {
   w?: CSSProperties["width"];
   h?: CSSProperties["height"];
   pos?: CSSProperties["position"];
+  content?: boolean;
 };
