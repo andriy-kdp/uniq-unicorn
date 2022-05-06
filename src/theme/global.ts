@@ -47,5 +47,9 @@ h5 {
   font-size: 2.6rem;
   line-height: 3.646rem;
 }
+h6 {
+  font-size: 1.6rem;
+  line-height: 2.83rem;
+}
 
 `;
