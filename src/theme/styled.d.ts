@@ -10,7 +10,7 @@ declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
       backgound: ColorShades;
-      text: ColorShades;
+      text: ColorShades & { button: { dark: string } };
     };
   }
 }

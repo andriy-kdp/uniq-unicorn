@@ -6,12 +6,14 @@ import { MainPage } from "../../pages/main/main.page";
 import { RouteItemType } from "./app-router.types";
 import { BankAccountsPage } from "../../pages/bank-accounts/bank-accounts.page";
 import { MissionPage } from "../../pages/mission/mission.page";
+import { CareersPage } from "../../pages/careers/careers.page";
 
 const routesList: RouteItemType[] = [
   { path: "/", Component: <MainPage /> },
   { path: "/crypto_currency", Component: <CryptoCurrencyPage /> },
   { path: "/bank_accounts", Component: <BankAccountsPage /> },
   { path: "/mission", Component: <MissionPage /> },
+  { path: "/careers", Component: <CareersPage /> },
 ];
 
 const getRoutes = (routes: RouteItemType[]) => {

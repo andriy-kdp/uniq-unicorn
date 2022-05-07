@@ -10,6 +10,9 @@ export const theme: DefaultTheme = {
       primary: "#A1A1A1",
       secondary: "#F2F2F2",
       tertiary: "#BDBDBD", // ???
+      button: {
+        dark: "#0C0C0C",
+      },
     },
   },
 };

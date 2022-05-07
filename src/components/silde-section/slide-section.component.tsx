@@ -6,6 +6,7 @@ import { MainHeader } from "../../pages/main/main.styles";
 import { ButtonArrow } from "../button-arrow/button-arrow.component";
 import { ButtonArrowProps } from "../button-arrow/button-arrow.types";
 import { BgGradient } from "../bg-gradient/bg-gradient.component";
+import { CSSProperties } from "styled-components";
 
 type SliceSectionProps = {
   bgImage: string;
@@ -16,12 +17,14 @@ type SliceSectionProps = {
   };
   justify?: "center" | "right";
   bgVariant?: "gradient";
+  titleWidth?: CSSProperties["maxWidth"];
 };
 
 export const SlideSection: React.FC<PropsWithChildren<SliceSectionProps>> = (
   props
 ) => {
-  const { children, bgImage, title, justify, button, bgVariant } = props;
+  const { children, bgImage, title, justify, button, bgVariant, titleWidth } =
+    props;
   return (
     <>
       <Section align={"center"}>
@@ -64,7 +67,7 @@ export const SlideSection: React.FC<PropsWithChildren<SliceSectionProps>> = (
           {title && (
             <Wrap
               sx={{
-                maxWidth: "60%",
+                maxWidth: titleWidth || "60%",
                 textTransform: "uppercase",
                 display: "flow-root",
               }}
