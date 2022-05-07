@@ -9,6 +9,11 @@ import {
 } from "../../components/vacations/vacations.component";
 import { Button } from "../../components/button/button.component";
 import { Input } from "../../components/inputs/input/input.component";
+import { Select } from "../../components/inputs/select/select.component";
+import {
+  SelectOption,
+  SelectOptions,
+} from "../../components/inputs/select/select.types";
 
 const vacationsList: VacationSection[] = [
   {
@@ -70,8 +75,15 @@ const vacationsList: VacationSection[] = [
   },
 ];
 
+const selectOptions: SelectOptions = [
+  { id: "opt-1", label: "Option 1", value: "option_1" },
+  { id: "opt-2", label: "Option 2", value: "option_2" },
+  { id: "opt-3", label: "Option 3", value: "option_3" },
+];
+
 export const CareersPage = () => {
   const [ival, setIval] = useState<string>("");
+  const [selected, setSelected] = useState<SelectOption | null>(null);
   return (
     <>
       <SlideSection
@@ -106,6 +118,12 @@ export const CareersPage = () => {
           onChange={(e) => setIval(e.target.value)}
           label={"Test label component"}
           placeholder={"TEST PLACEHOLDER"}
+        />
+        <Select
+          options={selectOptions}
+          value={selected}
+          onSelect={(value) => setSelected(value)}
+          optionsPosition={"bottom"}
         />
       </Section>
     </>

@@ -1,24 +1,11 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Inp } from "./input.styles";
+import { InputProps } from "./input.types";
 
-export type InputProps = {
-  value: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-  onIconClick?: React.MouseEvent<HTMLDivElement>;
-  placeholder?: string;
-  helperText?: string;
-  label?: string;
-  fullWidth?: boolean;
-  startIcon?: React.ReactNode;
-  InputNativeProps?: React.InputHTMLAttributes<HTMLInputElement>;
-  RootProps?: React.HTMLAttributes<HTMLDivElement>;
-  IconRootProps?: React.HTMLAttributes<HTMLDivElement>;
-  LabelRootProps?: React.HTMLAttributes<HTMLSpanElement>;
-};
-
-export const Input: React.FC<InputProps> = (props) => {
+export const Input: React.FC<PropsWithChildren<InputProps>> = (props) => {
   const {
     onChange,
+    onIconClick,
     value,
     startIcon,
     label,
@@ -28,25 +15,30 @@ export const Input: React.FC<InputProps> = (props) => {
     InputNativeProps,
     IconRootProps,
     RootProps,
-    LabelRootProps: LabelProps,
+    LabelRootProps,
+    _select,
   } = props;
   return (
     <Inp.Body fullWidth={fullWidth} {...RootProps}>
-      {label && <Inp.Input.Label {...LabelProps}>{label}</Inp.Input.Label>}
-      <Inp.Container>
+      {/* {children && childrenPosition === "before" && children} */}
+      {label && <Inp.Input.Label {...LabelRootProps}>{label}</Inp.Input.Label>}
+      <Inp.Root>
         {startIcon && (
-          <Inp.Icon.Container {...IconRootProps}>
+          <Inp.Icon.Root onClick={onIconClick} {...IconRootProps}>
             {startIcon}
-          </Inp.Icon.Container>
+          </Inp.Icon.Root>
         )}
-        <Inp.Input.Main
+        <Inp.Input.Input
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          _select={_select}
+          startIcon={startIcon}
           {...InputNativeProps}
         />
-      </Inp.Container>
+      </Inp.Root>
       {helperText && <Inp.Input.HelperText>{helperText}</Inp.Input.HelperText>}
+      {/* {children && childrenPosition === "before" && children} */}
     </Inp.Body>
   );
 };

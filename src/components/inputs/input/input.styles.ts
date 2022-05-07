@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { InputProps } from "./input.component";
+import { InputProps } from "./input.types";
 
 export const InputBody = styled.div<Pick<InputProps, "fullWidth">>`
   display: flex;
@@ -24,7 +24,7 @@ const InputLabel = styled.span`
   color: ${(props) => props.theme.colors.text.secondary};
 `;
 
-const InputMain = styled.input`
+const InputMain = styled.input<Pick<InputProps, "_select" | "startIcon">>`
   background: none;
   border: none;
   outline: none;
@@ -35,16 +35,20 @@ const InputMain = styled.input`
   font-size: 1.6rem;
   line-height: 2rem;
   color: ${(props) => props.theme.colors.text.secondary};
+  font-family: "DM Sans", sans-serif;
   ::placeholder {
     color: #828282;
   }
+  ${(props) => props._select && `padding: 1rem`}
+  ${(props) => props.startIcon && "padding: 1rem 0"}
 `;
 
-const InputIconContainer = styled.div<Pick<InputProps, "IconRootProps">>`
+const InputIconRoot = styled.div<Pick<InputProps, "IconRootProps">>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
+  padding: 0 1.2rem 0 2.4rem;
+  cursor: pointer;
 `;
 
 const InputHelper = styled.div`
@@ -56,14 +60,14 @@ const InputHelper = styled.div`
 `;
 
 const Icon = {
-  Container: InputIconContainer,
+  Root: InputIconRoot,
 };
 
 export const Inp = {
   Body: InputBody,
-  Container: InputContainer,
+  Root: InputContainer,
   Input: {
-    Main: InputMain,
+    Input: InputMain,
     Label: InputLabel,
     HelperText: InputHelper,
   },
