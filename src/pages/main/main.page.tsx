@@ -11,6 +11,7 @@ import { Wrap } from "../../components/wrap/wrap.component";
 import { ReactComponent as FastIcon } from "../../assets/icons/benefits-main/fast.svg";
 import { ReactComponent as GlobalIcon } from "../../assets/icons/benefits-main/global.svg";
 import { ReactComponent as SafeIcon } from "../../assets/icons/benefits-main/safe.svg";
+import { SlideSection } from "../../components/silde-section/slide-section.component";
 
 const benefitsList: BenefitItemsType = [
   {
@@ -32,39 +33,14 @@ const benefitsList: BenefitItemsType = [
 export const MainPage: React.FC = (): JSX.Element => {
   return (
     <>
-      <Section align={"center"}>
-        <Wrap
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            width: "100%",
-          }}
-        >
-          <img
-            src={MainBg}
-            alt="Lines and credit cards"
-            style={{ position: "relative", marginRight: 0 }}
-          />
-        </Wrap>
-
-        <Section content justify={"center"} pos={"absolute"} h={"100%"}>
-          <Wrap
-            sx={{
-              maxWidth: "60%",
-              textTransform: "uppercase",
-              display: "flow-root",
-            }}
-          >
-            <MainHeader>
-              Private or Business accounts set up in minutes
-            </MainHeader>
-          </Wrap>
-          <Wrap sx={{ marginTop: "1.5rem" }}>
-            <ButtonArrow>Get started</ButtonArrow>
-          </Wrap>
-        </Section>
-      </Section>
-
+      <SlideSection
+        bgImage={MainBg}
+        button={{
+          title: "Get started",
+          onClick: () => {},
+        }}
+        title={"Private or Business accounts set up in minutes"}
+      />
       <Section content>
         <Benefits items={benefitsList} />
       </Section>

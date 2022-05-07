@@ -18,7 +18,7 @@ body {
   font-size: 1.6rem;
   line-height: 2.8rem;
 }
-div, p, span {
+div, p, span, pre {
   font-family: DM Sans, sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -47,7 +47,7 @@ h5 {
   font-size: 2.6rem;
   line-height: 3.646rem;
 }
-h6 {
+h6,pre {
   font-size: 1.6rem;
   line-height: 2.83rem;
 }

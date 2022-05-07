@@ -13,6 +13,7 @@ import { ReactComponent as SuccessIcon } from "../../assets/icons/benefits-crypt
 import { Wrap } from "../../components/wrap/wrap.component";
 import PhonesBg from "../../assets/images/backgrounds/crypto-currency-page/phones.png";
 import { MobileAppContainer, MobileAppTitle } from "./crypto-currency.styles";
+import { SlideSection } from "../../components/silde-section/slide-section.component";
 const benefitsItems: BenefitItemsType = [
   {
     title: "High-value trading",
@@ -51,35 +52,15 @@ const benefitsItems: BenefitItemsType = [
 export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
   return (
     <>
-      <Section align={"center"}>
-        <Wrap
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            width: "100%",
-            height: "75rem",
-          }}
-        >
-          {/* <img
-            src={MainBg}
-            alt="Lines and credit cards"
-            style={{ position: "relative", marginRight: 0 }}
-          /> */}
-        </Wrap>
-      </Section>
-      <Section justify={"center"} pos={"absolute"} m={"0 auto"}>
-        <Wrap
-          sx={{
-            maxWidth: "60%",
-            textTransform: "uppercase",
-          }}
-        >
-          <MainHeader>Black Banx crypto currency banking</MainHeader>
-        </Wrap>
-        <Wrap sx={{ marginTop: "1.5rem" }}>
-          <ButtonArrow>Open Account</ButtonArrow>
-        </Wrap>
-      </Section>
+      <SlideSection
+        bgImage=""
+        title="Black Banx crypto currency banking"
+        button={{
+          title: "Open Account",
+          onClick: () => {},
+        }}
+      />
+
       <Section content>
         <Benefits items={benefitsItems} secondary />
       </Section>

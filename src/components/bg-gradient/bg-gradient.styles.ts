@@ -5,7 +5,7 @@ export const BgGradientContainer = styled.div<BgGradientType>`
   background: url(${(props) => props.imgSrc});
   display: flex;
   width: 100%;
-  height: 600px;
+  height: 57.8rem;
   &:after {
     content: " ";
     display: flex;

@@ -51,7 +51,7 @@ const MenuPart: React.FC<MenuPartProps> = ({
 
 export const Header = () => {
   return (
-    <Section direction={"row"} justify={"center"}>
+    <Section content direction={"row"} justify={"center"}>
       <MenuPart menuItems={menuLeft} />
       <LogoContainer>
         <Link to={"/"}>
