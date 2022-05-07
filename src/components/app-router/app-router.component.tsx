@@ -4,10 +4,12 @@ import React, { useMemo } from "react";
 import { CryptoCurrencyPage } from "../../pages/crypto-currency/crypto-currency.page";
 import { MainPage } from "../../pages/main/main.page";
 import { RouteItemType } from "./app-router.types";
+import { BankAccountsPage } from "../../pages/bank-accounts/bank-accounts.page";
 
 const routesList: RouteItemType[] = [
   { path: "/", Component: <MainPage /> },
   { path: "/crypto_currency", Component: <CryptoCurrencyPage /> },
+  { path: "/bank_accounts", Component: <BankAccountsPage /> },
 ];
 
 const getRoutes = (routes: RouteItemType[]) => {
