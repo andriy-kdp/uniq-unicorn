@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEventHandler, useState } from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import { Section } from "../../components/section/section.component";
 import careersBg from "../../assets/images/backgrounds/careers/careers_bg.png";
@@ -7,14 +7,22 @@ import {
   VacationsComponent,
   VacationSection,
 } from "../../components/vacations/vacations.component";
-import { Button } from "../../components/button/button.component";
 import { Input } from "../../components/inputs/input/input.component";
 import { Select } from "../../components/inputs/select/select.component";
 import {
+  SelectHandler,
   SelectOption,
   SelectOptions,
 } from "../../components/inputs/select/select.types";
-
+import { ReactComponent as FlagIconCn } from "../../assets/icons/flags/flag_cn.svg";
+import { ReactComponent as FlagIconEsp } from "../../assets/icons/flags/flag_esp.svg";
+import { ReactComponent as FlagIconPt } from "../../assets/icons/flags/flag_pt.svg";
+import { ReactComponent as FlagIconRu } from "../../assets/icons/flags/flag_ru.svg";
+import { ReactComponent as FlagIconUs } from "../../assets/icons/flags/flag_us.svg";
+import { Wrap } from "../../components/wrap/wrap.component";
+import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg";
+import { InputProps } from "../../components/inputs/input/input.types";
+import { Button } from "../../components/button/button.component";
 const vacationsList: VacationSection[] = [
   {
     title: "Sales",
@@ -76,14 +84,75 @@ const vacationsList: VacationSection[] = [
 ];
 
 const selectOptions: SelectOptions = [
-  { id: "opt-1", label: "Option 1", value: "option_1" },
-  { id: "opt-2", label: "Option 2", value: "option_2" },
-  { id: "opt-3", label: "Option 3", value: "option_3" },
+  { id: "opt-1", label: "中文", value: "chinese", endIcon: <FlagIconCn /> },
+  {
+    id: "opt-2",
+    label: "Español ",
+    value: "espaniol",
+    endIcon: <FlagIconEsp />,
+  },
+  {
+    id: "opt-3",
+    label: "Português 3",
+    value: "portugues",
+    endIcon: <FlagIconPt />,
+  },
+  {
+    id: "opt-4",
+    label: "Русский",
+    value: "russian",
+    endIcon: <FlagIconRu />,
+  },
+  {
+    id: "opt-5",
+    label: "English",
+    value: "english",
+    endIcon: <FlagIconUs />,
+  },
 ];
 
-export const CareersPage = () => {
-  const [ival, setIval] = useState<string>("");
+const keywordsFilterButtons: {
+  value: "exact" | "title" | "description";
+  title: string;
+}[] = [
+  { value: "exact", title: "Exact match" },
+  { value: "title", title: "In job title" },
+  { value: "description", title: "In description" },
+];
+
+export const CareersPage: React.FC = (): JSX.Element => {
   const [selected, setSelected] = useState<SelectOption | null>(null);
+
+  const [formData, setFormdata] = useState<{
+    filterBy: "exact" | "title" | "description";
+    keywords: string;
+    location: string;
+    dateOfPosting: SelectOption | null;
+  }>({ keywords: "", location: "", dateOfPosting: null, filterBy: "exact" });
+
+  const commonHandler = (name: string, value: string | SelectOption) => {
+    setFormdata((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const { name, value } = e.target;
+    if (name) {
+      commonHandler(name, value);
+    }
+  };
+
+  const handleSelect: SelectHandler = (e) => {
+    const { name, value } = e.target;
+    console.log(name);
+    if (name) {
+      commonHandler(name, value);
+    }
+  };
+
+  const handleSelectFilterType = (value: "exact" | "title" | "description") => {
+    commonHandler("filterBy", value);
+  };
+
   return (
     <>
       <SlideSection
@@ -98,33 +167,57 @@ export const CareersPage = () => {
         }}
       />
       <Section content>
+        <Wrap sx={{ margin: "6rem 0" }}>
+          <h3>We're looking for talented people to join us</h3>
+        </Wrap>
         <img src={careersVideoPlugImg} alt={"Careers video"} />
       </Section>
       <Section content>
-        <VacationsComponent sections={vacationsList} />
+        <Wrap sx={{ width: "76.8rem", margin: "0 auto" }}>
+          <VacationsComponent sections={vacationsList} />
+        </Wrap>
       </Section>
       <Section content>
         <h3>Search for openings:</h3>
-        <Input
-          value={ival}
-          onChange={(e) => setIval(e.target.value)}
-          label={"Test label component"}
-          startIcon={<>Test</>}
-          InputNativeProps={{ placeholder: "test placeholder" }}
-        />
-        <Input
-          helperText="TEst helper text"
-          value={ival}
-          onChange={(e) => setIval(e.target.value)}
-          label={"Test label component"}
-          placeholder={"TEST PLACEHOLDER"}
-        />
-        <Select
-          options={selectOptions}
-          value={selected}
-          onSelect={(value) => setSelected(value)}
-          optionsPosition={"bottom"}
-        />
+        <Wrap sx={{ width: "76.8rem", margin: "0 auto" }}>
+          <Input
+            fullWidth
+            value={formData["keywords"]}
+            onChange={handleInputChange}
+            label={"Keywords"}
+            startIcon={<SearchIcon />}
+            placeholder={"Search jobs by keywords"}
+            name={"keywords"}
+          />
+          <Wrap sx={{ display: "flex" }}>
+            {keywordsFilterButtons.map((button) => (
+              <Button
+                onClick={() => handleSelectFilterType(button.value)}
+                selected={formData.filterBy === button.value}
+              >
+                {button.title}
+              </Button>
+            ))}
+          </Wrap>
+          <Input
+            fullWidth
+            onChange={handleInputChange}
+            label={"Location"}
+            startIcon={<SearchIcon />}
+            placeholder={"Start entering location"}
+            name={"location"}
+            value={formData["location"]}
+          />
+          <Select
+            fullWidth
+            options={selectOptions}
+            value={formData["dateOfPosting"]}
+            onSelect={handleSelect}
+            optionsPosition={"bottom"}
+            label={"Date of posting"}
+            name={"dateOfPosting"}
+          />
+        </Wrap>
       </Section>
     </>
   );

@@ -5,7 +5,7 @@ import { InputProps } from "./input.types";
 export const Input: React.FC<PropsWithChildren<InputProps>> = (props) => {
   const {
     onChange,
-    onIconClick,
+    onStartIconClick: onIconClick,
     value,
     startIcon,
     label,
@@ -16,19 +16,22 @@ export const Input: React.FC<PropsWithChildren<InputProps>> = (props) => {
     IconRootProps,
     RootProps,
     LabelRootProps,
+    endIcon,
     _select,
+    borderRadius,
+    name,
   } = props;
   return (
     <Inp.Body fullWidth={fullWidth} {...RootProps}>
-      {/* {children && childrenPosition === "before" && children} */}
       {label && <Inp.Input.Label {...LabelRootProps}>{label}</Inp.Input.Label>}
-      <Inp.Root>
+      <Inp.Root borderRadius={borderRadius}>
         {startIcon && (
           <Inp.Icon.Root onClick={onIconClick} {...IconRootProps}>
             {startIcon}
           </Inp.Icon.Root>
         )}
         <Inp.Input.Input
+          name={name}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
@@ -36,9 +39,13 @@ export const Input: React.FC<PropsWithChildren<InputProps>> = (props) => {
           startIcon={startIcon}
           {...InputNativeProps}
         />
+        {endIcon && (
+          <Inp.Icon.Root onClick={onIconClick} {...IconRootProps}>
+            {endIcon}
+          </Inp.Icon.Root>
+        )}
       </Inp.Root>
       {helperText && <Inp.Input.HelperText>{helperText}</Inp.Input.HelperText>}
-      {/* {children && childrenPosition === "before" && children} */}
     </Inp.Body>
   );
 };

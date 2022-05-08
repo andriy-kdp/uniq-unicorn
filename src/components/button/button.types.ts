@@ -1,5 +1,5 @@
 export type ButtonProps = {
   borderRadius?: "small";
-  onClick?: () => {};
+  onClick?: () => void;
   selected?: boolean;
 };

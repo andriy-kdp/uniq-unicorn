@@ -1,3 +1,6 @@
+import { CSSProperties } from "react";
 export type DividerProps = {
-  variant: string; //TODO!!!
+  variant?: "dashed";
+  width?: CSSProperties["width"];
+  position?: "left" | "right";
 };

@@ -1,21 +1,29 @@
+import { SelectProps } from "./select.types";
 import styled from "styled-components";
 
-const SelectRoot = styled.div`
+const SelectRoot = styled.div<Pick<SelectProps, "fullWidth">>`
   display: flex;
   flex-direction: column;
   position: relative;
+  ${(props) => props.fullWidth && `width: 100%`}
 `;
-const OptionsContainer = styled.div`
+const OptionsContainer = styled.div<
+  Pick<SelectProps, "optionsPosition" | "borderRadius">
+>`
+  user-select: none;
   display: flex;
   flex-direction: column;
   position: absolute;
-  bottom: 0;
   width: 100%;
   background: ${(props) => props.theme.colors.backgound.primary};
-  border-radius: 0.7rem;
+  border-radius: 1.6rem;
   border: 1px solid #a6a6a6;
   color: ${(props) => props.theme.colors.text.secondary};
   overflow: hidden;
+  z-index: 1;
+  ${(props) => props.optionsPosition === "bottom" && "top: 0"};
+  ${(props) => props.optionsPosition === "top" && "bottom: 0"};
+  ${(props) => props.borderRadius === "small" && "border-radius: 0.7rem"};
 `;
 const OptionItemContainer = styled.div`
   display: flex;
@@ -51,11 +59,15 @@ const InputAdormentLabel = styled.div`
   color: ${(props) => props.theme.colors.text.secondary};
   margin-left: 1.6rem;
 `;
+
+const InputAdornmentIcon = styled.div``;
+
 export const Sel = {
   Root: SelectRoot,
   Adornment: {
     Root: InputAdornmentRoot,
     Label: InputAdormentLabel,
+    Icon: InputAdornmentIcon,
   },
   Options: {
     Root: OptionsContainer,

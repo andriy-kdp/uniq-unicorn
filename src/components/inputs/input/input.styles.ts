@@ -8,12 +8,13 @@ export const InputBody = styled.div<Pick<InputProps, "fullWidth">>`
   ${(props) => props.fullWidth && `width: 100%`}
 `;
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<Pick<InputProps, "borderRadius">>`
   display: flex;
   width: 100%;
   border: 1px solid ${(props) => props.theme.colors.text.primary};
-  border-radius: 16px;
+  border-radius: 1.6rem;
   overflow: hidden;
+  ${(props) => props.borderRadius === "small" && `border-radius: 0.7rem`};
 `;
 const InputLabel = styled.span`
   margin-bottom: 1.4rem;
