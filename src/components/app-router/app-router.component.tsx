@@ -8,6 +8,7 @@ import { BankAccountsPage } from "../../pages/bank-accounts/bank-accounts.page";
 import { MissionPage } from "../../pages/mission/mission.page";
 import { CareersPage } from "../../pages/careers/careers.page";
 import { SecurityPage } from "../../pages/security/security.page";
+import { FeesPage } from "../../pages/fees/fees.page";
 
 const routesList: RouteItemType[] = [
   { path: "/", Component: <MainPage /> },
@@ -16,6 +17,7 @@ const routesList: RouteItemType[] = [
   { path: "/mission", Component: <MissionPage /> },
   { path: "/careers", Component: <CareersPage /> },
   { path: "/security", Component: <SecurityPage /> },
+  { path: "/fees", Component: <FeesPage /> },
 ];
 
 const getRoutes = (routes: RouteItemType[]) => {
