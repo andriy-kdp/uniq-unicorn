@@ -1,30 +1,23 @@
 import React, { PropsWithChildren } from "react";
 import { Wrap } from "../wrap/wrap.component";
-import MainBg from "../../assets/images/backgrounds/home-page/main_bg.png";
 import { Section } from "../section/section.component";
 import { MainHeader } from "../../pages/main/main.styles";
 import { ButtonArrow } from "../button-arrow/button-arrow.component";
-import { ButtonArrowProps } from "../button-arrow/button-arrow.types";
 import { BgGradient } from "../bg-gradient/bg-gradient.component";
-import { CSSProperties } from "styled-components";
-
-type SliceSectionProps = {
-  bgImage: string;
-  title?: string;
-  button?: {
-    title: string;
-    onClick: ButtonArrowProps["onClick"];
-  };
-  justify?: "center" | "right";
-  bgVariant?: "gradient";
-  titleWidth?: CSSProperties["maxWidth"];
-};
-
-export const SlideSection: React.FC<PropsWithChildren<SliceSectionProps>> = (
+import { SlideSectionProps } from "./slide.section.types";
+export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (
   props
 ) => {
-  const { children, bgImage, title, justify, button, bgVariant, titleWidth } =
-    props;
+  const {
+    children,
+    bgImage,
+    title,
+    justify,
+    button,
+    bgVariant,
+    titleWidth,
+    titleAlign,
+  } = props;
   return (
     <>
       <Section align={"center"}>
@@ -70,6 +63,7 @@ export const SlideSection: React.FC<PropsWithChildren<SliceSectionProps>> = (
                 maxWidth: titleWidth || "60%",
                 textTransform: "uppercase",
                 display: "flow-root",
+                textAlign: titleAlign || "start",
               }}
             >
               <MainHeader>{title}</MainHeader>
