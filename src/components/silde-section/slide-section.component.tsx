@@ -17,6 +17,7 @@ export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (
     bgVariant,
     titleWidth,
     titleAlign,
+    BgRootProps,
   } = props;
   return (
     <>
@@ -30,6 +31,7 @@ export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (
               justifyContent: "flex-end",
               width: "100%",
               height: "57.8rem",
+              ...BgRootProps,
             }}
           >
             <img

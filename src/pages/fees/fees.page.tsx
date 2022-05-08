@@ -11,7 +11,7 @@ import { Divider } from "../../components/divider/divider.styles";
 import TitaniumAccountBg from "../../assets/images/backgrounds/fees/plastic_card.png";
 import { Input } from "../../components/inputs/input/input.component";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg";
-type PlanInfo = {
+type PlanInfoType = {
   title: string;
   prosItems: PlanInfoProsItem[];
   imgSrc: string;
@@ -21,7 +21,7 @@ type PlanInfoProsItem = {
   description: string;
 };
 
-const planInfoItems: PlanInfo[] = [
+const planInfoItems: PlanInfoType[] = [
   {
     title: "Titanium Account",
     imgSrc: TitaniumAccountBg,
