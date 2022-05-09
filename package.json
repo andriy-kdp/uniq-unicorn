@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "html-react-parser": "^1.4.12",
     "react": "^18.1.0",
     "react-click-away-listener": "^2.2.1",
     "react-dom": "^18.1.0",

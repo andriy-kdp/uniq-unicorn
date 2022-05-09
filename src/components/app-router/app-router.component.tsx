@@ -10,7 +10,10 @@ import { CareersPage } from "../../pages/careers/careers.page";
 import { SecurityPage } from "../../pages/security/security.page";
 import { FeesPage } from "../../pages/fees/fees.page";
 import { MediaCoveragePage } from "../../pages/media-covarage/media-coverage.page";
-
+import { BlogPage } from "../../pages/blog/blog.page";
+import { BlogArticlePage } from "../../pages/blog/blog-article.page";
+import { ChooseAccountPage } from "../../pages/auth/choose-account/choose-account.page";
+import { LoginPage } from "../../pages/auth/login/login.page";
 const routesList: RouteItemType[] = [
   { path: "/", Component: <MainPage /> },
   { path: "/crypto_currency", Component: <CryptoCurrencyPage /> },
@@ -20,6 +23,31 @@ const routesList: RouteItemType[] = [
   { path: "/security", Component: <SecurityPage /> },
   { path: "/fees", Component: <FeesPage /> },
   { path: "/media_coverage", Component: <MediaCoveragePage /> },
+  {
+    path: "/auth",
+    nestedRoutes: [
+      {
+        Component: <LoginPage />,
+        path: "login",
+      },
+      {
+        path: "choose_account",
+        Component: <ChooseAccountPage />,
+      },
+      {
+        //type - private, business, institutional
+        path: "register/:type",
+        Component: <>Register</>,
+      },
+    ],
+  },
+  {
+    path: "/blog",
+    nestedRoutes: [
+      { Component: <BlogPage />, index: true },
+      { path: "articles/:id", Component: <BlogArticlePage /> },
+    ],
+  },
 ];
 
 const getRoutes = (routes: RouteItemType[]) => {
@@ -27,7 +55,7 @@ const getRoutes = (routes: RouteItemType[]) => {
     const { Component, nestedRoutes, ...rest } = route;
     if (nestedRoutes) {
       return (
-        <Route key={`nested-${index}`} {...rest}>
+        <Route key={`nested-${index}`} element={Component} {...rest}>
           {getRoutes(nestedRoutes)}
         </Route>
       );

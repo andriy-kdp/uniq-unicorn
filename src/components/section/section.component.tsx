@@ -12,6 +12,7 @@ export const Section = styled.div<ContentProps>`
   justify-content: ${(props) => props.justify || "flex-start"};
   align-items: ${(props) => props.align || "flex-start"};
   padding: ${(props) => props.p || "0"};
+  background: url(${(props) => props.bgImg});
   ${(props) =>
     props.content &&
     `

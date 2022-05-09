@@ -10,4 +10,5 @@ export type ContentProps = {
   h?: CSSProperties["height"];
   pos?: CSSProperties["position"];
   content?: boolean;
+  bgImg?: string;
 };
