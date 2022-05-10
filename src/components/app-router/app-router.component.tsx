@@ -17,6 +17,8 @@ import { LoginPage } from "../../pages/auth/login/login.page";
 import { RegisterPage } from "../../pages/auth/register/register.page";
 import { ContactPage } from "../../pages/contact/contact.page";
 import { NewsPage } from "../../pages/news/news.page";
+import { PrivacyPolicyPage } from "../../pages/privacy-policy-terms/privacy-policy.page";
+import { PolicesTermsPage } from "../../pages/privacy-policy-terms/policies-terms.page";
 const routesList: RouteItemType[] = [
   { path: "/", Component: <MainPage /> },
   { path: "/crypto_currency", Component: <CryptoCurrencyPage /> },
@@ -28,6 +30,8 @@ const routesList: RouteItemType[] = [
   { path: "/media_coverage", Component: <MediaCoveragePage /> },
   { path: "/contact", Component: <ContactPage /> },
   { path: "/news", Component: <NewsPage /> },
+  { path: "/privacy_policy", Component: <PrivacyPolicyPage /> },
+  { path: "/terms", Component: <PolicesTermsPage /> },
   {
     path: "/auth",
     nestedRoutes: [
