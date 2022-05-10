@@ -14,6 +14,7 @@ import { BlogPage } from "../../pages/blog/blog.page";
 import { BlogArticlePage } from "../../pages/blog/blog-article.page";
 import { ChooseAccountPage } from "../../pages/auth/choose-account/choose-account.page";
 import { LoginPage } from "../../pages/auth/login/login.page";
+import { RegisterPage } from "../../pages/auth/register/register.page";
 const routesList: RouteItemType[] = [
   { path: "/", Component: <MainPage /> },
   { path: "/crypto_currency", Component: <CryptoCurrencyPage /> },
@@ -31,13 +32,13 @@ const routesList: RouteItemType[] = [
         path: "login",
       },
       {
-        path: "choose_account",
+        path: "register",
         Component: <ChooseAccountPage />,
       },
       {
         //type - private, business, institutional
         path: "register/:type",
-        Component: <>Register</>,
+        Component: <RegisterPage />,
       },
     ],
   },

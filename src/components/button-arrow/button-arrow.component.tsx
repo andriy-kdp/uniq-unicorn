@@ -7,9 +7,13 @@ import { ButtonArrowProps } from "./button-arrow.types";
 export const ButtonArrow: React.FC<PropsWithChildren<ButtonArrowProps>> = (
   props
 ): JSX.Element => {
-  const { direction = "right", children, onClick } = props;
+  const { direction = "right", children, onClick, disabled } = props;
   return (
-    <ButtonArrowContainer direction={direction} onClick={onClick}>
+    <ButtonArrowContainer
+      direction={direction}
+      onClick={onClick}
+      disabled={disabled}
+    >
       <ButtonArrowText>{children}</ButtonArrowText>
       <ArrowIcon />
     </ButtonArrowContainer>
