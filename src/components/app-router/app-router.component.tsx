@@ -15,6 +15,7 @@ import { BlogArticlePage } from "../../pages/blog/blog-article.page";
 import { ChooseAccountPage } from "../../pages/auth/choose-account/choose-account.page";
 import { LoginPage } from "../../pages/auth/login/login.page";
 import { RegisterPage } from "../../pages/auth/register/register.page";
+import { ContactPage } from "../../pages/contact/contact.page";
 const routesList: RouteItemType[] = [
   { path: "/", Component: <MainPage /> },
   { path: "/crypto_currency", Component: <CryptoCurrencyPage /> },
@@ -24,6 +25,7 @@ const routesList: RouteItemType[] = [
   { path: "/security", Component: <SecurityPage /> },
   { path: "/fees", Component: <FeesPage /> },
   { path: "/media_coverage", Component: <MediaCoveragePage /> },
+  { path: "/contact", Component: <ContactPage /> },
   {
     path: "/auth",
     nestedRoutes: [

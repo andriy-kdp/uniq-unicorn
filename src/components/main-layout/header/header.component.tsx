@@ -31,8 +31,8 @@ const menuRight: MenuItemType[] = [
     path: "/auth/login",
   },
   {
-    label: "Accounts",
-    path: "/auth/sign_up",
+    label: "Sign up",
+    path: "/auth/register",
   },
 ];
 
