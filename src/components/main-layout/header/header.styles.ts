@@ -33,3 +33,45 @@ export const MenuPartContainer = styled.div<Omit<MenuPartProps, "menuItems">>`
     margin-left: 3rem;
   `}
 `;
+
+const DropdownMenuRoot = styled.div`
+  width: 100%;
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #151515 30.73%, #151515 67.19%, rgba(12, 12, 12, 0) 100%);
+  backdrop-filter: blur(6px);
+`;
+
+const DropdownMenuItemRoot = styled.button`
+  display: flex;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+`;
+
+const DropdownItemLabelRoot = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const DropdownItemLabel = styled.span``;
+const DropdownMenuItemDescription = styled.span``;
+
+const DropdownItemIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const Dropdown = {
+  Root: DropdownMenuRoot,
+  Item: {
+    Root: DropdownMenuItemRoot,
+    Label: {
+      Root: DropdownItemLabelRoot,
+      Text: DropdownItemLabel,
+    },
+    Description: DropdownMenuItemDescription,
+    Icon: DropdownItemIcon,
+  },
+};
