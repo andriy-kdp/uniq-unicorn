@@ -7,10 +7,8 @@ import { Section } from "../../components/section/section.component";
 import { Divider } from "../../components/divider/divider.styles";
 import { useNavigate } from "react-router-dom";
 import { Blog } from "./blog.styles";
-import TwitterIcon from "../../assets/icons/social/twitter_image_icon.png";
-import LinkedInIcon from "../../assets/icons/social/linkedin_image_icon.png";
-import { Wrap } from "../../components/wrap/wrap.component";
-import { IconButton } from "../../components/icon-button/icon-button.component";
+import { SocialTitle } from "../../components/social-title/social-title.component";
+
 const mockBlogItems: {
   id: string | number;
   date: string;
@@ -56,31 +54,12 @@ export const BlogPage: React.FC = (): JSX.Element => {
           const { Preview } = Blog;
           return (
             <Preview.Root>
-              <Preview.Title.Root>
-                <Preview.Title.Date>{post.date}</Preview.Title.Date>
-                <Preview.Title.Text>{post.title}</Preview.Title.Text>
-                <Wrap
-                  sx={{
-                    display: "flex",
-                    marginLeft: "auto",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <IconButton>
-                    <img src={TwitterIcon} alt="Twitter icon" />
-                  </IconButton>
-                  <Wrap sx={{ marginBottom: "0.4rem", marginLeft: "2rem" }}>
-                    <IconButton>
-                      <img
-                        src={LinkedInIcon}
-                        alt="LinkedIn icon"
-                        height={"100%"}
-                      />
-                    </IconButton>
-                  </Wrap>
-                </Wrap>
-              </Preview.Title.Root>
+              <SocialTitle
+                date={post.date}
+                title={post.title}
+                linkedInLink={"about:blank"}
+                twitterLink={"http://youtube.com"}
+              />
               <Preview.Image.Root onClick={handlePreviewClick(post.id)}>
                 <img src={post.imgSrc} alt={post.title} />
               </Preview.Image.Root>

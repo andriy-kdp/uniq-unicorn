@@ -5,13 +5,6 @@ const BlogPreviewRoot = styled.div`
   width: 100%;
 `;
 
-const BlogPreviewTitleRoot = styled.div`
-  display: flex;
-  width: 100%;
-`;
-
-const BlogPreviewTitleDate = styled.div``;
-const BlogPreviewTitleText = styled.div``;
 const BlogPReviewDescription = styled.div``;
 const BlogPreviewImageRoot = styled.div`
   display: flex;
@@ -29,11 +22,6 @@ const ArticleTitleText = styled.h3``;
 export const Blog = {
   Preview: {
     Root: BlogPreviewRoot,
-    Title: {
-      Root: BlogPreviewTitleRoot,
-      Date: BlogPreviewTitleDate,
-      Text: BlogPreviewTitleText,
-    },
     Image: {
       Root: BlogPreviewImageRoot,
     },
