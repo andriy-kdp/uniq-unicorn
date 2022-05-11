@@ -7,9 +7,18 @@ export const MainMenuContainer = styled.div`
   width: 100%;
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<{ small?: boolean }>`
   transform: translateX(-75%);
   margin-top: 3rem;
+  transition-duration: 200ms;
+  ${(props) =>
+    props.small &&
+    `
+    margin-top: 0rem;
+    svg {
+      width: 60%;
+    }
+  `}
 `;
 
 export const MenuItemContainer = styled.div`
@@ -35,36 +44,60 @@ export const MenuPartContainer = styled.div<Omit<MenuPartProps, "menuItems">>`
 `;
 
 const DropdownMenuRoot = styled.div`
-  width: 100%;
+  width: 80%;
   position: absolute;
   display: flex;
-  bottom: 0;
+  flex-direction: column;
   background: linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #151515 30.73%, #151515 67.19%, rgba(12, 12, 12, 0) 100%);
   backdrop-filter: blur(6px);
+  top: 7rem;
+  left: 0;
+  z-index: 1;
 `;
 
+const DropdownItemsRoot = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
 const DropdownMenuItemRoot = styled.button`
   display: flex;
   background: none;
   border: none;
   outline: none;
   color: #fff;
+  padding: 3rem 1.8rem 4rem 1.8rem;
+  cursor: pointer;
 `;
 
 const DropdownItemLabelRoot = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: start;
 `;
-const DropdownItemLabel = styled.span``;
-const DropdownMenuItemDescription = styled.span``;
+const DropdownItemLabel = styled.span`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  margin-bottom: 0.3rem;
+`;
+const DropdownMenuItemDescription = styled.span`
+  color: #a1a1a1;
+`;
 
 const DropdownItemIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 1.4rem;
 `;
 export const Dropdown = {
   Root: DropdownMenuRoot,
+  Items: {
+    Root: DropdownItemsRoot,
+  },
   Item: {
     Root: DropdownMenuItemRoot,
     Label: {

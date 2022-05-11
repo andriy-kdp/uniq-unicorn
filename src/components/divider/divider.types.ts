@@ -3,4 +3,5 @@ export type DividerProps = {
   variant?: "dashed";
   width?: CSSProperties["width"];
   position?: "left" | "right";
+  background?: CSSProperties["background"];
 };

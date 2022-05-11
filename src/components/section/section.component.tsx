@@ -13,6 +13,7 @@ export const Section = styled.div<ContentProps>`
   align-items: ${(props) => props.align || "flex-start"};
   padding: ${(props) => props.p || "0"};
   background: url(${(props) => props.bgImg});
+  min-height: ${(props) => props.mh || "auto"};
   ${(props) =>
     props.content &&
     `

@@ -6,7 +6,7 @@ export const Divider = styled.hr<DividerProps>`
   height: 1px;
   width: ${(props) => props.width || "100%"};
   border: none;
-  background: #fff;
+  background: ${(props) => props.background || "#fff"};
   margin: 0 auto;
   ${(props) =>
     props.variant === "dashed" &&
@@ -16,8 +16,6 @@ export const Divider = styled.hr<DividerProps>`
     border-style: dashed;
     border-color: ${props.theme.colors.text.primary}
   `};
-  ${(props) =>
-    props.position === "left" && `margin-right: auto; margin-left: 0;`};
-  ${(props) =>
-    props.position === "right" && `margin-left: auto; margin-right: 0;`}
+  ${(props) => props.position === "left" && `margin-right: auto; margin-left: 0;`};
+  ${(props) => props.position === "right" && `margin-left: auto; margin-right: 0;`}
 `;

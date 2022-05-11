@@ -3,7 +3,7 @@ import { SetStateAction } from "react";
 export type MenuItemType = {
   label: string;
   path?: string;
-  icon?: string;
+  icon?: React.ReactNode;
   dropdownItems?: Omit<MenuItemType, "dropdownItems">[];
   description?: string;
 };
