@@ -5,6 +5,7 @@ import { WrapProps } from "../wrap/wrap.types";
 export type SlideSectionProps = {
   bgImage: string;
   title?: string;
+  m?: CSSProperties["margin"];
   button?: {
     title: string;
     onClick: ButtonArrowProps["onClick"];
