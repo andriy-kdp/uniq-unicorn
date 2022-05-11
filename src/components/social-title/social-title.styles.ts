@@ -5,10 +5,13 @@ const SocialTitleRoot = styled.div`
   width: 100%;
 `;
 
-const SocialTitleDate = styled.div``;
-const SocialTitleText = styled.div``;
-const SocialTitleImageRoot = styled.div`
-  display: flex;
+const SocialTitleDate = styled.span`
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  margin-right: 2.8rem;
+`;
+const SocialTitleText = styled.h6`
+  line-height: 1.8rem;
 `;
 
 export const SocT = {

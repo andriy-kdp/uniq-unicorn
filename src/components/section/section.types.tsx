@@ -11,5 +11,6 @@ export type SectionProps = {
   pos?: CSSProperties["position"];
   mainContent?: boolean;
   bgImg?: string;
+  bgImgPosition?: CSSProperties["backgroundPosition"];
   mh?: CSSProperties["minHeight"];
 };

@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export type InputProps = {
   value: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;

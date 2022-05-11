@@ -48,12 +48,13 @@ export const BlogPage: React.FC = (): JSX.Element => {
         bgVariant={"gradient"}
         titleAlign={"center"}
         justify={"center"}
+        m={"0 auto 16rem"}
       />
-      <Section mainContent>
+      <Section mainContent m={"auto auto 4rem"}>
         {mockBlogItems.map((post) => {
           const { Preview } = Blog;
           return (
-            <Preview.Root>
+            <Preview.Root key={post.id}>
               <SocialTitle
                 date={post.date}
                 title={post.title}

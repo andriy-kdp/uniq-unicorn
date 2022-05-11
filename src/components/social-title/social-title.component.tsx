@@ -17,8 +17,11 @@ export const SocialTitle: React.FC<SocialTitleProps> = (props): JSX.Element => {
 
   return (
     <SocT.Root>
-      <SocT.Date>{date}</SocT.Date>
-      <SocT.Text>{title}</SocT.Text>
+      <Wrap sx={{ display: "flex", alignItems: "center" }}>
+        <SocT.Date>{date}</SocT.Date>
+        <SocT.Text>{title}</SocT.Text>
+      </Wrap>
+
       <Wrap
         sx={{
           display: "flex",
@@ -28,20 +31,11 @@ export const SocialTitle: React.FC<SocialTitleProps> = (props): JSX.Element => {
         }}
       >
         <IconButton>
-          <img
-            src={TwitterIcon}
-            alt="Twitter icon"
-            onClick={handleSocialClick(twitterLink)}
-          />
+          <img src={TwitterIcon} alt="Twitter icon" onClick={handleSocialClick(twitterLink)} />
         </IconButton>
         <Wrap sx={{ marginBottom: "0.4rem", marginLeft: "2rem" }}>
           <IconButton>
-            <img
-              src={LinkedInIcon}
-              alt="LinkedIn icon"
-              height={"100%"}
-              onClick={handleSocialClick(linkedInLink)}
-            />
+            <img src={LinkedInIcon} alt="LinkedIn icon" height={"100%"} onClick={handleSocialClick(linkedInLink)} />
           </IconButton>
         </Wrap>
       </Wrap>

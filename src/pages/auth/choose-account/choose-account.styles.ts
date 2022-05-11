@@ -3,6 +3,7 @@ const ChooseAccountRoot = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 13rem;
 `;
 
 const AccountVariantsRoot = styled.div`
@@ -10,9 +11,18 @@ const AccountVariantsRoot = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   align-items: flex-end;
   width: 100%;
+  margin-top: 12rem;
+  cursor: pointer;
 `;
 
-const ChooseAccountSubtitle = styled.span``;
+const ChooseAccountSubtitle = styled.span`
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+`;
 
 const ItemTitle = styled.h4`
   font-size: 2.4rem;
