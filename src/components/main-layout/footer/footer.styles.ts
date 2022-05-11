@@ -4,8 +4,10 @@ import styled from "styled-components";
 export const FooterLinksContainer = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: 30% 30% 40%;
+  height: 100%;
+  grid-template-columns: 25% 25% 50%;
   column-gap: 2rem;
+  margin: 2rem 0;
 `;
 
 export const FooterLinksGroup = styled.div`
@@ -16,7 +18,8 @@ export const FooterLinksGroup = styled.div`
 `;
 
 export const FooterLinksTitle = styled.h6`
-  margin-bottom: 0.6rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #fff;
 `;
 
 export const FooterLinkItem = styled(Link)`
@@ -26,6 +29,7 @@ export const FooterLinkItem = styled(Link)`
   line-height: 1.8rem;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
+  margin-top: 1rem;
 `;
 
 export const CopyrightContainer = styled.div`
@@ -38,13 +42,16 @@ export const CopyrightContainer = styled.div`
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   justify-content: center;
+  margin: 2rem 0;
+  text-align: justify;
 `;
 
 export const SocialNetworksContainer = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: 40% 30% 30%;
+  grid-template-columns: 1.5fr 1fr 1fr;
   column-gap: 3rem;
+  margin-top: 0.7rem;
 `;
 export const SocialNetworksLinks = styled.div`
   display: flex;
