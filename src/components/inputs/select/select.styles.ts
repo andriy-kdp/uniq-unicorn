@@ -7,15 +7,13 @@ const SelectRoot = styled.div<Pick<SelectProps, "fullWidth">>`
   position: relative;
   ${(props) => props.fullWidth && `width: 100%`}
 `;
-const OptionsContainer = styled.div<
-  Pick<SelectProps, "optionsPosition" | "borderRadius">
->`
+const OptionsContainer = styled.div<Pick<SelectProps, "optionsPosition" | "borderRadius">>`
   user-select: none;
   display: flex;
   flex-direction: column;
   position: absolute;
   width: 100%;
-  background: ${(props) => props.theme.colors.backgound.primary};
+  background: ${(props) => props.theme.colors.background.primary};
   border-radius: 1.6rem;
   border: 1px solid #a6a6a6;
   color: ${(props) => props.theme.colors.text.secondary};

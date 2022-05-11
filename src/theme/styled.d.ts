@@ -9,7 +9,7 @@ type ColorShades = {
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
-      backgound: ColorShades;
+      background: ColorShades;
       text: ColorShades & { button: { dark: string } };
     };
   }

@@ -13,10 +13,10 @@ export const BgGradientContainer = styled.div<BgGradientType>`
     height: 100%;
     background: linear-gradient(
       to bottom,
-      ${(props) => props.theme.colors.backgound.primary},
+      ${(props) => props.theme.colors.background.primary},
       #ffffff00 20%,
-      ${(props) => props.theme.colors.backgound.primary} 90%,
-      ${(props) => props.theme.colors.backgound.primary}
+      ${(props) => props.theme.colors.background.primary} 90%,
+      ${(props) => props.theme.colors.background.primary}
     );
   }
 `;

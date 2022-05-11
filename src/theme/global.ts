@@ -25,7 +25,7 @@ html {
   height: 100vh;
 }
 body {
-  background-color: ${(props) => props.theme.colors.backgound.primary};
+  background-color: ${(props) => props.theme.colors.background.primary};
   color: ${(props) => props.theme.colors.text.primary};
   font-family: DM Sans, sans-serif;
   height: 100%;

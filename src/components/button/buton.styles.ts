@@ -6,8 +6,7 @@ export const ButtonContainer = styled.button<Omit<ButtonProps, "onClick">>`
   justify-content: center;
   align-items: center;
   outline: none;
-  background: ${(props) => props.theme.colors.backgound.primary};
-  color: red;
+  background: ${(props) => props.theme.colors.background.primary};
   transition-duration: 200ms;
   border: 1px solid ${(props) => props.theme.colors.text.secondary};
   padding: 0.7rem 2.4rem;
