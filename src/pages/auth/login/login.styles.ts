@@ -14,6 +14,7 @@ const LogiTitleSub = styled.span`
   letter-spacing: 0.16em;
   color: #f2f2f2;
   margin-bottom: 3rem;
+  text-transform: uppercase;
 `;
 
 export const Login = {

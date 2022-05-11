@@ -4,7 +4,7 @@ const FormRoot = styled.div`
   width: 100%;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 4rem;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const HelpRoot = styled.div`
@@ -13,6 +13,7 @@ const HelpRoot = styled.div`
   grid-column-gap: 4rem;
   width: 100%;
   align-items: flex-end;
+  margin: 10rem auto;
 `;
 
 const HelpTitle = styled.h2``;

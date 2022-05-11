@@ -351,14 +351,13 @@ export const RegisterPage = () => {
     updateForm(name as string, value);
   };
   useEffect(() => {
-    // TODO: Institutional accout
-    if (type === "business") {
-      setForomSections(businessForm);
-      return setFormData(initBusinessForm);
+    if (type === "private") {
+      setForomSections(privateForm);
+      return setFormData(initPrivateForm);
     }
     // @ts-ignore
-    setForomSections(privateForm);
-    setFormData(initPrivateForm);
+    setForomSections(businessForm);
+    setFormData(initBusinessForm);
   }, []);
   return (
     <Section mainContent>
