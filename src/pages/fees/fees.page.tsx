@@ -83,7 +83,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
         titleAlign={"center"}
         justify={"center"}
       />
-      <Section mainContent>
+      <Section mainContent m={"20rem auto"}>
         <PlanInfo.Root>
           <Wrap sx={{ display: "flex", marginBottom: "2.4rem" }}>
             <PlanInfo.Title>{planInfoItems[currentPlan].title}</PlanInfo.Title>
@@ -94,12 +94,13 @@ export const FeesPage: React.FC = (): JSX.Element => {
                 marginLeft: "auto",
               }}
             >
-              <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
+              {/* FIXME: uncomment this line, when add new cards */}
+              {/* <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
                 <ArrowIconLeft />
               </IconButton>
               <IconButton disabled={currentPlan === planInfoItems.length - 1} reverse onClick={handleNextPlan}>
                 <ArrowIconLeft />
-              </IconButton>
+              </IconButton> */}
             </Wrap>
           </Wrap>
           <PlanInfo.Description>
@@ -127,7 +128,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
           </PlanInfo.Description>
         </PlanInfo.Root>
       </Section>
-      <Section mainContent>
+      <Section mainContent m={"0 auto 20rem"}>
         <FindCountry.Root>
           <Wrap
             sx={{

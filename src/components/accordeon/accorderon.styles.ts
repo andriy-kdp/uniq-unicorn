@@ -27,7 +27,14 @@ const AccordeonIconRoot = styled.div`
   margin-left: auto;
 `;
 
-const AccordeonDescription = styled.div``;
+const AccordeonDescription = styled.div<{ visible: boolean }>`
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  overflow: hidden;
+  transition-duration: 200ms;
+  min-height: 0;
+  max-height: ${(props) => (props.visible ? "300px" : "0")};
+  transition: max-height 200ms;
+`;
 
 export const Acc = {
   Root: AccordeonRoot,

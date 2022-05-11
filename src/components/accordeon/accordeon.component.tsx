@@ -15,11 +15,9 @@ export const Accordeon: React.FC<AccordeonProps> = (props): JSX.Element => {
     <Acc.Root>
       <Acc.Title.Root>
         <Acc.Title.Body>{title}</Acc.Title.Body>
-        <Acc.Icon onClick={toggleDescription}>
-          {showDescription ? <MinusIcon /> : <PlusIcon />}
-        </Acc.Icon>
+        <Acc.Icon onClick={toggleDescription}>{showDescription ? <MinusIcon /> : <PlusIcon />}</Acc.Icon>
       </Acc.Title.Root>
-      {showDescription && <Acc.Description>{description}</Acc.Description>}
+      <Acc.Description visible={showDescription}>{description}</Acc.Description>
     </Acc.Root>
   );
 };
