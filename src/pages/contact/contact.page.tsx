@@ -15,7 +15,7 @@ export const ContactPage: React.FC = (): JSX.Element => {
     email: "",
   });
 
-  const handleInpuChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -34,7 +34,7 @@ export const ContactPage: React.FC = (): JSX.Element => {
         justify={"center"}
         bgVariant={"gradient"}
       />
-      <Section mainContent>
+      <Section mainContent m={"auto auto 16rem"}>
         <ContactForm.Root>
           <Wrap
             sx={{
@@ -48,15 +48,19 @@ export const ContactPage: React.FC = (): JSX.Element => {
               <ContactForm.Title.SubTitle>CONTACT US</ContactForm.Title.SubTitle>
               <ContactForm.Title.Text>Have a question?</ContactForm.Title.Text>
             </ContactForm.Title.Root>
-            <Input value={formData.name} onChange={handleInpuChange} label={"Name"} name={"name"} fullWidth />
-            <Input value={formData.name} onChange={handleInpuChange} label={"E-mail"} name={"email"} fullWidth />
+            <Wrap sx={{ marginBottom: "2rem", width: "100%" }}>
+              <Input value={formData.name} onChange={handleInputChange} label={"Name"} name={"name"} fullWidth />
+            </Wrap>
+            <Wrap sx={{ marginBottom: "5rem", width: "100%" }}>
+              <Input value={formData.email} onChange={handleInputChange} label={"E-mail"} name={"email"} fullWidth />
+            </Wrap>
             <ButtonArrow onClick={handleSubmit}>Send</ButtonArrow>
           </Wrap>
           <Wrap
             sx={{
               display: "flex",
               width: "100%",
-              justifyContent: "center",
+              justifyContent: "flex-end",
               alignItems: "center",
             }}
           >
