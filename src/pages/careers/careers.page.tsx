@@ -16,6 +16,7 @@ import { Wrap } from "../../components/wrap/wrap.component";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg";
 import { InputProps } from "../../components/inputs/input/input.types";
 import { Button } from "../../components/button/button.component";
+import { useNavigate } from "react-router-dom";
 const vacationsList: VacationSection[] = [
   {
     title: "Sales",
@@ -108,14 +109,14 @@ const keywordsFilterButtons: {
 ];
 
 export const CareersPage: React.FC = (): JSX.Element => {
-  const [selected, setSelected] = useState<SelectOption | null>(null);
-
   const [formData, setFormdata] = useState<{
     filterBy: "exact" | "title" | "description";
     keywords: string;
     location: string;
     dateOfPosting: SelectOption | null;
   }>({ keywords: "", location: "", dateOfPosting: null, filterBy: "exact" });
+
+  const nav = useNavigate();
 
   const commonHandler = (name: string, value: string | SelectOption) => {
     setFormdata((prev) => ({ ...prev, [name]: value }));
@@ -140,6 +141,10 @@ export const CareersPage: React.FC = (): JSX.Element => {
     commonHandler("filterBy", value);
   };
 
+  const handleClickOpenAccount = () => {
+    nav("/auth/register");
+  };
+
   return (
     <>
       <SlideSection
@@ -148,16 +153,19 @@ export const CareersPage: React.FC = (): JSX.Element => {
         titleWidth={"80rem"}
         justify={"center"}
         bgVariant={"gradient"}
+        titleAlign={"center"}
         button={{
           title: "Open Account",
-          onClick: () => {},
+          onClick: handleClickOpenAccount,
         }}
       />
       <Section mainContent>
         <Wrap sx={{ margin: "6rem 0" }}>
           <h3>We're looking for talented people to join us</h3>
         </Wrap>
-        <img src={careersVideoPlugImg} alt={"Careers video"} />
+        <Wrap sx={{ marginBottom: "9rem" }}>
+          <img src={careersVideoPlugImg} alt={"Careers video"} />
+        </Wrap>
       </Section>
       <Section mainContent>
         <Wrap sx={{ width: "76.8rem", margin: "0 auto" }}>
@@ -166,7 +174,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
       </Section>
       <Section mainContent>
         <h3>Search for openings:</h3>
-        <Wrap sx={{ width: "76.8rem", margin: "0 auto" }}>
+        <Wrap sx={{ width: "76.8rem", margin: "4rem auto 14rem" }}>
           <Input
             fullWidth
             value={formData["keywords"]}
@@ -175,26 +183,34 @@ export const CareersPage: React.FC = (): JSX.Element => {
             startIcon={<SearchIcon />}
             placeholder={"Search jobs by keywords"}
             name={"keywords"}
+            LabelRootProps={{ style: { marginBottom: "3.2rem" } }}
           />
-          <Wrap sx={{ display: "flex" }}>
+
+          <Wrap sx={{ display: "flex", marginTop: "1.6rem", marginBottom: "4rem" }}>
             {keywordsFilterButtons.map((button) => (
-              <Button
-                onClick={() => handleSelectFilterType(button.value)}
-                selected={formData.filterBy === button.value}
-              >
-                {button.title}
-              </Button>
+              <Wrap sx={{ marginRight: "1.6rem" }}>
+                <Button
+                  onClick={() => handleSelectFilterType(button.value)}
+                  selected={formData.filterBy === button.value}
+                >
+                  {button.title}
+                </Button>
+              </Wrap>
             ))}
           </Wrap>
-          <Input
-            fullWidth
-            onChange={handleInputChange}
-            label={"Location"}
-            startIcon={<SearchIcon />}
-            placeholder={"Start entering location"}
-            name={"location"}
-            value={formData["location"]}
-          />
+          <Wrap sx={{ width: "100%", marginBottom: "4rem" }}>
+            <Input
+              fullWidth
+              onChange={handleInputChange}
+              label={"Location"}
+              startIcon={<SearchIcon />}
+              placeholder={"Start entering location"}
+              name={"location"}
+              value={formData["location"]}
+              LabelRootProps={{ style: { marginBottom: "3.2rem" } }}
+            />
+          </Wrap>
+
           <Select
             fullWidth
             options={selectOptions}
@@ -203,6 +219,9 @@ export const CareersPage: React.FC = (): JSX.Element => {
             optionsPosition={"bottom"}
             label={"Date of posting"}
             name={"dateOfPosting"}
+            InputProps={{
+              LabelRootProps: { style: { marginBottom: "3.2rem" } },
+            }}
           />
         </Wrap>
       </Section>
