@@ -13,7 +13,7 @@ import { Divider } from "../../components/divider/divider.styles";
 import { Wrap } from "../../components/wrap/wrap.component";
 import { Input } from "../../components/inputs/input/input.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
-
+import FormBg from "../../assets/images/backgrounds/lines_bg.png";
 export type ArticleItem = {
   imgSrc: string;
   date: string;
@@ -119,6 +119,7 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
         titleAlign="center"
         justify="center"
         BgRootProps={{ justifyContent: "center" }}
+        m={"0 auto 8rem"}
       />
       <Section mainContent>
         {previewData.map((section, sectionIndex) => {
@@ -126,7 +127,7 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
           const isReverse = sectionIndex % 2 !== 0;
 
           return (
-            <News.Root>
+            <News.Root key={`media-covarage-news-${sectionIndex}`}>
               <News.Title.Root>
                 <News.Title.Body>{section.title}</News.Title.Body>
                 <Divider variant="dashed" />
@@ -135,7 +136,11 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
                 {section.items.map((article, articleIndex) => {
                   const { Root, Title, Date, Description } = News.Articles.Item;
                   return (
-                    <Root size={sizesMap.get(articleIndex)} imgSrc={article.imgSrc}>
+                    <Root
+                      size={sizesMap.get(articleIndex)}
+                      imgSrc={article.imgSrc}
+                      key={`news-article-${articleIndex}`}
+                    >
                       <Date>{article.date}</Date>
                       <Title>{article.title}</Title>
                       <Description>{article.description}</Description>
@@ -147,36 +152,60 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
           );
         })}
       </Section>
-      <Section mainContent>
+      <Section h={"60rem"} m={"17rem auto 13rem"}>
         <Wrap
           sx={{
-            width: "100%",
             display: "flex",
-            flexDirection: "column",
-            background: "#0c0c0c",
-            padding: "5rem 7rem",
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            background: `url(${FormBg})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            opacity: "0.4",
           }}
-        >
-          <span>Contact us</span>
-          <h3>You have a question? Or just want to say hello...</h3>
-          <Input
-            fullWidth
-            value={formData.name}
-            onChange={handleInputChange}
-            label={"Name"}
-            name={"name"}
-            placeholder={"Please enter your full name"}
-          />
-          <Input
-            fullWidth
-            value={formData.email}
-            onChange={handleInputChange}
-            label={"Email"}
-            name={"email"}
-            placeholder={"Please enter your email"}
-          />
-          <ButtonArrow onClick={handleSubmit}>Send</ButtonArrow>
-        </Wrap>
+        />
+        <Section mainContent>
+          <Wrap
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              background: "#0c0c0c",
+              padding: "5rem 7rem",
+              marginTop: "3rem",
+            }}
+          >
+            <News.Title.Root>
+              <News.Title.Body>LETS CONNECT</News.Title.Body>
+              <Divider variant="dashed" />
+            </News.Title.Root>
+            <News.Form.Subtitle>Contact us</News.Form.Subtitle>
+            <News.Form.Title>You have a question? Or just want to say hello...</News.Form.Title>
+            <Wrap sx={{ display: "flex", width: "100%", marginBottom: "2rem" }}>
+              <Input
+                fullWidth
+                value={formData.name}
+                onChange={handleInputChange}
+                label={"Name"}
+                name={"name"}
+                placeholder={"Please enter your full name"}
+              />
+            </Wrap>
+
+            <Input
+              fullWidth
+              value={formData.email}
+              onChange={handleInputChange}
+              label={"Email"}
+              name={"email"}
+              placeholder={"Please enter your email"}
+            />
+            <Wrap sx={{ margin: "4rem auto" }}>
+              <ButtonArrow onClick={handleSubmit}>Send</ButtonArrow>
+            </Wrap>
+          </Wrap>
+        </Section>
       </Section>
     </>
   );

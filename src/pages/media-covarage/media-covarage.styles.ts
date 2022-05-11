@@ -5,11 +5,16 @@ const NewsSectionRoot = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  :not(:last-child) {
+    margin-bottom: 16rem;
+  }
 `;
 
 const NewsSectionTitleRoot = styled.div`
   display: flex;
   width: 100%;
+  align-items: center;
+  margin-bottom: 4.5rem;
 `;
 
 const NewsSectionTitle = styled.h4`
@@ -18,6 +23,9 @@ const NewsSectionTitle = styled.h4`
   line-height: 2.8rem;
   letter-spacing: 0.135em;
   color: #ffffff;
+  margin-right: 2rem;
+  text-transform: uppercase;
+  min-width: max-content;
 `;
 
 const ArticlesRoot = styled.div<{ reverse?: boolean }>`
@@ -74,6 +82,16 @@ const ArticleDescription = styled.div`
   color: #bdbdbd;
 `;
 
+const FormTitle = styled.h3`
+  margin-bottom: 4rem;
+`;
+const FormSubtitle = styled.span`
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  margin-bottom: 3rem;
+`;
+
 export const News = {
   Root: NewsSectionRoot,
   Title: {
@@ -88,5 +106,9 @@ export const News = {
       Title: ArticleTitle,
       Description: ArticleDescription,
     },
+  },
+  Form: {
+    Title: FormTitle,
+    Subtitle: FormSubtitle,
   },
 };
