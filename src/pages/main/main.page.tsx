@@ -36,6 +36,11 @@ export const MainPage: React.FC = (): JSX.Element => {
   const handleClickDownloadApp = () => {
     window.open("about:blank", "noopener norefferer");
   };
+
+  const handleClickRegister = () => {
+    nav("/auth/register");
+  };
+
   return (
     <>
       <SlideSection
@@ -43,7 +48,7 @@ export const MainPage: React.FC = (): JSX.Element => {
         m={"4rem auto 0"}
         button={{
           title: "Get started",
-          onClick: () => nav("/auth/register"),
+          onClick: handleClickRegister,
         }}
         title={"Private or Business accounts set up in minutes"}
       />
@@ -61,7 +66,7 @@ export const MainPage: React.FC = (): JSX.Element => {
         </Wrap>
         <MapImage />
         <Wrap sx={{ marginLeft: "auto" }}>
-          <ButtonArrow>Open Account</ButtonArrow>
+          <ButtonArrow onClick={handleClickRegister}>Open Account</ButtonArrow>
         </Wrap>
       </Section>
 

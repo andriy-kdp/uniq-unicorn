@@ -31,14 +31,14 @@ export const VacationsComponent: React.FC<VacationsComponentProps> = (props) => 
   const { sections } = props;
   return (
     <Vacations.Body>
-      {sections.map((section) => (
-        <Vacations.ContainerSection>
+      {sections.map((section, idx) => (
+        <Vacations.ContainerSection key={`vacation-section-${idx}`}>
           <Vacations.SectionTitle>{section.title}</Vacations.SectionTitle>
           <Vacations.Items.Container>
-            {section.vacations.map((vacation) => {
+            {section.vacations.map((vacation, idx) => {
               const { Item: Vacation } = Vacations.Items;
               return (
-                <Vacation.Container>
+                <Vacation.Container key={`vacation-item-${idx}`}>
                   <Vacation.Title>{vacation.title}</Vacation.Title>
                   <Vacation.Description>{vacation.description}</Vacation.Description>
                   <Vacation.Footer.Data>

@@ -56,6 +56,7 @@ export const ChooseAccountPage: React.FC = (): JSX.Element => {
           <Accounts.Variants.Root>
             {accountVariants.map((acc) => (
               <Wrap
+                key={acc.value}
                 sx={{
                   display: "flex",
                   flexDirection: "column",

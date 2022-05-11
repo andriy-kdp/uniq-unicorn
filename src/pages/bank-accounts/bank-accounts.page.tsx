@@ -113,8 +113,8 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
       <Section mainContent m={"9rem auto"}>
         <DescriptionWrapper>
           <ProfsContainer>
-            {bankAccountProfs.map((prof) => (
-              <ProfItemContainer>
+            {bankAccountProfs.map((prof, idx) => (
+              <ProfItemContainer key={`prof-item-${idx}`}>
                 <ProfItemTitle>{prof.title}</ProfItemTitle>
                 <ProfItemDescription>{prof.description}</ProfItemDescription>
               </ProfItemContainer>
@@ -135,7 +135,7 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
       </Section>
       <Section mainContent m={"11rem auto"}>
         {infoBlocks.map((block, idx) => (
-          <InfoBlockContainer reverse={idx % 2 !== 0}>
+          <InfoBlockContainer reverse={idx % 2 !== 0} key={`info-block-item-${idx}`}>
             <InfoWrapper>
               <BlockTitle>{block.title}</BlockTitle>
               <BlockSubtitle>{block.subtitle}</BlockSubtitle>
@@ -143,8 +143,8 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
                 <Wrap>{block.description}</Wrap>
               ) : (
                 <InfoListContainer>
-                  {block.description.map((desc) => (
-                    <InfoListItem>{desc}</InfoListItem>
+                  {block.description.map((desc, idx) => (
+                    <InfoListItem key={`info-list-item-${idx}`}>{desc}</InfoListItem>
                   ))}
                 </InfoListContainer>
               )}

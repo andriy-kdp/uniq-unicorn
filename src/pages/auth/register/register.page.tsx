@@ -397,7 +397,11 @@ export const RegisterPage = () => {
                 );
               }
 
-              return <Wrap sx={{ display: "flex", width: "100%", marginTop: "3rem" }}>{input}</Wrap>;
+              return (
+                <Wrap sx={{ display: "flex", width: "100%", marginTop: "3rem" }} key={field.name}>
+                  {input}
+                </Wrap>
+              );
             })}
           </Form.Root>
         )}

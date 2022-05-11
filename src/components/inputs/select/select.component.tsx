@@ -7,6 +7,7 @@ import ClickAwayListener from "react-click-away-listener";
 import { ReactComponent as ArrowDownIcon } from "../../../assets/icons/arrow_down.svg";
 import { ReactComponent as ArrowUpIcon } from "../../../assets/icons/arrow_up.svg";
 import { Divider } from "../../divider/divider.styles";
+import { Wrap } from "../../wrap/wrap.component";
 
 export const Select: React.FC<SelectProps> = (props) => {
   const [showOptions, setShowOptions] = useState<boolean>();
@@ -44,12 +45,9 @@ export const Select: React.FC<SelectProps> = (props) => {
     };
 
   const getOptionsWithUpArrow = useMemo(() => {
-    const arrowPositionIndex =
-      optionsPosition === "bottom" ? 0 : options.length - 1;
+    const arrowPositionIndex = optionsPosition === "bottom" ? 0 : options.length - 1;
     return options.map((option, index) =>
-      index !== arrowPositionIndex
-        ? option
-        : { ...option, startIcon: <ArrowUpIcon onClick={handleCloseList} /> }
+      index !== arrowPositionIndex ? option : { ...option, startIcon: <ArrowUpIcon onClick={handleCloseList} /> },
     );
   }, []);
 
@@ -69,39 +67,20 @@ export const Select: React.FC<SelectProps> = (props) => {
               {!value && <Sel.Adornment.Label>Select</Sel.Adornment.Label>}
             </Sel.Adornment.Root>
           }
-          endIcon={
-            value?.endIcon && (
-              <Sel.Adornment.Root>{value.endIcon}</Sel.Adornment.Root>
-            )
-          }
+          endIcon={value?.endIcon && <Sel.Adornment.Root>{value.endIcon}</Sel.Adornment.Root>}
           {...InputProps}
         />
         {showOptions && (
-          <Sel.Options.Root
-            optionsPosition={optionsPosition}
-            borderRadius={borderRadius}
-          >
+          <Sel.Options.Root optionsPosition={optionsPosition} borderRadius={borderRadius}>
             {getOptionsWithUpArrow.map((option, index) => (
-              <>
+              <Wrap key={`option-item-${index}`}>
                 <Sel.Options.Item.Root>
-                  {option.startIcon && (
-                    <Sel.Options.Item.Icon>
-                      {option.startIcon}
-                    </Sel.Options.Item.Icon>
-                  )}
-                  <Sel.Options.Item.Title onClick={handleSelect(option)}>
-                    {option.label}
-                  </Sel.Options.Item.Title>
-                  {option.endIcon && (
-                    <Sel.Options.Item.Icon>
-                      {option.endIcon}
-                    </Sel.Options.Item.Icon>
-                  )}
+                  {option.startIcon && <Sel.Options.Item.Icon>{option.startIcon}</Sel.Options.Item.Icon>}
+                  <Sel.Options.Item.Title onClick={handleSelect(option)}>{option.label}</Sel.Options.Item.Title>
+                  {option.endIcon && <Sel.Options.Item.Icon>{option.endIcon}</Sel.Options.Item.Icon>}
                 </Sel.Options.Item.Root>
-                {index !== options.length - 1 && (
-                  <Divider variant="dashed" width={"90%"} />
-                )}
-              </>
+                {index !== options.length - 1 && <Divider variant="dashed" width={"90%"} />}
+              </Wrap>
             ))}
           </Sel.Options.Root>
         )}

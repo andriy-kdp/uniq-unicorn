@@ -9,6 +9,7 @@ const NewsRoot = styled.div`
 const NewsItemRoot = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 16rem;
 `;
 
 const NewsItemPreviewRoot = styled.div<{ multiImages?: boolean }>`

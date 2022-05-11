@@ -106,7 +106,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
           <PlanInfo.Description>
             <Wrap>
               {planInfoItems[currentPlan].prosItems.map((pros, idx) => (
-                <Wrap>
+                <Wrap key={`plan-info-${idx}`}>
                   <Accordeon title={pros.title} description={pros.description} />
                   {idx !== planInfoItems[currentPlan].prosItems.length - 1 && (
                     <Wrap sx={{ margin: "2.4rem 0" }}>
@@ -139,7 +139,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
           >
             {countries.map((country) => {
               const { Item } = FindCountry.Countries;
-              return <Item>{`${country.country} (${country.count})`}</Item>;
+              return <Item key={country.country}>{`${country.country} (${country.count})`}</Item>;
             })}
           </Wrap>
           <Wrap sx={{ gridArea: "title" }}>

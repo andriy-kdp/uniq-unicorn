@@ -131,13 +131,12 @@ export const CareersPage: React.FC = (): JSX.Element => {
 
   const handleSelect: SelectHandler = (e) => {
     const { name, value } = e.target;
-    console.log(name);
     if (name) {
       commonHandler(name, value);
     }
   };
 
-  const handleSelectFilterType = (value: "exact" | "title" | "description") => {
+  const handleSelectFilterType = (value: "exact" | "title" | "description") => () => {
     commonHandler("filterBy", value);
   };
 
@@ -188,11 +187,8 @@ export const CareersPage: React.FC = (): JSX.Element => {
 
           <Wrap sx={{ display: "flex", marginTop: "1.6rem", marginBottom: "4rem" }}>
             {keywordsFilterButtons.map((button) => (
-              <Wrap sx={{ marginRight: "1.6rem" }}>
-                <Button
-                  onClick={() => handleSelectFilterType(button.value)}
-                  selected={formData.filterBy === button.value}
-                >
+              <Wrap sx={{ marginRight: "1.6rem" }} key={button.value}>
+                <Button onClick={handleSelectFilterType(button.value)} selected={formData.filterBy === button.value}>
                   {button.title}
                 </Button>
               </Wrap>
