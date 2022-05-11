@@ -3,19 +3,29 @@ const PoliciesHeaderRoot = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 6rem;
 `;
 
 const PoliciesHeaderTitle = styled.h3``;
 const PoliciesHeaderSubTitle = styled.span``;
+
 const PoliciesTextRoot = styled.div`
   text-align: justify;
+  margin: 3rem auto;
+  width: 100%;
 `;
 
-const PoliciesText = styled.p``;
+const PoliciesText = styled.p`
+  margin-bottom: 2rem;
+`;
 
-const BodyTitle = styled.h4``;
+const BodyTitle = styled.h4`
+  margin-bottom: 1.6rem;
+`;
 
-const ListRoot = styled.ul``;
+const ListRoot = styled.ul`
+  margin-bottom: 3rem;
+`;
 const ListItem = styled.li``;
 
 export const Policies = {

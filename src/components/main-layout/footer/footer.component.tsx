@@ -29,17 +29,17 @@ const footerLinks: FooterLinkGroup[] = [
   {
     title: "Black Banx Group",
     links: [
-      { label: "About us", path: "" },
-      { label: "Careers", path: "" },
-      { label: "Fees", path: "" },
+      { label: "About us", path: "/mission" },
+      { label: "Careers", path: "/careers" },
+      { label: "Fees", path: "/fees" },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "Contact Black Banx", path: "" },
-      { label: "Policies & Terms", path: "" },
-      { label: "Privacy Policy", path: "" },
+      { label: "Contact Black Banx", path: "/contact" },
+      { label: "Policies & Terms", path: "/terms" },
+      { label: "Privacy Policy", path: "/privacy_policy" },
     ],
   },
 ];
