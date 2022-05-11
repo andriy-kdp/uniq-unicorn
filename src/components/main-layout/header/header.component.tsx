@@ -146,29 +146,27 @@ export const Header = () => {
         </Link>
       </LogoContainer>
       <MenuPart menuItems={menuRight} right />
-      {submenuItems && (
-        <Dropdown.Root>
-          <Dropdown.Items.Root>
-            {submenuItems.map((subItem) => {
-              const { Root, Description, Icon, Label } = Dropdown.Item;
-              return (
-                <Root onClick={handleSubmenuClick(subItem.path)}>
-                  <Icon>{subItem.icon}</Icon>
-                  <Label.Root>
-                    <Label.Text>{subItem.label}</Label.Text>
-                    <Description>{subItem.description}</Description>
-                  </Label.Root>
-                </Root>
-              );
-            })}
-          </Dropdown.Items.Root>
-          <Divider
-            background={
-              "linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #CECECE 30.73%, #CBCBCB 67.19%, rgba(12, 12, 12, 0) 100%);"
-            }
-          />
-        </Dropdown.Root>
-      )}
+      <Dropdown.Root mounted={!!submenuItems}>
+        <Dropdown.Items.Root>
+          {submenuItems?.map((subItem) => {
+            const { Root, Description, Icon, Label } = Dropdown.Item;
+            return (
+              <Root onClick={handleSubmenuClick(subItem.path)}>
+                <Icon>{subItem.icon}</Icon>
+                <Label.Root>
+                  <Label.Text>{subItem.label}</Label.Text>
+                  <Description>{subItem.description}</Description>
+                </Label.Root>
+              </Root>
+            );
+          })}
+        </Dropdown.Items.Root>
+        <Divider
+          background={
+            "linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #CECECE 30.73%, #CBCBCB 67.19%, rgba(12, 12, 12, 0) 100%);"
+          }
+        />
+      </Dropdown.Root>
     </Section>
   );
 };

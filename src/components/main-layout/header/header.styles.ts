@@ -43,8 +43,10 @@ export const MenuPartContainer = styled.div<Omit<MenuPartProps, "menuItems">>`
   `}
 `;
 
-const DropdownMenuRoot = styled.div`
-  width: 80%;
+const DropdownMenuRoot = styled.div<{ mounted?: boolean }>`
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -53,6 +55,12 @@ const DropdownMenuRoot = styled.div`
   top: 7rem;
   left: 0;
   z-index: 1;
+  transition-duration: 200ms;
+  ${(props) =>
+    props.mounted &&
+    `
+    width: 80%;
+  `}
 `;
 
 const DropdownItemsRoot = styled.div`
@@ -69,6 +77,8 @@ const DropdownMenuItemRoot = styled.button`
   color: #fff;
   padding: 3rem 1.8rem 4rem 1.8rem;
   cursor: pointer;
+  min-width: 0;
+  overflow: hidden;
 `;
 
 const DropdownItemLabelRoot = styled.div`
@@ -82,9 +92,11 @@ const DropdownItemLabel = styled.span`
   font-size: 1.4rem;
   line-height: 1.8rem;
   margin-bottom: 0.3rem;
+  word-wrap: none;
 `;
 const DropdownMenuItemDescription = styled.span`
   color: #a1a1a1;
+  min-width: max-content;
 `;
 
 const DropdownItemIcon = styled.div`
