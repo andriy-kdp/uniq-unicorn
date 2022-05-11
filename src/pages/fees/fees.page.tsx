@@ -83,7 +83,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
         titleAlign={"center"}
         justify={"center"}
       />
-      <Section content>
+      <Section mainContent>
         <PlanInfo.Root>
           <Wrap sx={{ display: "flex", marginBottom: "2.4rem" }}>
             <PlanInfo.Title>{planInfoItems[currentPlan].title}</PlanInfo.Title>
@@ -97,11 +97,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
               <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
                 <ArrowIconLeft />
               </IconButton>
-              <IconButton
-                disabled={currentPlan === planInfoItems.length - 1}
-                reverse
-                onClick={handleNextPlan}
-              >
+              <IconButton disabled={currentPlan === planInfoItems.length - 1} reverse onClick={handleNextPlan}>
                 <ArrowIconLeft />
               </IconButton>
             </Wrap>
@@ -110,10 +106,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
             <Wrap>
               {planInfoItems[currentPlan].prosItems.map((pros, idx) => (
                 <Wrap>
-                  <Accordeon
-                    title={pros.title}
-                    description={pros.description}
-                  />
+                  <Accordeon title={pros.title} description={pros.description} />
                   {idx !== planInfoItems[currentPlan].prosItems.length - 1 && (
                     <Wrap sx={{ margin: "2.4rem 0" }}>
                       <Divider />
@@ -134,7 +127,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
           </PlanInfo.Description>
         </PlanInfo.Root>
       </Section>
-      <Section content>
+      <Section mainContent>
         <FindCountry.Root>
           <Wrap
             sx={{
@@ -150,8 +143,8 @@ export const FeesPage: React.FC = (): JSX.Element => {
           </Wrap>
           <Wrap sx={{ gridArea: "title" }}>
             <FindCountry.Title>
-              We’re proud to announce that we’re in more than 180 countries all
-              over the world, find out if we’re in yours!
+              We’re proud to announce that we’re in more than 180 countries all over the world, find out if we’re in
+              yours!
             </FindCountry.Title>
           </Wrap>
           <Wrap
@@ -167,9 +160,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
               startIcon={<SearchIcon />}
               placeholder={"Please enter country"}
               onChange={(e) => setSearchValue(e.target.value)}
-              helperText={
-                "Didn’t find your country or residence in here?  Please Contact us"
-              }
+              helperText={"Didn’t find your country or residence in here?  Please Contact us"}
             />
           </Wrap>
         </FindCountry.Root>

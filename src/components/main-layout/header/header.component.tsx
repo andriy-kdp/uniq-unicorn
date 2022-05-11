@@ -111,8 +111,8 @@ const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest
 
   return (
     <MenuPartContainer {...rest}>
-      {menuItems.map((item) => (
-        <MenuItemContainer>
+      {menuItems.map((item, index) => (
+        <MenuItemContainer key={`${Date.now()}-menu-${index}`}>
           {!item.dropdownItems ? (
             <Link to={item.path as string}>{item.label}</Link>
           ) : (
@@ -138,7 +138,7 @@ export const Header = () => {
     };
 
   return (
-    <Section content direction={"row"} justify={"center"} onMouseLeave={() => setSubmenuItems(null)} mh={"13rem"}>
+    <Section mainContent direction={"row"} justify={"center"} onMouseLeave={() => setSubmenuItems(null)} mh={"13rem"}>
       <MenuPart menuItems={menuLeft} setSubmenuItems={setSubmenuItems} />
       <LogoContainer small={!!submenuItems}>
         <Link to={"/"}>
@@ -148,10 +148,10 @@ export const Header = () => {
       <MenuPart menuItems={menuRight} right />
       <Dropdown.Root mounted={!!submenuItems}>
         <Dropdown.Items.Root>
-          {submenuItems?.map((subItem) => {
+          {submenuItems?.map((subItem, index) => {
             const { Root, Description, Icon, Label } = Dropdown.Item;
             return (
-              <Root onClick={handleSubmenuClick(subItem.path)}>
+              <Root onClick={handleSubmenuClick(subItem.path)} key={`${Date.now()}-menu-sub-${index}`}>
                 <Icon>{subItem.icon}</Icon>
                 <Label.Root>
                   <Label.Text>{subItem.label}</Label.Text>

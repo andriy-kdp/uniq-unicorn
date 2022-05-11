@@ -32,14 +32,12 @@ const benefitsItems: BenefitItemsType = [
   },
   {
     title: "Perfect solution",
-    description:
-      "For exchanges or other crypto businesses to open bank accounts",
+    description: "For exchanges or other crypto businesses to open bank accounts",
     icon: <MedalIcon />,
   },
   {
     title: "International wires",
-    description:
-      "Bank wire transfers to third parties worldwide, fast and secure",
+    description: "Bank wire transfers to third parties worldwide, fast and secure",
     icon: <PlanetIcon />,
   },
   {
@@ -61,10 +59,10 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
         }}
       />
 
-      <Section content>
+      <Section mainContent>
         <Benefits items={benefitsItems} secondary />
       </Section>
-      <Section content>
+      <Section mainContent>
         <MobileAppContainer>
           <MobileAppTitle>Your bitcoin wallet in our App</MobileAppTitle>
           <img src={PhonesBg} alt="IPhone" />

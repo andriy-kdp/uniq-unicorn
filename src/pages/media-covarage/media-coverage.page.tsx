@@ -55,13 +55,11 @@ const previewData: ArticlesSection[] = [
         description:
           "The ranks of blockchain geeks are joined by investment bankers, portfolio managers and family office directors yearning for high returns that have disappeared after the 2008 crisis and the introduction of the Dodd-Frank Act.",
         imgSrc: Section1Bg2,
-        title:
-          "Cryptobankers. Top managers of the investment banks transform to blockchain companies (Forbes Russia)",
+        title: "Cryptobankers. Top managers of the investment banks transform to blockchain companies (Forbes Russia)",
       },
       {
         date: "December 6, 2017",
-        description:
-          "WB21 seems to be the fastest growing FinTech since PayPal's launch in 1999.",
+        description: "WB21 seems to be the fastest growing FinTech since PayPal's launch in 1999.",
         imgSrc: Section1Bg3,
         title: "How Digital Banking Company WB21 Is Disrupting Fintech",
       },
@@ -72,15 +70,13 @@ const previewData: ArticlesSection[] = [
     items: [
       {
         date: "September 1, 2021",
-        description:
-          "The business habits that helped Michael Gastauer make WB21 the legend it is today.",
+        description: "The business habits that helped Michael Gastauer make WB21 the legend it is today.",
         imgSrc: Section2Bg1,
         title: "How to build a fintech unicorn: Interview with WB21 founder ",
       },
       {
         date: "June 16, 2016",
-        description:
-          "WB21 announced that it has added Bitcoin as a method to transfer and deposit funds.",
+        description: "WB21 announced that it has added Bitcoin as a method to transfer and deposit funds.",
         imgSrc: Section2Bg2,
         title:
           "What Lies Ahead for the Controversial Digital Currency Bitcoin? Bitcoin never fails to facilitate debate.",
@@ -124,7 +120,7 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
         justify="center"
         BgRootProps={{ justifyContent: "center" }}
       />
-      <Section content>
+      <Section mainContent>
         {previewData.map((section, sectionIndex) => {
           const sizesMap = getSizeMap(sectionIndex);
           const isReverse = sectionIndex % 2 !== 0;
@@ -139,10 +135,7 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
                 {section.items.map((article, articleIndex) => {
                   const { Root, Title, Date, Description } = News.Articles.Item;
                   return (
-                    <Root
-                      size={sizesMap.get(articleIndex)}
-                      imgSrc={article.imgSrc}
-                    >
+                    <Root size={sizesMap.get(articleIndex)} imgSrc={article.imgSrc}>
                       <Date>{article.date}</Date>
                       <Title>{article.title}</Title>
                       <Description>{article.description}</Description>
@@ -154,7 +147,7 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
           );
         })}
       </Section>
-      <Section content>
+      <Section mainContent>
         <Wrap
           sx={{
             width: "100%",

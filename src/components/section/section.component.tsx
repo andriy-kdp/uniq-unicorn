@@ -1,7 +1,7 @@
-import { ContentProps } from "./section.types";
+import { SectionProps } from "./section.types";
 import styled from "styled-components";
 
-export const Section = styled.div<ContentProps>`
+export const Section = styled.div<SectionProps>`
   position: ${(props) => props.pos || "relative"};
   max-width: 144rem;
   width: 100%;
@@ -15,7 +15,7 @@ export const Section = styled.div<ContentProps>`
   background: url(${(props) => props.bgImg});
   min-height: ${(props) => props.mh || "auto"};
   ${(props) =>
-    props.content &&
+    props.mainContent &&
     `
   max-width: 114rem;
 

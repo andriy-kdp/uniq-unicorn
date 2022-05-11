@@ -5,6 +5,7 @@ export const BenefitItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 export const BenefitIconContainer = styled.div`
@@ -20,6 +21,7 @@ export const BenefitTitle = styled.h3`
   line-height: 5.7rem;
   text-align: justify;
   text-transform: uppercase;
+  margin: 2rem 0 1rem;
   color: ${(props) => props.theme.colors.text.primary};
 `;
 

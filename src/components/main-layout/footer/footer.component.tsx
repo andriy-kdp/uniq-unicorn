@@ -84,13 +84,15 @@ const cities: string[] = ["Dubai ", "London ", "Toronto ", "Moscow", "Tokyo", "S
 export const Footer = () => {
   const [language, setLanguage] = useState<SelectOption | null>(null);
   return (
-    <Section content>
+    <Section mainContent>
       <FooterLinksContainer>
-        {footerLinks.map((el) => (
-          <FooterLinksGroup>
+        {footerLinks.map((el, idx) => (
+          <FooterLinksGroup key={`footer-link-group-${idx}`}>
             <FooterLinksTitle>{el.title}</FooterLinksTitle>
-            {el.links.map((link) => (
-              <FooterLinkItem to={link.path}>{link.label}</FooterLinkItem>
+            {el.links.map((link, idx) => (
+              <FooterLinkItem to={link.path} key={`footer-link-${idx}`}>
+                {link.label}
+              </FooterLinkItem>
             ))}
           </FooterLinksGroup>
         ))}
@@ -99,8 +101,8 @@ export const Footer = () => {
           <FooterLinksTitle>Connect</FooterLinksTitle>
           <SocialNetworksContainer>
             <SocialNetworksLinks>
-              {socialNetworks.map((soc) => (
-                <a href={soc.href} title={soc.label}>
+              {socialNetworks.map((soc, idx) => (
+                <a href={soc.href} title={soc.label} key={`social-link-${idx}`}>
                   {soc.icon}
                 </a>
               ))}
@@ -131,7 +133,7 @@ export const Footer = () => {
             }}
           >
             {cities.map((city) => (
-              <div>{city}</div>
+              <div key={city}>{city}</div>
             ))}
           </Wrap>
         </FooterLinksGroup>

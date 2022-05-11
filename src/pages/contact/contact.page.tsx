@@ -34,7 +34,7 @@ export const ContactPage: React.FC = (): JSX.Element => {
         justify={"center"}
         bgVariant={"gradient"}
       />
-      <Section content>
+      <Section mainContent>
         <ContactForm.Root>
           <Wrap
             sx={{
@@ -45,25 +45,11 @@ export const ContactPage: React.FC = (): JSX.Element => {
             }}
           >
             <ContactForm.Title.Root>
-              <ContactForm.Title.SubTitle>
-                CONTACT US
-              </ContactForm.Title.SubTitle>
+              <ContactForm.Title.SubTitle>CONTACT US</ContactForm.Title.SubTitle>
               <ContactForm.Title.Text>Have a question?</ContactForm.Title.Text>
             </ContactForm.Title.Root>
-            <Input
-              value={formData.name}
-              onChange={handleInpuChange}
-              label={"Name"}
-              name={"name"}
-              fullWidth
-            />
-            <Input
-              value={formData.name}
-              onChange={handleInpuChange}
-              label={"E-mail"}
-              name={"email"}
-              fullWidth
-            />
+            <Input value={formData.name} onChange={handleInpuChange} label={"Name"} name={"name"} fullWidth />
+            <Input value={formData.name} onChange={handleInpuChange} label={"E-mail"} name={"email"} fullWidth />
             <ButtonArrow onClick={handleSubmit}>Send</ButtonArrow>
           </Wrap>
           <Wrap

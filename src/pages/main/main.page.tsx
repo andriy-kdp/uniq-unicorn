@@ -4,7 +4,7 @@ import { ButtonArrow } from "../../components/button-arrow/button-arrow.componen
 import MainBg from "../../assets/images/backgrounds/home-page/main_bg.png";
 import { ReactComponent as MapImage } from "../../assets/images/backgrounds/home-page/map_base_markers.svg";
 import MockVideo from "../../assets/images/backgrounds/home-page/mock_video.jpg";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { Section } from "../../components/section/section.component";
 import { Wrap } from "../../components/wrap/wrap.component";
 import { ReactComponent as FastIcon } from "../../assets/icons/benefits-main/fast.svg";
@@ -31,6 +31,9 @@ const benefitsList: BenefitItemsType = [
   },
 ];
 export const MainPage: React.FC = (): JSX.Element => {
+  const handleClickDownloadApp = () => {
+    window.open("about:blank", "noopener norefferer");
+  };
   return (
     <>
       <SlideSection
@@ -42,15 +45,15 @@ export const MainPage: React.FC = (): JSX.Element => {
         }}
         title={"Private or Business accounts set up in minutes"}
       />
-      <Section content m={"10.5rem auto 0"}>
+      <Section mainContent m={"10.5rem auto 0"}>
         <Benefits items={benefitsList} />
       </Section>
 
-      <Section content m={"16rem auto 0"}>
+      <Section mainContent m={"16rem auto 0"}>
         <img src={MockVideo} alt="Video here" style={{ width: "100%" }} />
       </Section>
 
-      <Section content m={"16rem auto 0"}>
+      <Section mainContent m={"16rem auto 0"}>
         <Wrap sx={{ textTransform: "uppercase" }}>
           <h2>Open Accounts, Send and Receive Payments in 28 currencies</h2>
         </Wrap>
@@ -60,7 +63,7 @@ export const MainPage: React.FC = (): JSX.Element => {
         </Wrap>
       </Section>
 
-      <Section content m={"16rem auto 12rem"}>
+      <Section mainContent m={"16rem auto 12rem"}>
         <img src={SmartMockupBg} alt={"Download mobile app"} />
         <Wrap
           sx={{
@@ -74,7 +77,7 @@ export const MainPage: React.FC = (): JSX.Element => {
           }}
         >
           <DownloadAppHeader>Download Black Banx App to have all your finances in your pocket</DownloadAppHeader>
-          <ButtonArrow>Download the App</ButtonArrow>
+          <ButtonArrow onClick={handleClickDownloadApp}>Download the App</ButtonArrow>
         </Wrap>
       </Section>
     </>

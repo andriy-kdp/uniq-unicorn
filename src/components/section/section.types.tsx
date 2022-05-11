@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 
-export type ContentProps = {
+export type SectionProps = {
   direction?: "row" | " column"; // default: column
   p?: CSSProperties["padding"];
   justify?: CSSProperties["justifyContent"];
@@ -9,7 +9,7 @@ export type ContentProps = {
   w?: CSSProperties["width"];
   h?: CSSProperties["height"];
   pos?: CSSProperties["position"];
-  content?: boolean;
+  mainContent?: boolean;
   bgImg?: string;
   mh?: CSSProperties["minHeight"];
 };

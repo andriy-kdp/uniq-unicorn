@@ -35,7 +35,7 @@ export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (pro
         )}
 
         <Section
-          content
+          mainContent
           justify={"center"}
           align={justify === "center" ? "center" : justify === "right" ? "flex-end" : "flex-start"}
           pos={"absolute"}

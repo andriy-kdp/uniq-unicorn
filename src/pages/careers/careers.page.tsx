@@ -3,17 +3,10 @@ import { SlideSection } from "../../components/silde-section/slide-section.compo
 import { Section } from "../../components/section/section.component";
 import careersBg from "../../assets/images/backgrounds/careers/careers_bg.png";
 import careersVideoPlugImg from "../../assets/images/backgrounds/careers/careers_video_plug.png";
-import {
-  VacationsComponent,
-  VacationSection,
-} from "../../components/vacations/vacations.component";
+import { VacationsComponent, VacationSection } from "../../components/vacations/vacations.component";
 import { Input } from "../../components/inputs/input/input.component";
 import { Select } from "../../components/inputs/select/select.component";
-import {
-  SelectHandler,
-  SelectOption,
-  SelectOptions,
-} from "../../components/inputs/select/select.types";
+import { SelectHandler, SelectOption, SelectOptions } from "../../components/inputs/select/select.types";
 import { ReactComponent as FlagIconCn } from "../../assets/icons/flags/flag_cn.svg";
 import { ReactComponent as FlagIconEsp } from "../../assets/icons/flags/flag_esp.svg";
 import { ReactComponent as FlagIconPt } from "../../assets/icons/flags/flag_pt.svg";
@@ -29,15 +22,13 @@ const vacationsList: VacationSection[] = [
     vacations: [
       {
         title: "Sales and Service Representative",
-        description:
-          "We're looking for an advanced Sales and Service Representative to join our team.",
+        description: "We're looking for an advanced Sales and Service Representative to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
       {
         title: "Sales Associate Supervisor",
-        description:
-          "We're looking for a mid-level Sales Associate Supervisor to join our team.",
+        description: "We're looking for a mid-level Sales Associate Supervisor to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
@@ -48,22 +39,19 @@ const vacationsList: VacationSection[] = [
     vacations: [
       {
         title: "Engineering Manager",
-        description:
-          "We're looking for an experienced engineering manager to join our team.",
+        description: "We're looking for an experienced engineering manager to join our team.",
         salary: { from: 80, to: 100 },
         variant: "part_time",
       },
       {
         title: "Frontend Developer",
-        description:
-          "We're looking for an experienced frontend developer to join our team.",
+        description: "We're looking for an experienced frontend developer to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
       {
         title: "Backend Beveloper",
-        description:
-          "We're looking for an experienced backend developer to join our team.",
+        description: "We're looking for an experienced backend developer to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
@@ -74,8 +62,7 @@ const vacationsList: VacationSection[] = [
     vacations: [
       {
         title: "Customer Success Manager",
-        description:
-          "We're looking for a mid-level product designer to join our team.",
+        description: "We're looking for a mid-level product designer to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
@@ -166,18 +153,18 @@ export const CareersPage: React.FC = (): JSX.Element => {
           onClick: () => {},
         }}
       />
-      <Section content>
+      <Section mainContent>
         <Wrap sx={{ margin: "6rem 0" }}>
           <h3>We're looking for talented people to join us</h3>
         </Wrap>
         <img src={careersVideoPlugImg} alt={"Careers video"} />
       </Section>
-      <Section content>
+      <Section mainContent>
         <Wrap sx={{ width: "76.8rem", margin: "0 auto" }}>
           <VacationsComponent sections={vacationsList} />
         </Wrap>
       </Section>
-      <Section content>
+      <Section mainContent>
         <h3>Search for openings:</h3>
         <Wrap sx={{ width: "76.8rem", margin: "0 auto" }}>
           <Input

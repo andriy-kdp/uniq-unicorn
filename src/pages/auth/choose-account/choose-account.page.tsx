@@ -33,7 +33,7 @@ export const ChooseAccountPage: React.FC = (): JSX.Element => {
     };
 
   return (
-    <Section content>
+    <Section mainContent>
       <Accounts.Root>
         <Accounts.Subtitle>Get started</Accounts.Subtitle>
         <h3>Open your Black Banx Account</h3>
@@ -48,12 +48,8 @@ export const ChooseAccountPage: React.FC = (): JSX.Element => {
               }}
               onClick={handleClick(acc.value)}
             >
-              <Accounts.Variants.Item.Icon.Root>
-                {acc.icon}
-              </Accounts.Variants.Item.Icon.Root>
-              <Accounts.Variants.Item.Title>
-                {acc.title}
-              </Accounts.Variants.Item.Title>
+              <Accounts.Variants.Item.Icon.Root>{acc.icon}</Accounts.Variants.Item.Icon.Root>
+              <Accounts.Variants.Item.Title>{acc.title}</Accounts.Variants.Item.Title>
             </Wrap>
           ))}
         </Accounts.Variants.Root>

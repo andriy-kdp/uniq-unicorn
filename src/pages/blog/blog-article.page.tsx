@@ -94,7 +94,7 @@ const mockArticleItem: { date: string; title: string; body: string } = {
 
 export const BlogArticlePage = () => {
   return (
-    <Section content>
+    <Section mainContent>
       <Article.Title.Root>
         <Article.Title.Date>{mockArticleItem.date}</Article.Title.Date>
         <Article.Title.Text>{mockArticleItem.title}</Article.Title.Text>

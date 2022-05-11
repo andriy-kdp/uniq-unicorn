@@ -99,7 +99,7 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
           <h1>Instant currency conversion in over 28 currencies</h1>
         </Wrap>
       </Section>
-      <Section content>
+      <Section mainContent>
         <DescriptionWrapper>
           <ProfsContainer>
             {bankAccountProfs.map((prof) => (
@@ -110,25 +110,19 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
             ))}
           </ProfsContainer>
           <DescriptionContainer>
-            <DescriptionTitle>
-              Black Banx private and business accounts
-            </DescriptionTitle>
+            <DescriptionTitle>Black Banx private and business accounts</DescriptionTitle>
             <Description>
-              Black Banx is offering real time account opening for Private and
-              Business clients in 180 countries. We provide global cross border
-              payments and account opening in 28 currencies. With our
-              proprietary software IRTP© recipients can get funds credited
-              instantly on their bank accounts. Senders pay ten times less than
-              traditional banking. Users can transact money through their
-              account balances, Bitcoin or Debit Cards. You can open your
-              account remotely on this website or using our mobile app on your
-              smart phone. The account is set up in minutes, with our 24/7 real
-              time verification and activation service.
+              Black Banx is offering real time account opening for Private and Business clients in 180 countries. We
+              provide global cross border payments and account opening in 28 currencies. With our proprietary software
+              IRTP© recipients can get funds credited instantly on their bank accounts. Senders pay ten times less than
+              traditional banking. Users can transact money through their account balances, Bitcoin or Debit Cards. You
+              can open your account remotely on this website or using our mobile app on your smart phone. The account is
+              set up in minutes, with our 24/7 real time verification and activation service.
             </Description>
           </DescriptionContainer>
         </DescriptionWrapper>
       </Section>
-      <Section content>
+      <Section mainContent>
         {infoBlocks.map((block, idx) => (
           <Wrap sx={{ display: "flex", flexDirection: "column" }}>
             <InfoBlockContainer reverse={idx % 2 !== 0}>

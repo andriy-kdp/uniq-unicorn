@@ -49,7 +49,7 @@ export const BlogPage: React.FC = (): JSX.Element => {
         titleAlign={"center"}
         justify={"center"}
       />
-      <Section content>
+      <Section mainContent>
         {mockBlogItems.map((post) => {
           const { Preview } = Blog;
           return (
@@ -64,9 +64,7 @@ export const BlogPage: React.FC = (): JSX.Element => {
                 <img src={post.imgSrc} alt={post.title} />
               </Preview.Image.Root>
               <Divider variant="dashed" />
-              <Preview.Description onClick={handlePreviewClick(post.id)}>
-                {post.description}
-              </Preview.Description>
+              <Preview.Description onClick={handlePreviewClick(post.id)}>{post.description}</Preview.Description>
             </Preview.Root>
           );
         })}
