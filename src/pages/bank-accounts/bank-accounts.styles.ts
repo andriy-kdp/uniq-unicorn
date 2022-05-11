@@ -13,6 +13,7 @@ export const DescriptionWrapper = styled.div`
 export const ProfsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 export const ProfItemContainer = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ export const DescriptionTitle = styled.h2`
 export const Description = styled.div`
   line-height: 2.8rem;
   font-size: 2rem;
+  margin-top: 2.4rem;
 `;
 
 export const InfoWrapper = styled.div`
@@ -52,10 +54,13 @@ export const InfoWrapper = styled.div`
 
 export const BlockTitle = styled.h4`
   text-transform: uppercase;
+  letter-spacing: 0.16em;
 `;
 
 export const BlockSubtitle = styled.h5`
   line-height: 4.8rem;
+  margin-top: 0.6rem;
+  margin-bottom: 4.7rem;
 `;
 
 export const InfoListContainer = styled.ul`
@@ -68,6 +73,7 @@ export const InfoListItem = styled.li``;
 
 export const ImgWrapper = styled.div`
   display: flex;
+  margin-top: 6rem;
 `;
 
 export const InfoBlockContainer = styled.div<InfoBlockContainerProps>`
@@ -75,4 +81,8 @@ export const InfoBlockContainer = styled.div<InfoBlockContainerProps>`
   width: 100%;
   justify-content: space-between;
   flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
+  margin-bottom: 18rem;
+  :last-child {
+    margin-bottom: 10rem;
+  }
 `;

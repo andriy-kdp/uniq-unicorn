@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { Section } from "../../components/section/section.component";
 import { Wrap } from "../../components/wrap/wrap.component";
 import BgImage from "../../assets/images/backgrounds/bank-accounts/city_bg.png";
@@ -24,6 +24,7 @@ import { ReactComponent as BuildingIcon } from "../../assets/icons/crypto-curren
 import { ReactComponent as CardIcon } from "../../assets/icons/crypto-currency/card.svg";
 import { ReactComponent as CaseIcon } from "../../assets/icons/crypto-currency/case.svg";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
+import { useNavigate } from "react-router-dom";
 const bankAccountProfs: { title: string; description: string }[] = [
   { title: "Private clients", description: "Easy account Openings" },
   { title: "Business clients ", description: "Banking without borders" },
@@ -38,10 +39,12 @@ const infoBlocks: {
   subtitle: string;
   description: string[] | string;
   blockImgSrc: React.ReactNode;
+  link: string;
 }[] = [
   {
     title: "PRIVATE CLIENTS",
     subtitle: "With your Private Account you can:",
+    link: "/auth/register/private",
     description: [
       "Get Black Banx Debit Cards (virtual or physical) in different currencies",
       "Freely convert currencies between your accounts for Bank Interchange rates",
@@ -58,6 +61,7 @@ const infoBlocks: {
   {
     title: "BUSINESS CLIENTS",
     subtitle: "With your Business Account you can:",
+    link: "/auth/register/business",
     description: [
       "Get Black Banx Debit Cards in different currencies for you or your people",
       "Freely convert currencies between your accounts for Bank Interchange rates",
@@ -75,6 +79,7 @@ const infoBlocks: {
   {
     title: "INSTITUTIONAL CLIENTS",
     subtitle: "If you are a Bank, a Fund or Financial Institution:",
+    link: "/auth/register/institutional",
     description:
       "Black Banx offers a cost effective, global cross border payment solution.We offer a network of local correspondent accounts in over 90 countries for incoming and outgoing payments. Integrating our cross border platform into your payment system would allow you to send and receive funds in a fraction of time. To reduce your fees, we offer attractive volume based pricing models.",
     blockImgSrc: <BuildingIcon />,
@@ -82,6 +87,12 @@ const infoBlocks: {
 ];
 
 export const BankAccountsPage: React.FC = (): JSX.Element => {
+  const nav = useNavigate();
+
+  const handleClickButton = (path: string) => () => {
+    nav(path);
+  };
+
   return (
     <>
       <Section align={"center"}>
@@ -99,7 +110,7 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
           <h1>Instant currency conversion in over 28 currencies</h1>
         </Wrap>
       </Section>
-      <Section mainContent>
+      <Section mainContent m={"9rem auto"}>
         <DescriptionWrapper>
           <ProfsContainer>
             {bankAccountProfs.map((prof) => (
@@ -122,29 +133,27 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
           </DescriptionContainer>
         </DescriptionWrapper>
       </Section>
-      <Section mainContent>
+      <Section mainContent m={"11rem auto"}>
         {infoBlocks.map((block, idx) => (
-          <Wrap sx={{ display: "flex", flexDirection: "column" }}>
-            <InfoBlockContainer reverse={idx % 2 !== 0}>
-              <InfoWrapper>
-                <BlockTitle>{block.title}</BlockTitle>
-                <BlockSubtitle>{block.subtitle}</BlockSubtitle>
-                {typeof block.description === "string" ? (
-                  block.description
-                ) : (
-                  <InfoListContainer>
-                    {block.description.map((desc) => (
-                      <InfoListItem>{desc}</InfoListItem>
-                    ))}
-                  </InfoListContainer>
-                )}
-                <Wrap sx={{ marginLeft: "auto" }}>
-                  <ButtonArrow>Open Account</ButtonArrow>
-                </Wrap>
-              </InfoWrapper>
-              <ImgWrapper>{block.blockImgSrc}</ImgWrapper>
-            </InfoBlockContainer>
-          </Wrap>
+          <InfoBlockContainer reverse={idx % 2 !== 0}>
+            <InfoWrapper>
+              <BlockTitle>{block.title}</BlockTitle>
+              <BlockSubtitle>{block.subtitle}</BlockSubtitle>
+              {typeof block.description === "string" ? (
+                <Wrap>{block.description}</Wrap>
+              ) : (
+                <InfoListContainer>
+                  {block.description.map((desc) => (
+                    <InfoListItem>{desc}</InfoListItem>
+                  ))}
+                </InfoListContainer>
+              )}
+              <Wrap sx={{ marginLeft: "auto" }}>
+                <ButtonArrow onClick={handleClickButton(block.link)}>Open Account</ButtonArrow>
+              </Wrap>
+            </InfoWrapper>
+            <ImgWrapper>{block.blockImgSrc}</ImgWrapper>
+          </InfoBlockContainer>
         ))}
       </Section>
       ;
