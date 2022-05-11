@@ -4,16 +4,15 @@ import { Benefits } from "../../components/benefits/benefits.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
 import { ReactComponent as ChartIcon } from "../../assets/icons/benefits-crypto-currency/chart.svg";
 import { ReactComponent as ConversionIcon } from "../../assets/icons/benefits-crypto-currency/conversion.svg";
-import { MainHeader } from "../main/main.styles";
 import { ReactComponent as MedalIcon } from "../../assets/icons/benefits-crypto-currency/medal.svg";
 import { ReactComponent as PlanetIcon } from "../../assets/icons/benefits-crypto-currency/planet.svg";
 import React from "react";
 import { Section } from "../../components/section/section.component";
 import { ReactComponent as SuccessIcon } from "../../assets/icons/benefits-crypto-currency/success.svg";
-import { Wrap } from "../../components/wrap/wrap.component";
 import PhonesBg from "../../assets/images/backgrounds/crypto-currency-page/phones.png";
-import { MobileAppContainer, MobileAppTitle } from "./crypto-currency.styles";
+import { CryptoBenefitsTitle, MobileAppContainer, MobileAppTitle } from "./crypto-currency.styles";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
+import MainBg from "../../assets/images/backgrounds/crypto-currency-page/crypto_cur_bg.png";
 const benefitsItems: BenefitItemsType = [
   {
     title: "High-value trading",
@@ -51,7 +50,7 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
   return (
     <>
       <SlideSection
-        bgImage=""
+        bgImage={MainBg}
         title="Black Banx crypto currency banking"
         button={{
           title: "Open Account",
@@ -60,9 +59,10 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
       />
 
       <Section mainContent>
+        <CryptoBenefitsTitle>Crypto trading made easier</CryptoBenefitsTitle>
         <Benefits items={benefitsItems} secondary />
       </Section>
-      <Section mainContent>
+      <Section mainContent m={"13rem auto 26rem"}>
         <MobileAppContainer>
           <MobileAppTitle>Your bitcoin wallet in our App</MobileAppTitle>
           <img src={PhonesBg} alt="IPhone" />

@@ -13,6 +13,7 @@ import { ReactComponent as SafeIcon } from "../../assets/icons/benefits-main/saf
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import SmartMockupBg from "../../assets/images/backgrounds/home-page/smart-mockup.png";
 import { DownloadAppHeader } from "./main.styles";
+import { useNavigate } from "react-router-dom";
 const benefitsList: BenefitItemsType = [
   {
     title: "Safe",
@@ -31,6 +32,7 @@ const benefitsList: BenefitItemsType = [
   },
 ];
 export const MainPage: React.FC = (): JSX.Element => {
+  const nav = useNavigate();
   const handleClickDownloadApp = () => {
     window.open("about:blank", "noopener norefferer");
   };
@@ -41,7 +43,7 @@ export const MainPage: React.FC = (): JSX.Element => {
         m={"4rem auto 0"}
         button={{
           title: "Get started",
-          onClick: () => {},
+          onClick: () => nav("/auth/register"),
         }}
         title={"Private or Business accounts set up in minutes"}
       />

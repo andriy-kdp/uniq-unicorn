@@ -48,6 +48,7 @@ export const BenefitsContainer = styled.div<Omit<BenefitsProps, "items">>`
       color: #F2F2F2;
       text-transform: none;
       text-align: left;
+      margin: 2.5rem 0 1.3rem;
     };
     ${BenefitsDescription} {
       font-style: normal;
