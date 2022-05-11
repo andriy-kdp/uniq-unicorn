@@ -38,10 +38,10 @@ export const SecurityPage: React.FC = (): JSX.Element => {
         justify={"center"}
         titleAlign={"center"}
       />
-      <Section mainContent>
+      <Section mainContent m={"15rem auto 16rem"}>
         <SecPosts.Root>
-          {posts.map((post) => (
-            <SecPosts.Item.Root>
+          {posts.map((post, idx) => (
+            <SecPosts.Item.Root key={`sec-post-${idx}`}>
               <SecPosts.Item.Title>{post.title}</SecPosts.Item.Title>
               <SecPosts.Item.Image src={post.imgSrc} />
               <SecPosts.Item.Subtitle>{post.subtitle}</SecPosts.Item.Subtitle>

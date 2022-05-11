@@ -15,18 +15,21 @@ export const PostItemRoot = styled.div`
 export const PostTitle = styled.h2`
   text-transform: uppercase;
   line-height: 6.7rem;
+  min-height: 13rem;
 `;
 
-export const PostSubtitle = styled.span`
+export const PostSubtitle = styled.h6`
   font-style: normal;
   font-weight: 500;
   font-size: 2.4rem;
   line-height: 3.6rem;
+  margin: 6rem auto 2.2rem;
   color: ${(props) => props.theme.colors.text.primary};
 `;
 
 export const PostDescriptiotn = styled.div`
   text-align: justify;
+  color: #d4d4d4;
 `;
 
 export const PostImage = styled.img``;
