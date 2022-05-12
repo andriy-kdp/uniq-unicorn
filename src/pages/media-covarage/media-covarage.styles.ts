@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ArticleItem } from "./media-coverage.page";
+import { media } from "../../utils/use-media-query";
 
 const NewsSectionRoot = styled.div`
   display: flex;
@@ -7,6 +8,12 @@ const NewsSectionRoot = styled.div`
   width: 100%;
   :not(:last-child) {
     margin-bottom: 16rem;
+  }
+  @media (${media.sm}) {
+    margin-bottom: 4rem !important;
+    :last-child {
+      margin-bottom: 1rem;
+    }
   }
 `;
 
@@ -46,6 +53,14 @@ const ArticlesRoot = styled.div<{ reverse?: boolean }>`
       "small-bottom big";
     grid-template-columns: 1fr 75.2rem;
   `}
+  @media (${media.sm}) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "small-top"
+      "big"
+      "small-bottom";
+    grid-template-rows: 1fr 1fr 2fr;
+  }
 `;
 
 const ArticleItemRoot = styled.div<Pick<ArticleItem, "size" | "imgSrc">>`
@@ -53,8 +68,7 @@ const ArticleItemRoot = styled.div<Pick<ArticleItem, "size" | "imgSrc">>`
   flex-direction: column;
   justify-content: flex-end;
   grid-area: ${(props) => props.size};
-  background: url(${(props) => props.imgSrc});
-  background-repeat: no-repeat;
+  background: url(${(props) => props.imgSrc}) no-repeat center;
   background-size: cover;
   padding: 2.2rem 2.4rem;
 `;

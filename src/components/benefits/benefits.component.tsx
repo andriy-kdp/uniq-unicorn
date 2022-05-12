@@ -10,9 +10,9 @@ import { BenefitsProps } from "./benefits.types";
 import React from "react";
 
 export const Benefits: React.FC<BenefitsProps> = (props): JSX.Element => {
-  const { items, secondary, vertical } = props;
+  const { items, secondary, vertical, centered } = props;
   return (
-    <BenefitsContainer secondary={secondary} vertical={vertical}>
+    <BenefitsContainer secondary={secondary} vertical={vertical} centered={centered}>
       {items.map((benefit, idx) => (
         <BenefitItemContainer key={`benefit-item-${idx}`}>
           <BenefitIconContainer>{benefit.icon}</BenefitIconContainer>

@@ -66,4 +66,11 @@ export const BenefitsContainer = styled.div<Omit<BenefitsProps, "items">>`
       align-items: flex-start;
     }
   `}
+  ${(props) =>
+    props.centered &&
+    `
+      ${BenefitItemContainer} {
+          align-items: center ;
+    }
+  `}
 `;

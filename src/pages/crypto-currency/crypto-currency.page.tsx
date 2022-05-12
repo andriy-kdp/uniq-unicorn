@@ -10,9 +10,11 @@ import React from "react";
 import { Section } from "../../components/section/section.component";
 import { ReactComponent as SuccessIcon } from "../../assets/icons/benefits-crypto-currency/success.svg";
 import PhonesBg from "../../assets/images/backgrounds/crypto-currency-page/phones.png";
-import { CryptoBenefitsTitle, MobileAppContainer, MobileAppTitle } from "./crypto-currency.styles";
+import { CryptoBenefitsTitle, MobileAppContainer, MobileAppImage, MobileAppTitle } from "./crypto-currency.styles";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MainBg from "../../assets/images/backgrounds/crypto-currency-page/crypto_cur_bg.png";
+import { useMediaQuery } from "../../utils/use-media-query";
+import { Wrap } from "../../components/wrap/wrap.component";
 const benefitsItems: BenefitItemsType = [
   {
     title: "High-value trading",
@@ -47,9 +49,11 @@ const benefitsItems: BenefitItemsType = [
 ];
 
 export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
+  const isMobile = useMediaQuery("sm");
   return (
     <>
       <SlideSection
+        mobile={isMobile}
         bgImage={MainBg}
         title="Black Banx crypto currency banking"
         button={{
@@ -60,12 +64,12 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
 
       <Section mainContent>
         <CryptoBenefitsTitle>Crypto trading made easier</CryptoBenefitsTitle>
-        <Benefits items={benefitsItems} secondary />
+        <Benefits items={benefitsItems} secondary vertical={isMobile} centered={isMobile} />
       </Section>
-      <Section mainContent m={"13rem auto 26rem"}>
+      <Section mainContent m={!isMobile ? "13rem auto 26rem" : "16rem auto 11rem"}>
         <MobileAppContainer>
           <MobileAppTitle>Your bitcoin wallet in our App</MobileAppTitle>
-          <img src={PhonesBg} alt="IPhone" />
+          <MobileAppImage src={PhonesBg} alt="IPhone" />
           <ButtonArrow>Download App</ButtonArrow>
         </MobileAppContainer>
       </Section>

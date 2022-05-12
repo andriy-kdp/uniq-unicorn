@@ -11,6 +11,7 @@ import { Divider } from "../../components/divider/divider.styles";
 import TitaniumAccountBg from "../../assets/images/backgrounds/fees/plastic_card.png";
 import { Input } from "../../components/inputs/input/input.component";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg";
+import { useMediaQuery } from "../../utils/use-media-query";
 type PlanInfoType = {
   title: string;
   prosItems: PlanInfoProsItem[];
@@ -66,6 +67,8 @@ const countries: { country: string; count: number }[] = [
 export const FeesPage: React.FC = (): JSX.Element => {
   const [currentPlan, setCurrentPlan] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>("");
+  const isMobile = useMediaQuery("sm");
+  const isTablet = useMediaQuery("md");
   const handleNextPlan = () => {
     setCurrentPlan((prev) => prev + 1);
   };
@@ -83,6 +86,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
         titleAlign={"center"}
         justify={"center"}
       />
+
       <Section mainContent m={"20rem auto"}>
         <PlanInfo.Root>
           <Wrap sx={{ display: "flex", marginBottom: "2.4rem" }}>
@@ -123,18 +127,22 @@ export const FeesPage: React.FC = (): JSX.Element => {
                 alignItems: "center",
               }}
             >
-              <img src={planInfoItems[currentPlan].imgSrc} alt={"Plan info"} />
+              <PlanInfo.Img src={planInfoItems[currentPlan].imgSrc} alt={"Plan info"} />
             </Wrap>
           </PlanInfo.Description>
         </PlanInfo.Root>
       </Section>
+
       <Section mainContent m={"0 auto 20rem"}>
         <FindCountry.Root>
           <Wrap
             sx={{
               gridArea: "country",
               display: "flex",
-              flexDirection: "column",
+              flexDirection: isMobile ? "row" : "column",
+              marginBottom: isMobile ? "6rem" : "inherit",
+              flexWrap: "wrap",
+              gap: isTablet ? "2rem" : "0",
             }}
           >
             {countries.map((country) => {
@@ -142,28 +150,49 @@ export const FeesPage: React.FC = (): JSX.Element => {
               return <Item key={country.country}>{`${country.country} (${country.count})`}</Item>;
             })}
           </Wrap>
+          {isMobile && (
+            <Wrap
+              sx={{
+                gridArea: "search",
+                display: "flex",
+                alignItems: "flex-end",
+                margin: isMobile ? "5rem 0" : "inherit",
+              }}
+            >
+              <Input
+                fullWidth
+                value={searchValue}
+                startIcon={<SearchIcon />}
+                placeholder={"Please enter country"}
+                onChange={(e) => setSearchValue(e.target.value)}
+                helperText={"Didn’t find your country or residence in here?  Please Contact us"}
+              />
+            </Wrap>
+          )}
           <Wrap sx={{ gridArea: "title" }}>
             <FindCountry.Title>
               We’re proud to announce that we’re in more than 180 countries all over the world, find out if we’re in
               yours!
             </FindCountry.Title>
           </Wrap>
-          <Wrap
-            sx={{
-              gridArea: "search",
-              display: "flex",
-              alignItems: "flex-end",
-            }}
-          >
-            <Input
-              fullWidth
-              value={searchValue}
-              startIcon={<SearchIcon />}
-              placeholder={"Please enter country"}
-              onChange={(e) => setSearchValue(e.target.value)}
-              helperText={"Didn’t find your country or residence in here?  Please Contact us"}
-            />
-          </Wrap>
+          {!isMobile && (
+            <Wrap
+              sx={{
+                gridArea: "search",
+                display: "flex",
+                alignItems: "flex-end",
+              }}
+            >
+              <Input
+                fullWidth
+                value={searchValue}
+                startIcon={<SearchIcon />}
+                placeholder={"Please enter country"}
+                onChange={(e) => setSearchValue(e.target.value)}
+                helperText={"Didn’t find your country or residence in here?  Please Contact us"}
+              />
+            </Wrap>
+          )}
         </FindCountry.Root>
       </Section>
     </>
