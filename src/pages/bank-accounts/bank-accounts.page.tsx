@@ -25,6 +25,8 @@ import { ReactComponent as CardIcon } from "../../assets/icons/crypto-currency/c
 import { ReactComponent as CaseIcon } from "../../assets/icons/crypto-currency/case.svg";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "../../utils/use-media-query";
+import { SlideSection } from "../../components/silde-section/slide-section.component";
 const bankAccountProfs: { title: string; description: string }[] = [
   { title: "Private clients", description: "Easy account Openings" },
   { title: "Business clients ", description: "Banking without borders" },
@@ -88,28 +90,21 @@ const infoBlocks: {
 
 export const BankAccountsPage: React.FC = (): JSX.Element => {
   const nav = useNavigate();
-
+  const isMobile = useMediaQuery("sm");
   const handleClickButton = (path: string) => () => {
     nav(path);
   };
 
   return (
     <>
-      <Section align={"center"}>
-        <BgGradient imgSrc={BgImage} />
-        <Wrap
-          sx={{
-            position: "absolute",
-            display: "flex",
-            alignItems: "center",
-            textAlign: "center",
-            height: "57rem",
-            width: "60%",
-          }}
-        >
-          <h1>Instant currency conversion in over 28 currencies</h1>
-        </Wrap>
-      </Section>
+      <SlideSection
+        bgImage={BgImage}
+        title={"Instant currency conversion in over 28 currencies"}
+        bgVariant={"gradient"}
+        titleWidth={"100%"}
+        justify={"center"}
+        titleAlign={"center"}
+      />
       <Section mainContent m={"9rem auto"}>
         <DescriptionWrapper>
           <ProfsContainer>
@@ -133,14 +128,14 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
           </DescriptionContainer>
         </DescriptionWrapper>
       </Section>
-      <Section mainContent m={"11rem auto"}>
+      <Section mainContent m={isMobile ? "0 auto" : "11rem auto"}>
         {infoBlocks.map((block, idx) => (
           <InfoBlockContainer reverse={idx % 2 !== 0} key={`info-block-item-${idx}`}>
             <InfoWrapper>
               <BlockTitle>{block.title}</BlockTitle>
               <BlockSubtitle>{block.subtitle}</BlockSubtitle>
               {typeof block.description === "string" ? (
-                <Wrap>{block.description}</Wrap>
+                <Wrap sx={{ marginBottom: isMobile ? "5rem" : "auto" }}>{block.description}</Wrap>
               ) : (
                 <InfoListContainer>
                   {block.description.map((desc, idx) => (
@@ -148,11 +143,18 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
                   ))}
                 </InfoListContainer>
               )}
+              {!isMobile && (
+                <Wrap sx={{ marginLeft: "auto" }}>
+                  <ButtonArrow onClick={handleClickButton(block.link)}>Open Account</ButtonArrow>
+                </Wrap>
+              )}
+            </InfoWrapper>
+            <ImgWrapper>{block.blockImgSrc}</ImgWrapper>
+            {isMobile && (
               <Wrap sx={{ marginLeft: "auto" }}>
                 <ButtonArrow onClick={handleClickButton(block.link)}>Open Account</ButtonArrow>
               </Wrap>
-            </InfoWrapper>
-            <ImgWrapper>{block.blockImgSrc}</ImgWrapper>
+            )}
           </InfoBlockContainer>
         ))}
       </Section>

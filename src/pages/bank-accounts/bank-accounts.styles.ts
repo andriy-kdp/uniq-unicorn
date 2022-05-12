@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../utils/use-media-query";
 
 export type InfoBlockContainerProps = {
   reverse?: boolean;
@@ -7,23 +8,35 @@ export type InfoBlockContainerProps = {
 export const DescriptionWrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
+  @media (${media.sm}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ProfsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (${media.sm}) {
+    margin-bottom: 5.1rem;
+  }
 `;
 export const ProfItemContainer = styled.div`
   display: flex;
   flex-direction: column;
+  @media (${media.sm}) {
+    margin-bottom: 5.1rem;
+  }
 `;
 
 export const ProfItemTitle = styled.h5`
   text-transform: uppercase;
   font-size: 3.2rem;
   line-height: 4.8rem;
+  @media (${media.sm}) {
+    text-transform: initial;
+  }
 `;
 
 export const ProfItemDescription = styled.div`
@@ -50,11 +63,23 @@ export const InfoWrapper = styled.div`
   display: flex;
   width: 55%;
   flex-direction: column;
+  @media (${media.sm}) {
+    width: 100%;
+  }
 `;
 
 export const BlockTitle = styled.h4`
   text-transform: uppercase;
   letter-spacing: 0.16em;
+  @media (${media.sm}) {
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    text-align: right;
+    letter-spacing: 0.16em;
+    color: #f2f2f2;
+    margin-bottom: 2rem;
+  }
 `;
 
 export const BlockSubtitle = styled.h5`
@@ -65,8 +90,12 @@ export const BlockSubtitle = styled.h5`
 
 export const InfoListContainer = styled.ul`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
+  @media (${media.sm}) {
+    grid-template-columns: 1fr;
+    margin-bottom: 3rem;
+  }
 `;
 
 export const InfoListItem = styled.li``;
@@ -74,6 +103,10 @@ export const InfoListItem = styled.li``;
 export const ImgWrapper = styled.div`
   display: flex;
   margin-top: 6rem;
+  @media (${media.sm}) {
+    justify-content: center;
+    margin: 3rem auto;
+  }
 `;
 
 export const InfoBlockContainer = styled.div<InfoBlockContainerProps>`
@@ -84,5 +117,12 @@ export const InfoBlockContainer = styled.div<InfoBlockContainerProps>`
   margin-bottom: 18rem;
   :last-child {
     margin-bottom: 10rem;
+  }
+  @media (${media.sm}) {
+    flex-direction: column;
+    margin-bottom: 7rem;
+    :last-child {
+      margin-bottom: 5rem;
+    }
   }
 `;
