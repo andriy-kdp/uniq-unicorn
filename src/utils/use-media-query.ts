@@ -15,24 +15,22 @@ export function useMediaQuery(mediaQuery: "xs"): boolean {
     return false;
   }, []);
 
-  const handleChange = useCallback(
-    (query: string): EventHandler<any> =>
-      () => {
-        const matched = getMatches(query);
-        setMatched(matched);
-      },
-    [],
-  );
+  const handleChange = (query: string) => {
+    const matched = getMatches(query);
+    setMatched(matched);
+  };
 
   useEffect(() => {
     const query = getMediaQueryString();
-
     const windowEvent = window.matchMedia(query);
-    windowEvent.addEventListener("change", handleChange(query));
+    handleChange(query);
+    windowEvent.addEventListener("change", () => handleChange(query));
+    document.addEventListener("load", () => handleChange(query));
     return () => {
-      windowEvent.removeEventListener("change", handleChange(query));
+      windowEvent.removeEventListener("change", () => handleChange(query));
+      window.removeEventListener("load", () => handleChange(query));
     };
-  }, [getMediaQueryString, getMatches, handleChange]);
+  }, []);
 
   return matched;
 }

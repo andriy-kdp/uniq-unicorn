@@ -92,7 +92,7 @@ const DropdownItemLabel = styled.span`
   font-size: 1.4rem;
   line-height: 1.8rem;
   margin-bottom: 0.3rem;
-  word-wrap: none;
+  word-wrap: unset;
 `;
 const DropdownMenuItemDescription = styled.span`
   color: #a1a1a1;
@@ -105,6 +105,15 @@ const DropdownItemIcon = styled.div`
   align-items: center;
   margin-right: 1.4rem;
 `;
+
+export const MobileHeader = styled.div`
+  display: flex;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  background: ${(props) => props.theme.colors.background.primary};
+`;
+
 export const Dropdown = {
   Root: DropdownMenuRoot,
   Items: {

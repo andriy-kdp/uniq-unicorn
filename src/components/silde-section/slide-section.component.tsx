@@ -6,6 +6,7 @@ import { ButtonArrow } from "../button-arrow/button-arrow.component";
 import { BgGradient } from "../bg-gradient/bg-gradient.component";
 import { SlideSectionProps } from "./slide.section.types";
 import { useMediaQuery } from "../../utils/use-media-query";
+
 export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (props) => {
   const { children, bgImage, title, justify, button, bgVariant, titleWidth, titleAlign, BgRootProps, m } = props;
   const isMobile = useMediaQuery("xs");

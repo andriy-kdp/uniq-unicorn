@@ -1,4 +1,4 @@
-import { Dropdown, LogoContainer, MenuItemContainer, MenuPartContainer } from "./header.styles";
+import { Dropdown, LogoContainer, MenuItemContainer, MenuPartContainer, MobileHeader } from "./header.styles";
 import { MenuItemType, MenuPartProps } from "./header.types";
 
 import { Link, MenuButton } from "../../link/link.styles";
@@ -17,10 +17,13 @@ import { ReactComponent as NewsIcon } from "../../../assets/icons/menu/news_icon
 import { ReactComponent as SecurityIcon } from "../../../assets/icons/menu/security_icon.svg";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../../utils/use-media-query";
+import { MobileMenu } from "../../mobile-menu/mobile-menu.component";
+import { ReactComponent as BlackBanxLogo } from "../../../assets/logo.svg";
+import { Wrap } from "../../wrap/wrap.component";
+
 const menuLeft: MenuItemType[] = [
   {
     label: "About us",
-    path: "/about",
     dropdownItems: [
       {
         label: "Mission",
@@ -171,5 +174,27 @@ export const Header = () => {
       </Section>
     );
   }
-  return null;
+  return (
+    <MobileHeader>
+      <MobileMenu items={menuLeft} />
+      <Wrap sx={{ margin: "0 auto", marginTop: "1rem", transform: "translate(65%)" }}>
+        <Link to={"/"}>
+          <BlackBanxLogo width={"7rem"} height={"5rem"} />
+        </Link>
+      </Wrap>
+      <Wrap
+        sx={{
+          marginLeft: "auto",
+          display: "flex",
+          alignItems: "center",
+          color: "#fff",
+          paddingRight: "2rem",
+          cursor: "pointer",
+        }}
+        onClick={() => nav("/auth/login")}
+      >
+        Login
+      </Wrap>
+    </MobileHeader>
+  );
 };

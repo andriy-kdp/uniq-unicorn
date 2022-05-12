@@ -3,8 +3,19 @@ import { Layout } from "./components/main-layout/layout/layout.component";
 import { Header } from "./components/main-layout/header/header.component";
 import { MainContent } from "./components/main-layout/main-content/main-content.component";
 import { Footer } from "./components/main-layout/footer/footer.component";
+import { useMediaQuery } from "./utils/use-media-query";
+import { useEffect } from "react";
 
 const App = () => {
+  const isMobile = useMediaQuery("xs");
+
+  useEffect(() => {
+    //  fix if mobile menu open and resolution changed
+    if (!isMobile && document.body.style.overflow !== "auto") {
+      document.body.style.overflow = "auto";
+    }
+  }, [isMobile]);
+
   return (
     <Layout>
       <Header />

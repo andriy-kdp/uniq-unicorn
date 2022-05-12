@@ -3,7 +3,6 @@ import { BenefitItemsType } from "../../components/benefits/benefits.types";
 import { Benefits } from "../../components/benefits/benefits.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
 import MainBg from "../../assets/images/backgrounds/home-page/main_bg.png";
-// import { ReactComponent as MapImage } from "../../assets/images/backgrounds/home-page/map_base_markers.svg";
 import MapImage from "../../assets/images/backgrounds/home-page/map_image.png";
 import MockVideo from "../../assets/images/backgrounds/home-page/mock_video.jpg";
 import { Section } from "../../components/section/section.component";
