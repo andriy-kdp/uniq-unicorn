@@ -7,7 +7,6 @@ import { Wrap } from "../wrap/wrap.component";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close_icon.svg";
 import { Divider } from "../divider/divider.styles";
-import { Link } from "../link/link.styles";
 
 const MobileMenuItem: React.FC<MenuItemType & { onClick: (path: string) => void }> = (props): JSX.Element => {
   const [showSubitems, setShowSubitems] = useState<boolean>(false);
@@ -80,22 +79,24 @@ export const MobileMenu: React.FC<MobileMenuProps> = (props) => {
       <MobMenu.Button onClick={handleOpenMenu}>
         <BurgerMenuIcon />
       </MobMenu.Button>
-      <MobMenu.Root open={open} ref={backdropRef} onClick={handleBackdropClick}>
-        <MobMenu.Items.Root>
-          <Wrap
-            sx={{ display: "flex", alignItems: "center", padding: "1rem 0", cursor: "pointer" }}
-            onClick={handleCloseMenu}
-          >
-            <CloseIcon />
-          </Wrap>
-          {items.map((menuItem, idx) => (
-            <MobileMenuItem {...menuItem} onClick={handleClickMenuItem} key={`mobile-menu-section-${idx}`} />
-          ))}
+      {open && (
+        <MobMenu.Root ref={backdropRef} onClick={handleBackdropClick}>
+          <MobMenu.Items.Root>
+            <Wrap
+              sx={{ display: "flex", alignItems: "center", padding: "1rem 0", cursor: "pointer" }}
+              onClick={handleCloseMenu}
+            >
+              <CloseIcon />
+            </Wrap>
+            {items.map((menuItem, idx) => (
+              <MobileMenuItem {...menuItem} onClick={handleClickMenuItem} key={`mobile-menu-section-${idx}`} />
+            ))}
 
-          <MobMenu.Item.Root onClick={() => handleClickMenuItem("/auth/register")}>Sign Up</MobMenu.Item.Root>
-        </MobMenu.Items.Root>
-        <Divider />
-      </MobMenu.Root>
+            <MobMenu.Item.Root onClick={() => handleClickMenuItem("/auth/register")}>Sign Up</MobMenu.Item.Root>
+          </MobMenu.Items.Root>
+          <Divider />
+        </MobMenu.Root>
+      )}
     </>
   );
 };

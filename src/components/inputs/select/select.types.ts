@@ -1,4 +1,5 @@
 import { InputProps } from "./../input/input.types";
+import { CSSProperties } from "react";
 
 export type SelectProps = {
   options: SelectOptions;
@@ -10,6 +11,7 @@ export type SelectProps = {
   fullWidth?: boolean;
   label?: InputProps["label"];
   name?: InputProps["name"];
+  maxWidth?: CSSProperties["maxWidth"];
 };
 
 export type SelectOption = {

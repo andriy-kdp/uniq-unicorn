@@ -1,9 +1,11 @@
 import {
+  CitiesContainer,
   CopyrightContainer,
   FooterLinkItem,
   FooterLinksContainer,
   FooterLinksGroup,
   FooterLinksTitle,
+  SocialNetworkLinkIcon,
   SocialNetworksContainer,
   SocialNetworksLinks,
 } from "./footer.styles";
@@ -21,11 +23,14 @@ import { ReactComponent as FlagIconEsp } from "../../../assets/icons/flags/flag_
 import { ReactComponent as FlagIconPt } from "../../../assets/icons/flags/flag_pt.svg";
 import { ReactComponent as FlagIconRu } from "../../../assets/icons/flags/flag_ru.svg";
 import { ReactComponent as FlagIconUs } from "../../../assets/icons/flags/flag_us.svg";
-import { SelectOption, SelectOptions } from "../../inputs/select/select.types";
+import { SelectHandler, SelectOption, SelectOptions } from "../../inputs/select/select.types";
 import { Select } from "../../inputs/select/select.component";
 import { Wrap } from "../../wrap/wrap.component";
+import { useMediaQuery } from "../../../utils/use-media-query";
+import { FooterConnect } from "./parts/connect";
+import { SelectLanguageAppLink } from "./parts/language-select-app";
 
-const footerLinks: FooterLinkGroup[] = [
+export const footerLinks: FooterLinkGroup[] = [
   {
     title: "Black Banx Group",
     links: [
@@ -44,14 +49,14 @@ const footerLinks: FooterLinkGroup[] = [
   },
 ];
 
-const socialNetworks: { label: string; icon: React.ReactNode; href: string }[] = [
+export const socialNetworks: { label: string; icon: React.ReactNode; href: string }[] = [
   { label: "Facebook", icon: <FacebookIcon />, href: "" },
   { label: "Instagram", icon: <InstagramIcon />, href: "" },
   { label: "LinkedIn", icon: <LinkedInIcon />, href: "" },
   { label: "Twitter", icon: <TwitterIcon />, href: "" },
 ];
 
-const selectOptions: SelectOptions = [
+export const selectOptions: SelectOptions = [
   { id: "opt-1", label: "中文", value: "chinese", endIcon: <FlagIconCn /> },
   {
     id: "opt-2",
@@ -79,15 +84,33 @@ const selectOptions: SelectOptions = [
   },
 ];
 
-const cities: string[] = ["Dubai ", "London ", "Toronto ", "Moscow", "Tokyo", "Shanghai", "Sao", "Paulo", "Cape Town"];
+export const cities: string[] = [
+  "Dubai ",
+  "London ",
+  "Toronto ",
+  "Moscow",
+  "Tokyo",
+  "Shanghai",
+  "Sao Paulo",
+  "Cape Town",
+];
 
 export const Footer = () => {
   const [language, setLanguage] = useState<SelectOption | null>(null);
+
+  const isMobile = useMediaQuery("xs");
+
+  const handleSetLanguage: SelectHandler = (e) => {
+    const { value } = e.target;
+    setLanguage(value);
+  };
+
   return (
     <Section mainContent>
       <FooterLinksContainer>
+        {isMobile && <FooterConnect />}
         {footerLinks.map((el, idx) => (
-          <FooterLinksGroup key={`footer-link-group-${idx}`}>
+          <FooterLinksGroup key={`footer-link-group-${idx}`} maxContent width={"20%"}>
             <FooterLinksTitle>{el.title}</FooterLinksTitle>
             {el.links.map((link, idx) => (
               <FooterLinkItem to={link.path} key={`footer-link-${idx}`}>
@@ -97,47 +120,15 @@ export const Footer = () => {
           </FooterLinksGroup>
         ))}
 
-        <FooterLinksGroup>
-          <FooterLinksTitle>Connect</FooterLinksTitle>
-          <SocialNetworksContainer>
-            <SocialNetworksLinks>
-              {socialNetworks.map((soc, idx) => (
-                <a href={soc.href} title={soc.label} key={`social-link-${idx}`}>
-                  {soc.icon}
-                </a>
-              ))}
-            </SocialNetworksLinks>
-            <Wrap sx={{ maxWidth: "100%", marginLeft: "2rem" }}>
-              <Select
-                fullWidth
-                options={selectOptions}
-                value={language}
-                onSelect={(e) => setLanguage(e.target.value)}
-                optionsPosition={"top"}
-                borderRadius={"small"}
-              />
-            </Wrap>
-
-            <Wrap sx={{ marginLeft: "auto" }}>
-              <AppStoreIcon />
-            </Wrap>
-          </SocialNetworksContainer>
-
-          <Wrap
-            sx={{
-              display: "flex",
-              fontSize: "1.4rem",
-              marginTop: "1rem",
-              width: "100%",
-              alignSelf: "flex-end",
-              justifyContent: "space-between",
-            }}
-          >
-            {cities.map((city) => (
-              <div key={city}>{city}</div>
-            ))}
+        {!isMobile ? (
+          <FooterConnect>
+            <SelectLanguageAppLink language={language} onSelect={handleSetLanguage} />
+          </FooterConnect>
+        ) : (
+          <Wrap sx={{ display: "flex", width: "100%", marginTop: "2rem" }}>
+            <SelectLanguageAppLink language={language} onSelect={handleSetLanguage} reverse />
           </Wrap>
-        </FooterLinksGroup>
+        )}
       </FooterLinksContainer>
       <CopyrightContainer>
         © 2021 Black Banx Inc. All rights reserved. Black Banx Inc. is authorised under Canadian law for providing

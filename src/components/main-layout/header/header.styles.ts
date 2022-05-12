@@ -110,7 +110,7 @@ export const MobileHeader = styled.div`
   display: flex;
   position: sticky;
   z-index: 10;
-  top: 0;
+  top: 0rem;
   background: ${(props) => props.theme.colors.background.primary};
 `;
 

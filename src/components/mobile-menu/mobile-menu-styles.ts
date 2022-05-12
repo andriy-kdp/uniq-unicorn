@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
-const MobileMenuRoot = styled.div<{ open: boolean }>`
-  display: ${(props) => (props.open ? "flex" : "none")};
+const MobileMenuRoot = styled.div`
+  display: flex;
   flex-direction: column;
-  position: fixed;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  height: 100vh;
   z-index: 2;
+  width: 100%;
   user-select: none;
   -moz-user-select: none;
+  background: rgba(21, 21, 21, 0.4);
+  backdrop-filter: blur(8px);
 `;
 
 const MobileMenuItemsRoot = styled.div`

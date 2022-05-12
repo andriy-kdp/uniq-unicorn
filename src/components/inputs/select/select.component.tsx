@@ -21,6 +21,7 @@ export const Select: React.FC<SelectProps> = (props) => {
     InputProps,
     fullWidth,
     name,
+    maxWidth,
   } = props;
 
   const handleCloseList = () => {
@@ -53,7 +54,7 @@ export const Select: React.FC<SelectProps> = (props) => {
 
   return (
     <ClickAwayListener onClickAway={handleCloseList}>
-      <Sel.Root fullWidth={fullWidth}>
+      <Sel.Root fullWidth={fullWidth} maxWidth={maxWidth}>
         <Input
           value={value?.label || ""}
           InputNativeProps={{ readOnly: true, onFocus: handleOpenList }}

@@ -1,10 +1,15 @@
 import { SelectProps } from "./select.types";
 import styled from "styled-components";
 
-const SelectRoot = styled.div<Pick<SelectProps, "fullWidth">>`
+const SelectRoot = styled.div<Pick<SelectProps, "fullWidth" | "maxWidth">>`
   display: flex;
   flex-direction: column;
   position: relative;
+  ${(props) =>
+    props.maxWidth &&
+    `
+    max-width: ${props.maxWidth}
+  `}
   ${(props) => props.fullWidth && `width: 100%`}
 `;
 const OptionsContainer = styled.div<Pick<SelectProps, "optionsPosition" | "borderRadius">>`

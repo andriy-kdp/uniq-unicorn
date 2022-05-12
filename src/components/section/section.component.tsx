@@ -24,6 +24,10 @@ export const Section = styled.div<SectionProps>`
   @media (${media.xs}) {
     padding: 0 2rem;
     margin: 0 auto 10rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
   }
 
   `}
