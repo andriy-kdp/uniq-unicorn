@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { media } from "../../../theme/global";
 import { CSSProperties } from "react";
+import { media } from "../../../utils/use-media-query";
 
 export const FooterLinksContainer = styled.div`
   //display: grid;

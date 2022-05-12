@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { media } from "../utils/use-media-query";
 
 export const articleDataAttribs = {
   H2: "data-header=article-h2",
@@ -10,10 +11,6 @@ export const articleDataAttribs = {
   Blockquote: "data-quote=article-quote",
   Hr: "data-hr=article-h4",
   Img: "data-img=article-img",
-};
-
-export const media = {
-  xs: "max-width: 37rem",
 };
 
 const { Blockquote, Div, H2, H3, Hr, Li, P, Ul, Img } = articleDataAttribs;

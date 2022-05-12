@@ -1,6 +1,6 @@
 import { SectionProps } from "./section.types";
 import styled from "styled-components";
-import { media } from "../../theme/global";
+import { media } from "../../utils/use-media-query";
 
 export const Section = styled.div<SectionProps>`
   position: ${(props) => props.pos || "relative"};

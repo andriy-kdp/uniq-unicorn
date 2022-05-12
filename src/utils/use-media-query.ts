@@ -1,7 +1,14 @@
-import { EventHandler, useCallback, useEffect, useState } from "react";
-import { media } from "../theme/global";
+import { useCallback, useEffect, useState } from "react";
 
-export function useMediaQuery(mediaQuery: "xs"): boolean {
+export const media = {
+  xs: "max-width: 37rem",
+  sm: "max-width: 50rem",
+  md: "max-width: 70rem",
+  lg: "max-width: 90rem",
+  xl: "max-width: 114rem",
+};
+
+export function useMediaQuery(mediaQuery: keyof typeof media): boolean {
   const [matched, setMatched] = useState<boolean>(false);
 
   const getMediaQueryString = useCallback(() => {
