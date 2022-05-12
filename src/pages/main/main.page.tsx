@@ -53,6 +53,7 @@ export const MainPage: React.FC = (): JSX.Element => {
           onClick: handleClickRegister,
         }}
         title={"Private or Business accounts set up in minutes"}
+        mobile={isMobile}
       />
       <Section mainContent m={isMobile ? "10.5rem auto 0" : "auto"}>
         <Benefits items={benefitsList} vertical={isMobile} />

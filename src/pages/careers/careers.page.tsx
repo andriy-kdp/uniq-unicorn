@@ -14,9 +14,9 @@ import { ReactComponent as FlagIconRu } from "../../assets/icons/flags/flag_ru.s
 import { ReactComponent as FlagIconUs } from "../../assets/icons/flags/flag_us.svg";
 import { Wrap } from "../../components/wrap/wrap.component";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg";
-import { InputProps } from "../../components/inputs/input/input.types";
 import { Button } from "../../components/button/button.component";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "../../utils/use-media-query";
 const vacationsList: VacationSection[] = [
   {
     title: "Sales",
@@ -115,7 +115,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
     location: string;
     dateOfPosting: SelectOption | null;
   }>({ keywords: "", location: "", dateOfPosting: null, filterBy: "exact" });
-
+  const isMobile = useMediaQuery("xs");
   const nav = useNavigate();
 
   const commonHandler = (name: string, value: string | SelectOption) => {
@@ -158,22 +158,24 @@ export const CareersPage: React.FC = (): JSX.Element => {
           onClick: handleClickOpenAccount,
         }}
       />
+
       <Section mainContent>
-        <Wrap sx={{ margin: "6rem 0" }}>
+        <Wrap sx={{ margin: isMobile ? "3rem 0" : "6rem 0" }}>
           <h3>We're looking for talented people to join us</h3>
         </Wrap>
-        <Wrap sx={{ marginBottom: "9rem" }}>
-          <img src={careersVideoPlugImg} alt={"Careers video"} />
+        <Wrap sx={{ marginBottom: isMobile ? "3rem" : "9rem" }}>
+          <img src={careersVideoPlugImg} alt={"Careers video"} style={{ position: "relative", width: "100%" }} />
         </Wrap>
       </Section>
+
       <Section mainContent>
-        <Wrap sx={{ width: "76.8rem", margin: "0 auto" }}>
+        <Wrap sx={{ maxWidth: "76.8rem", width: "100%", margin: "0 auto" }}>
           <VacationsComponent sections={vacationsList} />
         </Wrap>
       </Section>
       <Section mainContent>
         <h3>Search for openings:</h3>
-        <Wrap sx={{ width: "76.8rem", margin: "4rem auto 14rem" }}>
+        <Wrap sx={{ maxWidth: "76.8rem", width: "100%", margin: "4rem auto 14rem" }}>
           <Input
             fullWidth
             value={formData["keywords"]}

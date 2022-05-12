@@ -8,8 +8,8 @@ import { SlideSectionProps } from "./slide.section.types";
 import { useMediaQuery } from "../../utils/use-media-query";
 
 export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (props) => {
-  const { children, bgImage, title, justify, button, bgVariant, titleWidth, titleAlign, BgRootProps, m } = props;
-  const isMobile = useMediaQuery("xs");
+  const { children, bgImage, title, justify, button, bgVariant, titleWidth, titleAlign, BgRootProps, m, mobile } =
+    props;
   return (
     <>
       <Section align={"center"} m={m}>
@@ -41,13 +41,13 @@ export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (pro
           mainContent
           justify={"center"}
           align={justify === "center" ? "center" : justify === "right" ? "flex-end" : "flex-start"}
-          pos={isMobile ? "relative" : "absolute"}
+          pos={mobile ? "relative" : "absolute"}
           h={"100%"}
         >
           {title && (
             <Wrap
               sx={{
-                maxWidth: titleWidth || !isMobile ? "60%" : "100%",
+                maxWidth: titleWidth || !mobile ? "60%" : "100%",
                 textTransform: "uppercase",
                 display: "flow-root",
                 textAlign: titleAlign || "start",

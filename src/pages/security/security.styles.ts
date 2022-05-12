@@ -1,15 +1,11 @@
 import styled from "styled-components";
-
-const SecurityPostsRoot = styled.div`
-  display: grid;
-  grid-template-columns: 50% 50%;
-  column-gap: 6rem;
-`;
+import { media } from "../../utils/use-media-query";
 
 export const PostItemRoot = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 46%;
+  min-width: 35rem;
 `;
 
 export const PostTitle = styled.h2`
@@ -33,6 +29,29 @@ export const PostDescriptiotn = styled.div`
 `;
 
 export const PostImage = styled.img``;
+
+const SecurityPostsRoot = styled.div`
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4%;
+  justify-content: center;
+
+  @media (${media.md}) {
+    & ${PostTitle} {
+      font-size: 3.6rem;
+      line-height: 4.4rem;
+    }
+  }
+
+  @media (${media.sm}) {
+    & ${PostTitle} {
+      margin: 3rem auto 1rem;
+      min-height: 0;
+    }
+  }
+`;
 
 export const SecPosts = {
   Root: SecurityPostsRoot,

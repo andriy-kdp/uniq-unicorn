@@ -15,4 +15,5 @@ export type SlideSectionProps = {
   titleWidth?: CSSProperties["maxWidth"];
   titleAlign?: CSSProperties["textAlign"];
   BgRootProps?: WrapProps["sx"];
+  mobile?: boolean;
 };
