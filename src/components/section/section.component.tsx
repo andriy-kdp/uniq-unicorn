@@ -1,5 +1,6 @@
 import { SectionProps } from "./section.types";
 import styled from "styled-components";
+import { media } from "../../theme/global";
 
 export const Section = styled.div<SectionProps>`
   position: ${(props) => props.pos || "relative"};
@@ -20,6 +21,10 @@ export const Section = styled.div<SectionProps>`
     props.mainContent &&
     `
   max-width: 114rem;
+  @media (${media.xs}) {
+    padding: 0 2rem;
+    margin: 0 auto 10rem;
+  }
 
   `}
 `;

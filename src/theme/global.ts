@@ -12,6 +12,10 @@ export const articleDataAttribs = {
   Img: "data-img=article-img",
 };
 
+export const media = {
+  xs: "max-width: 37rem",
+};
+
 const { Blockquote, Div, H2, H3, Hr, Li, P, Ul, Img } = articleDataAttribs;
 
 export default createGlobalStyle`
@@ -109,5 +113,18 @@ blockquote[${Blockquote}] {
 }
 img[${Img}] {
   margin: 7rem 0
+}
+
+@media (${media.xs}) {
+  h1 {
+    font-size: 3.2rem;
+    line-height: 5.8rem;
+  };
+  
+  h2 {
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+  }
+  
 }
 `;

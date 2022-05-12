@@ -11,7 +11,7 @@ const App = () => {
       <MainContent>
         <AppRouter />
       </MainContent>
-      <Footer />
+      {/*<Footer />*/}
     </Layout>
   );
 };

@@ -35,7 +35,7 @@ export const BenefitsContainer = styled.div<Omit<BenefitsProps, "items">>`
   display: grid;
   column-gap: 5rem;
   row-gap: 5rem;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: ${(props) => (props.vertical ? "1fr" : "1fr 1fr 1fr")};
   ${(props) =>
     props.secondary &&
     `

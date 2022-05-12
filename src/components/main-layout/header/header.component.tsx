@@ -16,6 +16,7 @@ import { ReactComponent as MissionIcon } from "../../../assets/icons/menu/missio
 import { ReactComponent as NewsIcon } from "../../../assets/icons/menu/news_icon.svg";
 import { ReactComponent as SecurityIcon } from "../../../assets/icons/menu/security_icon.svg";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "../../../utils/use-media-query";
 const menuLeft: MenuItemType[] = [
   {
     label: "About us",
@@ -127,7 +128,7 @@ const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest
 export const Header = () => {
   const [submenuItems, setSubmenuItems] = useState<Omit<MenuItemType, "dropdownItems">[] | null>(null);
   const nav = useNavigate();
-
+  const isMobile = useMediaQuery("xs");
   const handleSubmenuClick =
     (path: string | undefined): MouseEventHandler<HTMLButtonElement> =>
     () => {
@@ -136,37 +137,39 @@ export const Header = () => {
         nav(path);
       }
     };
-
-  return (
-    <Section mainContent direction={"row"} justify={"center"} onMouseLeave={() => setSubmenuItems(null)} mh={"13rem"}>
-      <MenuPart menuItems={menuLeft} setSubmenuItems={setSubmenuItems} />
-      <LogoContainer small={!!submenuItems}>
-        <Link to={"/"}>
-          <MainLogo />
-        </Link>
-      </LogoContainer>
-      <MenuPart menuItems={menuRight} right />
-      <Dropdown.Root mounted={!!submenuItems}>
-        <Dropdown.Items.Root>
-          {submenuItems?.map((subItem, index) => {
-            const { Root, Description, Icon, Label } = Dropdown.Item;
-            return (
-              <Root onClick={handleSubmenuClick(subItem.path)} key={`${Date.now()}-menu-sub-${index}`}>
-                <Icon>{subItem.icon}</Icon>
-                <Label.Root>
-                  <Label.Text>{subItem.label}</Label.Text>
-                  <Description>{subItem.description}</Description>
-                </Label.Root>
-              </Root>
-            );
-          })}
-        </Dropdown.Items.Root>
-        <Divider
-          background={
-            "linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #CECECE 30.73%, #CBCBCB 67.19%, rgba(12, 12, 12, 0) 100%);"
-          }
-        />
-      </Dropdown.Root>
-    </Section>
-  );
+  if (!isMobile) {
+    return (
+      <Section mainContent direction={"row"} justify={"center"} onMouseLeave={() => setSubmenuItems(null)} mh={"13rem"}>
+        <MenuPart menuItems={menuLeft} setSubmenuItems={setSubmenuItems} />
+        <LogoContainer small={!!submenuItems}>
+          <Link to={"/"}>
+            <MainLogo />
+          </Link>
+        </LogoContainer>
+        <MenuPart menuItems={menuRight} right />
+        <Dropdown.Root mounted={!!submenuItems}>
+          <Dropdown.Items.Root>
+            {submenuItems?.map((subItem, index) => {
+              const { Root, Description, Icon, Label } = Dropdown.Item;
+              return (
+                <Root onClick={handleSubmenuClick(subItem.path)} key={`${Date.now()}-menu-sub-${index}`}>
+                  <Icon>{subItem.icon}</Icon>
+                  <Label.Root>
+                    <Label.Text>{subItem.label}</Label.Text>
+                    <Description>{subItem.description}</Description>
+                  </Label.Root>
+                </Root>
+              );
+            })}
+          </Dropdown.Items.Root>
+          <Divider
+            background={
+              "linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #CECECE 30.73%, #CBCBCB 67.19%, rgba(12, 12, 12, 0) 100%);"
+            }
+          />
+        </Dropdown.Root>
+      </Section>
+    );
+  }
+  return null;
 };
