@@ -4,33 +4,38 @@ import { Select } from "../../../inputs/select/select.component";
 import { ReactComponent as AppStoreIcon } from "../../../../assets/icons/social/app_store_button.svg";
 import { selectOptions } from "../footer.component";
 import { SelectLanguageAppLinkProps } from "../footer.types";
+import {
+  FooterConnectOptions,
+  SelectLanguageAppLinkRoot,
+} from "./connect.styles";
+import { Input } from "../../../inputs/input/input.component";
 
-export const SelectLanguageAppLink: React.FC<SelectLanguageAppLinkProps> = (props) => {
+export const SelectLanguageAppLink: React.FC<SelectLanguageAppLinkProps> = (
+  props,
+) => {
   const { language, onSelect, reverse } = props;
+  const handleAppIconClick = () => {
+    window.open("about:blank", "noopener norefferer");
+  };
   return (
-    <Wrap
-      sx={{
-        display: "flex",
-        flexDirection: reverse ? "row-reverse" : "row",
-        width: "100%",
-        flexWrap: "wrap",
-        gap: "1rem",
-      }}
-    >
-      <Wrap sx={{ maxWidth: "12rem", margin: "0 auto" }}>
-        <Select
-          options={selectOptions}
-          value={language}
-          onSelect={onSelect}
-          optionsPosition={"top"}
-          borderRadius={"small"}
-          fullWidth
-        />
-      </Wrap>
+    <SelectLanguageAppLinkRoot>
+      <Select
+        options={selectOptions}
+        value={language}
+        onSelect={onSelect}
+        optionsPosition={"top"}
+        borderRadius={"small"}
+        fullWidth
+        borderColor={"secondary"}
+        noAdornment
+      />
 
-      <Wrap sx={{ marginLeft: "auto" }}>
+      <Wrap
+        sx={{ marginLeft: "auto", cursor: "pointer" }}
+        onClick={handleAppIconClick}
+      >
         <AppStoreIcon />
       </Wrap>
-    </Wrap>
+    </SelectLanguageAppLinkRoot>
   );
 };

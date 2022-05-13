@@ -11,41 +11,53 @@ import {
 import { useMediaQuery } from "../../../../utils/use-media-query";
 import { cities, socialNetworks } from "../footer.component";
 import { Wrap } from "../../../wrap/wrap.component";
+import { FooterConnectOptions, FooterConnectRoot } from "./connect.styles";
 
-export const FooterConnect: React.FC<PropsWithChildren<any>> = (props): JSX.Element => {
+export const FooterConnect: React.FC<PropsWithChildren<any>> = (
+  props,
+): JSX.Element => {
   const { children } = props;
   const isMobile = useMediaQuery("xs");
   return (
-    <FooterLinksGroup width={"56%"}>
+    <FooterConnectRoot>
       <FooterLinksTitle withSocialLinks={isMobile}>
         Connect
         {isMobile && (
           <SocialNetworksLinks small={isMobile}>
             {socialNetworks.map((soc, idx) => (
-              <SocialNetworkLinkIcon href={soc.href} title={soc.label} key={`social-link-${idx}`}>
+              <SocialNetworkLinkIcon
+                href={soc.href}
+                title={soc.label}
+                key={`social-link-${idx}`}
+              >
                 {soc.icon}
               </SocialNetworkLinkIcon>
             ))}
           </SocialNetworksLinks>
         )}
       </FooterLinksTitle>
-      <SocialNetworksContainer>
+      <FooterConnectOptions>
         {!isMobile && (
           <SocialNetworksLinks>
             {socialNetworks.map((soc, idx) => (
-              <SocialNetworkLinkIcon href={soc.href} title={soc.label} key={`social-link-${idx}`}>
+              <SocialNetworkLinkIcon
+                href={soc.href}
+                title={soc.label}
+                key={`social-link-${idx}`}
+              >
                 {soc.icon}
               </SocialNetworkLinkIcon>
             ))}
           </SocialNetworksLinks>
         )}
         {children}
-      </SocialNetworksContainer>
+      </FooterConnectOptions>
+
       <CitiesContainer>
         {cities.map((city) => (
           <div key={city}>{city}</div>
         ))}
       </CitiesContainer>
-    </FooterLinksGroup>
+    </FooterConnectRoot>
   );
 };

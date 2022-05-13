@@ -8,15 +8,6 @@ export const InputBody = styled.div<Pick<InputProps, "fullWidth">>`
   ${(props) => props.fullWidth && `width: 100%`}
 `;
 
-const InputContainer = styled.div<Pick<InputProps, "borderRadius">>`
-  display: flex;
-  width: 100%;
-  border: 1px solid rgba(242, 242, 242, 0.2);
-
-  border-radius: 1.6rem;
-  overflow: hidden;
-  ${(props) => props.borderRadius === "small" && `border-radius: 0.7rem`};
-`;
 const InputLabel = styled.span`
   margin-bottom: 1.4rem;
   font-style: normal;
@@ -26,6 +17,21 @@ const InputLabel = styled.span`
   color: ${(props) => props.theme.colors.text.secondary};
 `;
 
+const InputContainer = styled.div<
+  Pick<InputProps, "borderRadius" | "borderColor">
+>`
+  display: flex;
+  width: 100%;
+  border: ${(props) =>
+    props.borderColor === "secondary"
+      ? " 1px solid #A6A6A6"
+      : "1px solid rgba(242, 242, 242, 0.2)"};
+
+  border-radius: ${(props) =>
+    props.borderRadius !== "small" ? "1.6rem" : "0.7rem"};
+  overflow: hidden;
+`;
+
 const InputMain = styled.input<Pick<InputProps, "_select" | "startIcon">>`
   background: none;
   border: none;
@@ -33,6 +39,7 @@ const InputMain = styled.input<Pick<InputProps, "_select" | "startIcon">>`
   line-height: 0;
   height: 100%;
   width: 100%;
+  min-width: 3rem;
   padding: 1rem 2rem;
   font-size: 1.6rem;
   line-height: 2rem;
@@ -41,15 +48,15 @@ const InputMain = styled.input<Pick<InputProps, "_select" | "startIcon">>`
   ::placeholder {
     color: #828282;
   }
-  ${(props) => props._select && `padding: 1rem`}
-  ${(props) => props.startIcon && "padding: 1rem 0"}
+  ${(props) => props.startIcon && "padding: 1rem 0"};
+  ${(props) => props._select && `padding: 0.9rem 0.5rem`}
 `;
 
 const InputIconRoot = styled.div<Pick<InputProps, "IconRootProps">>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 1.2rem 0 2.4rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   cursor: pointer;
 `;
 

@@ -3,23 +3,34 @@ import styled from "styled-components";
 import { CSSProperties } from "react";
 import { media } from "../../../utils/use-media-query";
 
-export const FooterLinksContainer = styled.div`
-  //display: grid;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 100%;
-  //grid-template-columns: 2fr 1.5fr;
-  column-gap: 2rem;
+export const FooterRoot = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin: 2rem 0;
-  @media (${media.xs}) {
+  gap: 2rem;
+  width: 100%;
+  @media (${media.sm}) {
     grid-template-columns: 1fr;
   }
 `;
 
-export const FooterLinksGroup = styled.div<{ maxContent?: boolean; width?: CSSProperties["width"] }>`
+export const FooterLinksRoot = styled.div`
+  display: grid;
+  //display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+`;
+
+export const FooterLinksGroup = styled.div<{
+  maxContent?: boolean;
+  width?: CSSProperties["width"];
+}>`
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
   width: ${(props) => props.width || "100%"};
   ${(props) =>
     props.maxContent &&
@@ -55,20 +66,19 @@ export const CopyrightContainer = styled.div`
 export const SocialNetworksContainer = styled.div`
   display: flex;
   width: 100%;
-  margin-top: 0.7rem;
   align-items: center;
   justify-content: space-between;
 `;
 
 export const SocialNetworkLinkIcon = styled.a`
-  display: flex;
+  display: block;
 `;
 
 export const SocialNetworksLinks = styled.div<{ small?: boolean }>`
   display: flex;
-  max-width: 20rem;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   ${(props) =>
     props.small &&
     `

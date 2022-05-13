@@ -12,7 +12,9 @@ const SelectRoot = styled.div<Pick<SelectProps, "fullWidth" | "maxWidth">>`
   `}
   ${(props) => props.fullWidth && `width: 100%`}
 `;
-const OptionsContainer = styled.div<Pick<SelectProps, "optionsPosition" | "borderRadius">>`
+const OptionsContainer = styled.div<
+  Pick<SelectProps, "optionsPosition" | "borderRadius">
+>`
   user-select: none;
   display: flex;
   flex-direction: column;
@@ -33,6 +35,7 @@ const OptionItemContainer = styled.div`
   cursor: pointer;
   padding: 0.5rem 1rem;
   transition-duration: 200ms;
+  width: 100%;
   :hover {
     background-color: rgba(255, 255, 255, 0.05);
   }
@@ -46,8 +49,6 @@ const OptionIconRoot = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 1.8rem;
-  padding-left: 0.8rem;
 `;
 
 const InputAdornmentRoot = styled.div`

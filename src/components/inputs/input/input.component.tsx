@@ -19,12 +19,13 @@ export const Input: React.FC<PropsWithChildren<InputProps>> = (props) => {
     endIcon,
     _select,
     borderRadius,
+    borderColor,
     name,
   } = props;
   return (
     <Inp.Body fullWidth={fullWidth} {...RootProps}>
       {label && <Inp.Input.Label {...LabelRootProps}>{label}</Inp.Input.Label>}
-      <Inp.Root borderRadius={borderRadius}>
+      <Inp.Root borderRadius={borderRadius} borderColor={borderColor}>
         {startIcon && (
           <Inp.Icon.Root onClick={onIconClick} {...IconRootProps}>
             {startIcon}

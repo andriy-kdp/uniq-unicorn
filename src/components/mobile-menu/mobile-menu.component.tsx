@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close_icon.svg";
 import { Divider } from "../divider/divider.styles";
 
-const MobileMenuItem: React.FC<MenuItemType & { onClick: (path: string) => void }> = (props): JSX.Element => {
+const MobileMenuItem: React.FC<
+  MenuItemType & { onClick: (path: string) => void }
+> = (props): JSX.Element => {
   const [showSubitems, setShowSubitems] = useState<boolean>(false);
   const { Root, Sub } = MobMenu.Item;
   const handleItemClick = (path?: string) => () => {
@@ -28,7 +30,14 @@ const MobileMenuItem: React.FC<MenuItemType & { onClick: (path: string) => void 
               onClick={handleItemClick(sub.path)}
               key={`mobile-menu-item-${idx}`}
             >
-              <Wrap sx={{ marginRight: "2rem", display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <Wrap
+                sx={{
+                  marginRight: "2rem",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 {sub.icon}
               </Wrap>
               <Sub.Title.Root>
@@ -60,7 +69,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = (props) => {
     setOpen(false);
   };
 
-  const handleBackdropClick: MouseEventHandler<HTMLButtonElement | HTMLDivElement> = (e) => {
+  const handleBackdropClick: MouseEventHandler<
+    HTMLButtonElement | HTMLDivElement
+  > = (e) => {
     const { target } = e;
     const backdrop = backdropRef.current;
     if (target === backdrop) {
@@ -80,22 +91,35 @@ export const MobileMenu: React.FC<MobileMenuProps> = (props) => {
         <BurgerMenuIcon />
       </MobMenu.Button>
       {open && (
-        <MobMenu.Root ref={backdropRef} onClick={handleBackdropClick}>
+        <MobMenu.Backdrop ref={backdropRef} onClick={handleBackdropClick}>
           <MobMenu.Items.Root>
             <Wrap
-              sx={{ display: "flex", alignItems: "center", padding: "1rem 0", cursor: "pointer" }}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                padding: "1rem 0",
+                cursor: "pointer",
+              }}
               onClick={handleCloseMenu}
             >
               <CloseIcon />
             </Wrap>
             {items.map((menuItem, idx) => (
-              <MobileMenuItem {...menuItem} onClick={handleClickMenuItem} key={`mobile-menu-section-${idx}`} />
+              <MobileMenuItem
+                {...menuItem}
+                onClick={handleClickMenuItem}
+                key={`mobile-menu-section-${idx}`}
+              />
             ))}
 
-            <MobMenu.Item.Root onClick={() => handleClickMenuItem("/auth/register")}>Sign Up</MobMenu.Item.Root>
+            <MobMenu.Item.Root
+              onClick={() => handleClickMenuItem("/auth/register")}
+            >
+              Sign Up
+            </MobMenu.Item.Root>
           </MobMenu.Items.Root>
           <Divider />
-        </MobMenu.Root>
+        </MobMenu.Backdrop>
       )}
     </>
   );

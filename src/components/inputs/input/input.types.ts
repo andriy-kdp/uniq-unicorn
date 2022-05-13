@@ -17,5 +17,6 @@ export type InputProps = {
   IconRootProps?: React.HTMLAttributes<HTMLDivElement>;
   LabelRootProps?: React.HTMLAttributes<HTMLSpanElement>;
   name?: string;
+  borderColor?: "secondary";
   _select?: boolean;
 };

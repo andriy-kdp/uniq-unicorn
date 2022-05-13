@@ -12,6 +12,8 @@ export type SelectProps = {
   label?: InputProps["label"];
   name?: InputProps["name"];
   maxWidth?: CSSProperties["maxWidth"];
+  borderColor?: InputProps["borderColor"];
+  noAdornment?: boolean;
 };
 
 export type SelectOption = {
@@ -20,6 +22,7 @@ export type SelectOption = {
   label: string;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
+  abbr?: string;
 };
 
 export type SimpleSelectEvent = {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MobileMenuRoot = styled.div`
+const MobileMenuBackdrop = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -11,6 +11,7 @@ const MobileMenuRoot = styled.div`
   -moz-user-select: none;
   background: rgba(21, 21, 21, 0.4);
   backdrop-filter: blur(8px);
+  overflow-y: auto;
 `;
 
 const MobileMenuItemsRoot = styled.div`
@@ -78,7 +79,7 @@ const MobileMenuOpenButton = styled.button`
 
 export const MobMenu = {
   Button: MobileMenuOpenButton,
-  Root: MobileMenuRoot,
+  Backdrop: MobileMenuBackdrop,
   Icon: {
     Root: MobileMenuIconRoot,
     Button: MobileMenuIcon,
