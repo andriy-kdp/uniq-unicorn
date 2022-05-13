@@ -3,7 +3,10 @@ import { useParams } from "react-router-dom";
 import { ButtonArrow } from "../../../components/button-arrow/button-arrow.component";
 import { Input } from "../../../components/inputs/input/input.component";
 import { Select } from "../../../components/inputs/select/select.component";
-import { SelectHandler, SelectOption } from "../../../components/inputs/select/select.types";
+import {
+  SelectHandler,
+  SelectOption,
+} from "../../../components/inputs/select/select.types";
 import { Section } from "../../../components/section/section.component";
 import { Wrap } from "../../../components/wrap/wrap.component";
 import { Form, Register } from "./register.styles";
@@ -28,7 +31,7 @@ type ProvateAccountFormType = {
 
 type BusinessAccountFormType = Omit<
   ProvateAccountFormType,
-  "accountCurrencyFirst" | "accountCurrencySecond" | "email" | "emailConfirm" | "password" | "passwordConfirm"
+  "accountCurrencyFirst" | "accountCurrencySecond"
 > & {
   businessName: string;
   businessAddress: string;
@@ -75,6 +78,10 @@ const initBusinessForm: BusinessAccountFormType = {
   registrationNumber: "",
   url: "",
   validUntil: "",
+  email: "",
+  emailConfirm: "",
+  password: "",
+  passwordConfirm: "",
 };
 
 const initPrivateForm: ProvateAccountFormType = {
@@ -262,8 +269,8 @@ const businessForm: FormSection<BusinessAccountFormType>[] = [
       },
       {
         name: "cityOfIncorporation",
-        label: "Business name",
-        placeholder: "Business name",
+        label: "City Of Incorporation",
+        placeholder: "City Of Incorporation",
         type: "select",
         selectOptions: [
           { id: "cor-1", label: "Country-1", value: "country_1" },
@@ -298,6 +305,56 @@ const businessForm: FormSection<BusinessAccountFormType>[] = [
   {
     fields: [
       {
+        name: "fullName",
+        label: "Full Name",
+        placeholder: "Full Name",
+        type: "text",
+      },
+      {
+        name: "dateOfBirth",
+        label: "Date of Birth",
+        placeholder: "DD/MM/YYYY",
+        type: "text",
+      },
+      {
+        name: "address",
+        label: "Address",
+        placeholder: "Address",
+        type: "text",
+      },
+      {
+        name: "postCode",
+        label: "Postcode",
+        placeholder: "Postcode",
+        type: "text",
+      },
+      {
+        name: "countryOfResidence",
+        label: "Country of Residence",
+        placeholder: "",
+        type: "select",
+        selectOptions: [
+          { id: "cor-1", label: "Country-1", value: "country_1" },
+          { id: "cor-2", label: "Country-2", value: "country_2" },
+          { id: "cor-3", label: "Country-3", value: "country_3" },
+        ],
+      },
+      {
+        name: "nationality",
+        label: "Nationality",
+        placeholder: "",
+        type: "select",
+        selectOptions: [
+          { id: "cor-1", label: "Country-1", value: "country_1" },
+          { id: "cor-2", label: "Country-2", value: "country_2" },
+          { id: "cor-3", label: "Country-3", value: "country_3" },
+        ],
+      },
+    ],
+  },
+  {
+    fields: [
+      {
         name: "passportNumber",
         label: "Passport / ID Number",
         placeholder: "Passport / ID Number",
@@ -323,18 +380,59 @@ const businessForm: FormSection<BusinessAccountFormType>[] = [
       },
     ],
   },
+  {
+    fields: [
+      {
+        name: "email",
+        label: "Email address",
+        placeholder: "Email address",
+        type: "text",
+      },
+      {
+        name: "emailConfirm",
+        label: "Confirm email address",
+        placeholder: "Confirm email address",
+        type: "text",
+      },
+      {
+        name: "password",
+        label: "Password",
+        placeholder: "Password",
+        type: "text",
+      },
+      {
+        name: "passwordConfirm",
+        label: "Confirm Password",
+        placeholder: "Confirm Password",
+        type: "text",
+      },
+    ],
+  },
 ];
 
 export const RegisterPage = () => {
   const [currentSection, setCurrentSection] = useState<number>(0);
-  const [formSections, setForomSections] = useState<typeof businessForm | typeof privateForm | null>([]);
+  const [formSections, setForomSections] = useState<
+    typeof businessForm | typeof privateForm | null
+  >([]);
   const { type } = useParams();
-  const [formData, setFormData] = useState<typeof initBusinessForm | typeof initPrivateForm | null>(null);
+  const [formData, setFormData] = useState<
+    typeof initBusinessForm | typeof initPrivateForm | null
+  >(null);
 
-  const handleClickNextSection = () =>
-    setCurrentSection((prev) => (formSections && prev < formSections.length - 1 ? ++prev : prev));
+  const handleClickNextSection = () => {
+    if (formSections) {
+      if (currentSection === formSections.length - 1) {
+        return console.log("SUBMIT", formData);
+      }
+      setCurrentSection((prev) =>
+        prev < formSections.length - 1 ? ++prev : prev,
+      );
+    }
+  };
 
-  const handleClickPrevSection = () => setCurrentSection((prev) => (prev > 0 ? --prev : prev));
+  const handleClickPrevSection = () =>
+    setCurrentSection((prev) => (prev > 0 ? --prev : prev));
 
   const updateForm = (name: string, value: string | SelectOption) => {
     // @ts-ignore
@@ -366,7 +464,14 @@ export const RegisterPage = () => {
           <Form.Root>
             {/* @ts-ignore */}
             {formSections[currentSection].fields.map((field) => {
-              const { type, label, name, placeholder, selectOptions, helperText } = field;
+              const {
+                type,
+                label,
+                name,
+                placeholder,
+                selectOptions,
+                helperText,
+              } = field;
               let input: React.ReactNode;
               if (type === "select") {
                 input = (
@@ -393,12 +498,21 @@ export const RegisterPage = () => {
                     placeholder={placeholder}
                     helperText={helperText}
                     fullWidth
+                    InputNativeProps={{
+                      type:
+                        name === "password" || name === "passwordConfirm"
+                          ? "password"
+                          : "text",
+                    }}
                   />
                 );
               }
 
               return (
-                <Wrap sx={{ display: "flex", width: "100%", marginTop: "3rem" }} key={field.name}>
+                <Wrap
+                  sx={{ display: "flex", width: "100%", marginTop: "3rem" }}
+                  key={field.name}
+                >
                   {input}
                 </Wrap>
               );
@@ -417,7 +531,11 @@ export const RegisterPage = () => {
         }}
       >
         <Wrap sx={{ marginLeft: "auto" }}>
-          <ButtonArrow direction="left" onClick={handleClickPrevSection} disabled={currentSection === 0}>
+          <ButtonArrow
+            direction="left"
+            onClick={handleClickPrevSection}
+            disabled={currentSection === 0}
+          >
             Prev
           </ButtonArrow>
         </Wrap>
@@ -425,15 +543,18 @@ export const RegisterPage = () => {
         <ButtonArrow
           onClick={handleClickNextSection}
           // @ts-ignore
-          disabled={currentSection + 1 > formSections?.length - 1}
         >
-          Next
+          {formSections && currentSection !== formSections?.length - 1
+            ? "Next"
+            : "Register"}
         </ButtonArrow>
       </Wrap>
       <Register.Help.Root>
         <Wrap sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
           <Register.Help.Title>Need help?</Register.Help.Title>
-          <Register.Help.SubTitle>SubtiContact us via support@blackbanx.comtle</Register.Help.SubTitle>
+          <Register.Help.SubTitle>
+            Contact us via support@blackbanx.comtle
+          </Register.Help.SubTitle>
         </Wrap>
         <Input
           value={""}

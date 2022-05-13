@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../../utils/use-media-query";
 const ChooseAccountRoot = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,6 +14,9 @@ const AccountVariantsRoot = styled.div`
   width: 100%;
   margin-top: 12rem;
   cursor: pointer;
+  @media (${media.sm}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ChooseAccountSubtitle = styled.span`

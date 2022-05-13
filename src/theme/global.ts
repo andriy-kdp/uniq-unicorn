@@ -85,7 +85,10 @@ h3[${H3}] {
   line-height: 3.8rem;
 }
 div[${Div}] {
-  margin-bottom: 6rem
+  margin-bottom: 6rem;
+  @media (${media.sm}) {
+    margin-bottom: 3rem;
+  } 
 }
 p[${P}] {
   margin-bottom: 2rem
@@ -106,10 +109,22 @@ blockquote[${Blockquote}] {
   h4 {
     font-style: italic;
     margin-bottom: 3.2rem;
+  };
+  @media (${media.sm}) {
+    margin: 0 0 3rem;
+    h4 {
+      max-width: 70%;
+      font-size: 2.4rem;
+      font-style: italic;
+      margin-bottom: 3rem;
+      line-height: 3.6rem;
+    };
   }
 }
 img[${Img}] {
-  margin: 7rem 0
+  margin: 7rem 0;
+  position: relative;
+  width: 100%;
 }
 
 @media (${media.xs}) {

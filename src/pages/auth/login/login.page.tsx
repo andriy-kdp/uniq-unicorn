@@ -7,12 +7,17 @@ import { Paper } from "../../../components/paper/paper.component";
 import { Section } from "../../../components/section/section.component";
 import { Wrap } from "../../../components/wrap/wrap.component";
 import { Login } from "./login.styles";
+import { useMediaQuery } from "../../../utils/use-media-query";
 
 export const LoginPage: React.FC = (): JSX.Element => {
-  const [formData, setFormData] = useState<{ email: string; password: string }>({
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState<{ email: string; password: string }>(
+    {
+      email: "",
+      password: "",
+    },
+  );
+
+  const isMobile = useMediaQuery("sm");
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, value } = e.target;
@@ -25,11 +30,18 @@ export const LoginPage: React.FC = (): JSX.Element => {
 
   return (
     <Section bgImg={MainBg}>
-      <Section mainContent>
-        <Paper sx={{ margin: "8.5rem auto 5rem", padding: "5rem 7rem" }}>
+      <Section mainContent={!isMobile}>
+        <Paper
+          sx={{
+            margin: isMobile ? "0 auto 2rem" : "8.5rem auto 5rem",
+            padding: isMobile ? "2rem" : "5rem 7rem",
+          }}
+        >
           <Login.Title.Root>
             <Login.Title.Sub>Log in</Login.Title.Sub>
-            <Login.Title.Text>Login to your Black Banx Account</Login.Title.Text>
+            <Login.Title.Text>
+              Login to your Black Banx Account
+            </Login.Title.Text>
           </Login.Title.Root>
           <Wrap sx={{ marginBottom: "3rem" }}>
             <Input
@@ -51,7 +63,14 @@ export const LoginPage: React.FC = (): JSX.Element => {
             />
           </Wrap>
 
-          <Wrap sx={{ display: "flex", width: "100%", justifyContent: "center", marginBottom: "3.2rem" }}>
+          <Wrap
+            sx={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "center",
+              marginBottom: "3.2rem",
+            }}
+          >
             <ButtonArrow onClick={handleSubmit}>Login</ButtonArrow>
           </Wrap>
           <Wrap
@@ -63,7 +82,9 @@ export const LoginPage: React.FC = (): JSX.Element => {
             }}
           >
             <Wrap sx={{ marginRight: "6rem" }}>
-              <FooterLinkItem to={"/auth/forgot_password"}>Forgot your password?</FooterLinkItem>
+              <FooterLinkItem to={"/auth/forgot_password"}>
+                Forgot your password?
+              </FooterLinkItem>
             </Wrap>
             <Wrap>
               <FooterLinkItem to={"/auth/register"}>

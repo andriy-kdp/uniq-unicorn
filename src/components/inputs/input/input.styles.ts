@@ -11,7 +11,8 @@ export const InputBody = styled.div<Pick<InputProps, "fullWidth">>`
 const InputContainer = styled.div<Pick<InputProps, "borderRadius">>`
   display: flex;
   width: 100%;
-  border: 1px solid ${(props) => props.theme.colors.text.primary};
+  border: 1px solid rgba(242, 242, 242, 0.2);
+
   border-radius: 1.6rem;
   overflow: hidden;
   ${(props) => props.borderRadius === "small" && `border-radius: 0.7rem`};

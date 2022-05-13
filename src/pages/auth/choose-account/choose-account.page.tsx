@@ -7,6 +7,7 @@ import { ReactComponent as BusinessIcon } from "../../../assets/icons/choose-acc
 import { Wrap } from "../../../components/wrap/wrap.component";
 import { Section } from "../../../components/section/section.component";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "../../../utils/use-media-query";
 type AccountTypes = "private" | "business" | "institutional";
 
 type AccountItem = {
@@ -26,6 +27,7 @@ const accountVariants: AccountItem[] = [
 ];
 
 export const ChooseAccountPage: React.FC = (): JSX.Element => {
+  const isMobile = useMediaQuery("sm");
   const navigate = useNavigate();
   const handleClick =
     (value: AccountTypes): MouseEventHandler<HTMLDivElement> =>
@@ -59,14 +61,21 @@ export const ChooseAccountPage: React.FC = (): JSX.Element => {
                 key={acc.value}
                 sx={{
                   display: "flex",
-                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  flexDirection: isMobile ? "row-reverse" : "column",
                   width: "100%",
                   alignItems: "center",
+                  maxWidth: isMobile ? "50rem" : "auto",
+                  margin: "8rem auto 0",
                 }}
                 onClick={handleClick(acc.value)}
               >
-                <Accounts.Variants.Item.Icon.Root>{acc.icon}</Accounts.Variants.Item.Icon.Root>
-                <Accounts.Variants.Item.Title>{acc.title}</Accounts.Variants.Item.Title>
+                <Accounts.Variants.Item.Icon.Root>
+                  {acc.icon}
+                </Accounts.Variants.Item.Icon.Root>
+                <Accounts.Variants.Item.Title>
+                  {acc.title}
+                </Accounts.Variants.Item.Title>
               </Wrap>
             ))}
           </Accounts.Variants.Root>
