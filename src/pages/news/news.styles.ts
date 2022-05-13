@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../utils/use-media-query";
 
 const NewsRoot = styled.div`
   display: flex;
@@ -10,10 +11,14 @@ const NewsItemRoot = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 16rem;
+  @media (${media.sm}) {
+    margin-bottom: 3rem;
+  }
 `;
 
 const NewsItemPreviewRoot = styled.div<{ multiImages?: boolean }>`
   display: grid;
+  width: 100%;
   grid-template-areas:
     "image"
     "separator"
@@ -28,8 +33,16 @@ const NewsItemPreviewRoot = styled.div<{ multiImages?: boolean }>`
     grid-template-areas:
     "image image-secondary"
     "image description";
-    grid-template-columns: 45.8rem 1fr;
-  `}
+    grid-template-columns: 1fr 1fr;
+  `};
+
+  @media (${media.sm}) {
+    grid-template-areas:
+      "image"
+      "image-secondary"
+      "description";
+    grid-template-columns: 1fr;
+  }
 `;
 
 const NewsItemDescription = styled.div`

@@ -11,7 +11,7 @@ const NewsSectionRoot = styled.div`
   }
   @media (${media.sm}) {
     margin-bottom: 4rem !important;
-    :last-child {
+    &:last-child {
       margin-bottom: 1rem;
     }
   }
@@ -40,7 +40,7 @@ const ArticlesRoot = styled.div<{ reverse?: boolean }>`
   grid-template-areas:
     "big small-top"
     "big small-bottom";
-  grid-template-columns: 75.2rem 1fr;
+  grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
@@ -52,7 +52,12 @@ const ArticlesRoot = styled.div<{ reverse?: boolean }>`
       "small-top big"
       "small-bottom big";
     grid-template-columns: 1fr 75.2rem;
-  `}
+  `};
+
+  @media (${media.md}) {
+    grid-template-columns: 1fr 1fr;
+  }
+
   @media (${media.sm}) {
     grid-template-columns: 1fr;
     grid-template-areas:

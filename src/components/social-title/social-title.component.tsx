@@ -5,10 +5,11 @@ import { SocT } from "./social-title.styles";
 import TwitterIcon from "../../assets/icons/social/twitter_image_icon.png";
 import LinkedInIcon from "../../assets/icons/social/linkedin_image_icon.png";
 import { SocialTitleProps } from "./social-title.types";
+import { useMediaQuery } from "../../utils/use-media-query";
 
 export const SocialTitle: React.FC<SocialTitleProps> = (props): JSX.Element => {
   const { date, twitterLink, linkedInLink, title } = props;
-
+  const isMobile = useMediaQuery("sm");
   const handleSocialClick =
     (link: string): MouseEventHandler<HTMLDivElement> =>
     () => {
@@ -17,8 +18,8 @@ export const SocialTitle: React.FC<SocialTitleProps> = (props): JSX.Element => {
 
   return (
     <SocT.Root>
-      <Wrap sx={{ display: "flex", alignItems: "center" }}>
-        <SocT.Date>{date}</SocT.Date>
+      <Wrap sx={{ display: "flex", alignItems: "center", margin: isMobile ? "2rem 0" : "0.7rem 0" }}>
+        {!isMobile && <SocT.Date>{date}</SocT.Date>}
         <SocT.Text>{title}</SocT.Text>
       </Wrap>
 
@@ -27,12 +28,18 @@ export const SocialTitle: React.FC<SocialTitleProps> = (props): JSX.Element => {
           display: "flex",
           marginLeft: "auto",
           alignItems: "center",
-          justifyContent: "center",
+          width: isMobile ? "100%" : "auto",
+          justifyContent: "space-between",
         }}
       >
-        <IconButton>
-          <img src={TwitterIcon} alt="Twitter icon" onClick={handleSocialClick(twitterLink)} />
-        </IconButton>
+        {isMobile && <SocT.Date>{date}</SocT.Date>}
+
+        <Wrap sx={{ marginLeft: "auto" }}>
+          <IconButton>
+            <img src={TwitterIcon} alt="Twitter icon" onClick={handleSocialClick(twitterLink)} />
+          </IconButton>
+        </Wrap>
+
         <Wrap sx={{ marginBottom: "0.4rem", marginLeft: "2rem" }}>
           <IconButton>
             <img src={LinkedInIcon} alt="LinkedIn icon" height={"100%"} onClick={handleSocialClick(linkedInLink)} />

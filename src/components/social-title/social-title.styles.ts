@@ -1,8 +1,12 @@
 import styled from "styled-components";
+import { media } from "../../utils/use-media-query";
 
 const SocialTitleRoot = styled.div`
   display: flex;
   width: 100%;
+  @media (${media.sm}) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const SocialTitleDate = styled.span`

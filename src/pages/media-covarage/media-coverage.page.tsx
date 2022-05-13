@@ -14,6 +14,7 @@ import { Wrap } from "../../components/wrap/wrap.component";
 import { Input } from "../../components/inputs/input/input.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
 import FormBg from "../../assets/images/backgrounds/lines_bg.png";
+import { useMediaQuery } from "../../utils/use-media-query";
 export type ArticleItem = {
   imgSrc: string;
   date: string;
@@ -98,6 +99,8 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
     email: "",
   });
 
+  const isMobile = useMediaQuery("sm");
+
   const getSizeMap = (index: number): Map<number, ArticleItem["size"]> => {
     return index % 2 === 0 ? sizesMap : sizesMapReverse;
   };
@@ -118,7 +121,7 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
         title={"Black Banx media and public relations"}
         titleAlign="center"
         justify="center"
-        BgRootProps={{ justifyContent: "center" }}
+        BgRootProps={{ justifyContent: "center", width: "100%", overflow: "hidden" }}
         m={"0 auto 8rem"}
       />
       <Section mainContent>
@@ -152,60 +155,70 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
           );
         })}
       </Section>
-      <Section h={"60rem"} m={"17rem auto 13rem"}>
-        <Wrap
-          sx={{
-            display: "flex",
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            background: `url(${FormBg})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            opacity: "0.4",
-          }}
-        />
-        <Section mainContent>
+      {!isMobile && (
+        <Section h={"60rem"} m={"17rem auto 13rem"}>
           <Wrap
             sx={{
-              width: "100%",
               display: "flex",
-              flexDirection: "column",
-              background: "#0c0c0c",
-              padding: "5rem 7rem",
-              marginTop: "3rem",
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              background: `url(${FormBg})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              opacity: "0.4",
             }}
-          >
-            <News.Title.Root>
-              <News.Title.Body>LETS CONNECT</News.Title.Body>
-              <Divider variant="dashed" />
-            </News.Title.Root>
-            <News.Form.Subtitle>Contact us</News.Form.Subtitle>
-            <News.Form.Title>You have a question? Or just want to say hello...</News.Form.Title>
-            <Wrap sx={{ display: "flex", width: "100%", marginBottom: "2rem" }}>
+          />
+
+          <Section mainContent>
+            <Wrap
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                background: "#0c0c0c",
+                padding: "5rem 7rem",
+                marginTop: "3rem",
+              }}
+            >
+              <News.Title.Root>
+                <News.Title.Body>LETS CONNECT</News.Title.Body>
+                <Divider variant="dashed" />
+              </News.Title.Root>
+              <News.Form.Subtitle>Contact us</News.Form.Subtitle>
+              <News.Form.Title>You have a question? Or just want to say hello...</News.Form.Title>
+              <Wrap sx={{ display: "flex", width: "100%", marginBottom: "2rem" }}>
+                <Input
+                  fullWidth
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  label={"Name"}
+                  name={"name"}
+                  placeholder={"Please enter your full name"}
+                />
+              </Wrap>
+
               <Input
                 fullWidth
-                value={formData.name}
+                value={formData.email}
                 onChange={handleInputChange}
-                label={"Name"}
-                name={"name"}
-                placeholder={"Please enter your full name"}
+                label={"Email"}
+                name={"email"}
+                placeholder={"Please enter your email"}
               />
+              <Wrap sx={{ margin: "4rem auto" }}>
+                <ButtonArrow onClick={handleSubmit}>Send</ButtonArrow>
+              </Wrap>
             </Wrap>
-
-            <Input
-              fullWidth
-              value={formData.email}
-              onChange={handleInputChange}
-              label={"Email"}
-              name={"email"}
-              placeholder={"Please enter your email"}
-            />
-            <Wrap sx={{ margin: "4rem auto" }}>
-              <ButtonArrow onClick={handleSubmit}>Send</ButtonArrow>
-            </Wrap>
-          </Wrap>
+          </Section>
         </Section>
+      )}
+      <Section mainContent m={"0 auto 10rem !important"}>
+        <News.Title.Root>
+          <News.Title.Body>LET'S CONNECT</News.Title.Body>
+          <Divider variant="dashed" />
+        </News.Title.Root>
+        <h5>For Media enquiries please contact: mediateam@blackbanx.com</h5>
       </Section>
     </>
   );
