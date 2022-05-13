@@ -5,9 +5,10 @@ import { MainHeader } from "../../pages/main/main.styles";
 import { ButtonArrow } from "../button-arrow/button-arrow.component";
 import { BgGradient } from "../bg-gradient/bg-gradient.component";
 import { SlideSectionProps } from "./slide.section.types";
-import { useMediaQuery } from "../../utils/use-media-query";
 
-export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (props) => {
+export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (
+  props,
+) => {
   const {
     children,
     bgImage,
@@ -53,7 +54,13 @@ export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (pro
         <Section
           mainContent
           justify={"center"}
-          align={justify === "center" ? "center" : justify === "right" ? "flex-end" : "flex-start"}
+          align={
+            justify === "center"
+              ? "center"
+              : justify === "right"
+              ? "flex-end"
+              : "flex-start"
+          }
           pos={mobile ? "relative" : "absolute"}
           h={"100%"}
         >

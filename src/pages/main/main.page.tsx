@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BenefitItemsType } from "../../components/benefits/benefits.types";
 import { Benefits } from "../../components/benefits/benefits.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
@@ -69,7 +69,11 @@ export const MainPage: React.FC = (): JSX.Element => {
         </Wrap>
         {isMobile && (
           <Wrap sx={{ width: "100%" }}>
-            <img src={MapImage} alt={"Map"} style={{ position: "relative", width: "100%" }} />
+            <img
+              src={MapImage}
+              alt={"Map"}
+              style={{ position: "relative", width: "100%" }}
+            />
           </Wrap>
         )}
         <Wrap sx={{ marginLeft: "auto" }}>
@@ -78,7 +82,11 @@ export const MainPage: React.FC = (): JSX.Element => {
       </Section>
       {!isMobile && (
         <Section mainContent m={"16rem auto 12rem"}>
-          <img src={SmartMockupBg} alt={"Download mobile app"} style={{ position: "relative", width: "100%" }} />
+          <img
+            src={SmartMockupBg}
+            alt={"Download mobile app"}
+            style={{ position: "relative", width: "100%" }}
+          />
           <Wrap
             sx={{
               display: "flex",
@@ -90,8 +98,12 @@ export const MainPage: React.FC = (): JSX.Element => {
               padding: !isMobile ? "4.7rem 9.2rem" : "2rem",
             }}
           >
-            <DownloadAppHeader>Download Black Banx App to have all your finances in your pocket</DownloadAppHeader>
-            <ButtonArrow onClick={handleClickDownloadApp}>Download the App</ButtonArrow>
+            <DownloadAppHeader>
+              Download Black Banx App to have all your finances in your pocket
+            </DownloadAppHeader>
+            <ButtonArrow onClick={handleClickDownloadApp}>
+              Download the App
+            </ButtonArrow>
           </Wrap>
         </Section>
       )}

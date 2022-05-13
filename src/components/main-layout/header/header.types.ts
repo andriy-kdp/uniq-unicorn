@@ -1,5 +1,3 @@
-import { SetStateAction } from "react";
-
 export type MenuItemType = {
   label: string;
   path?: string;

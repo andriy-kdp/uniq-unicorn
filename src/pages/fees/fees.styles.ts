@@ -1,4 +1,3 @@
-import { Description } from "./../bank-accounts/bank-accounts.styles";
 import styled from "styled-components";
 import { media } from "../../utils/use-media-query";
 const PlanInfoRoot = styled.div`

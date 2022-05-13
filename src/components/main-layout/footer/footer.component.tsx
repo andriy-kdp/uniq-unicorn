@@ -1,17 +1,12 @@
 import {
-  CitiesContainer,
   CopyrightContainer,
   FooterLinkItem,
   FooterLinksRoot,
   FooterLinksGroup,
   FooterLinksTitle,
   FooterRoot,
-  SocialNetworkLinkIcon,
-  SocialNetworksContainer,
-  SocialNetworksLinks,
 } from "./footer.styles";
 
-import { ReactComponent as AppStoreIcon } from "../../../assets/icons/social/app_store_button.svg";
 import { ReactComponent as FacebookIcon } from "../../../assets/icons/social/facebook.svg";
 import { FooterLinkGroup } from "./footer.types";
 import { ReactComponent as InstagramIcon } from "../../../assets/icons/social/instagram.svg";
@@ -29,7 +24,6 @@ import {
   SelectOption,
   SelectOptions,
 } from "../../inputs/select/select.types";
-import { Select } from "../../inputs/select/select.component";
 import { Wrap } from "../../wrap/wrap.component";
 import { useMediaQuery } from "../../../utils/use-media-query";
 import { FooterConnect } from "./parts/connect.component";

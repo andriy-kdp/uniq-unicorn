@@ -1,12 +1,6 @@
 import styled from "styled-components";
 import { MenuPartProps } from "./header.types";
 
-export const MainMenuContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
 export const LogoContainer = styled.div<{ small?: boolean }>`
   transform: translateX(-75%);
   margin-top: 3rem;
@@ -50,7 +44,13 @@ const DropdownMenuRoot = styled.div<{ mounted?: boolean }>`
   position: absolute;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #151515 30.73%, #151515 67.19%, rgba(12, 12, 12, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(12, 12, 12, 0) 0%,
+    #151515 30.73%,
+    #151515 67.19%,
+    rgba(12, 12, 12, 0) 100%
+  );
   backdrop-filter: blur(6px);
   top: 7rem;
   left: 0;

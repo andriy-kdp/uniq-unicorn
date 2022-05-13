@@ -1,5 +1,5 @@
-import { InputProps } from "./../input/input.types";
-import { CSSProperties } from "react";
+import { InputProps } from "../input/input.types";
+import React, { CSSProperties } from "react";
 
 export type SelectProps = {
   options: SelectOptions;

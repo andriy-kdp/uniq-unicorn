@@ -1,6 +1,5 @@
 import React, { MouseEventHandler, useMemo, useState } from "react";
 import { Input } from "../input/input.component";
-import { InputProps } from "../input/input.types";
 import { SelectOption, SelectProps, SimpleSelectEvent } from "./select.types";
 import { Sel } from "./select.styles";
 import ClickAwayListener from "react-click-away-listener";

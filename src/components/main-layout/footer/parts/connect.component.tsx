@@ -1,16 +1,13 @@
 import React, { PropsWithChildren } from "react";
 import {
   CitiesContainer,
-  FooterLinksGroup,
   FooterLinksTitle,
   SocialNetworkLinkIcon,
-  SocialNetworksContainer,
   SocialNetworksLinks,
 } from "../footer.styles";
 
 import { useMediaQuery } from "../../../../utils/use-media-query";
 import { cities, socialNetworks } from "../footer.component";
-import { Wrap } from "../../../wrap/wrap.component";
 import { FooterConnectOptions, FooterConnectRoot } from "./connect.styles";
 
 export const FooterConnect: React.FC<PropsWithChildren<any>> = (

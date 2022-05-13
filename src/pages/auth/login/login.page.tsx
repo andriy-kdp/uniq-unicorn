@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, MouseEventHandler, useState } from "react";
+import React, { ChangeEventHandler, useState } from "react";
 import MainBg from "../../../assets/images/backgrounds/lines_bg.png";
 import { ButtonArrow } from "../../../components/button-arrow/button-arrow.component";
 import { Input } from "../../../components/inputs/input/input.component";

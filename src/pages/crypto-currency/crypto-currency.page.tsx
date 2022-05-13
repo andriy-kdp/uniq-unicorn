@@ -10,11 +10,15 @@ import React from "react";
 import { Section } from "../../components/section/section.component";
 import { ReactComponent as SuccessIcon } from "../../assets/icons/benefits-crypto-currency/success.svg";
 import PhonesBg from "../../assets/images/backgrounds/crypto-currency-page/phones.png";
-import { CryptoBenefitsTitle, MobileAppContainer, MobileAppImage, MobileAppTitle } from "./crypto-currency.styles";
+import {
+  CryptoBenefitsTitle,
+  MobileAppContainer,
+  MobileAppImage,
+  MobileAppTitle,
+} from "./crypto-currency.styles";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MainBg from "../../assets/images/backgrounds/crypto-currency-page/crypto_cur_bg.png";
 import { useMediaQuery } from "../../utils/use-media-query";
-import { Wrap } from "../../components/wrap/wrap.component";
 const benefitsItems: BenefitItemsType = [
   {
     title: "High-value trading",
@@ -33,12 +37,14 @@ const benefitsItems: BenefitItemsType = [
   },
   {
     title: "Perfect solution",
-    description: "For exchanges or other crypto businesses to open bank accounts",
+    description:
+      "For exchanges or other crypto businesses to open bank accounts",
     icon: <MedalIcon />,
   },
   {
     title: "International wires",
-    description: "Bank wire transfers to third parties worldwide, fast and secure",
+    description:
+      "Bank wire transfers to third parties worldwide, fast and secure",
     icon: <PlanetIcon />,
   },
   {
@@ -64,9 +70,17 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
 
       <Section mainContent>
         <CryptoBenefitsTitle>Crypto trading made easier</CryptoBenefitsTitle>
-        <Benefits items={benefitsItems} secondary vertical={isMobile} centered={isMobile} />
+        <Benefits
+          items={benefitsItems}
+          secondary
+          vertical={isMobile}
+          centered={isMobile}
+        />
       </Section>
-      <Section mainContent m={!isMobile ? "13rem auto 26rem" : "16rem auto 11rem"}>
+      <Section
+        mainContent
+        m={!isMobile ? "13rem auto 26rem" : "16rem auto 11rem"}
+      >
         <MobileAppContainer>
           <MobileAppTitle>Your bitcoin wallet in our App</MobileAppTitle>
           <MobileAppImage src={PhonesBg} alt="IPhone" />

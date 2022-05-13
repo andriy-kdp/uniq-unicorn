@@ -4,16 +4,12 @@ import { Select } from "../../../inputs/select/select.component";
 import { ReactComponent as AppStoreIcon } from "../../../../assets/icons/social/app_store_button.svg";
 import { selectOptions } from "../footer.component";
 import { SelectLanguageAppLinkProps } from "../footer.types";
-import {
-  FooterConnectOptions,
-  SelectLanguageAppLinkRoot,
-} from "./connect.styles";
-import { Input } from "../../../inputs/input/input.component";
+import { SelectLanguageAppLinkRoot } from "./connect.styles";
 
 export const SelectLanguageAppLink: React.FC<SelectLanguageAppLinkProps> = (
   props,
 ) => {
-  const { language, onSelect, reverse } = props;
+  const { language, onSelect } = props;
   const handleAppIconClick = () => {
     window.open("about:blank", "noopener norefferer");
   };
