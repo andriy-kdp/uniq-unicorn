@@ -15,6 +15,7 @@ export type SelectProps = {
   borderColor?: InputProps["borderColor"];
   noAdornment?: boolean;
   error?: boolean;
+  helperText?: string;
 };
 
 export type SelectOption = {

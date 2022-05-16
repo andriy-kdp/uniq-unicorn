@@ -24,6 +24,7 @@ export const Select: React.FC<SelectProps> = (props) => {
     borderColor,
     noAdornment,
     error,
+    helperText,
   } = props;
 
   const handleCloseList = () => {
@@ -69,6 +70,7 @@ export const Select: React.FC<SelectProps> = (props) => {
           fullWidth={fullWidth}
           borderColor={borderColor}
           error={error}
+          helperText={helperText}
           _select
           startIcon={
             <Sel.Adornment.Root>

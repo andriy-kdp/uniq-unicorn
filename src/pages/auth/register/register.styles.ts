@@ -16,7 +16,7 @@ const HelpRoot = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 4rem;
   width: 100%;
-  align-items: flex-end;
+  align-items: flex-start;
   margin: 10rem auto;
 `;
 

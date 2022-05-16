@@ -8,7 +8,8 @@ import { Section } from "../../../components/section/section.component";
 import { Wrap } from "../../../components/wrap/wrap.component";
 import { Login } from "./login.styles";
 import { useMediaQuery } from "../../../utils/use-media-query";
-
+import * as yup from "yup";
+import { parseYupError } from "../../../utils/parseYupError";
 export const LoginPage: React.FC = (): JSX.Element => {
   const [formData, setFormData] = useState<{ email: string; password: string }>(
     {
@@ -17,15 +18,38 @@ export const LoginPage: React.FC = (): JSX.Element => {
     },
   );
 
+  const [errors, setErrors] = useState<{
+    email: string | null;
+    password: string | null;
+  }>({ email: null, password: null });
+
   const isMobile = useMediaQuery("sm");
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, value } = e.target;
+    setErrors((prev) => ({ ...prev, [name]: null }));
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = () => {
-    console.log("API CALL", formData);
+    const schema = yup.object().shape({
+      email: yup
+        .string()
+        .email({ email: "Email must be correct" })
+        .required({ email: "The field is required" }),
+      password: yup
+        .string()
+        .min(10, { password: "Password is too short" })
+        .required({ password: "The field is required" }),
+    });
+
+    schema
+      .validate(formData, { abortEarly: false })
+      .then(() => console.log("API CALL", formData))
+      .catch((err) => {
+        const errors = parseYupError(err);
+        setErrors(errors as { email: string; password: string });
+      });
   };
 
   return (
@@ -50,8 +74,8 @@ export const LoginPage: React.FC = (): JSX.Element => {
               value={formData.email}
               onChange={handleInputChange}
               placeholder={"Please, enter your e-mail"}
-              error
-              helperText={"hello"}
+              error={Boolean(errors.email)}
+              helperText={errors.email as string}
             />
           </Wrap>
           <Wrap sx={{ marginBottom: "5rem" }}>
@@ -62,6 +86,8 @@ export const LoginPage: React.FC = (): JSX.Element => {
               onChange={handleInputChange}
               placeholder={"Please, enter your password"}
               InputNativeProps={{ type: "password" }}
+              error={Boolean(errors.password)}
+              helperText={errors.password as string}
             />
           </Wrap>
 
