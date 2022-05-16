@@ -29,7 +29,14 @@ const routesList: RouteItemType[] = [
   { path: "/fees", Component: <FeesPage /> },
   { path: "/media_coverage", Component: <MediaCoveragePage /> },
   { path: "/contact", Component: <ContactPage /> },
-  { path: "/news", Component: <NewsPage /> },
+
+  {
+    path: "/news",
+    nestedRoutes: [
+      { Component: <NewsPage />, index: true },
+      { Component: <BlogArticlePage />, path: "article/:id" },
+    ],
+  },
   { path: "/privacy_policy", Component: <PrivacyPolicyPage /> },
   { path: "/terms", Component: <PolicesTermsPage /> },
   {

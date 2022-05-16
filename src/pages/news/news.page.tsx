@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import MainBG from "../../assets/images/backgrounds/news/news_main_bg.png";
 import Img1 from "../../assets/images/backgrounds/news/mock_news_1.png";
 import Img21 from "../../assets/images/backgrounds/news/mock_news_2_1.png";
@@ -11,6 +11,7 @@ import { Wrap } from "../../components/wrap/wrap.component";
 import { Divider } from "../../components/divider/divider.styles";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import { useMediaQuery } from "../../utils/use-media-query";
+import { useNavigate } from "react-router-dom";
 
 const mockNews: {
   id: string | number;
@@ -49,6 +50,12 @@ const mockNews: {
 
 export const NewsPage: React.FC = (): JSX.Element => {
   const isMobile = useMediaQuery("sm");
+  const nav = useNavigate();
+  const handleClick =
+    (articleId: string | number): MouseEventHandler<HTMLDivElement> =>
+    () => {
+      nav(`/news/article/${articleId}`);
+    };
   return (
     <>
       <SlideSection
@@ -77,7 +84,11 @@ export const NewsPage: React.FC = (): JSX.Element => {
       <Section mainContent>
         <News.Root>
           {mockNews.map((item) => (
-            <News.Item.Root key={item.id} id={"ROOT"}>
+            <News.Item.Root
+              key={item.id}
+              id={"ROOT"}
+              onClick={handleClick(item.id)}
+            >
               <SocialTitle
                 date={item.date}
                 linkedInLink="about:blank"

@@ -11,6 +11,7 @@ const NewsItemRoot = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 16rem;
+  cursor: pointer;
   @media (${media.sm}) {
     margin-bottom: 3rem;
   }
