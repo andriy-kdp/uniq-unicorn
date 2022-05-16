@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, useState } from "react";
 
-import MainBg from "../../assets/images/backgrounds/contact/contact_main_bg.png";
+import MainBg from "../../assets/backgrounds/contact/contact_main_bg.png";
 import { ReactComponent as ContactIcon } from "../../assets/icons/contact/question_icon.svg";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import { Section } from "../../components/section/section.component";
@@ -8,7 +8,7 @@ import { Wrap } from "../../components/wrap/wrap.component";
 import { ContactForm } from "./contact.styles";
 import { Input } from "../../components/inputs/input/input.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
-import MaoMarkers from "../../assets/images/backgrounds/contact/map_bg.png";
+import MaoMarkers from "../../assets/backgrounds/contact/map_bg.png";
 export const ContactPage: React.FC = (): JSX.Element => {
   const [formData, setFormData] = useState<{ name: string; email: string }>({
     name: "",
@@ -45,14 +45,28 @@ export const ContactPage: React.FC = (): JSX.Element => {
             }}
           >
             <ContactForm.Title.Root>
-              <ContactForm.Title.SubTitle>CONTACT US</ContactForm.Title.SubTitle>
+              <ContactForm.Title.SubTitle>
+                CONTACT US
+              </ContactForm.Title.SubTitle>
               <ContactForm.Title.Text>Have a question?</ContactForm.Title.Text>
             </ContactForm.Title.Root>
             <Wrap sx={{ marginBottom: "2rem", width: "100%" }}>
-              <Input value={formData.name} onChange={handleInputChange} label={"Name"} name={"name"} fullWidth />
+              <Input
+                value={formData.name}
+                onChange={handleInputChange}
+                label={"Name"}
+                name={"name"}
+                fullWidth
+              />
             </Wrap>
             <Wrap sx={{ marginBottom: "5rem", width: "100%" }}>
-              <Input value={formData.email} onChange={handleInputChange} label={"E-mail"} name={"email"} fullWidth />
+              <Input
+                value={formData.email}
+                onChange={handleInputChange}
+                label={"E-mail"}
+                name={"email"}
+                fullWidth
+              />
             </Wrap>
             <ButtonArrow onClick={handleSubmit}>Send</ButtonArrow>
           </Wrap>

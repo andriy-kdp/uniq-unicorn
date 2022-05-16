@@ -1,7 +1,7 @@
 import React from "react";
 import { Section } from "../../components/section/section.component";
 import { Wrap } from "../../components/wrap/wrap.component";
-import BgImage from "../../assets/images/backgrounds/bank-accounts/city_bg.png";
+import BgImage from "../../assets/backgrounds/bank-accounts/city_bg.png";
 import {
   DescriptionContainer,
   ProfItemDescription,

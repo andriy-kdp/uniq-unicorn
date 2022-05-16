@@ -1,5 +1,5 @@
 import React, { MouseEventHandler } from "react";
-import MainBg from "../../../assets/images/backgrounds/auth/choose_account_main_bg.png";
+import MainBg from "../../../assets/backgrounds/auth/choose_account_main_bg.png";
 import { Accounts } from "./choose-account.styles";
 import { ReactComponent as InstitutionalIcon } from "../../../assets/icons/choose-account/building.svg";
 import { ReactComponent as PrivateIcon } from "../../../assets/icons/choose-account/card.svg";

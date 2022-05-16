@@ -1,19 +1,19 @@
 import React, { ChangeEventHandler, useState } from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
-import MainBg from "../../assets/images/backgrounds/media-coverage/media_coverage_main_bg.png";
-import Section1Bg1 from "../../assets/images/backgrounds/media-coverage/sec_1_img_1.png";
-import Section1Bg2 from "../../assets/images/backgrounds/media-coverage/sec_1_img_2.png";
-import Section1Bg3 from "../../assets/images/backgrounds/media-coverage/sec_1_img_3.png";
-import Section2Bg1 from "../../assets/images/backgrounds/media-coverage/sec_2_img_1.png";
-import Section2Bg2 from "../../assets/images/backgrounds/media-coverage/sec_2_img_2.png";
-import Section2Bg3 from "../../assets/images/backgrounds/media-coverage/sec_2_img_3.png";
+import MainBg from "../../assets/backgrounds/media-coverage/media_coverage_main_bg.png";
+import Section1Bg1 from "../../assets/backgrounds/media-coverage/sec_1_img_1.png";
+import Section1Bg2 from "../../assets/backgrounds/media-coverage/sec_1_img_2.png";
+import Section1Bg3 from "../../assets/backgrounds/media-coverage/sec_1_img_3.png";
+import Section2Bg1 from "../../assets/backgrounds/media-coverage/sec_2_img_1.png";
+import Section2Bg2 from "../../assets/backgrounds/media-coverage/sec_2_img_2.png";
+import Section2Bg3 from "../../assets/backgrounds/media-coverage/sec_2_img_3.png";
 import { Section } from "../../components/section/section.component";
 import { News } from "./media-covarage.styles";
 import { Divider } from "../../components/divider/divider.styles";
 import { Wrap } from "../../components/wrap/wrap.component";
 import { Input } from "../../components/inputs/input/input.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
-import FormBg from "../../assets/images/backgrounds/lines_bg.png";
+import FormBg from "../../assets/backgrounds/lines_bg.png";
 import { useMediaQuery } from "../../utils/use-media-query";
 export type ArticleItem = {
   imgSrc: string;
@@ -56,11 +56,13 @@ const previewData: ArticlesSection[] = [
         description:
           "The ranks of blockchain geeks are joined by investment bankers, portfolio managers and family office directors yearning for high returns that have disappeared after the 2008 crisis and the introduction of the Dodd-Frank Act.",
         imgSrc: Section1Bg2,
-        title: "Cryptobankers. Top managers of the investment banks transform to blockchain companies (Forbes Russia)",
+        title:
+          "Cryptobankers. Top managers of the investment banks transform to blockchain companies (Forbes Russia)",
       },
       {
         date: "December 6, 2017",
-        description: "WB21 seems to be the fastest growing FinTech since PayPal's launch in 1999.",
+        description:
+          "WB21 seems to be the fastest growing FinTech since PayPal's launch in 1999.",
         imgSrc: Section1Bg3,
         title: "How Digital Banking Company WB21 Is Disrupting Fintech",
       },
@@ -71,13 +73,15 @@ const previewData: ArticlesSection[] = [
     items: [
       {
         date: "September 1, 2021",
-        description: "The business habits that helped Michael Gastauer make WB21 the legend it is today.",
+        description:
+          "The business habits that helped Michael Gastauer make WB21 the legend it is today.",
         imgSrc: Section2Bg1,
         title: "How to build a fintech unicorn: Interview with WB21 founder ",
       },
       {
         date: "June 16, 2016",
-        description: "WB21 announced that it has added Bitcoin as a method to transfer and deposit funds.",
+        description:
+          "WB21 announced that it has added Bitcoin as a method to transfer and deposit funds.",
         imgSrc: Section2Bg2,
         title:
           "What Lies Ahead for the Controversial Digital Currency Bitcoin? Bitcoin never fails to facilitate debate.",
@@ -121,7 +125,11 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
         title={"Black Banx media and public relations"}
         titleAlign="center"
         justify="center"
-        BgRootProps={{ justifyContent: "center", width: "100%", overflow: "hidden" }}
+        BgRootProps={{
+          justifyContent: "center",
+          width: "100%",
+          overflow: "hidden",
+        }}
         m={"0 auto 8rem"}
       />
       <Section mainContent>
@@ -186,8 +194,12 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
                 <Divider variant="dashed" />
               </News.Title.Root>
               <News.Form.Subtitle>Contact us</News.Form.Subtitle>
-              <News.Form.Title>You have a question? Or just want to say hello...</News.Form.Title>
-              <Wrap sx={{ display: "flex", width: "100%", marginBottom: "2rem" }}>
+              <News.Form.Title>
+                You have a question? Or just want to say hello...
+              </News.Form.Title>
+              <Wrap
+                sx={{ display: "flex", width: "100%", marginBottom: "2rem" }}
+              >
                 <Input
                   fullWidth
                   value={formData.name}

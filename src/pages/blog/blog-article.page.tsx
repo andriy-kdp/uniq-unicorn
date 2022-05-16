@@ -1,11 +1,11 @@
 import React from "react";
 import parse from "html-react-parser";
-import MockImage from "../../assets/images/backgrounds/blog/mock_article_image.png";
+import MockImage from "../../assets/backgrounds/blog/mock_article_image.png";
 import { Section } from "../../components/section/section.component";
 import { articleDataAttribs } from "../../theme/global";
 import { Blog } from "./blog.styles";
 const { Article } = Blog;
-const mockArticle = `<img ${articleDataAttribs.Img} src=${MockImage} />
+const mockArticle = `<img ${articleDataAttribs.Img} src=${MockImage} alt="main"/>
 <h3 ${articleDataAttribs.H3}>Travel to fill your heart, but not with a filled wallet | WB21</h3>
 <div ${articleDataAttribs.Div}>
   <p ${articleDataAttribs.P}>For travellers around the world, this will sound true as we ourselves know how travel brings a new light to our

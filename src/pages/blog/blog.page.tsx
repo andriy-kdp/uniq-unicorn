@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from "react";
-import MockBg1 from "../../assets/images/backgrounds/blog/mock_blog_prev_1.png";
-import MockBg2 from "../../assets/images/backgrounds/blog/mock_blog_prev_2.png";
-import MainBg from "../../assets/images/backgrounds/blog/blog_main_bg.png";
+import MockBg1 from "../../assets/backgrounds/blog/mock_blog_prev_1.png";
+import MockBg2 from "../../assets/backgrounds/blog/mock_blog_prev_2.png";
+import MainBg from "../../assets/backgrounds/blog/blog_main_bg.png";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import { Section } from "../../components/section/section.component";
 import { Divider } from "../../components/divider/divider.styles";
@@ -65,7 +65,9 @@ export const BlogPage: React.FC = (): JSX.Element => {
                 <img src={post.imgSrc} alt={post.title} />
               </Preview.Image.Root>
               <Divider variant="dashed" />
-              <Preview.Description onClick={handlePreviewClick(post.id)}>{post.description}</Preview.Description>
+              <Preview.Description onClick={handlePreviewClick(post.id)}>
+                {post.description}
+              </Preview.Description>
             </Preview.Root>
           );
         })}

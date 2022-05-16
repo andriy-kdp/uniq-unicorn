@@ -9,7 +9,7 @@ import { ReactComponent as PlanetIcon } from "../../assets/icons/benefits-crypto
 import React from "react";
 import { Section } from "../../components/section/section.component";
 import { ReactComponent as SuccessIcon } from "../../assets/icons/benefits-crypto-currency/success.svg";
-import PhonesBg from "../../assets/images/backgrounds/crypto-currency-page/phones.png";
+import PhonesBg from "../../assets/backgrounds/crypto-currency-page/phones.png";
 import {
   CryptoBenefitsTitle,
   MobileAppContainer,
@@ -17,7 +17,7 @@ import {
   MobileAppTitle,
 } from "./crypto-currency.styles";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
-import MainBg from "../../assets/images/backgrounds/crypto-currency-page/crypto_cur_bg.png";
+import MainBg from "../../assets/backgrounds/crypto-currency-page/crypto_cur_bg.png";
 import { useMediaQuery } from "../../utils/use-media-query";
 const benefitsItems: BenefitItemsType = [
   {

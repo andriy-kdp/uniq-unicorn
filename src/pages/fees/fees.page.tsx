@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
-import MainBg from "../../assets/images/backgrounds/fees/fees_main_bg.png";
+import MainBg from "../../assets/backgrounds/fees/fees_main_bg.png";
 import { Section } from "../../components/section/section.component";
 import { Accordeon } from "../../components/accordeon/accordeon.component";
 import { Wrap } from "../../components/wrap/wrap.component";
 import { FindCountry, PlanInfo } from "./fees.styles";
 import { Divider } from "../../components/divider/divider.styles";
-import TitaniumAccountBg from "../../assets/images/backgrounds/fees/plastic_card.png";
+import TitaniumAccountBg from "../../assets/backgrounds/fees/plastic_card.png";
 import { Input } from "../../components/inputs/input/input.component";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg";
 import { useMediaQuery } from "../../utils/use-media-query";

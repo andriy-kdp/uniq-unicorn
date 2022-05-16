@@ -1,9 +1,9 @@
 import React, { MouseEventHandler } from "react";
-import MainBG from "../../assets/images/backgrounds/news/news_main_bg.png";
-import Img1 from "../../assets/images/backgrounds/news/mock_news_1.png";
-import Img21 from "../../assets/images/backgrounds/news/mock_news_2_1.png";
-import Img22 from "../../assets/images/backgrounds/news/mock_news_2_2.png";
-import Img3 from "../../assets/images/backgrounds/news/mock_news_3.png";
+import MainBG from "../../assets/backgrounds/news/news_main_bg.png";
+import Img1 from "../../assets/backgrounds/news/mock_news_1.png";
+import Img21 from "../../assets/backgrounds/news/mock_news_2_1.png";
+import Img22 from "../../assets/backgrounds/news/mock_news_2_2.png";
+import Img3 from "../../assets/backgrounds/news/mock_news_3.png";
 import { Section } from "../../components/section/section.component";
 import { News } from "./news.styles";
 import { SocialTitle } from "../../components/social-title/social-title.component";
