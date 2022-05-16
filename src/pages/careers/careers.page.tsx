@@ -24,6 +24,7 @@ import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg
 import { Button } from "../../components/button/button.component";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../utils/use-media-query";
+
 const vacationsList: VacationSection[] = [
   {
     title: "Sales",
