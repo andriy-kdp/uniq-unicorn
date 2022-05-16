@@ -5,6 +5,8 @@ import { MainContent } from "./components/main-layout/main-content/main-content.
 import { Footer } from "./components/main-layout/footer/footer.component";
 import { useMediaQuery } from "./utils/use-media-query";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useScrollToTop } from "./utils/use-scroll-to-top";
 
 const App = () => {
   const isMobile = useMediaQuery("xs");
@@ -15,6 +17,8 @@ const App = () => {
       document.body.style.overflow = "auto";
     }
   }, [isMobile]);
+
+  useScrollToTop();
 
   return (
     <Layout>
