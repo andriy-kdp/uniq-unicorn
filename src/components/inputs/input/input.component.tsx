@@ -21,11 +21,16 @@ export const Input: React.FC<PropsWithChildren<InputProps>> = (props) => {
     borderRadius,
     borderColor,
     name,
+    error,
   } = props;
   return (
     <Inp.Body fullWidth={fullWidth} {...RootProps}>
       {label && <Inp.Input.Label {...LabelRootProps}>{label}</Inp.Input.Label>}
-      <Inp.Root borderRadius={borderRadius} borderColor={borderColor}>
+      <Inp.Root
+        borderRadius={borderRadius}
+        borderColor={borderColor}
+        error={error}
+      >
         {startIcon && (
           <Inp.Icon.Root onClick={onIconClick} {...IconRootProps}>
             {startIcon}
@@ -46,7 +51,9 @@ export const Input: React.FC<PropsWithChildren<InputProps>> = (props) => {
           </Inp.Icon.Root>
         )}
       </Inp.Root>
-      {helperText && <Inp.Input.HelperText>{helperText}</Inp.Input.HelperText>}
+      {Boolean(helperText) && (
+        <Inp.Input.HelperText error={error}>{helperText}</Inp.Input.HelperText>
+      )}
     </Inp.Body>
   );
 };

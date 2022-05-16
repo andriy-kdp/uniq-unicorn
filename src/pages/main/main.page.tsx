@@ -2,7 +2,7 @@ import React from "react";
 import { BenefitItemsType } from "../../components/benefits/benefits.types";
 import { Benefits } from "../../components/benefits/benefits.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
-import MainBg from "../../assets/backgrounds/home-page/main_bg.png";
+import MainBg from "../../assets/backgrounds/home-page/home_bg.png";
 import MapImage from "../../assets/backgrounds/home-page/map_image.png";
 import MockVideo from "../../assets/backgrounds/home-page/mock_video.jpg";
 import { Section } from "../../components/section/section.component";
@@ -15,6 +15,10 @@ import SmartMockupBg from "../../assets/backgrounds/home-page/smart-mockup.png";
 import { DownloadAppHeader } from "./main.styles";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../utils/use-media-query";
+
+//TODO
+//https://www.youtube.com/watch?v=RLSQqb9hcXU
+//card size for mobile and desktop
 const benefitsList: BenefitItemsType = [
   {
     title: "Safe",

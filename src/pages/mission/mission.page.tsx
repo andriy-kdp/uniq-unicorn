@@ -3,7 +3,7 @@ import { SlideSection } from "../../components/silde-section/slide-section.compo
 import MissionBg from "../../assets/backgrounds/mission/home_slider.png";
 import { Section } from "../../components/section/section.component";
 import { MissionDescription, MissionTitle } from "./mission.styles";
-
+//TODO: main image size, title must be centered
 export const MissionPage = () => {
   return (
     <>

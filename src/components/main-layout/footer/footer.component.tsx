@@ -108,6 +108,8 @@ export const cities: string[] = [
   "Cape Town",
 ];
 
+//TODO: page scroll up after click on footer link
+
 export const Footer = () => {
   const [language, setLanguage] = useState<SelectOption | null>({
     id: "opt-5",

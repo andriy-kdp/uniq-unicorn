@@ -19,6 +19,7 @@ import {
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MainBg from "../../assets/backgrounds/crypto-currency-page/crypto_cur_bg.png";
 import { useMediaQuery } from "../../utils/use-media-query";
+import { useNavigate } from "react-router-dom";
 const benefitsItems: BenefitItemsType = [
   {
     title: "High-value trading",
@@ -56,6 +57,14 @@ const benefitsItems: BenefitItemsType = [
 
 export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
   const isMobile = useMediaQuery("sm");
+  const nav = useNavigate();
+  const handleClick = () => {
+    nav("/auth/register");
+  };
+
+  const handleClickAppDownloadLink = () => {
+    window.open("about:blank", "noopener norefferer");
+  };
   return (
     <>
       <SlideSection
@@ -64,7 +73,7 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
         title="Black Banx crypto currency banking"
         button={{
           title: "Open Account",
-          onClick: () => {},
+          onClick: handleClick,
         }}
       />
 
@@ -84,7 +93,9 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
         <MobileAppContainer>
           <MobileAppTitle>Your bitcoin wallet in our App</MobileAppTitle>
           <MobileAppImage src={PhonesBg} alt="IPhone" />
-          <ButtonArrow>Download App</ButtonArrow>
+          <ButtonArrow onClick={handleClickAppDownloadLink}>
+            Download App
+          </ButtonArrow>
         </MobileAppContainer>
       </Section>
     </>

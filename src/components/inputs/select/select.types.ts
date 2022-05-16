@@ -14,6 +14,7 @@ export type SelectProps = {
   maxWidth?: CSSProperties["maxWidth"];
   borderColor?: InputProps["borderColor"];
   noAdornment?: boolean;
+  error?: boolean;
 };
 
 export type SelectOption = {

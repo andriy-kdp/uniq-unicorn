@@ -410,6 +410,8 @@ const businessForm: FormSection<BusinessAccountFormType>[] = [
   },
 ];
 
+//TODO check password and email, submit button in help section
+
 export const RegisterPage = () => {
   const [currentSection, setCurrentSection] = useState<number>(0);
   const [formSections, setForomSections] = useState<

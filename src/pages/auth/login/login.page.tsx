@@ -50,6 +50,8 @@ export const LoginPage: React.FC = (): JSX.Element => {
               value={formData.email}
               onChange={handleInputChange}
               placeholder={"Please, enter your e-mail"}
+              error
+              helperText={"hello"}
             />
           </Wrap>
           <Wrap sx={{ marginBottom: "5rem" }}>

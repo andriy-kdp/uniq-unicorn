@@ -16,5 +16,6 @@ export type InputProps = {
   LabelRootProps?: React.HTMLAttributes<HTMLSpanElement>;
   name?: string;
   borderColor?: "secondary";
+  error?: boolean;
   _select?: boolean;
 };

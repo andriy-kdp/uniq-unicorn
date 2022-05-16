@@ -1,4 +1,10 @@
-import { Dropdown, LogoContainer, MenuItemContainer, MenuPartContainer, MobileHeader } from "./header.styles";
+import {
+  Dropdown,
+  LogoContainer,
+  MenuItemContainer,
+  MenuPartContainer,
+  MobileHeader,
+} from "./header.styles";
 import { MenuItemType, MenuPartProps } from "./header.types";
 
 import { Link, MenuButton } from "../../link/link.styles";
@@ -104,9 +110,15 @@ const menuRight: MenuItemType[] = [
   },
 ];
 
-const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest }): JSX.Element => {
+const MenuPart: React.FC<MenuPartProps> = ({
+  menuItems,
+  setSubmenuItems,
+  ...rest
+}): JSX.Element => {
   const handleClick =
-    (items: MenuItemType["dropdownItems"]): MouseEventHandler<HTMLButtonElement> =>
+    (
+      items: MenuItemType["dropdownItems"],
+    ): MouseEventHandler<HTMLButtonElement> =>
     () => {
       if (items) {
         setSubmenuItems && setSubmenuItems(items);
@@ -120,7 +132,9 @@ const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest
           {!item.dropdownItems ? (
             <Link to={item.path as string}>{item.label}</Link>
           ) : (
-            <MenuButton onClick={handleClick(item.dropdownItems)}>{item.label}</MenuButton>
+            <MenuButton onClick={handleClick(item.dropdownItems)}>
+              {item.label}
+            </MenuButton>
           )}
         </MenuItemContainer>
       ))}
@@ -128,8 +142,11 @@ const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest
   );
 };
 
+//TODO: justify menu items for desktop
 export const Header = () => {
-  const [submenuItems, setSubmenuItems] = useState<Omit<MenuItemType, "dropdownItems">[] | null>(null);
+  const [submenuItems, setSubmenuItems] = useState<
+    Omit<MenuItemType, "dropdownItems">[] | null
+  >(null);
   const nav = useNavigate();
   const isMobile = useMediaQuery("xs");
   const handleSubmenuClick =
@@ -142,7 +159,13 @@ export const Header = () => {
     };
   if (!isMobile) {
     return (
-      <Section mainContent direction={"row"} justify={"center"} onMouseLeave={() => setSubmenuItems(null)} mh={"13rem"}>
+      <Section
+        mainContent
+        direction={"row"}
+        justify={"center"}
+        onMouseLeave={() => setSubmenuItems(null)}
+        mh={"13rem"}
+      >
         <MenuPart menuItems={menuLeft} setSubmenuItems={setSubmenuItems} />
         <LogoContainer small={!!submenuItems}>
           <Link to={"/"}>
@@ -155,7 +178,10 @@ export const Header = () => {
             {submenuItems?.map((subItem, index) => {
               const { Root, Description, Icon, Label } = Dropdown.Item;
               return (
-                <Root onClick={handleSubmenuClick(subItem.path)} key={`${Date.now()}-menu-sub-${index}`}>
+                <Root
+                  onClick={handleSubmenuClick(subItem.path)}
+                  key={`${Date.now()}-menu-sub-${index}`}
+                >
                   <Icon>{subItem.icon}</Icon>
                   <Label.Root>
                     <Label.Text>{subItem.label}</Label.Text>
@@ -177,7 +203,13 @@ export const Header = () => {
   return (
     <MobileHeader>
       <MobileMenu items={menuLeft} />
-      <Wrap sx={{ margin: "0 auto", marginTop: "1rem", transform: "translate(65%)" }}>
+      <Wrap
+        sx={{
+          margin: "0 auto",
+          marginTop: "1rem",
+          transform: "translate(65%)",
+        }}
+      >
         <Link to={"/"}>
           <BlackBanxLogo width={"7rem"} height={"5rem"} />
         </Link>

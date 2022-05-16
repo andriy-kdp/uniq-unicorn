@@ -97,6 +97,8 @@ const previewData: ArticlesSection[] = [
   },
 ];
 
+//TODO: click on item
+
 export const MediaCoveragePage: React.FC = (): JSX.Element => {
   const [formData, setFormData] = useState<{ name: string; email: string }>({
     name: "",

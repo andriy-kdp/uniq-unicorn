@@ -62,6 +62,7 @@ const countries: { country: string; count: number }[] = [
   { country: "Oceania", count: 18 },
 ];
 
+//TODO: arrows
 export const FeesPage: React.FC = (): JSX.Element => {
   const [currentPlan, setCurrentPlan] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -96,7 +97,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
                 marginLeft: "auto",
               }}
             >
-              {/* FIXME: uncomment this line, when add new cards */}
+              {/* FIXME: uncomment this lines, when add new cards */}
               {/* <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
                 <ArrowIconLeft />
               </IconButton>
