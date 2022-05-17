@@ -105,7 +105,7 @@ export const ImgWrapper = styled.div`
   margin-top: 6rem;
   @media (${media.sm}) {
     justify-content: center;
-    margin: 3rem auto;
+    margin: 3rem inherit;
   }
 `;
 
