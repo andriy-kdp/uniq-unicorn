@@ -4,7 +4,6 @@ import MissionBg from "../../assets/backgrounds/mission/home_slider.png";
 import { Section } from "../../components/section/section.component";
 import { MissionDescription, MissionTitle } from "./mission.styles";
 import { useMediaQuery } from "../../utils/use-media-query";
-//TODO: main image size, title must be centered
 export const MissionPage = () => {
   const isMobile = useMediaQuery("sm");
   return (
@@ -15,6 +14,18 @@ export const MissionPage = () => {
         bgVariant={"gradient"}
         justify={"center"}
         titleAlign={"center"}
+        BgImageStyles={
+          isMobile
+            ? {
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "60%",
+              }
+            : {
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right",
+              }
+        }
       />
       <Section mainContent>
         <MissionTitle>Who we are</MissionTitle>

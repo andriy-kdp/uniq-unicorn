@@ -6,6 +6,7 @@ const BgGradientContainer = styled.div<BgGradientType>((props) => ({
   display: "flex",
   width: "100%",
   height: "57.8rem",
+  opacity: 0.4,
   ...props.sx,
 }));
 
