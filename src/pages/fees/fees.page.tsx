@@ -99,10 +99,12 @@ export const FeesPage: React.FC = (): JSX.Element => {
                 marginLeft: "auto",
               }}
             >
-              {/* FIXME: uncomment this lines, when add new cards */}
-              <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
-                <ArrowIconLeft />
-              </IconButton>
+              <Wrap sx={{ marginRight: "2rem" }}>
+                <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
+                  <ArrowIconLeft />
+                </IconButton>
+              </Wrap>
+
               <IconButton disabled={currentPlan === planInfoItems.length - 1} reverse onClick={handleNextPlan}>
                 <ArrowIconLeft />
               </IconButton>
