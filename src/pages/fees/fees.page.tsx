@@ -65,7 +65,6 @@ const countries: { country: string; count: number }[] = [
   { country: "Oceania", count: 18 },
 ];
 
-//TODO: arrows
 export const FeesPage: React.FC = (): JSX.Element => {
   const [currentPlan, setCurrentPlan] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>("");

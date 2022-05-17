@@ -76,6 +76,7 @@ const ArticleItemRoot = styled.div<Pick<ArticleItem, "size" | "imgSrc">>`
   background: url(${(props) => props.imgSrc}) no-repeat center;
   background-size: cover;
   padding: 2.2rem 2.4rem;
+  cursor: pointer;
 `;
 
 const ArticleDate = styled.span`

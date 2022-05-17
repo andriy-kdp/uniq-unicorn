@@ -27,7 +27,13 @@ const routesList: RouteItemType[] = [
   { path: "/careers", Component: <CareersPage /> },
   { path: "/security", Component: <SecurityPage /> },
   { path: "/fees", Component: <FeesPage /> },
-  { path: "/media_coverage", Component: <MediaCoveragePage /> },
+  {
+    path: "/media_coverage",
+    nestedRoutes: [
+      { index: true, Component: <MediaCoveragePage /> },
+      { path: "news/:id", Component: <BlogArticlePage /> },
+    ],
+  },
   { path: "/contact", Component: <ContactPage /> },
 
   {
