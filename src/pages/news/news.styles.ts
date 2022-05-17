@@ -34,7 +34,7 @@ const NewsItemPreviewRoot = styled.div<{ multiImages?: boolean }>`
     grid-template-areas:
     "image image-secondary"
     "image description";
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.4fr;
   `};
 
   @media (${media.sm}) {

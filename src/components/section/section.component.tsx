@@ -23,11 +23,9 @@ export const Section = styled.div<SectionProps>`
   max-width: 114rem;
   @media (${media.sm}) {
     padding: 0 2rem;
-    margin: 0 auto 10rem;
     &:last-child {
       margin-bottom: 0;
     }
-    
   }
 
   `}

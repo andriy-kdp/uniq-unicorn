@@ -52,7 +52,7 @@ export const SecurityPage: React.FC = (): JSX.Element => {
               }
         }
       />
-      <Section mainContent m={"15rem auto 16rem"}>
+      <Section mainContent m={isMobile ? "6rem auto 16rem" : "12rem auto 16rem"}>
         <SecPosts.Root>
           {posts.map((post, idx) => (
             <SecPosts.Item.Root key={`sec-post-${idx}`}>

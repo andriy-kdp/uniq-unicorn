@@ -67,7 +67,7 @@ export const NewsPage: React.FC = (): JSX.Element => {
       <Section mainContent>
         <News.Root>
           {mockNews.map((item) => (
-            <News.Item.Root key={item.id} id={"ROOT"} onClick={handleClick(item.id)}>
+            <News.Item.Root key={item.id} onClick={handleClick(item.id)}>
               <SocialTitle date={item.date} linkedInLink="about:blank" title={item.title} twitterLink="about:blank" />
               <News.Item.Preview multiImages={item.images.length > 1}>
                 {item.images.length === 1 && (

@@ -88,7 +88,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
         justify={"center"}
       />
 
-      <Section mainContent m={"20rem auto"}>
+      <Section mainContent m={isMobile ? "0rem auto 20rem" : "15rem auto"}>
         <PlanInfo.Root>
           <Wrap sx={{ display: "flex", marginBottom: "2.4rem" }}>
             {!isMobile && <PlanInfo.Title>{planInfoItems[currentPlan].title}</PlanInfo.Title>}

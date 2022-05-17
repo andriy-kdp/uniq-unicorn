@@ -79,7 +79,7 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
         <CryptoBenefitsTitle>Crypto trading made easier</CryptoBenefitsTitle>
         <Benefits items={benefitsItems} secondary vertical={isMobile} centered={isMobile} />
       </Section>
-      <Section mainContent m={!isMobile ? "13rem auto 26rem" : "16rem auto 11rem"}>
+      <Section mainContent m={!isMobile ? "13rem auto 26rem" : "16rem auto 11rem !important"}>
         <MobileAppContainer>
           <MobileAppTitle>Your bitcoin wallet in our App</MobileAppTitle>
           <MobileAppImage src={PhonesBg} alt="IPhone" />

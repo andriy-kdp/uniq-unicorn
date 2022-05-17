@@ -163,14 +163,13 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
             </InfoWrapper>
             <ImgWrapper>{block.blockImgSrc}</ImgWrapper>
             {isMobile && (
-              <Wrap sx={{ marginLeft: "auto" }}>
+              <Wrap sx={{ marginLeft: "auto", marginTop: "3rem", marginRight: "2rem" }}>
                 <ButtonArrow onClick={handleClickButton(block.link)}>Open Account</ButtonArrow>
               </Wrap>
             )}
           </InfoBlockContainer>
         ))}
       </Section>
-      ;
     </>
   );
 };

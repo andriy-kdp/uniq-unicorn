@@ -54,7 +54,7 @@ export const MainPage: React.FC = (): JSX.Element => {
     <>
       <SlideSection
         bgImage={MainBg}
-        m={"4rem auto 0"}
+        m={isMobile ? "4rem auto 9rem" : "4rem auto 8rem"}
         button={{
           title: "Get started",
           onClick: handleClickRegister,
@@ -73,11 +73,11 @@ export const MainPage: React.FC = (): JSX.Element => {
               }
         }
       />
-      <Section mainContent m={isMobile ? "10.5rem auto 0" : "auto"}>
+      <Section mainContent m={isMobile ? "10.5rem auto 0" : "8rem auto 8rem"}>
         <Benefits items={benefitsList} vertical={isMobile} />
       </Section>
 
-      <Section mainContent m={"16rem auto 0"}>
+      <Section mainContent m={"8rem auto 0"}>
         {showVideoContent ? (
           <VideoFrame
             src="https://www.youtube.com/embed/RLSQqb9hcXU?autoplay=1"
@@ -92,16 +92,16 @@ export const MainPage: React.FC = (): JSX.Element => {
         )}
       </Section>
 
-      <Section mainContent m={"16rem auto 0"}>
+      <Section mainContent m={"8rem auto 0"}>
         <Wrap sx={{ textTransform: "uppercase" }}>
           <h2>Open Accounts, Send and Receive Payments in 28 currencies</h2>
         </Wrap>
-        {isMobile && (
+        {!isMobile && (
           <Wrap sx={{ width: "100%" }}>
             <img src={MapImage} alt={"Map"} style={{ position: "relative", width: "100%" }} />
           </Wrap>
         )}
-        <Wrap sx={{ marginLeft: "auto" }}>
+        <Wrap sx={{ marginLeft: "auto", marginBottom: "6rem" }}>
           <ButtonArrow onClick={handleClickRegister}>Open Account</ButtonArrow>
         </Wrap>
       </Section>

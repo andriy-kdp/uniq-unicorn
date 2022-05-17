@@ -136,6 +136,7 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
         bgImage={MainBg}
         title={"Black Banx media and public relations"}
         titleAlign="center"
+        titleWidth={"70%"}
         justify="center"
         m={"0 auto 8rem"}
         BgImageStyles={
@@ -145,7 +146,10 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
                 backgroundSize: "180%",
                 opacity: "0.8",
               }
-            : {}
+            : {
+                backgroundPosition: "50%",
+                backgroundSize: "70rem",
+              }
         }
       />
       <Section mainContent>

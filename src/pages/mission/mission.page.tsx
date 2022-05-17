@@ -12,9 +12,9 @@ export const MissionPage = () => {
         bgImage={MissionBg}
         title={"BLACK BANX ABOUT US"}
         bgVariant={"gradient"}
-        mobile={isMobile}
         justify={"center"}
         titleAlign={"center"}
+        titleWidth={"60%"}
         BgImageStyles={
           isMobile
             ? {
@@ -28,7 +28,7 @@ export const MissionPage = () => {
               }
         }
       />
-      <Section mainContent>
+      <Section mainContent m={"9rem auto 19rem"}>
         <MissionTitle>Who we are</MissionTitle>
         <MissionDescription>
           Account opening for you and your business can be difficult if you are based offshore, or if you are in an
