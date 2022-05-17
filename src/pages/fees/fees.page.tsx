@@ -91,7 +91,8 @@ export const FeesPage: React.FC = (): JSX.Element => {
       <Section mainContent m={"20rem auto"}>
         <PlanInfo.Root>
           <Wrap sx={{ display: "flex", marginBottom: "2.4rem" }}>
-            <PlanInfo.Title>{planInfoItems[currentPlan].title}</PlanInfo.Title>
+            {!isMobile && <PlanInfo.Title>{planInfoItems[currentPlan].title}</PlanInfo.Title>}
+
             <Wrap
               sx={{
                 display: "flex",
@@ -123,6 +124,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
                 </Wrap>
               ))}
             </Wrap>
+            {isMobile && <PlanInfo.Title>{planInfoItems[currentPlan].title}</PlanInfo.Title>}
             <Wrap
               sx={{
                 display: "flex",
@@ -142,9 +144,8 @@ export const FeesPage: React.FC = (): JSX.Element => {
             sx={{
               gridArea: "country",
               display: "flex",
-              flexDirection: isMobile ? "row" : "column",
+              flexDirection: "column",
               marginBottom: isMobile ? "6rem" : "inherit",
-              flexWrap: "wrap",
               gap: isTablet ? "2rem" : "0",
             }}
           >

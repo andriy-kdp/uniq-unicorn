@@ -138,6 +138,15 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
         titleAlign="center"
         justify="center"
         m={"0 auto 8rem"}
+        BgImageStyles={
+          isMobile
+            ? {
+                backgroundPosition: "40%",
+                backgroundSize: "180%",
+                opacity: "0.8",
+              }
+            : {}
+        }
       />
       <Section mainContent>
         {previewData.map((section, sectionIndex) => {

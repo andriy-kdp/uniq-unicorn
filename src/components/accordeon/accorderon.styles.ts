@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../utils/use-media-query";
 
 const AccordeonRoot = styled.div`
   display: flex;
@@ -17,6 +18,10 @@ const AccordeonTitle = styled.h6`
   font-weight: 500;
   font-size: 22px;
   line-height: 28px;
+  @media (${media.sm}) {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+  }
 `;
 
 const AccordeonIconRoot = styled.div`

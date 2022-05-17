@@ -8,6 +8,7 @@ import { Divider } from "../../components/divider/divider.styles";
 import { useNavigate } from "react-router-dom";
 import { Blog } from "./blog.styles";
 import { SocialTitle } from "../../components/social-title/social-title.component";
+import { useMediaQuery } from "../../utils/use-media-query";
 
 const mockBlogItems: {
   id: string | number;
@@ -36,6 +37,7 @@ const mockBlogItems: {
 
 export const BlogPage: React.FC = (): JSX.Element => {
   const goTo = useNavigate();
+  const isMobile = useMediaQuery("sm");
   const handlePreviewClick =
     (articleId: string | number): MouseEventHandler<HTMLDivElement> =>
     () =>
@@ -48,7 +50,16 @@ export const BlogPage: React.FC = (): JSX.Element => {
         bgVariant={"gradient"}
         titleAlign={"center"}
         justify={"center"}
-        m={"0 auto 16rem"}
+        h={isMobile ? "37.5rem" : "57.8rem"}
+        BgImageStyles={
+          isMobile
+            ? {
+                backgroundSize: "200% 37.5rem",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "70%",
+              }
+            : {}
+        }
       />
       <Section mainContent m={"auto auto 4rem"}>
         {mockBlogItems.map((post) => {
@@ -65,9 +76,7 @@ export const BlogPage: React.FC = (): JSX.Element => {
                 <img src={post.imgSrc} alt={post.title} />
               </Preview.Image.Root>
               <Divider variant="dashed" />
-              <Preview.Description onClick={handlePreviewClick(post.id)}>
-                {post.description}
-              </Preview.Description>
+              <Preview.Description onClick={handlePreviewClick(post.id)}>{post.description}</Preview.Description>
             </Preview.Root>
           );
         })}

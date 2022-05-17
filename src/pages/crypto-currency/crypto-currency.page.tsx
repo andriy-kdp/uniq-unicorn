@@ -10,12 +10,7 @@ import React from "react";
 import { Section } from "../../components/section/section.component";
 import { ReactComponent as SuccessIcon } from "../../assets/icons/benefits-crypto-currency/success.svg";
 import PhonesBg from "../../assets/backgrounds/crypto-currency-page/phones.png";
-import {
-  CryptoBenefitsTitle,
-  MobileAppContainer,
-  MobileAppImage,
-  MobileAppTitle,
-} from "./crypto-currency.styles";
+import { CryptoBenefitsTitle, MobileAppContainer, MobileAppImage, MobileAppTitle } from "./crypto-currency.styles";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MainBg from "../../assets/backgrounds/crypto-currency-page/crypto_cur_bg.png";
 import { useMediaQuery } from "../../utils/use-media-query";
@@ -38,14 +33,12 @@ const benefitsItems: BenefitItemsType = [
   },
   {
     title: "Perfect solution",
-    description:
-      "For exchanges or other crypto businesses to open bank accounts",
+    description: "For exchanges or other crypto businesses to open bank accounts",
     icon: <MedalIcon />,
   },
   {
     title: "International wires",
-    description:
-      "Bank wire transfers to third parties worldwide, fast and secure",
+    description: "Bank wire transfers to third parties worldwide, fast and secure",
     icon: <PlanetIcon />,
   },
   {
@@ -71,6 +64,11 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
         mobile={isMobile}
         bgImage={MainBg}
         title="Black Banx crypto currency banking"
+        BgImageStyles={
+          isMobile
+            ? { backgroundRepeat: "no-repeat", backgroundPosition: "88%", height: "57.8rem", backgroundSize: "130rem" }
+            : {}
+        }
         button={{
           title: "Open Account",
           onClick: handleClick,
@@ -79,23 +77,13 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
 
       <Section mainContent>
         <CryptoBenefitsTitle>Crypto trading made easier</CryptoBenefitsTitle>
-        <Benefits
-          items={benefitsItems}
-          secondary
-          vertical={isMobile}
-          centered={isMobile}
-        />
+        <Benefits items={benefitsItems} secondary vertical={isMobile} centered={isMobile} />
       </Section>
-      <Section
-        mainContent
-        m={!isMobile ? "13rem auto 26rem" : "16rem auto 11rem"}
-      >
+      <Section mainContent m={!isMobile ? "13rem auto 26rem" : "16rem auto 11rem"}>
         <MobileAppContainer>
           <MobileAppTitle>Your bitcoin wallet in our App</MobileAppTitle>
           <MobileAppImage src={PhonesBg} alt="IPhone" />
-          <ButtonArrow onClick={handleClickAppDownloadLink}>
-            Download App
-          </ButtonArrow>
+          <ButtonArrow onClick={handleClickAppDownloadLink}>Download App</ButtonArrow>
         </MobileAppContainer>
       </Section>
     </>

@@ -9,6 +9,9 @@ const PlanInfoRoot = styled.div`
 const PlanInfoTitle = styled.h2`
   display: flex;
   width: 100%;
+  @media (${media.sm}) {
+    margin: 3rem auto;
+  }
 `;
 
 const PlanInfoDescriptionRoot = styled.div`
