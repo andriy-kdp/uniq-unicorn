@@ -53,25 +53,28 @@ const DropdownMenuRoot = styled.div<{ mounted?: boolean }>`
   ${(props) =>
     props.mounted &&
     `
-    width: 80%;
+    width: 70%;
   `}
 `;
 
 const DropdownItemsRoot = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
+  padding: 0 10rem;
 `;
 const DropdownMenuItemRoot = styled.button`
   display: flex;
   background: none;
+
   border: none;
   outline: none;
   color: #fff;
   padding: 3rem 1.8rem 4rem 1.8rem;
   cursor: pointer;
   min-width: 0;
+  min-width: 27rem;
   overflow: hidden;
 `;
 

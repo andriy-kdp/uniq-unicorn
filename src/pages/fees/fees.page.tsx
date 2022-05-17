@@ -10,6 +10,9 @@ import TitaniumAccountBg from "../../assets/backgrounds/fees/plastic_card.png";
 import { Input } from "../../components/inputs/input/input.component";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg";
 import { useMediaQuery } from "../../utils/use-media-query";
+import { IconButton } from "../../components/icon-button/icon-button.component";
+import { ReactComponent as ArrowIconLeft } from "../../assets/icons/arrow_left.svg";
+
 type PlanInfoType = {
   title: string;
   prosItems: PlanInfoProsItem[];
@@ -98,22 +101,19 @@ export const FeesPage: React.FC = (): JSX.Element => {
               }}
             >
               {/* FIXME: uncomment this lines, when add new cards */}
-              {/* <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
+              <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
                 <ArrowIconLeft />
               </IconButton>
               <IconButton disabled={currentPlan === planInfoItems.length - 1} reverse onClick={handleNextPlan}>
                 <ArrowIconLeft />
-              </IconButton> */}
+              </IconButton>
             </Wrap>
           </Wrap>
           <PlanInfo.Description>
             <Wrap>
               {planInfoItems[currentPlan].prosItems.map((pros, idx) => (
                 <Wrap key={`plan-info-${idx}`}>
-                  <Accordeon
-                    title={pros.title}
-                    description={pros.description}
-                  />
+                  <Accordeon title={pros.title} description={pros.description} />
                   {idx !== planInfoItems[currentPlan].prosItems.length - 1 && (
                     <Wrap sx={{ margin: "2.4rem 0" }}>
                       <Divider />
@@ -129,10 +129,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
                 alignItems: "center",
               }}
             >
-              <PlanInfo.Img
-                src={planInfoItems[currentPlan].imgSrc}
-                alt={"Plan info"}
-              />
+              <PlanInfo.Img src={planInfoItems[currentPlan].imgSrc} alt={"Plan info"} />
             </Wrap>
           </PlanInfo.Description>
         </PlanInfo.Root>
@@ -152,11 +149,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
           >
             {countries.map((country) => {
               const { Item } = FindCountry.Countries;
-              return (
-                <Item
-                  key={country.country}
-                >{`${country.country} (${country.count})`}</Item>
-              );
+              return <Item key={country.country}>{`${country.country} (${country.count})`}</Item>;
             })}
           </Wrap>
           {isMobile && (
@@ -174,16 +167,14 @@ export const FeesPage: React.FC = (): JSX.Element => {
                 startIcon={<SearchIcon />}
                 placeholder={"Please enter country"}
                 onChange={(e) => setSearchValue(e.target.value)}
-                helperText={
-                  "Didn’t find your country or residence in here?  Please Contact us"
-                }
+                helperText={"Didn’t find your country or residence in here?  Please Contact us"}
               />
             </Wrap>
           )}
           <Wrap sx={{ gridArea: "title" }}>
             <FindCountry.Title>
-              We’re proud to announce that we’re in more than 180 countries all
-              over the world, find out if we’re in yours!
+              We’re proud to announce that we’re in more than 180 countries all over the world, find out if we’re in
+              yours!
             </FindCountry.Title>
           </Wrap>
           {!isMobile && (
@@ -200,9 +191,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
                 startIcon={<SearchIcon />}
                 placeholder={"Please enter country"}
                 onChange={(e) => setSearchValue(e.target.value)}
-                helperText={
-                  "Didn’t find your country or residence in here?  Please Contact us"
-                }
+                helperText={"Didn’t find your country or residence in here?  Please Contact us"}
               />
             </Wrap>
           )}
