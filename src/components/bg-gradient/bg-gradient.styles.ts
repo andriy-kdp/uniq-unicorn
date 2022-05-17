@@ -5,12 +5,12 @@ const BgGradientContainer = styled.div<BgGradientType>((props) => ({
   background: `url(${props.imgSrc})`,
   display: "flex",
   width: "100%",
-  height: "57.8rem",
   opacity: 0.4,
   ...props.sx,
 }));
 
 export const BgGradientMain = styled(BgGradientContainer)`
+  height: ${(props) => props.h || "57.8rem"};
   &:after {
     content: " ";
     display: flex;

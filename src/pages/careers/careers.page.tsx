@@ -3,17 +3,10 @@ import { SlideSection } from "../../components/silde-section/slide-section.compo
 import { Section } from "../../components/section/section.component";
 import careersBg from "../../assets/backgrounds/careers/careers_bg.png";
 import careersVideoPlugImg from "../../assets/backgrounds/careers/careers_video_plug.png";
-import {
-  VacationsComponent,
-  VacationSection,
-} from "../../components/vacations/vacations.component";
+import { VacationsComponent, VacationSection } from "../../components/vacations/vacations.component";
 import { Input } from "../../components/inputs/input/input.component";
 import { Select } from "../../components/inputs/select/select.component";
-import {
-  SelectHandler,
-  SelectOption,
-  SelectOptions,
-} from "../../components/inputs/select/select.types";
+import { SelectHandler, SelectOption, SelectOptions } from "../../components/inputs/select/select.types";
 import { ReactComponent as FlagIconCn } from "../../assets/icons/flags/flag_cn.svg";
 import { ReactComponent as FlagIconEsp } from "../../assets/icons/flags/flag_esp.svg";
 import { ReactComponent as FlagIconPt } from "../../assets/icons/flags/flag_pt.svg";
@@ -31,15 +24,13 @@ const vacationsList: VacationSection[] = [
     vacations: [
       {
         title: "Sales and Service Representative",
-        description:
-          "We're looking for an advanced Sales and Service Representative to join our team.",
+        description: "We're looking for an advanced Sales and Service Representative to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
       {
         title: "Sales Associate Supervisor",
-        description:
-          "We're looking for a mid-level Sales Associate Supervisor to join our team.",
+        description: "We're looking for a mid-level Sales Associate Supervisor to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
@@ -50,22 +41,19 @@ const vacationsList: VacationSection[] = [
     vacations: [
       {
         title: "Engineering Manager",
-        description:
-          "We're looking for an experienced engineering manager to join our team.",
+        description: "We're looking for an experienced engineering manager to join our team.",
         salary: { from: 80, to: 100 },
         variant: "part_time",
       },
       {
         title: "Frontend Developer",
-        description:
-          "We're looking for an experienced frontend developer to join our team.",
+        description: "We're looking for an experienced frontend developer to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
       {
         title: "Backend Beveloper",
-        description:
-          "We're looking for an experienced backend developer to join our team.",
+        description: "We're looking for an experienced backend developer to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
@@ -76,8 +64,7 @@ const vacationsList: VacationSection[] = [
     vacations: [
       {
         title: "Customer Success Manager",
-        description:
-          "We're looking for a mid-level product designer to join our team.",
+        description: "We're looking for a mid-level product designer to join our team.",
         salary: { from: 80, to: 100 },
         variant: "full_time",
       },
@@ -129,7 +116,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
     location: string;
     dateOfPosting: SelectOption | null;
   }>({ keywords: "", location: "", dateOfPosting: null, filterBy: "exact" });
-  const isMobile = useMediaQuery("xs");
+  const isMobile = useMediaQuery("sm");
   const nav = useNavigate();
 
   const commonHandler = (name: string, value: string | SelectOption) => {
@@ -150,10 +137,9 @@ export const CareersPage: React.FC = (): JSX.Element => {
     }
   };
 
-  const handleSelectFilterType =
-    (value: "exact" | "title" | "description") => () => {
-      commonHandler("filterBy", value);
-    };
+  const handleSelectFilterType = (value: "exact" | "title" | "description") => () => {
+    commonHandler("filterBy", value);
+  };
 
   const handleClickOpenAccount = () => {
     nav("/auth/register");
@@ -164,10 +150,21 @@ export const CareersPage: React.FC = (): JSX.Element => {
       <SlideSection
         bgImage={careersBg}
         title={"Come and work with us all over the world"}
-        titleWidth={"80rem"}
         justify={"center"}
         bgVariant={"gradient"}
         titleAlign={"center"}
+        h={isMobile ? "45rem" : "57.8rem"}
+        titleWidth={isMobile ? "90%" : "70%"}
+        BgImageStyles={
+          isMobile
+            ? {
+                backgroundPosition: "70%",
+                backgroundSize: "90rem 100%",
+                backgroundRepeat: "no-repeat",
+                opacity: "0.8 !important",
+              }
+            : {}
+        }
         button={{
           title: "Open Account",
           onClick: handleClickOpenAccount,
@@ -179,11 +176,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
           <h3>We're looking for talented people to join us</h3>
         </Wrap>
         <Wrap sx={{ marginBottom: isMobile ? "3rem" : "9rem" }}>
-          <img
-            src={careersVideoPlugImg}
-            alt={"Careers video"}
-            style={{ position: "relative", width: "100%" }}
-          />
+          <img src={careersVideoPlugImg} alt={"Careers video"} style={{ position: "relative", width: "100%" }} />
         </Wrap>
       </Section>
 
@@ -194,9 +187,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
       </Section>
       <Section mainContent>
         <h3>Search for openings:</h3>
-        <Wrap
-          sx={{ maxWidth: "76.8rem", width: "100%", margin: "4rem auto 14rem" }}
-        >
+        <Wrap sx={{ maxWidth: "76.8rem", width: "100%", margin: "4rem auto 14rem" }}>
           <Input
             fullWidth
             value={formData["keywords"]}
@@ -208,15 +199,10 @@ export const CareersPage: React.FC = (): JSX.Element => {
             LabelRootProps={{ style: { marginBottom: "3.2rem" } }}
           />
 
-          <Wrap
-            sx={{ display: "flex", marginTop: "1.6rem", marginBottom: "4rem" }}
-          >
+          <Wrap sx={{ display: "flex", marginTop: "1.6rem", marginBottom: "4rem" }}>
             {keywordsFilterButtons.map((button) => (
               <Wrap sx={{ marginRight: "1.6rem" }} key={button.value}>
-                <Button
-                  onClick={handleSelectFilterType(button.value)}
-                  selected={formData.filterBy === button.value}
-                >
+                <Button onClick={handleSelectFilterType(button.value)} selected={formData.filterBy === button.value}>
                   {button.title}
                 </Button>
               </Wrap>

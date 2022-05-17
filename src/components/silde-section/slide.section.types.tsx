@@ -5,6 +5,7 @@ export type SlideSectionProps = {
   bgImage: string;
   title?: string;
   m?: CSSProperties["margin"];
+  h?: CSSObject["height"];
   button?: {
     title: string;
     onClick: ButtonArrowProps["onClick"];

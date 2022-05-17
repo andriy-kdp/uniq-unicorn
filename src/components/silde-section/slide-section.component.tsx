@@ -7,13 +7,13 @@ import { BgGradient } from "../bg-gradient/bg-gradient.component";
 import { SlideSectionProps } from "./slide.section.types";
 
 export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (props) => {
-  const { children, bgImage, title, justify, button, bgVariant, titleWidth, titleAlign, m, mobile, BgImageStyles } =
+  const { children, bgImage, title, justify, button, bgVariant, titleWidth, titleAlign, m, h, mobile, BgImageStyles } =
     props;
   return (
     <>
       <Section align={"center"} m={m}>
         {bgVariant === "gradient" ? (
-          <BgGradient imgSrc={bgImage} sx={BgImageStyles} />
+          <BgGradient imgSrc={bgImage} sx={BgImageStyles} h={h} />
         ) : (
           <Wrap
             sx={{
@@ -37,7 +37,8 @@ export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (pro
           {title && (
             <Wrap
               sx={{
-                maxWidth: titleWidth || !mobile ? "60%" : "100%",
+                maxWidth: titleWidth || "100%",
+                width: "100%",
                 textTransform: "uppercase",
                 display: "flow-root",
                 textAlign: titleAlign || "start",

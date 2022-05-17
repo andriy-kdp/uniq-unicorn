@@ -12,6 +12,7 @@ export const MissionPage = () => {
         bgImage={MissionBg}
         title={"BLACK BANX ABOUT US"}
         bgVariant={"gradient"}
+        mobile={isMobile}
         justify={"center"}
         titleAlign={"center"}
         BgImageStyles={
