@@ -142,8 +142,8 @@ export const Header = () => {
     };
   if (!isMobile) {
     return (
-      <Wrap onMouseLeave={() => setSubmenuItems(null)}>
-        <Section mainContent direction={"row"} justify={"center"} mh={"13rem"}>
+      <Wrap onMouseLeave={() => setSubmenuItems(null)} sx={{ minHeight: "15rem" }}>
+        <Section mainContent direction={"row"} justify={"center"}>
           <MenuPart menuItems={menuLeft} setSubmenuItems={setSubmenuItems} />
           <LogoContainer small={!!submenuItems}>
             <Link to={"/"}>

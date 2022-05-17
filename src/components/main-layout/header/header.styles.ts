@@ -5,6 +5,9 @@ export const LogoContainer = styled.div<{ small?: boolean }>`
   transform: translateX(-75%);
   margin-top: 3rem;
   transition-duration: 200ms;
+  svg {
+    width: 80%;
+  }
   ${(props) =>
     props.small &&
     `

@@ -1,5 +1,5 @@
-import { CSSProperties } from "react";
+import { CSSObject } from "styled-components";
 
 export type WrapProps = {
-  sx?: CSSProperties;
+  sx?: CSSObject;
 };

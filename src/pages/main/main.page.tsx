@@ -37,7 +37,7 @@ const benefitsList: BenefitItemsType = [
 export const MainPage: React.FC = (): JSX.Element => {
   const [showVideoContent, setShowVideoContent] = useState(false);
   const nav = useNavigate();
-  const isMobile = useMediaQuery("xs");
+  const isMobile = useMediaQuery("sm");
   const handleClickDownloadApp = () => {
     window.open("about:blank", "noopener norefferer");
   };

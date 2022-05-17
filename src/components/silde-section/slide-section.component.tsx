@@ -13,7 +13,7 @@ export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (pro
     <>
       <Section align={"center"} m={m}>
         {bgVariant === "gradient" ? (
-          <BgGradient imgSrc={bgImage} />
+          <BgGradient imgSrc={bgImage} sx={BgImageStyles} />
         ) : (
           <Wrap
             sx={{
