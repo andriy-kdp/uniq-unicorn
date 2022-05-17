@@ -44,13 +44,7 @@ const DropdownMenuRoot = styled.div<{ mounted?: boolean }>`
   position: absolute;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(
-    90deg,
-    rgba(12, 12, 12, 0) 0%,
-    #151515 30.73%,
-    #151515 67.19%,
-    rgba(12, 12, 12, 0) 100%
-  );
+  background: linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #151515 30.73%, #151515 67.19%, rgba(12, 12, 12, 0) 100%);
   backdrop-filter: blur(6px);
   top: 7rem;
   left: 0;

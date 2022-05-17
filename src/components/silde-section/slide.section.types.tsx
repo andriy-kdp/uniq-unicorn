@@ -14,7 +14,6 @@ export type SlideSectionProps = {
   bgVariant?: "gradient";
   titleWidth?: CSSProperties["maxWidth"];
   titleAlign?: CSSProperties["textAlign"];
-  BgRootProps?: WrapProps["sx"];
   mobile?: boolean;
-  BgImageStyles?: CSSProperties;
+  BgImageStyles?: WrapProps["sx"];
 };

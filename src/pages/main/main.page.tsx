@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BenefitItemsType } from "../../components/benefits/benefits.types";
 import { Benefits } from "../../components/benefits/benefits.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
@@ -12,13 +12,11 @@ import { ReactComponent as GlobalIcon } from "../../assets/icons/benefits-main/g
 import { ReactComponent as SafeIcon } from "../../assets/icons/benefits-main/safe.svg";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import SmartMockupBg from "../../assets/backgrounds/home-page/smart-mockup.png";
-import { DownloadAppHeader } from "./main.styles";
+import { DownloadAppHeader, VideoCover, VideoFrame } from "./main.styles";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../utils/use-media-query";
+import { ReactComponent as PlayButton } from "../../assets/icons/play_btn.svg";
 
-//TODO
-//https://www.youtube.com/watch?v=RLSQqb9hcXU
-//card size for mobile and desktop
 const benefitsList: BenefitItemsType = [
   {
     title: "Safe",
@@ -37,6 +35,7 @@ const benefitsList: BenefitItemsType = [
   },
 ];
 export const MainPage: React.FC = (): JSX.Element => {
+  const [showVideoContent, setShowVideoContent] = useState(false);
   const nav = useNavigate();
   const isMobile = useMediaQuery("xs");
   const handleClickDownloadApp = () => {
@@ -45,6 +44,10 @@ export const MainPage: React.FC = (): JSX.Element => {
 
   const handleClickRegister = () => {
     nav("/auth/register");
+  };
+
+  const handleClickCover = () => {
+    setShowVideoContent(true);
   };
 
   return (
@@ -58,13 +61,35 @@ export const MainPage: React.FC = (): JSX.Element => {
         }}
         title={"Private or Business accounts set up in minutes"}
         mobile={isMobile}
+        BgImageStyles={
+          !isMobile
+            ? {
+                backgroundSize: "cover",
+                backgroundPosition: "right",
+              }
+            : {
+                backgroundSize: "80rem",
+                backgroundPosition: "100%",
+              }
+        }
       />
       <Section mainContent m={isMobile ? "10.5rem auto 0" : "auto"}>
         <Benefits items={benefitsList} vertical={isMobile} />
       </Section>
 
       <Section mainContent m={"16rem auto 0"}>
-        <img src={MockVideo} alt="Video here" style={{ width: "100%" }} />
+        {showVideoContent ? (
+          <VideoFrame
+            src="https://www.youtube.com/embed/RLSQqb9hcXU?autoplay=1"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : (
+          <VideoCover bgImage={MockVideo} onClick={handleClickCover}>
+            <PlayButton />
+          </VideoCover>
+        )}
       </Section>
 
       <Section mainContent m={"16rem auto 0"}>
@@ -73,11 +98,7 @@ export const MainPage: React.FC = (): JSX.Element => {
         </Wrap>
         {isMobile && (
           <Wrap sx={{ width: "100%" }}>
-            <img
-              src={MapImage}
-              alt={"Map"}
-              style={{ position: "relative", width: "100%" }}
-            />
+            <img src={MapImage} alt={"Map"} style={{ position: "relative", width: "100%" }} />
           </Wrap>
         )}
         <Wrap sx={{ marginLeft: "auto" }}>
@@ -86,11 +107,7 @@ export const MainPage: React.FC = (): JSX.Element => {
       </Section>
       {!isMobile && (
         <Section mainContent m={"16rem auto 12rem"}>
-          <img
-            src={SmartMockupBg}
-            alt={"Download mobile app"}
-            style={{ position: "relative", width: "100%" }}
-          />
+          <img src={SmartMockupBg} alt={"Download mobile app"} style={{ position: "relative", width: "100%" }} />
           <Wrap
             sx={{
               display: "flex",
@@ -102,12 +119,8 @@ export const MainPage: React.FC = (): JSX.Element => {
               padding: !isMobile ? "4.7rem 9.2rem" : "2rem",
             }}
           >
-            <DownloadAppHeader>
-              Download Black Banx App to have all your finances in your pocket
-            </DownloadAppHeader>
-            <ButtonArrow onClick={handleClickDownloadApp}>
-              Download the App
-            </ButtonArrow>
+            <DownloadAppHeader>Download Black Banx App to have all your finances in your pocket</DownloadAppHeader>
+            <ButtonArrow onClick={handleClickDownloadApp}>Download the App</ButtonArrow>
           </Wrap>
         </Section>
       )}

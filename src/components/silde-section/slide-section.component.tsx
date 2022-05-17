@@ -6,23 +6,9 @@ import { ButtonArrow } from "../button-arrow/button-arrow.component";
 import { BgGradient } from "../bg-gradient/bg-gradient.component";
 import { SlideSectionProps } from "./slide.section.types";
 
-export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (
-  props,
-) => {
-  const {
-    children,
-    bgImage,
-    title,
-    justify,
-    button,
-    bgVariant,
-    titleWidth,
-    titleAlign,
-    BgRootProps,
-    m,
-    mobile,
-    BgImageStyles,
-  } = props;
+export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (props) => {
+  const { children, bgImage, title, justify, button, bgVariant, titleWidth, titleAlign, m, mobile, BgImageStyles } =
+    props;
   return (
     <>
       <Section align={"center"} m={m}>
@@ -31,36 +17,20 @@ export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (
         ) : (
           <Wrap
             sx={{
-              display: "flex",
-              justifyContent: "flex-end",
+              position: "relative",
+              background: `url(${bgImage})`,
+              height: mobile ? "34rem" : "57rem",
               width: "100%",
-              height: "57.8rem",
-              ...BgRootProps,
+              backgroundRepeat: "no-repeat",
+              ...BgImageStyles,
             }}
-          >
-            <img
-              src={bgImage}
-              alt={title}
-              style={{
-                position: "relative",
-                marginRight: 0,
-                height: "100%",
-                ...BgImageStyles,
-              }}
-            />
-          </Wrap>
+          />
         )}
 
         <Section
           mainContent
           justify={"center"}
-          align={
-            justify === "center"
-              ? "center"
-              : justify === "right"
-              ? "flex-end"
-              : "flex-start"
-          }
+          align={justify === "center" ? "center" : justify === "right" ? "flex-end" : "flex-start"}
           pos={mobile ? "relative" : "absolute"}
           h={"100%"}
         >

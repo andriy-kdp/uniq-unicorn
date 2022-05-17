@@ -19,11 +19,7 @@ import { ReactComponent as FlagIconEsp } from "../../../assets/icons/flags/flag_
 import { ReactComponent as FlagIconPt } from "../../../assets/icons/flags/flag_pt.svg";
 import { ReactComponent as FlagIconRu } from "../../../assets/icons/flags/flag_ru.svg";
 import { ReactComponent as FlagIconUs } from "../../../assets/icons/flags/flag_us.svg";
-import {
-  SelectHandler,
-  SelectOption,
-  SelectOptions,
-} from "../../inputs/select/select.types";
+import { SelectHandler, SelectOption, SelectOptions } from "../../inputs/select/select.types";
 import { Wrap } from "../../wrap/wrap.component";
 import { useMediaQuery } from "../../../utils/use-media-query";
 import { FooterConnect } from "./parts/connect.component";
@@ -108,8 +104,6 @@ export const cities: string[] = [
   "Cape Town",
 ];
 
-//TODO: page scroll up after click on footer link
-
 export const Footer = () => {
   const [language, setLanguage] = useState<SelectOption | null>({
     id: "opt-5",
@@ -144,25 +138,17 @@ export const Footer = () => {
         </FooterLinksRoot>
         {!isMobile ? (
           <FooterConnect>
-            <SelectLanguageAppLink
-              language={language}
-              onSelect={handleSetLanguage}
-            />
+            <SelectLanguageAppLink language={language} onSelect={handleSetLanguage} />
           </FooterConnect>
         ) : (
           <Wrap sx={{ display: "flex", width: "100%", marginTop: "2rem" }}>
-            <SelectLanguageAppLink
-              language={language}
-              onSelect={handleSetLanguage}
-              reverse
-            />
+            <SelectLanguageAppLink language={language} onSelect={handleSetLanguage} reverse />
           </Wrap>
         )}
       </FooterRoot>
       <CopyrightContainer>
-        © 2021 Black Banx Inc. All rights reserved. Black Banx Inc. is
-        authorised under Canadian law for providing financial services as MSB
-        registration number M18324260.
+        © 2021 Black Banx Inc. All rights reserved. Black Banx Inc. is authorised under Canadian law for providing
+        financial services as MSB registration number M18324260.
       </CopyrightContainer>
     </Section>
   );
