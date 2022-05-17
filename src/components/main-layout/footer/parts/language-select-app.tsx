@@ -6,9 +6,7 @@ import { selectOptions } from "../footer.component";
 import { SelectLanguageAppLinkProps } from "../footer.types";
 import { SelectLanguageAppLinkRoot } from "./connect.styles";
 
-export const SelectLanguageAppLink: React.FC<SelectLanguageAppLinkProps> = (
-  props,
-) => {
+export const SelectLanguageAppLink: React.FC<SelectLanguageAppLinkProps> = (props) => {
   const { language, onSelect } = props;
   const handleAppIconClick = () => {
     window.open("about:blank", "noopener norefferer");
@@ -26,10 +24,7 @@ export const SelectLanguageAppLink: React.FC<SelectLanguageAppLinkProps> = (
         noAdornment
       />
 
-      <Wrap
-        sx={{ marginLeft: "auto", cursor: "pointer" }}
-        onClick={handleAppIconClick}
-      >
+      <Wrap sx={{ marginLeft: "auto", cursor: "pointer" }} onClick={handleAppIconClick}>
         <AppStoreIcon />
       </Wrap>
     </SelectLanguageAppLinkRoot>

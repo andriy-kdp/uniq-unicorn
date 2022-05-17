@@ -12,7 +12,8 @@ export const SelectLanguageAppLinkRoot = styled.div`
   gap: 3rem;
   @media (${media.sm}) {
     flex-direction: row-reverse;
-    max-width: 50%;
+    max-width: 26rem;
+    gap: 2rem;
   }
 `;
 export const FooterConnectOptions = styled.div`
