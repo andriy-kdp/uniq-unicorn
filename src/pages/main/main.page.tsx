@@ -54,19 +54,17 @@ export const MainPage: React.FC = (): JSX.Element => {
     <>
       <SlideSection
         bgImage={MainBg}
-        m={isMobile ? "4rem auto 9rem" : "4rem auto 8rem"}
+        m={isMobile ? "4rem auto 9rem" : "4rem auto 4rem"}
         button={{
           title: "Get started",
           onClick: handleClickRegister,
         }}
         title={"Private or Business accounts set up in minutes"}
         mobile={isMobile}
+        titleWidth={isMobile ? "100%" : "50%"}
         BgImageStyles={
           !isMobile
-            ? {
-                backgroundSize: "cover",
-                backgroundPosition: "right",
-              }
+            ? { height: "60rem", backgroundSize: "cover", backgroundPosition: "right" }
             : {
                 backgroundSize: "80rem",
                 backgroundPosition: "100%",
@@ -106,7 +104,7 @@ export const MainPage: React.FC = (): JSX.Element => {
         </Wrap>
       </Section>
       {!isMobile && (
-        <Section mainContent m={"16rem auto 12rem"}>
+        <Section mainContent m={"8rem auto 12rem"}>
           <img src={SmartMockupBg} alt={"Download mobile app"} style={{ position: "relative", width: "100%" }} />
           <Wrap
             sx={{

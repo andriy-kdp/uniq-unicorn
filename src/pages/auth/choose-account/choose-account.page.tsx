@@ -8,13 +8,7 @@ import { Wrap } from "../../../components/wrap/wrap.component";
 import { Section } from "../../../components/section/section.component";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../../utils/use-media-query";
-type AccountTypes = "private" | "business" | "institutional";
-
-type AccountItem = {
-  icon: React.ReactNode;
-  title: string;
-  value: AccountTypes;
-};
+import { AccountItem, AccountTypes } from "../auth.types";
 
 const accountVariants: AccountItem[] = [
   { icon: <PrivateIcon />, title: "Private account", value: "private" },
@@ -70,12 +64,8 @@ export const ChooseAccountPage: React.FC = (): JSX.Element => {
                 }}
                 onClick={handleClick(acc.value)}
               >
-                <Accounts.Variants.Item.Icon.Root>
-                  {acc.icon}
-                </Accounts.Variants.Item.Icon.Root>
-                <Accounts.Variants.Item.Title>
-                  {acc.title}
-                </Accounts.Variants.Item.Title>
+                <Accounts.Variants.Item.Icon.Root>{acc.icon}</Accounts.Variants.Item.Icon.Root>
+                <Accounts.Variants.Item.Title>{acc.title}</Accounts.Variants.Item.Title>
               </Wrap>
             ))}
           </Accounts.Variants.Root>
