@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { ArticleItem } from "./media-coverage.page";
+
 import { media } from "../../utils/use-media-query";
+import { ArticleItem } from "./media-coverage.types";
 
 const NewsSectionRoot = styled.div`
   display: flex;

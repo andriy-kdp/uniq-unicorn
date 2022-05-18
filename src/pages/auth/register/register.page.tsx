@@ -3,14 +3,15 @@ import { useParams } from "react-router-dom";
 import { ButtonArrow } from "../../../components/button-arrow/button-arrow.component";
 import { Input } from "../../../components/inputs/input/input.component";
 import { Select } from "../../../components/inputs/select/select.component";
-import { SelectHandler, SelectOption } from "../../../components/inputs/select/select.types";
+import { SelectHandler, SelectOption, SelectProps } from "../../../components/inputs/select/select.types";
 import { Section } from "../../../components/section/section.component";
 import { Wrap } from "../../../components/wrap/wrap.component";
 import { Form, Register } from "./register.styles";
 import * as yup from "yup";
 import { parseYupError } from "../../../utils/parseYupError";
-import { BusinessAccountFormType, PrivateAccountFormType } from "../auth.types";
+import { BusinessAccountFormType, FormFieldType, FormTypeKeys, PrivateAccountFormType } from "../auth.types";
 import { businessForm, privateForm } from "../../../utils/form-configs";
+import { InputProps } from "../../../components/inputs/input/input.types";
 
 const initBusinessForm: BusinessAccountFormType = {
   address: "",
@@ -56,19 +57,25 @@ const initPrivateForm: PrivateAccountFormType = {
   validUntil: "",
 };
 
+const FormField: React.FC<InputProps & SelectProps & { type: FormFieldType["type"] }> = (props): JSX.Element => {
+  const { type, ...rest } = props;
+  const Component: typeof Input | typeof Select = type === "select" ? Select : Input;
+  return <Component {...rest} />;
+};
+
 export const RegisterPage = () => {
   const [currentSection, setCurrentSection] = useState<number>(0);
   const [formSections, setFormSections] = useState<typeof businessForm | typeof privateForm | null>([]);
   const [helpForm, setHelpForm] = useState({ value: "", error: "" });
   const { type } = useParams();
-  const [formData, setFormData] = useState<typeof initBusinessForm | typeof initPrivateForm | null>(null);
+  const [formData, setFormData] = useState<BusinessAccountFormType | PrivateAccountFormType | null>(null);
 
-  const [formErrors, setFormErrors] = useState({});
+  const [formErrors, setFormErrors] = useState<Record<FormTypeKeys, string> | null>(null);
 
   const handleClickNextSection = () => {
     if (formSections) {
       if (currentSection === formSections.length - 1) {
-        setFormErrors({});
+        setFormErrors(null);
         const prevalidationErrors: Record<string, any> = {};
         const { email, password, emailConfirm, passwordConfirm } = formData as any;
         if (email !== emailConfirm) {
@@ -147,9 +154,10 @@ export const RegisterPage = () => {
   const handleClickPrevSection = () => setCurrentSection((prev) => (prev > 0 ? --prev : prev));
 
   const updateForm = (name: string, value: string | SelectOption) => {
-    setFormErrors((prev) => ({ ...prev, [name]: null }));
-    // @ts-ignore
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (formData) {
+      setFormErrors((prev) => ({ ...prev, [name]: null }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -167,7 +175,6 @@ export const RegisterPage = () => {
       setFormSections(privateForm);
       return setFormData(initPrivateForm);
     }
-    // @ts-ignore
     setFormSections(businessForm);
     setFormData(initBusinessForm);
   }, []);
@@ -177,52 +184,20 @@ export const RegisterPage = () => {
       <Wrap sx={{ minHeight: "35rem", width: "100%" }}>
         {formSections?.length && formData && (
           <Form.Root>
-            {/* @ts-ignore */}
             {formSections[currentSection].fields.map((field) => {
-              const { type, label, name, placeholder, selectOptions, helperText } = field;
-              let input: React.ReactNode;
-              if (type === "select") {
-                input = (
-                  <Select
-                    name={name}
-                    // @ts-ignore
-                    value={formData[name] as SelectOption}
-                    onSelect={handleSelect}
-                    options={selectOptions as SelectOption[]}
-                    optionsPosition={"top"}
-                    label={label}
-                    InputProps={{ placeholder, helperText }}
-                    fullWidth
-                    // @ts-ignore
-                    error={Boolean(formErrors[name])}
-                    // @ts-ignore
-                    helperText={formErrors[name]}
-                  />
-                );
-              } else {
-                input = (
-                  <Input
-                    // @ts-ignore
-                    value={formData[name] as string}
-                    onChange={handleInputChange}
-                    name={name}
-                    label={label}
-                    placeholder={placeholder}
-                    fullWidth
-                    // @ts-ignore
-                    error={Boolean(formErrors[name])}
-                    // @ts-ignore
-                    helperText={formErrors[name] || helperText}
-                    InputNativeProps={{
-                      type: name === "password" || name === "passwordConfirm" ? "password" : "text",
-                    }}
-                  />
-                );
-              }
-
               return (
                 <Wrap sx={{ display: "flex", width: "100%", marginTop: "3rem" }} key={field.name}>
-                  {input}
+                  <FormField
+                    {...field}
+                    // @ts-ignore
+                    value={formData[field.name] || (formData[field.name] as SelectOption)}
+                    options={field.selectOptions || [{ id: "none", value: "", label: "" }]}
+                    onSelect={handleSelect}
+                    onChange={handleInputChange}
+                    fullWidth
+                    error={!!formErrors?.[field.name]}
+                    helperText={formErrors?.[field.name]}
+                  />
                 </Wrap>
               );
             })}

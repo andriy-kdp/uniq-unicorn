@@ -40,7 +40,9 @@ export type BusinessAccountFormType = Omit<PrivateAccountFormType, "accountCurre
   url: string;
 };
 
-export type FormFieldType<T> = {
+export type FormTypeKeys = keyof BusinessAccountFormType | keyof PrivateAccountFormType;
+
+export type FormFieldType<T = {}> = {
   name: keyof T;
   label: string;
   placeholder: string;
