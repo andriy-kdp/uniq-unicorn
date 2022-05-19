@@ -110,7 +110,9 @@ export const CareersPage: React.FC = (): JSX.Element => {
                 backgroundRepeat: "no-repeat",
                 opacity: "0.8 !important",
               }
-            : {}
+            : {
+                backgroundSize: "100%",
+              }
         }
         button={{
           title: "Open Account",
@@ -122,7 +124,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
         <Wrap sx={{ margin: isMobile ? "3rem 0" : "6rem 0" }}>
           <h3>We're looking for talented people to join us</h3>
         </Wrap>
-        <Wrap sx={{ marginBottom: isMobile ? "3rem" : "9rem" }}>
+        <Wrap sx={{ marginBottom: isMobile ? "3rem" : "9rem", width: "100%" }}>
           <img src={careersVideoPlugImg} alt={"Careers video"} style={{ position: "relative", width: "100%" }} />
         </Wrap>
       </Section>

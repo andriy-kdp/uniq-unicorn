@@ -32,7 +32,7 @@ export const BlogPage: React.FC = (): JSX.Element => {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "70%",
               }
-            : {}
+            : { backgroundSize: "100%" }
         }
       />
       <Section mainContent m={"auto auto 4rem"}>
@@ -47,7 +47,7 @@ export const BlogPage: React.FC = (): JSX.Element => {
                 twitterLink={"http://youtube.com"}
               />
               <Preview.Image.Root onClick={handlePreviewClick(post.id)}>
-                <img src={post.imgSrc} alt={post.title} />
+                <img src={post.imgSrc} alt={post.title} style={{ width: "100%" }} />
               </Preview.Image.Root>
               <Divider variant="dashed" />
               <Preview.Description onClick={handlePreviewClick(post.id)}>{post.description}</Preview.Description>

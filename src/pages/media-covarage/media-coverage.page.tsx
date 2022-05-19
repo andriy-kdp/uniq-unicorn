@@ -115,10 +115,11 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
               display: "flex",
               position: "absolute",
               width: "100%",
-              height: "100%",
+              height: "57rem",
               background: `url(${FormBg})`,
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
+              backgroundSize: "100%",
               opacity: "0.4",
             }}
           />
@@ -166,13 +167,15 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
           </Section>
         </Section>
       )}
-      <Section mainContent m={"0 auto 10rem !important"}>
-        <News.Title.Root>
-          <News.Title.Body>LET'S CONNECT</News.Title.Body>
-          <Divider variant="dashed" />
-        </News.Title.Root>
-        <h5>For Media enquiries please contact: mediateam@blackbanx.com</h5>
-      </Section>
+      {isMobile && (
+        <Section mainContent m={"0 auto 10rem !important"}>
+          <News.Title.Root>
+            <News.Title.Body>LET'S CONNECT</News.Title.Body>
+            <Divider variant="dashed" />
+          </News.Title.Root>
+          <h5>For Media enquiries please contact: mediateam@blackbanx.com</h5>
+        </Section>
+      )}
     </>
   );
 };

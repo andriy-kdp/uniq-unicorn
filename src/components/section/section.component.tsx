@@ -20,8 +20,9 @@ export const Section = styled.div<SectionProps>`
   ${(props) =>
     props.mainContent &&
     `
-  // max-width: 114rem;
-  padding: 0 15rem;
+  max-width: 144rem;
+  width: 100%;
+  // padding: 0 15rem;
   @media (${media.sm}) {
     padding: 0 2rem;
     &:last-child {

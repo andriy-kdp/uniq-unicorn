@@ -4,7 +4,7 @@ import React from "react";
 export type AccountTypes = "private" | "business" | "institutional";
 
 export type AccountItem = {
-  icon: React.ReactNode;
+  icon: string;
   title: string;
   value: AccountTypes;
 };

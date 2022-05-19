@@ -28,7 +28,11 @@ export const NewsPage: React.FC = (): JSX.Element => {
         justify={"center"}
         titleAlign={"center"}
         m={"auto auto 11rem"}
-        BgImageStyles={isMobile ? { backgroundPosition: "90%", backgroundSize: "70rem", height: "37.5rem" } : {}}
+        BgImageStyles={
+          isMobile
+            ? { backgroundPosition: "90%", backgroundSize: "70rem", height: "37.5rem" }
+            : { backgroundPosition: "30% 100%" }
+        }
       />
       <Section mainContent>
         <News.Root>

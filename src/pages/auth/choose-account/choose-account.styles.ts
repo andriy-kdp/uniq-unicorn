@@ -3,16 +3,23 @@ import { media } from "../../../utils/use-media-query";
 const ChooseAccountRoot = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin-top: 13rem;
+  align-items: center;
+  margin: 0 auto;
+  width: 114rem;
+
+  @media (${media.sm}) {
+    position: relative;
+    margin: 0;
+    padding: 2rem;
+    width: 100%;
+  }
 `;
 
 const AccountVariantsRoot = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: flex-end;
-  width: 100%;
-  margin-top: 12rem;
+  gap: 20rem;
   cursor: pointer;
   @media (${media.sm}) {
     grid-template-columns: 1fr;
@@ -36,9 +43,7 @@ const ItemTitle = styled.h4`
 const IconRoot = styled.div`
   display: flex;
   align-items: flex-end;
-  svg {
-    max-height: 16.7rem;
-  }
+  width: 100%;
 `;
 
 export const Accounts = {

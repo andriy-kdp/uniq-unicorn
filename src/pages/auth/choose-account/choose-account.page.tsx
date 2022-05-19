@@ -5,16 +5,22 @@ import { ReactComponent as InstitutionalIcon } from "../../../assets/icons/choos
 import { ReactComponent as PrivateIcon } from "../../../assets/icons/choose-account/card.svg";
 import { ReactComponent as BusinessIcon } from "../../../assets/icons/choose-account/case.svg";
 import { Wrap } from "../../../components/wrap/wrap.component";
-import { Section } from "../../../components/section/section.component";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../../utils/use-media-query";
 import { AccountItem, AccountTypes } from "../auth.types";
+import { SlideSection } from "../../../components/silde-section/slide-section.component";
+import CaseImg from "../../../assets/icons/choose-account/png/case.png";
+import CardImg from "../../../assets/icons/choose-account/png/card.png";
+import BuildingImg from "../../../assets/icons/choose-account/png/building.png";
+import StarRightImg from "../../../assets/icons/choose-account/png/star_right.png";
+import StarLeftImg from "../../../assets/icons/choose-account/png/star_left.png";
+import { Section } from "../../../components/section/section.component";
 
 const accountVariants: AccountItem[] = [
-  { icon: <PrivateIcon />, title: "Private account", value: "private" },
-  { icon: <BusinessIcon />, title: "Business account", value: "business" },
+  { icon: CardImg, title: "Private account", value: "private" },
+  { icon: CaseImg, title: "Business account", value: "business" },
   {
-    icon: <InstitutionalIcon />,
+    icon: BuildingImg,
     title: "Institutional Account",
     value: "institutional",
   },
@@ -30,47 +36,70 @@ export const ChooseAccountPage: React.FC = (): JSX.Element => {
     };
 
   return (
-    <Section m={"auto auto 16rem"}>
+    <Wrap sx={{ display: "flex", height: "70vh", width: "100%" }}>
       <Wrap
         sx={{
-          display: "flex",
+          height: "100%",
           position: "absolute",
-          width: "100%",
-          height: "80rem",
-          background: `url(${MainBg})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          opacity: "0.4",
-          zIndex: "-1",
-          top: 0,
+          left: 0,
+          bottom: 0,
+          display: "flex",
+          alignItems: "center",
+          top: "7rem",
         }}
-      />
-      <Section mainContent>
-        <Accounts.Root>
+      >
+        <img src={StarLeftImg} alt="start left" style={{ marginBottom: "7rem" }} />
+      </Wrap>
+
+      <Accounts.Root>
+        <Wrap
+          sx={{
+            alignSelf: "flex-start",
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+          }}
+        >
           <Accounts.Subtitle>Get started</Accounts.Subtitle>
           <h3>Open your Black Banx Account</h3>
-          <Accounts.Variants.Root>
-            {accountVariants.map((acc) => (
-              <Wrap
-                key={acc.value}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  flexDirection: isMobile ? "row-reverse" : "column",
-                  width: "100%",
-                  alignItems: "center",
-                  maxWidth: isMobile ? "50rem" : "auto",
-                  margin: "8rem auto 0",
-                }}
-                onClick={handleClick(acc.value)}
-              >
-                <Accounts.Variants.Item.Icon.Root>{acc.icon}</Accounts.Variants.Item.Icon.Root>
-                <Accounts.Variants.Item.Title>{acc.title}</Accounts.Variants.Item.Title>
-              </Wrap>
-            ))}
-          </Accounts.Variants.Root>
-        </Accounts.Root>
-      </Section>
-    </Section>
+        </Wrap>
+
+        <Accounts.Variants.Root>
+          {accountVariants.map((acc) => (
+            <Wrap
+              key={acc.value}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                flexDirection: isMobile ? "row-reverse" : "column",
+                width: "100%",
+                alignItems: "center",
+                maxWidth: isMobile ? "50rem" : "auto",
+                margin: "8rem auto 0",
+              }}
+              onClick={handleClick(acc.value)}
+            >
+              <Accounts.Variants.Item.Icon.Root>
+                <img src={acc.icon} style={{ width: "100%" }} alt={acc.value} />
+              </Accounts.Variants.Item.Icon.Root>
+              <Accounts.Variants.Item.Title>{acc.title}</Accounts.Variants.Item.Title>
+            </Wrap>
+          ))}
+        </Accounts.Variants.Root>
+      </Accounts.Root>
+      <Wrap
+        sx={{
+          position: "absolute",
+          right: "0",
+          top: "7rem",
+          height: "100%",
+          display: "flex",
+          alignItems: "flex-start",
+        }}
+      >
+        <img src={StarRightImg} alt="start right" />
+      </Wrap>
+    </Wrap>
   );
 };

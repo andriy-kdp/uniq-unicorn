@@ -49,6 +49,7 @@ export const SecurityPage: React.FC = (): JSX.Element => {
               }
             : {
                 backgroundPosition: "center",
+                backgroundSize: "100%",
               }
         }
       />
