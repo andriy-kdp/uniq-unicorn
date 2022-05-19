@@ -63,13 +63,6 @@ export const CopyrightContainer = styled.div`
   text-align: justify;
 `;
 
-export const SocialNetworksContainer = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 export const SocialNetworkLinkIcon = styled.a`
   display: block;
 `;
