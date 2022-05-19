@@ -1,5 +1,4 @@
 import { SelectOption } from "../../components/inputs/select/select.types";
-import React from "react";
 
 export type AccountTypes = "private" | "business" | "institutional";
 

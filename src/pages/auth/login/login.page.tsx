@@ -4,7 +4,6 @@ import { ButtonArrow } from "../../../components/button-arrow/button-arrow.compo
 import { Input } from "../../../components/inputs/input/input.component";
 import { FooterLinkItem } from "../../../components/main-layout/footer/footer.styles";
 import { Paper } from "../../../components/paper/paper.component";
-import { Section } from "../../../components/section/section.component";
 import { Wrap } from "../../../components/wrap/wrap.component";
 import { Login } from "./login.styles";
 import { useMediaQuery } from "../../../utils/use-media-query";
