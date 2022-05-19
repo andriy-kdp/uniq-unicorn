@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { ArticleItem } from "./media-coverage.page";
+
 import { media } from "../../utils/use-media-query";
+import { ArticleItem } from "./media-coverage.types";
 
 const NewsSectionRoot = styled.div`
   display: flex;
@@ -44,7 +45,8 @@ const ArticlesRoot = styled.div<{ reverse?: boolean }>`
   grid-template-rows: 1fr 1fr;
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
-
+  min-height: 90rem;
+  height: 100%;
   ${(props) =>
     props.reverse &&
     `
@@ -75,6 +77,7 @@ const ArticleItemRoot = styled.div<Pick<ArticleItem, "size" | "imgSrc">>`
   grid-area: ${(props) => props.size};
   background: url(${(props) => props.imgSrc}) no-repeat center;
   background-size: cover;
+  background-position: cover;
   padding: 2.2rem 2.4rem;
   cursor: pointer;
 `;

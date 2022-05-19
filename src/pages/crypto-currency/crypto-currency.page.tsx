@@ -64,10 +64,14 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
         mobile={isMobile}
         bgImage={MainBg}
         title="Black Banx crypto currency banking"
+        titleWidth={!isMobile ? "50%" : "100%"}
         BgImageStyles={
           isMobile
             ? { backgroundRepeat: "no-repeat", backgroundPosition: "88%", height: "57.8rem", backgroundSize: "130rem" }
-            : {}
+            : {
+                backgroundPosition: "100%",
+                backgroundSize: "100%",
+              }
         }
         button={{
           title: "Open Account",

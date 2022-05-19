@@ -4,7 +4,7 @@ import { media } from "../../utils/use-media-query";
 
 export const Section = styled.div<SectionProps>`
   position: ${(props) => props.pos || "relative"};
-  max-width: 144rem;
+
   width: 100%;
   margin: ${(props) => props.m || "0 auto"};
   height: ${(props) => props.h || "inherit"};
@@ -20,7 +20,9 @@ export const Section = styled.div<SectionProps>`
   ${(props) =>
     props.mainContent &&
     `
-  max-width: 114rem;
+  max-width: 144rem;
+  width: 100%;
+  // padding: 0 15rem;
   @media (${media.sm}) {
     padding: 0 2rem;
     &:last-child {

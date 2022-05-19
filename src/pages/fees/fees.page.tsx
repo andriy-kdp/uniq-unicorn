@@ -12,16 +12,7 @@ import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg
 import { useMediaQuery } from "../../utils/use-media-query";
 import { IconButton } from "../../components/icon-button/icon-button.component";
 import { ReactComponent as ArrowIconLeft } from "../../assets/icons/arrow_left.svg";
-
-type PlanInfoType = {
-  title: string;
-  prosItems: PlanInfoProsItem[];
-  imgSrc: string;
-};
-type PlanInfoProsItem = {
-  title: string;
-  description: string;
-};
+import { PlanInfoType } from "./fees.types";
 
 const planInfoItems: PlanInfoType[] = [
   {
@@ -86,6 +77,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
         bgVariant={"gradient"}
         titleAlign={"center"}
         justify={"center"}
+        BgImageStyles={{ backgroundSize: "100%" }}
       />
 
       <Section mainContent m={isMobile ? "0rem auto 20rem" : "15rem auto"}>

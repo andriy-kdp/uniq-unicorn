@@ -27,6 +27,9 @@ export const VideoCover = styled.div<{ bgImage: string }>`
   height: 76.8rem;
   cursor: pointer;
   background: url(${(props) => props.bgImage});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
   @media (${media.sm}) {
      {
       height: 30rem;
@@ -35,7 +38,6 @@ export const VideoCover = styled.div<{ bgImage: string }>`
   &:hover {
     svg {
       transition-duration: 200ms;
-
       transform: scale(1.5);
     }
   }

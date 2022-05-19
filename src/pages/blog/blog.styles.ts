@@ -17,6 +17,7 @@ const BlogPReviewDescription = styled.div`
 const BlogPreviewImageRoot = styled.div`
   display: flex;
   margin: 1rem auto 3.1rem;
+  width: 100%;
   & img {
     position: relative;
     width: 100%;
