@@ -1,8 +1,8 @@
 {
   "name": "black_brix",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://andriy-kdp.github.io/uniq-unicorn",
+  "private": "false",
+  "homepage": "http://andriy-kdp.github.io/uniq-unicorn",
   "dependencies": {
     "html-react-parser": "^1.4.12",
     "react": "^18.1.0",
