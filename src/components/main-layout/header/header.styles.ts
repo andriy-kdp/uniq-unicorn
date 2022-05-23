@@ -2,18 +2,23 @@ import styled from "styled-components";
 import { MenuPartProps } from "./header.types";
 
 export const LogoContainer = styled.div<{ small?: boolean }>`
-  transform: translateX(-75%);
   margin-top: 3rem;
   transition-duration: 200ms;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  z-index: 1;
   svg {
-    width: 80%;
+    height: 80%;
   }
   ${(props) =>
     props.small &&
     `
-    margin-top: 0rem;
+    margin-top: 1.5rem;
     svg {
-      width: 60%;
+      height: 60%;
     }
   `}
 `;
@@ -26,6 +31,7 @@ export const MenuPartContainer = styled.div<Omit<MenuPartProps, "menuItems">>`
   display: flex;
   margin-right: auto;
   margin-top: 3.1rem;
+  z-index: 2;
   ${MenuItemContainer} {
     margin-right: 3rem;
   }

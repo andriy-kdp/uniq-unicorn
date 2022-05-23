@@ -145,11 +145,7 @@ export const Header = () => {
       <Wrap onMouseLeave={() => setSubmenuItems(null)} sx={{ minHeight: "15rem" }}>
         <Section mainContent direction={"row"} justify={"center"}>
           <MenuPart menuItems={menuLeft} setSubmenuItems={setSubmenuItems} />
-          <LogoContainer small={!!submenuItems}>
-            <Link to={"/"}>
-              <MainLogo />
-            </Link>
-          </LogoContainer>
+
           <MenuPart menuItems={menuRight} right />
         </Section>
         <Wrap
@@ -184,6 +180,11 @@ export const Header = () => {
             />
           </Dropdown.Root>
         </Wrap>
+        <LogoContainer small={!!submenuItems}>
+          <Link to={"/"}>
+            <MainLogo />
+          </Link>
+        </LogoContainer>
       </Wrap>
     );
   }
