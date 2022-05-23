@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const BgGradientContainer = styled.div<BgGradientType>((props) => ({
   background: `url(${props.imgSrc})`,
+  backgroundRepeat: "no-repeat",
   display: "flex",
   width: "100%",
   opacity: 0.4,
@@ -15,7 +16,7 @@ export const BgGradientMain = styled(BgGradientContainer)`
     content: " ";
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 65rem;
     background: linear-gradient(
       to bottom,
       ${(props) => props.theme.colors.background.primary},

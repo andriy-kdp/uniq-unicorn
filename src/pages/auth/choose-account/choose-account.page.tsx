@@ -30,20 +30,22 @@ export const ChooseAccountPage: React.FC = (): JSX.Element => {
     };
 
   return (
-    <Wrap sx={{ display: "flex", height: "70vh", width: "100%" }}>
-      <Wrap
-        sx={{
-          height: "100%",
-          position: "absolute",
-          left: 0,
-          bottom: 0,
-          display: "flex",
-          alignItems: "center",
-          top: "7rem",
-        }}
-      >
-        <img src={StarLeftImg} alt="start left" style={{ marginBottom: "7rem" }} />
-      </Wrap>
+    <Wrap sx={{ display: "flex", height: !isMobile ? "70vh" : "auto", width: "100%" }}>
+      {!isMobile && (
+        <Wrap
+          sx={{
+            height: "100%",
+            position: "absolute",
+            left: 0,
+            bottom: 0,
+            display: "flex",
+            alignItems: "center",
+            top: "7rem",
+          }}
+        >
+          <img src={StarLeftImg} alt="start left" style={{ marginBottom: "7rem" }} />
+        </Wrap>
+      )}
 
       <Accounts.Root>
         <Wrap
@@ -82,18 +84,21 @@ export const ChooseAccountPage: React.FC = (): JSX.Element => {
           ))}
         </Accounts.Variants.Root>
       </Accounts.Root>
-      <Wrap
-        sx={{
-          position: "absolute",
-          right: "0",
-          top: "7rem",
-          height: "100%",
-          display: "flex",
-          alignItems: "flex-start",
-        }}
-      >
-        <img src={StarRightImg} alt="start right" />
-      </Wrap>
+      {!isMobile && (
+        <Wrap
+          sx={{
+            position: "absolute",
+            right: "0",
+            top: "7rem",
+            height: "100%",
+            display: "flex",
+            alignItems: "flex-start",
+            zIndex: "-1",
+          }}
+        >
+          <img src={StarRightImg} alt="start right" />
+        </Wrap>
+      )}
     </Wrap>
   );
 };

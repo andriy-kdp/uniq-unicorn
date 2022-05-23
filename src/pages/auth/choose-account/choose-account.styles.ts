@@ -23,6 +23,7 @@ const AccountVariantsRoot = styled.div`
   cursor: pointer;
   @media (${media.sm}) {
     grid-template-columns: 1fr;
+    gap: 6rem;
   }
 `;
 
@@ -44,6 +45,9 @@ const IconRoot = styled.div`
   display: flex;
   align-items: flex-end;
   width: 100%;
+  @media (${media.sm}) {
+    width: 16rem;
+  }
 `;
 
 export const Accounts = {

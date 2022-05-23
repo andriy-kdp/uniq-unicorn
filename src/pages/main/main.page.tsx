@@ -64,7 +64,7 @@ export const MainPage: React.FC = (): JSX.Element => {
         titleWidth={isMobile ? "100%" : "50%"}
         BgImageStyles={
           !isMobile
-            ? { height: "60rem", backgroundSize: "cover", backgroundPosition: "right" }
+            ? { backgroundSize: "cover", backgroundPosition: "right" }
             : {
                 backgroundSize: "80rem",
                 backgroundPosition: "100%",
