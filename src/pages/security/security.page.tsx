@@ -43,13 +43,13 @@ export const SecurityPage: React.FC = (): JSX.Element => {
         BgImageStyles={
           isMobile
             ? {
-                backgroundSize: "90rem",
+                backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "50% 10%",
               }
             : {
                 backgroundPosition: "center",
-                backgroundSize: "100%",
+                backgroundSize: "cover",
               }
         }
       />

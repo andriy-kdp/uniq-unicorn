@@ -77,7 +77,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
         bgVariant={"gradient"}
         titleAlign={"center"}
         justify={"center"}
-        BgImageStyles={{ backgroundSize: "100%" }}
+        BgImageStyles={isMobile ? { backgroundSize: "cover", backgroundPosition: "40%" } : { backgroundSize: "cover" }}
       />
 
       <Section mainContent m={isMobile ? "0rem auto 20rem" : "15rem auto"}>

@@ -67,7 +67,7 @@ const FindCountryListItem = styled.div`
 
 const PlanInfoImg = styled.img`
   position: relative;
-  width: 100%;
+  width: 70%;
   @media (${media.md}) {
     margin: 3rem auto !important;
   }
