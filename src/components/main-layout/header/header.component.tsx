@@ -181,12 +181,12 @@ export const Header = () => {
               />
             </Dropdown.Root>
           </Wrap>
+          <LogoContainer small={!!submenuItems}>
+            <Link to={"/"}>
+              <MainLogo />
+            </Link>
+          </LogoContainer>
         </Wrap>
-        <LogoContainer small={!!submenuItems}>
-          <Link to={"/"}>
-            <MainLogo />
-          </Link>
-        </LogoContainer>
       </>
     );
   }
