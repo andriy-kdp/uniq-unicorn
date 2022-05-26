@@ -23,6 +23,10 @@ export const Section = styled.div<SectionProps>`
   max-width: 1440px;
   width: 100%;
   // padding: 0 15rem;
+  @media (${media.xl}) {
+    padding: 0 15rem;
+  
+  };
   @media (${media.sm}) {
     padding: 0 2rem;
     &:last-child {
