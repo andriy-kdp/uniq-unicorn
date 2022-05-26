@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 
 export const media = {
-  xs: "max-width: 37rem",
-  sm: "max-width: 50rem",
-  md: "max-width: 70rem",
-  lg: "max-width: 90rem",
-  xl: "max-width: 114rem",
+  xs: "max-width: 370px",
+  sm: "max-width: 500px",
+  md: "max-width: 700px",
+  lg: "max-width: 900px",
+  xl: "max-width: 1140px",
 };
 
 export function useMediaQuery(mediaQuery: keyof typeof media): boolean {
