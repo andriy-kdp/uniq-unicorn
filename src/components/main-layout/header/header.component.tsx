@@ -142,50 +142,52 @@ export const Header = () => {
     };
   if (!isMobile) {
     return (
-      <Wrap onMouseLeave={() => setSubmenuItems(null)} sx={{ minHeight: "15rem" }}>
-        <Section mainContent direction={"row"} justify={"center"}>
-          <MenuPart menuItems={menuLeft} setSubmenuItems={setSubmenuItems} />
+      <>
+        <Wrap onMouseLeave={() => setSubmenuItems(null)} sx={{ minHeight: "15rem" }}>
+          <Section mainContent direction={"row"} justify={"center"}>
+            <MenuPart menuItems={menuLeft} setSubmenuItems={setSubmenuItems} />
 
-          <MenuPart menuItems={menuRight} right />
-        </Section>
-        <Wrap
-          sx={{
-            width: "144rem",
-            position: "absolute",
-            top: "0",
-            left: 0,
-            right: 0,
-            margin: "0 auto",
-          }}
-        >
-          <Dropdown.Root mounted={!!submenuItems}>
-            <Dropdown.Items.Root>
-              {submenuItems?.map((subItem, index) => {
-                const { Root, Description, Icon, Label } = Dropdown.Item;
-                return (
-                  <Root onClick={handleSubmenuClick(subItem.path)} key={`${Date.now()}-menu-sub-${index}`}>
-                    <Icon>{subItem.icon}</Icon>
-                    <Label.Root>
-                      <Label.Text>{subItem.label}</Label.Text>
-                      <Description>{subItem.description}</Description>
-                    </Label.Root>
-                  </Root>
-                );
-              })}
-            </Dropdown.Items.Root>
-            <Divider
-              background={
-                "linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #CECECE 30.73%, #CBCBCB 67.19%, rgba(12, 12, 12, 0) 100%);"
-              }
-            />
-          </Dropdown.Root>
+            <MenuPart menuItems={menuRight} right />
+          </Section>
+          <Wrap
+            sx={{
+              width: "144rem",
+              position: "absolute",
+              top: "0",
+              left: 0,
+              right: 0,
+              margin: "0 auto",
+            }}
+          >
+            <Dropdown.Root mounted={!!submenuItems}>
+              <Dropdown.Items.Root>
+                {submenuItems?.map((subItem, index) => {
+                  const { Root, Description, Icon, Label } = Dropdown.Item;
+                  return (
+                    <Root onClick={handleSubmenuClick(subItem.path)} key={`${Date.now()}-menu-sub-${index}`}>
+                      <Icon>{subItem.icon}</Icon>
+                      <Label.Root>
+                        <Label.Text>{subItem.label}</Label.Text>
+                        <Description>{subItem.description}</Description>
+                      </Label.Root>
+                    </Root>
+                  );
+                })}
+              </Dropdown.Items.Root>
+              <Divider
+                background={
+                  "linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #CECECE 30.73%, #CBCBCB 67.19%, rgba(12, 12, 12, 0) 100%);"
+                }
+              />
+            </Dropdown.Root>
+          </Wrap>
         </Wrap>
         <LogoContainer small={!!submenuItems}>
           <Link to={"/"}>
             <MainLogo />
           </Link>
         </LogoContainer>
-      </Wrap>
+      </>
     );
   }
   return (
