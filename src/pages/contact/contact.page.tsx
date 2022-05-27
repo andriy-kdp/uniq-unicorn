@@ -8,8 +8,10 @@ import { ContactForm } from "./contact.styles";
 import { Input } from "../../components/inputs/input/input.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
 import MaoMarkers from "../../assets/backgrounds/contact/map_bg.png";
+import { useMediaQuery } from "../../utils/use-media-query";
 
 export const ContactPage: React.FC = (): JSX.Element => {
+  const isMobile = useMediaQuery("sm");
   const [formData, setFormData] = useState<{ name: string; email: string }>({
     name: "",
     email: "",
@@ -33,6 +35,9 @@ export const ContactPage: React.FC = (): JSX.Element => {
         titleWidth={"100%"}
         justify={"center"}
         bgVariant={"gradient"}
+        BgImageStyles={{
+          backgroundSize: "cover",
+        }}
       />
       <Section mainContent m={"auto auto 16rem"}>
         <ContactForm.Root>
@@ -60,16 +65,14 @@ export const ContactPage: React.FC = (): JSX.Element => {
             sx={{
               display: "flex",
               width: "100%",
-              justifyContent: "flex-end",
+              justifyContent: "center",
               alignItems: "center",
             }}
           >
             <ContactIcon />
           </Wrap>
         </ContactForm.Root>
-      </Section>
-      <Section justify={"center"}>
-        <img src={MaoMarkers} alt="map" />
+        <img src={MaoMarkers} alt="map" style={{ width: "100%", position: "relative" }} />
       </Section>
     </>
   );

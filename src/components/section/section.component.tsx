@@ -24,15 +24,28 @@ export const Section = styled.div<SectionProps>`
   width: 100%;
   // padding: 0 15rem;
   @media (${media.xl}) {
-    padding: 0 15rem;
-  
+    padding: 0;
   };
+  @media (${media.lg}) {
+    padding: 0 15rem;
+  };
+  @media (${media.md}) {
+    padding: 0 10rem;
+  };
+  @media (${media.md}) {
+    padding: 0 10rem;
+  };
+  @media (${media.sm}) {
+    padding: 0 5rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
   @media (${media.sm}) {
     padding: 0 2rem;
     &:last-child {
       margin-bottom: 0;
     }
   }
-
   `}
 `;

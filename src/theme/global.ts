@@ -137,6 +137,5 @@ img[${Img}] {
     font-size: 2.4rem;
     line-height: 3.6rem;
   }
-  
-}
+};
 `;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../utils/use-media-query";
 
 const FormSectionRoot = styled.div`
   display: grid;
@@ -6,6 +7,9 @@ const FormSectionRoot = styled.div`
   column-gap: 4fr;
   width: 100%;
   margin-top: 7rem;
+  @media (${media.sm}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const FormSectionTitleRoot = styled.div`

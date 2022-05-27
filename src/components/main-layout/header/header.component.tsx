@@ -131,7 +131,7 @@ const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest
 export const Header = () => {
   const [submenuItems, setSubmenuItems] = useState<Omit<MenuItemType, "dropdownItems">[] | null>(null);
   const nav = useNavigate();
-  const isMobile = useMediaQuery("xs");
+  const isMobile = useMediaQuery("sm");
   const handleSubmenuClick =
     (path: string | undefined): MouseEventHandler<HTMLButtonElement> =>
     () => {
