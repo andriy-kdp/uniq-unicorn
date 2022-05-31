@@ -112,17 +112,23 @@ export const ImgWrapper = styled.div`
 export const InfoBlockContainer = styled.div<InfoBlockContainerProps>`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
   margin-bottom: 18rem;
   :last-child {
     margin-bottom: 10rem;
   }
+  /* ${ImgWrapper} {
+    margin: ${(props) => (!props.reverse ? "0 0 0 10rem" : "0 10rem 0 0")};
+  } */
   @media (${media.sm}) {
     flex-direction: column;
     margin-bottom: 7rem;
     :last-child {
       margin-bottom: 5rem;
+    }
+    ${ImgWrapper} {
+      margin: 3rem;
     }
   }
 `;

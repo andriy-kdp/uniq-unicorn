@@ -114,7 +114,7 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
               }
             : {
                 opacity: "1 !important",
-                backgroundSize: "100%",
+                backgroundSize: "100% 100%",
               }
         }
       />
