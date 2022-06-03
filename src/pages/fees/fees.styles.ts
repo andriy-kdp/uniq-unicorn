@@ -1,9 +1,22 @@
 import styled from "styled-components";
 import { media } from "../../utils/use-media-query";
-const PlanInfoRoot = styled.div`
+const PlanInfoRoot = styled.div<{ maxWidth: number }>`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 144rem;
+  @media (${media.sm}) {
+    padding-right: 4rem;
+    max-width: ${(props) => props.maxWidth}px;
+  }
+`;
+
+const PlanInfoWrapper = styled.div<{ visibleSize: number; currentSlide: number }>`
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: max-content;
+  height: 100%;
+  transition: all 300ms ease-in-out;
+  transform: translateX(-${(props) => props.visibleSize * props.currentSlide}px);
 `;
 
 const PlanInfoTitle = styled.h2`
@@ -74,6 +87,7 @@ const PlanInfoImg = styled.img`
 `;
 
 export const PlanInfo = {
+  Wrapper: PlanInfoWrapper,
   Root: PlanInfoRoot,
   Title: PlanInfoTitle,
   Description: PlanInfoDescriptionRoot,

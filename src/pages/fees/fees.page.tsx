@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MainBg from "../../assets/backgrounds/fees/fees_main_bg.png";
 import { Section } from "../../components/section/section.component";
@@ -16,7 +16,38 @@ import { PlanInfoType } from "./fees.types";
 
 const planInfoItems: PlanInfoType[] = [
   {
-    title: "Titanium Account",
+    title: "Titanium Account #1",
+    imgSrc: TitaniumAccountBg,
+    prosItems: [
+      {
+        title: "Requirements",
+        description:
+          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
+      },
+      {
+        title: "Customer service",
+        description:
+          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
+      },
+      {
+        title: "Deposits & withdrawals",
+        description:
+          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
+      },
+      {
+        title: "Fees",
+        description:
+          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
+      },
+      {
+        title: "Other services",
+        description:
+          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
+      },
+    ],
+  },
+  {
+    title: "Titanium Account #2",
     imgSrc: TitaniumAccountBg,
     prosItems: [
       {
@@ -61,6 +92,9 @@ export const FeesPage: React.FC = (): JSX.Element => {
   const [searchValue, setSearchValue] = useState<string>("");
   const isMobile = useMediaQuery("sm");
   const isTablet = useMediaQuery("md");
+  const sliderSectionRef = useRef<HTMLDivElement>(null);
+  const planInfoRef = useRef<HTMLDivElement>(null);
+
   const handleNextPlan = () => {
     setCurrentPlan((prev) => prev + 1);
   };
@@ -77,57 +111,78 @@ export const FeesPage: React.FC = (): JSX.Element => {
         bgVariant={"gradient"}
         titleAlign={"center"}
         justify={"center"}
-        BgImageStyles={isMobile ? { backgroundSize: "cover", backgroundPosition: "40%" } : { backgroundSize: "cover" }}
+        BgImageStyles={
+          isMobile
+            ? {
+                backgroundSize: "cover",
+                backgroundPosition: "40%",
+              }
+            : { backgroundSize: "cover" }
+        }
       />
 
-      <Section mainContent m={isMobile ? "0rem auto 20rem" : "15rem auto"}>
-        <PlanInfo.Root>
-          <Wrap sx={{ display: "flex", marginBottom: "2.4rem" }}>
-            {!isMobile && <PlanInfo.Title>{planInfoItems[currentPlan].title}</PlanInfo.Title>}
-
-            <Wrap
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                marginLeft: "auto",
-              }}
-            >
-              <Wrap sx={{ marginRight: "2rem" }}>
-                <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
-                  <ArrowIconLeft />
-                </IconButton>
-              </Wrap>
-
-              <IconButton disabled={currentPlan === planInfoItems.length - 1} reverse onClick={handleNextPlan}>
-                <ArrowIconLeft />
-              </IconButton>
-            </Wrap>
+      <Section
+        mainContent
+        m={isMobile ? "0rem auto 20rem" : "15rem auto"}
+        ref={sliderSectionRef}
+        style={{ overflowX: "hidden" }}
+      >
+        <Wrap
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            marginLeft: "auto",
+          }}
+        >
+          <Wrap sx={{ marginRight: "2rem" }}>
+            <IconButton disabled={currentPlan === 0} onClick={handlePrevPlan}>
+              <ArrowIconLeft />
+            </IconButton>
           </Wrap>
-          <PlanInfo.Description>
-            <Wrap>
-              {planInfoItems[currentPlan].prosItems.map((pros, idx) => (
-                <Wrap key={`plan-info-${idx}`}>
-                  <Accordeon title={pros.title} description={pros.description} />
-                  {idx !== planInfoItems[currentPlan].prosItems.length - 1 && (
-                    <Wrap sx={{ margin: "2.4rem 0" }}>
-                      <Divider />
+
+          <IconButton disabled={currentPlan === planInfoItems.length - 1} reverse onClick={handleNextPlan}>
+            <ArrowIconLeft />
+          </IconButton>
+        </Wrap>
+        <PlanInfo.Wrapper visibleSize={planInfoRef?.current?.clientWidth} currentSlide={currentPlan}>
+          {planInfoItems.map((item) => (
+            <PlanInfo.Root key={item.title} ref={planInfoRef} maxWidth={sliderSectionRef?.current?.clientWidth}>
+              <Wrap sx={{ display: "flex", marginBottom: "2.4rem" }}>
+                {!isMobile && <PlanInfo.Title>{item.title}</PlanInfo.Title>}
+              </Wrap>
+              <PlanInfo.Description>
+                <Wrap>
+                  {item.prosItems.map((pros, idx) => (
+                    <Wrap key={`plan-info-${idx}`}>
+                      <Accordeon title={pros.title} description={pros.description} />
+                      {idx !== planInfoItems[currentPlan].prosItems.length - 1 && (
+                        <Wrap sx={{ margin: "2.4rem 0" }}>
+                          <Divider />
+                        </Wrap>
+                      )}
                     </Wrap>
-                  )}
+                  ))}
                 </Wrap>
-              ))}
-            </Wrap>
-            {isMobile && <PlanInfo.Title>{planInfoItems[currentPlan].title}</PlanInfo.Title>}
-            <Wrap
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <PlanInfo.Img src={planInfoItems[currentPlan].imgSrc} alt={"Plan info"} />
-            </Wrap>
-          </PlanInfo.Description>
-        </PlanInfo.Root>
+                {isMobile && <PlanInfo.Title>{item.title}</PlanInfo.Title>}
+                <Wrap
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: isMobile ? "100%" : "70%",
+                    margin: "0 auto",
+                  }}
+                >
+                  <PlanInfo.Img
+                    src={planInfoItems[currentPlan].imgSrc}
+                    alt={"Plan info"}
+                    style={{ width: "100%", position: "relative" }}
+                  />
+                </Wrap>
+              </PlanInfo.Description>
+            </PlanInfo.Root>
+          ))}
+        </PlanInfo.Wrapper>
       </Section>
 
       <Section mainContent m={"0 auto 20rem"}>
