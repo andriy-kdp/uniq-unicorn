@@ -7,11 +7,6 @@ import { VacationsComponent } from "../../components/vacations/vacations.compone
 import { Input } from "../../components/inputs/input/input.component";
 import { Select } from "../../components/inputs/select/select.component";
 import { SelectHandler, SelectOption, SelectOptions } from "../../components/inputs/select/select.types";
-import { ReactComponent as FlagIconCn } from "../../assets/icons/flags/flag_cn.svg";
-import { ReactComponent as FlagIconEsp } from "../../assets/icons/flags/flag_esp.svg";
-import { ReactComponent as FlagIconPt } from "../../assets/icons/flags/flag_pt.svg";
-import { ReactComponent as FlagIconRu } from "../../assets/icons/flags/flag_ru.svg";
-import { ReactComponent as FlagIconUs } from "../../assets/icons/flags/flag_us.svg";
 import { Wrap } from "../../components/wrap/wrap.component";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search_icon.svg";
 import { Button } from "../../components/button/button.component";
@@ -20,31 +15,11 @@ import { useMediaQuery } from "../../utils/use-media-query";
 import { vacationsList } from "../../mock-data/careets";
 
 const selectOptions: SelectOptions = [
-  { id: "opt-1", label: "中文", value: "chinese", endIcon: <FlagIconCn /> },
-  {
-    id: "opt-2",
-    label: "Español ",
-    value: "espaniol",
-    endIcon: <FlagIconEsp />,
-  },
-  {
-    id: "opt-3",
-    label: "Português 3",
-    value: "portugues",
-    endIcon: <FlagIconPt />,
-  },
-  {
-    id: "opt-4",
-    label: "Русский",
-    value: "russian",
-    endIcon: <FlagIconRu />,
-  },
-  {
-    id: "opt-5",
-    label: "English",
-    value: "english",
-    endIcon: <FlagIconUs />,
-  },
+  { id: "opt-0", label: "Select", value: "none" },
+  { id: "opt-1", label: "1-30 days", value: "1-30" },
+  { id: "opt-2", label: "1-60 days", value: "1-60" },
+  { id: "opt-3", label: "1-90 days", value: "1-90" },
+  { id: "opt-4", label: "1-120 days", value: "1-120" },
 ];
 
 const keywordsFilterButtons: {
