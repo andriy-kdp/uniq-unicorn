@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import { media } from "../../utils/use-media-query";
-const PlanInfoRoot = styled.div<{ maxWidth: number }>`
+const PlanInfoRoot = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 144rem;
   @media (${media.sm}) {
     padding-right: 4rem;
-    max-width: ${(props) => props.maxWidth}px;
   }
 `;
 
