@@ -8,10 +8,8 @@ import { ContactForm } from "./contact.styles";
 import { Input } from "../../components/inputs/input/input.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
 import MaoMarkers from "../../assets/backgrounds/contact/map_bg.png";
-import { useMediaQuery } from "../../utils/use-media-query";
 
 export const ContactPage: React.FC = (): JSX.Element => {
-  const isMobile = useMediaQuery("sm");
   const [formData, setFormData] = useState<{ name: string; email: string }>({
     name: "",
     email: "",

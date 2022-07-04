@@ -7,8 +7,6 @@ import { AccountItem, AccountTypes } from "../auth.types";
 import CaseImg from "../../../assets/icons/choose-account/png/case.png";
 import CardImg from "../../../assets/icons/choose-account/png/card.png";
 import BuildingImg from "../../../assets/icons/choose-account/png/building.png";
-import StarRightImg from "../../../assets/icons/choose-account/png/star_right.png";
-import StarLeftImg from "../../../assets/icons/choose-account/png/star_left.png";
 
 const accountVariants: AccountItem[] = [
   { icon: CardImg, title: "Private account", value: "private" },
