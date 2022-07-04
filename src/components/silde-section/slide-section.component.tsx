@@ -19,7 +19,7 @@ export const SlideSection: React.FC<PropsWithChildren<SlideSectionProps>> = (pro
             sx={{
               position: "relative",
               background: `url(${bgImage})`,
-              height: mobile ? "34rem" : "57rem",
+              height: mobile ? "34rem" : "65rem",
               width: "100%",
               backgroundRepeat: "no-repeat",
               ...BgImageStyles,

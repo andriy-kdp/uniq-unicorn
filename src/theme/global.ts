@@ -23,7 +23,7 @@ export default createGlobalStyle`
 }
 html { 
   font-size: 62.5%;
-  height: 100vh;
+  min-height: 100vh;
 }
 body {
   background-color: ${(props) => props.theme.colors.background.primary};
@@ -137,6 +137,5 @@ img[${Img}] {
     font-size: 2.4rem;
     line-height: 3.6rem;
   }
-  
-}
+};
 `;

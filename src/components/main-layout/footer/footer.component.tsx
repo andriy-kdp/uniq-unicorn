@@ -113,7 +113,7 @@ export const Footer = () => {
     abbr: "EN",
   });
 
-  const isMobile = useMediaQuery("xs");
+  const isMobile = useMediaQuery("sm");
 
   const handleSetLanguage: SelectHandler = (e) => {
     const { value } = e.target;

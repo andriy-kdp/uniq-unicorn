@@ -3,7 +3,19 @@ import { media } from "../../utils/use-media-query";
 const PlanInfoRoot = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 144rem;
+  @media (${media.sm}) {
+    padding-right: 4rem;
+  }
+`;
+
+const PlanInfoWrapper = styled.div<{ visibleSize: number; currentSlide: number }>`
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: max-content;
+  height: 100%;
+  transition: all 300ms ease-in-out;
+  transform: translateX(-${(props) => props.visibleSize * props.currentSlide}px);
 `;
 
 const PlanInfoTitle = styled.h2`
@@ -67,13 +79,14 @@ const FindCountryListItem = styled.div`
 
 const PlanInfoImg = styled.img`
   position: relative;
-  width: 100%;
+  width: 70%;
   @media (${media.md}) {
     margin: 3rem auto !important;
   }
 `;
 
 export const PlanInfo = {
+  Wrapper: PlanInfoWrapper,
   Root: PlanInfoRoot,
   Title: PlanInfoTitle,
   Description: PlanInfoDescriptionRoot,

@@ -2,18 +2,23 @@ import styled from "styled-components";
 import { MenuPartProps } from "./header.types";
 
 export const LogoContainer = styled.div<{ small?: boolean }>`
-  transform: translateX(-75%);
   margin-top: 3rem;
   transition-duration: 200ms;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  z-index: 1;
   svg {
-    width: 80%;
+    height: 80%;
   }
   ${(props) =>
     props.small &&
     `
-    margin-top: 0rem;
+    margin-top: 1.5rem;
     svg {
-      width: 60%;
+      height: 60%;
     }
   `}
 `;
@@ -26,6 +31,7 @@ export const MenuPartContainer = styled.div<Omit<MenuPartProps, "menuItems">>`
   display: flex;
   margin-right: auto;
   margin-top: 3.1rem;
+  z-index: 2;
   ${MenuItemContainer} {
     margin-right: 3rem;
   }
@@ -47,6 +53,7 @@ const DropdownMenuRoot = styled.div<{ mounted?: boolean }>`
   position: absolute;
   display: flex;
   flex-direction: column;
+  margin-left: -7rem;
   background: linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #151515 30.73%, #151515 67.19%, rgba(12, 12, 12, 0) 100%);
   backdrop-filter: blur(6px);
   top: 7rem;
@@ -56,7 +63,7 @@ const DropdownMenuRoot = styled.div<{ mounted?: boolean }>`
   ${(props) =>
     props.mounted &&
     `
-    width: 70%;
+    width: 65%;
   `}
 `;
 
@@ -65,7 +72,7 @@ const DropdownItemsRoot = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  padding: 0 10rem;
+  padding: 0 5rem;
 `;
 const DropdownMenuItemRoot = styled.button`
   display: flex;

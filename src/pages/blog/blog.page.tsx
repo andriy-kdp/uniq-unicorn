@@ -24,7 +24,8 @@ export const BlogPage: React.FC = (): JSX.Element => {
         bgVariant={"gradient"}
         titleAlign={"center"}
         justify={"center"}
-        h={isMobile ? "37.5rem" : "57.8rem"}
+        h={isMobile ? "37.5rem" : "auto"}
+        m={"0 0 10rem 0"}
         BgImageStyles={
           isMobile
             ? {

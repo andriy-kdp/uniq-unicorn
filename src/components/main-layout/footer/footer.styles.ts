@@ -19,7 +19,6 @@ export const FooterLinksRoot = styled.div`
   //display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 100%;
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
 `;
