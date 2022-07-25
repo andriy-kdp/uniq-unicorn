@@ -12,9 +12,7 @@ const SelectRoot = styled.div<Pick<SelectProps, "fullWidth" | "maxWidth">>`
   `}
   ${(props) => props.fullWidth && `width: 100%`}
 `;
-const OptionsContainer = styled.div<
-  Pick<SelectProps, "optionsPosition" | "borderRadius">
->`
+const OptionsContainer = styled.div<Pick<SelectProps, "optionsPosition" | "borderRadius">>`
   user-select: none;
   display: flex;
   flex-direction: column;

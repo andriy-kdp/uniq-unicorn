@@ -20,89 +20,8 @@ import { useMediaQuery } from "../../../utils/use-media-query";
 import { MobileMenu } from "../../mobile-menu/mobile-menu.component";
 import { ReactComponent as BlackBanxLogo } from "../../../assets/logo.svg";
 import { Wrap } from "../../wrap/wrap.component";
-
-const menuLeft: MenuItemType[] = [
-  {
-    label: "About us",
-    dropdownItems: [
-      {
-        label: "Mission",
-        description: "Black Banx - who we are",
-        path: "/mission",
-        icon: <MissionIcon />,
-      },
-      {
-        label: "Security",
-        description: "Black Banx fund protection",
-        path: "/security",
-        icon: <SecurityIcon />,
-      },
-      {
-        label: "Careers",
-        description: "Come work with us",
-        path: "/careers",
-        icon: <CareersIcon />,
-      },
-    ],
-  },
-  {
-    label: "Accounts",
-    dropdownItems: [
-      {
-        label: "Bank Accounts",
-        description: "From private to business",
-        path: "/bank_accounts",
-        icon: <BankAccountsIcon />,
-      },
-      {
-        label: "Crypto Currency",
-        description: "Crypto trading made easier",
-        path: "/crypto_currency",
-        icon: <CryptoCurrencyIcon />,
-      },
-      {
-        label: "Fees",
-        description: "Accounts from Green to Titanium ",
-        path: "/fees",
-        icon: <FeesIcon />,
-      },
-    ],
-  },
-  {
-    label: "Media Centre",
-    dropdownItems: [
-      {
-        label: "Media Coverage",
-        description: "Media and Public relations",
-        path: "/media_coverage",
-        icon: <MediaCoverageIcon />,
-      },
-      {
-        label: "News",
-        description: "Media centre news",
-        path: "/news",
-        icon: <NewsIcon />,
-      },
-      {
-        label: "Blog",
-        description: "Black Banx blog",
-        path: "/blog",
-        icon: <BlogIcon />,
-      },
-    ],
-  },
-];
-
-const menuRight: MenuItemType[] = [
-  {
-    label: "Login",
-    path: "/auth/login",
-  },
-  {
-    label: "Sign up",
-    path: "/auth/register",
-  },
-];
+import { useSelector } from "../../../redux/store";
+import { uiDataWebsiteText } from "../../../redux/uiData/selectors";
 
 const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest }): JSX.Element => {
   const handleClick =
@@ -129,6 +48,90 @@ const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest
 };
 
 export const Header = () => {
+  const websiteText = useSelector(uiDataWebsiteText);
+
+  const menuLeft: MenuItemType[] = [
+    {
+      label: "About us",
+      dropdownItems: [
+        {
+          label: "Mission",
+          description: "Black Banx - who we are",
+          path: "/mission",
+          icon: <MissionIcon />,
+        },
+        {
+          label: "Security",
+          description: "Black Banx fund protection",
+          path: "/security",
+          icon: <SecurityIcon />,
+        },
+        {
+          label: "Careers",
+          description: "Come work with us",
+          path: "/careers",
+          icon: <CareersIcon />,
+        },
+      ],
+    },
+    {
+      label: "Accounts",
+      dropdownItems: [
+        {
+          label: "Bank Accounts",
+          description: "From private to business",
+          path: "/bank_accounts",
+          icon: <BankAccountsIcon />,
+        },
+        {
+          label: "Crypto Currency",
+          description: "Crypto trading made easier",
+          path: "/crypto_currency",
+          icon: <CryptoCurrencyIcon />,
+        },
+        {
+          label: "Fees",
+          description: "Accounts from Green to Titanium ",
+          path: "/fees",
+          icon: <FeesIcon />,
+        },
+      ],
+    },
+    {
+      label: "Media Centre",
+      dropdownItems: [
+        {
+          label: "Media Coverage",
+          description: "Media and Public relations",
+          path: "/media_coverage",
+          icon: <MediaCoverageIcon />,
+        },
+        {
+          label: "News",
+          description: "Media centre news",
+          path: "/news",
+          icon: <NewsIcon />,
+        },
+        {
+          label: "Blog",
+          description: "Black Banx blog",
+          path: "/blog",
+          icon: <BlogIcon />,
+        },
+      ],
+    },
+  ];
+
+  const menuRight: MenuItemType[] = [
+    {
+      label: "Login",
+      path: "/auth/login",
+    },
+    {
+      label: "Sign up",
+      path: "/auth/register",
+    },
+  ];
   const [submenuItems, setSubmenuItems] = useState<Omit<MenuItemType, "dropdownItems">[] | null>(null);
   const nav = useNavigate();
   const isMobile = useMediaQuery("sm");

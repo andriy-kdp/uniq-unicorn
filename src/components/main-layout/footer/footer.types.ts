@@ -1,4 +1,4 @@
-import { SelectHandler, SelectOption } from "../../inputs/select/select.types";
+import { SelectHandler, SelectOption, SelectOptions } from "../../inputs/select/select.types";
 
 export type FooterLinkGroup = {
   title: string;
@@ -6,6 +6,7 @@ export type FooterLinkGroup = {
 };
 
 export type SelectLanguageAppLinkProps = {
+  options: SelectOptions | null;
   language: SelectOption | null;
   onSelect: SelectHandler;
   reverse?: boolean;

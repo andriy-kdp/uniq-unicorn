@@ -49,12 +49,9 @@ export const Select: React.FC<SelectProps> = (props) => {
     };
 
   const getOptionsWithUpArrow = useMemo(() => {
-    const arrowPositionIndex =
-      optionsPosition === "bottom" ? 0 : options.length - 1;
+    const arrowPositionIndex = optionsPosition === "bottom" ? 0 : options.length - 1;
     return options.map((option, index) =>
-      index !== arrowPositionIndex
-        ? option
-        : { ...option, startIcon: <ArrowUpIcon onClick={handleCloseList} /> },
+      index !== arrowPositionIndex ? option : { ...option, startIcon: <ArrowUpIcon onClick={handleCloseList} /> },
     );
   }, []);
 
@@ -75,45 +72,40 @@ export const Select: React.FC<SelectProps> = (props) => {
           startIcon={
             <Sel.Adornment.Root>
               <ArrowDownIcon />
-              {!value && !noAdornment && (
-                <Sel.Adornment.Label>Select</Sel.Adornment.Label>
-              )}
+              {!value && !noAdornment && <Sel.Adornment.Label>Select</Sel.Adornment.Label>}
             </Sel.Adornment.Root>
           }
           endIcon={
             value?.endIcon && (
-              <Sel.Adornment.Root>{value.endIcon}</Sel.Adornment.Root>
+              <Sel.Adornment.Root>
+                {value.endIconBase64 ? <img src={value.endIcon} alt={value.label} width="30px" /> : value.endIcon}
+              </Sel.Adornment.Root>
             )
           }
           {...InputProps}
         />
         {showOptions && (
-          <Sel.Options.Root
-            optionsPosition={optionsPosition}
-            borderRadius={borderRadius}
-          >
+          <Sel.Options.Root optionsPosition={optionsPosition} borderRadius={borderRadius}>
             {getOptionsWithUpArrow.map((option, index) => (
               <Wrap key={`option-item-${index}`}>
                 <Sel.Options.Item.Root>
                   {option.startIcon && (
                     <Wrap sx={{ padding: "1rem 1rem 1rem 0" }}>
-                      <Sel.Options.Item.Icon>
-                        {option.startIcon}
-                      </Sel.Options.Item.Icon>
+                      <Sel.Options.Item.Icon>{option.startIcon}</Sel.Options.Item.Icon>
                     </Wrap>
                   )}
-                  <Sel.Options.Item.Title onClick={handleSelect(option)}>
-                    {option.label}
-                  </Sel.Options.Item.Title>
+                  <Sel.Options.Item.Title onClick={handleSelect(option)}>{option.label}</Sel.Options.Item.Title>
                   {option.endIcon && (
                     <Sel.Options.Item.Icon>
-                      {option.endIcon}
+                      {option.endIconBase64 ? (
+                        <img src={option.endIcon} alt={option.label} width="20px" />
+                      ) : (
+                        option.endIcon
+                      )}
                     </Sel.Options.Item.Icon>
                   )}
                 </Sel.Options.Item.Root>
-                {index !== options.length - 1 && (
-                  <Divider variant="dashed" width={"90%"} />
-                )}
+                {index !== options.length - 1 && <Divider variant="dashed" width={"90%"} />}
               </Wrap>
             ))}
           </Sel.Options.Root>

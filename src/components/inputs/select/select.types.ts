@@ -23,8 +23,9 @@ export type SelectOption = {
   value: string | number;
   label: string;
   startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
+  endIcon?: string;
   abbr?: string;
+  endIconBase64?: boolean;
 };
 
 export type SimpleSelectEvent = {
@@ -36,4 +37,4 @@ export type SimpleSelectEvent = {
 
 export type SelectHandler = (event: SimpleSelectEvent) => void;
 
-export type SelectOptions = SelectOption[];
+export type SelectOptions = SelectOption[] | null;
