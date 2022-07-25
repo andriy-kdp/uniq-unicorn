@@ -1,7 +1,10 @@
 type LanguagesListType = "language_id" | "language" | "language_code" | "country_flag";
 type LanguagesList = Record<LanguagesListType, string>;
-export type ResLanguagesList = { data: LanguagesList[] };
 
+type ResponseDataType<T> = {
+  data: T;
+};
+export type ResLanguagesList = ResponseDataType<LanguagesList[]>;
 type SiteTextCommonType =
   | "hf_head_one_rt"
   | "hf_head_one_rt_subone"

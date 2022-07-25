@@ -402,9 +402,10 @@ const uiDataSlice = createSlice({
         }));
       })
       .addCase(operations.getAllWebsiteText.fulfilled, (state, action) => {
-        const value: Record<InitialStateData["websiteText"], string> = {};
+        const value: WebsiteTextType = { ...initialState.websiteText };
         action.payload.forEach((el) => {
           const { tab, data } = el;
+          //@ts-ignore
           value[tab] = data;
         });
         state.websiteText = value;

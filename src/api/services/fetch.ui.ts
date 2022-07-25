@@ -37,7 +37,7 @@ export const fetchWebSiteTextAll = async (languageId: string) => {
   namesMap.set(14, "privacyPolicy");
 
   const max = 14;
-  const requests = [];
+  const requests: { tab: WebsiteTextGroups; data: ResGetSiteTextData }[] = [];
   for (let i = 1; i <= max; i++) {
     const tab = namesMap.get(i);
     const dummyObj: Record<string, string> = {};
@@ -49,7 +49,7 @@ export const fetchWebSiteTextAll = async (languageId: string) => {
       const [key, value] = obj;
       dummyObj[key] = atob(value);
     });
-
+    //@ts-ignore
     requests.push({ tab, data: dummyObj });
   }
   return await Promise.all(requests);
