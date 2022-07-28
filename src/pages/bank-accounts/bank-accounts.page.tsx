@@ -26,80 +26,83 @@ import { ButtonArrow } from "../../components/button-arrow/button-arrow.componen
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
-
-const bankAccountProfs: { title: string; description: string }[] = [
-  { title: "Private clients", description: "Easy account Openings" },
-  { title: "Business clients ", description: "Banking without borders" },
-  {
-    title: "Institutional clients",
-    description: "Cost-effective global payments",
-  },
-];
-
-const infoBlocks: {
-  title: string;
-  subtitle: string;
-  description: string[] | string;
-  blockImgSrc: React.ReactNode;
-  link: string;
-}[] = [
-  {
-    title: "PRIVATE CLIENTS",
-    subtitle: "With your Private Account you can:",
-    link: "/auth/register/private",
-    description: [
-      "Get Black Banx Debit Cards (virtual or physical) in different currencies",
-      "Freely convert currencies between your accounts for Bank Interchange rates",
-      "Send and receive payments with instant fund crediting, worldwide",
-      "Manage and monitor your cards and accounts in real time",
-      "Pay with your Black Banx Debit card worldwide",
-      "Connect your virtual Black Banx with your phone to pay via NFC",
-      "Hold funds, send and receive payments in more than 28 different currencies",
-      "Transfer money to other Black Banx accounts in a split of seconds",
-      "Configure your account and card limits by yourself",
-    ],
-    blockImgSrc: <CardIcon />,
-  },
-  {
-    title: "BUSINESS CLIENTS",
-    subtitle: "With your Business Account you can:",
-    link: "/auth/register/business",
-    description: [
-      "Get Black Banx Debit Cards in different currencies for you or your people",
-      "Freely convert currencies between your accounts for Bank Interchange rates",
-      "Send and receive payments with instant fund crediting, worldwide",
-      "Manage and monitor your cards and accounts in real time",
-      "Pay with your Black Banx Debit card worldwide",
-      "Track the status of incoming and outgoing transfers in seconds",
-      "Hold funds, send and receive payments in more than 28 different currencies",
-      "Transfer money to other Black Banx accounts in a split of seconds",
-      "Configure your account and card limits by yourself",
-      "Assign multiple users to manage and access your accounts",
-    ],
-    blockImgSrc: <CaseIcon />,
-  },
-  {
-    title: "INSTITUTIONAL CLIENTS",
-    subtitle: "If you are a Bank, a Fund or Financial Institution:",
-    link: "/auth/register/institutional",
-    description:
-      "Black Banx offers a cost effective, global cross border payment solution.We offer a network of local correspondent accounts in over 90 countries for incoming and outgoing payments. Integrating our cross border platform into your payment system would allow you to send and receive funds in a fraction of time. To reduce your fees, we offer attractive volume based pricing models.",
-    blockImgSrc: <BuildingIcon />,
-  },
-];
+import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { useSelector } from "../../redux/store";
 
 export const BankAccountsPage: React.FC = (): JSX.Element => {
+  const { accountsBankAccounts } = useSelector(uiDataWebsiteText);
   const nav = useNavigate();
   const isMobile = useMediaQuery("sm");
   const handleClickButton = (path: string) => () => {
     nav(path);
   };
+  const bankAccountProfs: { title: string; description: string }[] = [
+    { title: accountsBankAccounts.ac_bnk_hdtwo_left, description: accountsBankAccounts.ac_bnk_hdtwo_left_subone },
+    { title: accountsBankAccounts.ac_bnk_hdtwo_mid, description: accountsBankAccounts.ac_bnk_hdtwo_mid_subone },
+    {
+      title: "Institutional clients",
+      description: "Cost-effective global payments",
+    },
+  ];
 
+  const infoBlocks: {
+    title: string;
+    subtitle: string;
+    description: string[] | string;
+    blockImgSrc: React.ReactNode;
+    link: string;
+  }[] = [
+    {
+      title: accountsBankAccounts.ac_bnk_hdtwo_left,
+      subtitle: accountsBankAccounts.ac_bnk_hdtwo_left_subtwo,
+      link: "/auth/register/private",
+      description: [
+        accountsBankAccounts.ac_bnk_hdtwo_left_pntone,
+        accountsBankAccounts.ac_bnk_hdtwo_left_pnttwo,
+        accountsBankAccounts.ac_bnk_hdtwo_left_pntthree,
+        accountsBankAccounts.ac_bnk_hdtwo_left_pntfour,
+        accountsBankAccounts.ac_bnk_hdtwo_left_pntfive,
+        accountsBankAccounts.ac_bnk_hdtwo_left_pntsix,
+        accountsBankAccounts.ac_bnk_hdtwo_left_pntseven,
+        accountsBankAccounts.ac_bnk_hdtwo_left_pnteight,
+        accountsBankAccounts.ac_bnk_hdtwo_left_pntnine,
+      ],
+      blockImgSrc: <CardIcon />,
+    },
+    {
+      title: accountsBankAccounts.ac_bnk_hdtwo_mid,
+      subtitle: accountsBankAccounts.ac_bnk_hdtwo_mid_subtwo,
+      link: "/auth/register/business",
+      description: [
+        accountsBankAccounts.ac_bnk_hdtwo_mid_subone,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_subtwo,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pntone,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pnttwo,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pntthree,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pntfour,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pntfive,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pntsix,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pntseven,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pnteight,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pntnine,
+        accountsBankAccounts.ac_bnk_hdtwo_mid_pntten,
+      ],
+      blockImgSrc: <CaseIcon />,
+    },
+    {
+      title: "INSTITUTIONAL CLIENTS",
+      subtitle: "If you are a Bank, a Fund or Financial Institution:",
+      link: "/auth/register/institutional",
+      description:
+        "Black Banx offers a cost effective, global cross border payment solution.We offer a network of local correspondent accounts in over 90 countries for incoming and outgoing payments. Integrating our cross border platform into your payment system would allow you to send and receive funds in a fraction of time. To reduce your fees, we offer attractive volume based pricing models.",
+      blockImgSrc: <BuildingIcon />,
+    },
+  ];
   return (
     <>
       <SlideSection
         bgImage={BgImage}
-        title={"Instant currency conversion in over 28 currencies"}
+        title={accountsBankAccounts.ac_bnk_headOne}
         bgVariant={"gradient"}
         titleWidth={"100%"}
         justify={"center"}
@@ -129,15 +132,8 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
             ))}
           </ProfsContainer>
           <DescriptionContainer>
-            <DescriptionTitle>Black Banx private and business accounts</DescriptionTitle>
-            <Description>
-              Black Banx is offering real time account opening for Private and Business clients in 180 countries. We
-              provide global cross border payments and account opening in 28 currencies. With our proprietary software
-              IRTP© recipients can get funds credited instantly on their bank accounts. Senders pay ten times less than
-              traditional banking. Users can transact money through their account balances, Bitcoin or Debit Cards. You
-              can open your account remotely on this website or using our mobile app on your smart phone. The account is
-              set up in minutes, with our 24/7 real time verification and activation service.
-            </Description>
+            <DescriptionTitle>{accountsBankAccounts.ac_bnk_hdtwo}</DescriptionTitle>
+            <Description>{accountsBankAccounts.ac_bnk_hdtwo_Subpara}</Description>
           </DescriptionContainer>
         </DescriptionWrapper>
       </Section>

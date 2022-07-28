@@ -12,6 +12,8 @@ import { useMediaQuery } from "../../utils/use-media-query";
 import { useNavigate } from "react-router-dom";
 import { ArticleItem } from "./media-coverage.types";
 import { previewData } from "../../mock-data/media-coverage";
+import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { useSelector } from "../../redux/store";
 
 const sizesMap = new Map<number, ArticleItem["size"]>([
   [0, "big"],
@@ -26,6 +28,7 @@ const sizesMapReverse = new Map<number, ArticleItem["size"]>([
 ]);
 
 export const MediaCoveragePage: React.FC = (): JSX.Element => {
+  const { mediaCenterMediaCoverage } = useSelector(uiDataWebsiteText);
   const [formData, setFormData] = useState<{ name: string; email: string }>({
     name: "",
     email: "",
@@ -58,7 +61,7 @@ export const MediaCoveragePage: React.FC = (): JSX.Element => {
     <>
       <SlideSection
         bgImage={MainBg}
-        title={"Black Banx media and public relations"}
+        title={mediaCenterMediaCoverage.mc_mcov_headone}
         titleAlign="center"
         titleWidth={"70%"}
         justify="center"

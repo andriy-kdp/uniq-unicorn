@@ -17,7 +17,9 @@ export const Accordeon: React.FC<AccordeonProps> = (props): JSX.Element => {
         <Acc.Title.Body>{title}</Acc.Title.Body>
         <Acc.Icon onClick={toggleDescription}>{showDescription ? <MinusIcon /> : <PlusIcon />}</Acc.Icon>
       </Acc.Title.Root>
-      <Acc.Description visible={showDescription}>{description}</Acc.Description>
+      {description.map((el) => (
+        <Acc.Description visible={showDescription}>{el}</Acc.Description>
+      ))}
     </Acc.Root>
   );
 };

@@ -15,40 +15,11 @@ import { SlideSection } from "../../components/silde-section/slide-section.compo
 import MainBg from "../../assets/backgrounds/crypto-currency-page/crypto_cur_bg.png";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { useNavigate } from "react-router-dom";
-const benefitsItems: BenefitItemsType = [
-  {
-    title: "High-value trading",
-    description: "Cryptocurrency transactions with no maximum limit",
-    icon: <ChartIcon />,
-  },
-  {
-    title: "Instant conversion",
-    description: "Cryptocurrency to 28 fiat currencies and vice versa",
-    icon: <ConversionIcon />,
-  },
-  {
-    title: "Instant account setup",
-    description: "For private and business clients from 180 countries",
-    icon: <AccountIcon />,
-  },
-  {
-    title: "Perfect solution",
-    description: "For exchanges or other crypto businesses to open bank accounts",
-    icon: <MedalIcon />,
-  },
-  {
-    title: "International wires",
-    description: "Bank wire transfers to third parties worldwide, fast and secure",
-    icon: <PlanetIcon />,
-  },
-  {
-    title: "Ideal for any company",
-    description: "To sell your crypto assets and cash out after an ICO",
-    icon: <SuccessIcon />,
-  },
-];
+import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { useSelector } from "../../redux/store";
 
 export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
+  const { accountsCryptoCurrency } = useSelector(uiDataWebsiteText);
   const isMobile = useMediaQuery("sm");
   const nav = useNavigate();
   const handleClick = () => {
@@ -58,12 +29,45 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
   const handleClickAppDownloadLink = () => {
     window.open("about:blank", "noopener norefferer");
   };
+
+  const benefitsItems: BenefitItemsType = [
+    {
+      title: accountsCryptoCurrency.acnt_crypt_subhd_lnone_left,
+      description: accountsCryptoCurrency.acnt_crypt_subhd_lnone_left_para,
+      icon: <ChartIcon />,
+    },
+    {
+      title: accountsCryptoCurrency.acnt_crypt_subhd_lnone_right,
+      description: accountsCryptoCurrency.acnt_crypt_subhd_lnone_right_para,
+      icon: <ConversionIcon />,
+    },
+    {
+      title: accountsCryptoCurrency.acnt_crypt_subhd_lnone_mid,
+      description: accountsCryptoCurrency.acnt_crypt_subhd_lnone_mid_para,
+      icon: <AccountIcon />,
+    },
+    {
+      title: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_left,
+      description: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_left_para,
+      icon: <MedalIcon />,
+    },
+    {
+      title: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_mid,
+      description: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_mid_para,
+      icon: <PlanetIcon />,
+    },
+    {
+      title: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_right,
+      description: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_right_para,
+      icon: <SuccessIcon />,
+    },
+  ];
   return (
     <>
       <SlideSection
         mobile={isMobile}
         bgImage={MainBg}
-        title="Black Banx crypto currency banking"
+        title={accountsCryptoCurrency.acnt_crypt_headOne}
         titleWidth={!isMobile ? "50%" : "100%"}
         BgImageStyles={
           isMobile
@@ -74,13 +78,13 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
               }
         }
         button={{
-          title: "Open Account",
+          title: accountsCryptoCurrency.acnt_crypt_acnt_opnlink_text,
           onClick: handleClick,
         }}
       />
 
       <Section mainContent>
-        <CryptoBenefitsTitle>Crypto trading made easier</CryptoBenefitsTitle>
+        <CryptoBenefitsTitle>{accountsCryptoCurrency.acnt_crypt_headtwo}</CryptoBenefitsTitle>
         <Benefits items={benefitsItems} secondary vertical={isMobile} centered={isMobile} />
       </Section>
       <Section mainContent m={!isMobile ? "13rem auto 26rem" : "16rem auto 11rem !important"}>

@@ -14,79 +14,8 @@ import { IconButton } from "../../components/icon-button/icon-button.component";
 import { ReactComponent as ArrowIconLeft } from "../../assets/icons/arrow_left.svg";
 import { PlanInfoType } from "./fees.types";
 import { Transition } from "react-transition-group";
-
-const planInfoItems: PlanInfoType[] = [
-  {
-    title: "Titanium Account",
-    imgSrc: TitaniumAccountBg,
-    prosItems: [
-      {
-        title: "Requirements",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-      {
-        title: "Customer service",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-      {
-        title: "Deposits & withdrawals",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-      {
-        title: "Fees",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-      {
-        title: "Other services",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-    ],
-  },
-  {
-    title: "Titanium Account1",
-    imgSrc: TitaniumAccountBg,
-    prosItems: [
-      {
-        title: "Requirements",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-      {
-        title: "Customer service",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-      {
-        title: "Deposits & withdrawals",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-      {
-        title: "Fees",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-      {
-        title: "Other services",
-        description:
-          "Assigned to account holding a min. Balance of 100.000 USD or equivalent amount in any fiat or cryptocurrency",
-      },
-    ],
-  },
-];
-
-const countries: { country: string; count: number }[] = [
-  { country: "Europe", count: 57 },
-  { country: "Americas", count: 52 },
-  { country: "Asia Pacific", count: 28 },
-  { country: "Africa", count: 25 },
-  { country: "Oceania", count: 18 },
-];
+import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { useSelector } from "../../redux/store";
 
 const duration = 100;
 
@@ -128,6 +57,7 @@ const Carousel: React.FC<PropsWithChildren<{ in: boolean; reversed?: boolean }>>
 };
 
 export const FeesPage: React.FC = (): JSX.Element => {
+  const { accountsFees } = useSelector(uiDataWebsiteText);
   const [currentPlan, setCurrentPlan] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>("");
   const [inProp, setInProp] = useState<boolean>(true);
@@ -162,12 +92,207 @@ export const FeesPage: React.FC = (): JSX.Element => {
   const handlePrevPlan = () => {
     promisedControl(false, () => setCurrentPlan((prev) => prev - 1));
   };
-
+  const planInfoItems: PlanInfoType[] = [
+    {
+      title: accountsFees.ac_fee_typslde_hdone,
+      imgSrc: TitaniumAccountBg,
+      prosItems: [
+        {
+          title: accountsFees.ac_fee_typslde_hdone_subhdone,
+          description: [accountsFees.ac_fee_typslde_hdone_subhdone_pone],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdone_subhdtwo,
+          description: [
+            accountsFees.ac_fee_typslde_hdone_subhdtwo_pone,
+            accountsFees.ac_fee_typslde_hdone_subhdtwo_ptwo,
+            accountsFees.ac_fee_typslde_hdone_subhdtwo_pthree,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdone_subhdfour,
+          description: [
+            accountsFees.ac_fee_typslde_hdone_subhdfour_pone,
+            accountsFees.ac_fee_typslde_hdone_subhdfour_ptwo,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdone_subhdthree,
+          description: [
+            accountsFees.ac_fee_typslde_hdone_subhdthree_pone,
+            accountsFees.ac_fee_typslde_hdone_subhdthree_ptwo,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdone_subhdfive,
+          description: [accountsFees.ac_fee_typslde_hdone_subhdfive_pone],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdone_subhdSix,
+          description: [
+            accountsFees.ac_fee_typslde_hdone_subhdsix_pone,
+            accountsFees.ac_fee_typslde_hdone_subhdsix_ptwo,
+            accountsFees.ac_fee_typslde_hdone_subhdsix_pthree,
+            accountsFees.ac_fee_typslde_hdone_subhdsix_pfour,
+          ],
+        },
+      ],
+    },
+    {
+      title: accountsFees.ac_fee_typslde_hdtwo,
+      imgSrc: TitaniumAccountBg,
+      prosItems: [
+        {
+          title: accountsFees.ac_fee_typslde_hdtwo_subhdone,
+          description: [accountsFees.ac_fee_typslde_hdtwo_subhdone_pone],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdtwo_subhdtwo,
+          description: [
+            accountsFees.ac_fee_typslde_hdtwo_subhdtwo_pone,
+            accountsFees.ac_fee_typslde_hdtwo_subhdtwo_ptwo,
+            accountsFees.ac_fee_typslde_hdtwo_subhdtwo_pthree,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdtwo_subhdthree,
+          description: [
+            accountsFees.ac_fee_typslde_hdtwo_subhdthree_pone,
+            accountsFees.ac_fee_typslde_hdtwo_subhdthree_pthree,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdtwo_subhdfour,
+          description: [
+            accountsFees.ac_fee_typslde_hdtwo_subhdfour_pone,
+            accountsFees.ac_fee_typslde_hdtwo_subhdfour_pthree,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdtwo_subhdsix,
+          description: [
+            accountsFees.ac_fee_typslde_hdtwo_subhdSix_pone,
+            accountsFees.ac_fee_typslde_hdtwo_subhdSix_ptwo,
+            accountsFees.ac_fee_typslde_hdtwo_subhdSix_pthree,
+            accountsFees.ac_fee_typslde_hdtwo_subhdSix_pfour,
+          ],
+        },
+      ],
+    },
+    {
+      title: accountsFees.ac_fee_typslde_hdthree,
+      imgSrc: TitaniumAccountBg,
+      prosItems: [
+        {
+          title: accountsFees.ac_fee_typslde_hdthree_subhdone,
+          description: [accountsFees.ac_fee_typslde_hdthree_subhdone_pone],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdthree_subhdtwo,
+          description: [
+            accountsFees.ac_fee_typslde_hdthree_subhdtwo_pone,
+            accountsFees.ac_fee_typslde_hdthree_subhdtwo_ptwo,
+            accountsFees.ac_fee_typslde_hdthree_subhdtwo_pthree,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdthree_subhdthree,
+          description: [
+            accountsFees.ac_fee_typslde_hdthree_subhdthree_pone,
+            accountsFees.ac_fee_typslde_hdthree_subhdthree_ptwo,
+            accountsFees.ac_fee_typslde_hdthree_subhdthree_pthree,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdthree_subhdfour,
+          description: [
+            accountsFees.ac_fee_typslde_hdthree_subhdfour_pone,
+            accountsFees.ac_fee_typslde_hdthree_subhdfour_ptwo,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdthree_subhdfive,
+          description: [
+            accountsFees.ac_fee_typslde_hdthree_subhdfive_pone,
+            accountsFees.ac_fee_typslde_hdthree_subhdfive_ptwo,
+            accountsFees.ac_fee_typslde_hdthree_subhdfive_pthree,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdthree_subhdsix,
+          description: [
+            accountsFees.ac_fee_typslde_hdthree_subhdsix_pone,
+            accountsFees.ac_fee_typslde_hdthree_subhdsix_ptwo,
+            accountsFees.ac_fee_typslde_hdthree_subhdsix_pthree,
+            accountsFees.ac_fee_typslde_hdthree_subhdsix_pfour,
+            accountsFees.ac_fee_typslde_hdthree_subhdsix_pfive,
+            accountsFees.ac_fee_typslde_hdthree_subhdsix_psix,
+          ],
+        },
+      ],
+    },
+    {
+      title: accountsFees.ac_fee_typslde_hdfour,
+      imgSrc: TitaniumAccountBg,
+      prosItems: [
+        {
+          title: accountsFees.ac_fee_typslde_hdfour_subhdone,
+          description: [accountsFees.ac_fee_typslde_hdfour_subhdone_pone],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdfour_subhdtwo,
+          description: [
+            accountsFees.ac_fee_typslde_hdfour_subhdtwo_pone,
+            accountsFees.ac_fee_typslde_hdfour_subhdtwo_ptwo,
+            accountsFees.ac_fee_typslde_hdfour_subhdtwo_pthree,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdfour_subhdthree,
+          description: [
+            accountsFees.ac_fee_typslde_hdfour_subhdthree_pone,
+            accountsFees.ac_fee_typslde_hdfour_subhdthree_ptwo,
+            accountsFees.ac_fee_typslde_hdfour_subhdthree_pthree,
+            accountsFees.ac_fee_typslde_hdfour_subhdthree_pfour,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdfour_subhdfour,
+          description: [
+            accountsFees.ac_fee_typslde_hdfour_subhdfour_pone,
+            accountsFees.ac_fee_typslde_hdfour_subhdfour_ptwo,
+          ],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdfour_subhdfive,
+          description: [accountsFees.ac_fee_typslde_hdfour_subhdfive_pone],
+        },
+        {
+          title: accountsFees.ac_fee_typslde_hdfour_subhdsix,
+          description: [
+            accountsFees.ac_fee_typslde_hdfour_subhdsix_pone,
+            accountsFees.ac_fee_typslde_hdfour_subhdsix_ptwo,
+            accountsFees.ac_fee_typslde_hdfour_subhdsix_pthree,
+            accountsFees.ac_fee_typslde_hdfour_subhdsix_pfour,
+            accountsFees.ac_fee_typslde_hdfour_subhdsix_pfive,
+            accountsFees.ac_fee_typslde_hdfour_subhdsix_pSix,
+          ],
+        },
+      ],
+    },
+  ];
+  const countries: { country: string }[] = [
+    { country: accountsFees.ac_fee_lower_drp_dflt_one },
+    { country: accountsFees.ac_fee_lower_drp_dflt_two },
+    { country: accountsFees.ac_fee_lower_drp_dflt_three },
+    { country: accountsFees.ac_fee_lower_drp_dflt_four },
+    { country: accountsFees.ac_fee_lower_drp_dflt_five },
+  ];
   return (
     <>
       <SlideSection
         bgImage={MainBg}
-        title={"Global money flow"}
+        title={accountsFees.ac_fee_hdone}
         bgVariant={"gradient"}
         titleAlign={"center"}
         justify={"center"}
@@ -236,9 +361,9 @@ export const FeesPage: React.FC = (): JSX.Element => {
               gap: isTablet ? "2rem" : "0",
             }}
           >
-            {countries.map((country) => {
+            {countries.map((country, idx) => {
               const { Item } = FindCountry.Countries;
-              return <Item key={country.country}>{`${country.country} (${country.count})`}</Item>;
+              return <Item key={country.country + idx}>{`${country.country}`}</Item>;
             })}
           </Wrap>
           {isMobile && (

@@ -406,6 +406,7 @@ export type WebsiteTextType = {
   policiesTerms: Record<SiteTextPoliciesTermsType, string>;
   privacyPolicy: Record<SiteTextPrivacyPolicyType, string>;
 };
+
 export type WebsiteTextGroups =
   | "common"
   | "homePage"
@@ -421,8 +422,6 @@ export type WebsiteTextGroups =
   | "contactBlackBanx"
   | "policiesTerms"
   | "privacyPolicy";
-// type TextTest = Record<TabType, SiteTextCommonType>;
-// const a: TextTest = { name: "hf_foot_cntryeight" };
 
 export type ResGetSiteTextData =
   | ResSiteTextCommon

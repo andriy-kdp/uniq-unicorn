@@ -13,6 +13,8 @@ import { Button } from "../../components/button/button.component";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { vacationsList } from "../../mock-data/careets";
+import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { useSelector } from "../../redux/store";
 
 const selectOptions: SelectOptions = [
   { id: "opt-0", label: "Select", value: "none" },
@@ -22,16 +24,8 @@ const selectOptions: SelectOptions = [
   { id: "opt-4", label: "1-120 days", value: "1-120" },
 ];
 
-const keywordsFilterButtons: {
-  value: "exact" | "title" | "description";
-  title: string;
-}[] = [
-  { value: "exact", title: "Exact match" },
-  { value: "title", title: "In job title" },
-  { value: "description", title: "In description" },
-];
-
 export const CareersPage: React.FC = (): JSX.Element => {
+  const { aboutUsCareers } = useSelector(uiDataWebsiteText);
   const [formData, setFormdata] = useState<{
     filterBy: "exact" | "title" | "description";
     keywords: string;
@@ -66,12 +60,19 @@ export const CareersPage: React.FC = (): JSX.Element => {
   const handleClickOpenAccount = () => {
     nav("/auth/register");
   };
-
+  const keywordsFilterButtons: {
+    value: "exact" | "title" | "description";
+    title: string;
+  }[] = [
+    { value: "exact", title: aboutUsCareers.abtus_cr_opone },
+    { value: "title", title: aboutUsCareers.abtus_cr_optwo },
+    { value: "description", title: aboutUsCareers.abtus_cr_opthree },
+  ];
   return (
     <>
       <SlideSection
         bgImage={careersBg}
-        title={"Come and work with us all over the world"}
+        title={aboutUsCareers.abtus_cr_headone}
         justify={"center"}
         bgVariant={"gradient"}
         titleAlign={"center"}
@@ -97,7 +98,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
 
       <Section mainContent>
         <Wrap sx={{ margin: isMobile ? "3rem 0" : "6rem 0" }}>
-          <h3>We're looking for talented people to join us</h3>
+          <h3>{aboutUsCareers.abtus_cr_headtwo}</h3>
         </Wrap>
         <Wrap sx={{ marginBottom: isMobile ? "3rem" : "9rem", width: "100%" }}>
           <img src={careersVideoPlugImg} alt={"Careers video"} style={{ position: "relative", width: "100%" }} />
@@ -110,15 +111,15 @@ export const CareersPage: React.FC = (): JSX.Element => {
         </Wrap>
       </Section>
       <Section mainContent>
-        <h3>Search for openings:</h3>
+        <h3>{aboutUsCareers.abtus_cr_headtwoSub}</h3>
         <Wrap sx={{ maxWidth: "76.8rem", width: "100%", margin: "4rem auto 14rem" }}>
           <Input
             fullWidth
             value={formData["keywords"]}
             onChange={handleInputChange}
-            label={"Keywords"}
+            label={aboutUsCareers.abtus_cr_bxone_title}
             startIcon={<SearchIcon />}
-            placeholder={"Search jobs by keywords"}
+            placeholder={aboutUsCareers.abtus_cr_bxone_plcehldr}
             name={"keywords"}
             LabelRootProps={{ style: { marginBottom: "3.2rem" } }}
           />
@@ -136,7 +137,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
             <Input
               fullWidth
               onChange={handleInputChange}
-              label={"Location"}
+              label={aboutUsCareers.abtus_cr_bxtwo_title}
               startIcon={<SearchIcon />}
               placeholder={"Start entering location"}
               name={"location"}

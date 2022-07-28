@@ -48,73 +48,73 @@ const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest
 };
 
 export const Header = () => {
-  const websiteText = useSelector(uiDataWebsiteText);
+  const { common } = useSelector(uiDataWebsiteText);
 
   const menuLeft: MenuItemType[] = [
     {
-      label: "About us",
+      label: common.hf_head_one_rt,
       dropdownItems: [
         {
-          label: "Mission",
-          description: "Black Banx - who we are",
+          label: common.hf_head_one_rt_subone,
+          description: common.hf_head_one_rt_subone_sub,
           path: "/mission",
           icon: <MissionIcon />,
         },
         {
-          label: "Security",
-          description: "Black Banx fund protection",
+          label: common.hf_head_one_rt_subtwo,
+          description: common.hf_head_one_rt_subtwo_sub,
           path: "/security",
           icon: <SecurityIcon />,
         },
         {
-          label: "Careers",
-          description: "Come work with us",
+          label: common.hf_head_one_rt_subthree,
+          description: common.hf_head_one_rt_subthree_sub,
           path: "/careers",
           icon: <CareersIcon />,
         },
       ],
     },
     {
-      label: "Accounts",
+      label: common.hf_head_two_rt,
       dropdownItems: [
         {
-          label: "Bank Accounts",
-          description: "From private to business",
+          label: common.hf_head_two_rt__subone,
+          description: common.hf_head_two_rt__subone_sub,
           path: "/bank_accounts",
           icon: <BankAccountsIcon />,
         },
         {
-          label: "Crypto Currency",
-          description: "Crypto trading made easier",
+          label: common.hf_head_two_rt__subtwo,
+          description: common.hf_head_two_rt__subtwo_sub,
           path: "/crypto_currency",
           icon: <CryptoCurrencyIcon />,
         },
         {
-          label: "Fees",
-          description: "Accounts from Green to Titanium ",
+          label: common.hf_head_two_rt_subthree,
+          description: common.hf_head_two_rt_subthree_sub,
           path: "/fees",
           icon: <FeesIcon />,
         },
       ],
     },
     {
-      label: "Media Centre",
+      label: common.hf_head_three_rt,
       dropdownItems: [
         {
-          label: "Media Coverage",
-          description: "Media and Public relations",
+          label: common.hf_head_three_rt_subone,
+          description: common.hf_head_three_rt_subone_sub,
           path: "/media_coverage",
           icon: <MediaCoverageIcon />,
         },
         {
-          label: "News",
-          description: "Media centre news",
+          label: common.hf_head_three_rt__subtwo,
+          description: common.hf_head_three_rt__subtwo_sub,
           path: "/news",
           icon: <NewsIcon />,
         },
         {
-          label: "Blog",
-          description: "Black Banx blog",
+          label: common.hf_head_three_rt_subthree,
+          description: common.hf_head_three_rt_subthree_sub,
           path: "/blog",
           icon: <BlogIcon />,
         },
@@ -124,11 +124,11 @@ export const Header = () => {
 
   const menuRight: MenuItemType[] = [
     {
-      label: "Login",
+      label: common.hf_head_four_lft,
       path: "/auth/login",
     },
     {
-      label: "Sign up",
+      label: common.hf_head_five_lft,
       path: "/auth/register",
     },
   ];

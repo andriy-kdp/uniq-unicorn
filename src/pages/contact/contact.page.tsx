@@ -8,8 +8,11 @@ import { ContactForm } from "./contact.styles";
 import { Input } from "../../components/inputs/input/input.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
 import MaoMarkers from "../../assets/backgrounds/contact/map_bg.png";
+import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { useSelector } from "../../redux/store";
 
 export const ContactPage: React.FC = (): JSX.Element => {
+  const { contactBlackBanx } = useSelector(uiDataWebsiteText);
   const [formData, setFormData] = useState<{ name: string; email: string }>({
     name: "",
     email: "",
@@ -27,7 +30,7 @@ export const ContactPage: React.FC = (): JSX.Element => {
   return (
     <>
       <SlideSection
-        title={"Contact Black Banx"}
+        title={contactBlackBanx.cus_headone}
         bgImage={MainBg}
         titleAlign={"center"}
         titleWidth={"100%"}
@@ -48,16 +51,28 @@ export const ContactPage: React.FC = (): JSX.Element => {
             }}
           >
             <ContactForm.Title.Root>
-              <ContactForm.Title.SubTitle>CONTACT US</ContactForm.Title.SubTitle>
-              <ContactForm.Title.Text>Have a question?</ContactForm.Title.Text>
+              <ContactForm.Title.SubTitle>{contactBlackBanx.cus_cntctus}</ContactForm.Title.SubTitle>
+              <ContactForm.Title.Text>{contactBlackBanx.cus_qstn}</ContactForm.Title.Text>
             </ContactForm.Title.Root>
             <Wrap sx={{ marginBottom: "2rem", width: "100%" }}>
-              <Input value={formData.name} onChange={handleInputChange} label={"Name"} name={"name"} fullWidth />
+              <Input
+                value={formData.name}
+                onChange={handleInputChange}
+                label={contactBlackBanx.cus_qstn_nme}
+                name={"name"}
+                fullWidth
+              />
             </Wrap>
             <Wrap sx={{ marginBottom: "5rem", width: "100%" }}>
-              <Input value={formData.email} onChange={handleInputChange} label={"E-mail"} name={"email"} fullWidth />
+              <Input
+                value={formData.email}
+                onChange={handleInputChange}
+                label={contactBlackBanx.cus_qstn_eml}
+                name={"email"}
+                fullWidth
+              />
             </Wrap>
-            <ButtonArrow onClick={handleSubmit}>Send</ButtonArrow>
+            <ButtonArrow onClick={handleSubmit}>{contactBlackBanx.cus_qstn_sntbtn}</ButtonArrow>
           </Wrap>
           <Wrap
             sx={{

@@ -9,8 +9,11 @@ import { SlideSection } from "../../components/silde-section/slide-section.compo
 import { useMediaQuery } from "../../utils/use-media-query";
 import { useNavigate } from "react-router-dom";
 import { mockNews } from "../../mock-data/news";
+import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { useSelector } from "../../redux/store";
 
 export const NewsPage: React.FC = (): JSX.Element => {
+  const { mediaCenterNews } = useSelector(uiDataWebsiteText);
   const isMobile = useMediaQuery("sm");
   const nav = useNavigate();
 
@@ -24,7 +27,7 @@ export const NewsPage: React.FC = (): JSX.Element => {
     <>
       <SlideSection
         bgImage={MainBG}
-        title={"Black Banx media center news"}
+        title={mediaCenterNews.mc_nws_headone}
         justify={"center"}
         titleAlign={"center"}
         m={"auto auto 11rem"}

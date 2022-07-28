@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(operations.getAllWebsiteText(language ?? "1"));
-  }, []);
+  }, [language]);
 
   useScrollToTop();
 

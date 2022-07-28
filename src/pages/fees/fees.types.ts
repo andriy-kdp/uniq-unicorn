@@ -5,5 +5,5 @@ export type PlanInfoType = {
 };
 export type PlanInfoProsItem = {
   title: string;
-  description: string;
+  description: string[];
 };

@@ -29,25 +29,6 @@ import operations from "../../../redux/uiData/operations";
 import { uiDataLanguageList, uiDataWebsiteText } from "../../../redux/uiData/selectors";
 import { setSelectedLanguage } from "../../../redux/uiData/slice";
 
-export const footerLinks: FooterLinkGroup[] = [
-  {
-    title: "Black Banx Group",
-    links: [
-      { label: "About us", path: "/mission" },
-      { label: "Careers", path: "/careers" },
-      { label: "Fees", path: "/fees" },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      { label: "Contact Black Banx", path: "/contact" },
-      { label: "Policies & Terms", path: "/terms" },
-      { label: "Privacy Policy", path: "/privacy_policy" },
-    ],
-  },
-];
-
 export const socialNetworks: {
   label: string;
   icon: React.ReactNode;
@@ -97,26 +78,9 @@ export const socialNetworks: {
 //   },
 // ];
 
-export const cities: string[] = [
-  "Dubai ",
-  "London ",
-  "Toronto ",
-  "Moscow",
-  "Tokyo",
-  "Shanghai",
-  "Sao Paulo",
-  "Cape Town",
-];
-
 export const Footer = () => {
   const languageList = useSelector(uiDataLanguageList);
-  const textContent = useSelector(uiDataWebsiteText);
-  // const [tag, setTag] = useState<any>();
-  // useEffect(() => {
-  //   textContent && textContent.forEach((el: any) => (el.tab === "Common" ? setTag(el.data) : ""));
-  //   console.log(tag);
-  // }, [textContent]);
-
+  const { common } = useSelector(uiDataWebsiteText);
   const dispatch = useDispatch();
 
   const [language, setLanguage] = useState<SelectOption | null>(null);
@@ -135,6 +99,24 @@ export const Footer = () => {
     languageList && setLanguage(languageList[0]);
   }, [languageList]);
 
+  const footerLinks: FooterLinkGroup[] = [
+    {
+      title: common.hf_foot_left_headOne,
+      links: [
+        { label: common.hf_head_one_rt, path: "/mission" },
+        { label: common.hf_foot_left_lineTwo, path: "/careers" },
+        { label: common.hf_foot_left_lineThree, path: "/fees" },
+      ],
+    },
+    {
+      title: common.hf_foot_mid_headOne,
+      links: [
+        { label: common.hf_foot_mid_lineOne, path: "/contact" },
+        { label: common.hf_foot_mid_lineTwo, path: "/terms" },
+        { label: common.hf_foot_mid_lineThree, path: "/privacy_policy" },
+      ],
+    },
+  ];
   return (
     <Section mainContent>
       <FooterRoot>
@@ -162,7 +144,7 @@ export const Footer = () => {
         )}
       </FooterRoot>
       <CopyrightContainer>
-        {/* {tag?.hf_foot_right_lineTwo} */}
+        {common.hf_foot_right_lineTwo}
         {/* © 2021 Black Banx Inc. All rights reserved. Black Banx Inc. is authorised under Canadian law for providing
         financial services as MSB registration number M18324260. */}
       </CopyrightContainer>

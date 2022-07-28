@@ -16,30 +16,16 @@ import { DownloadAppHeader, VideoCover, VideoFrame } from "./main.styles";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { ReactComponent as PlayButton } from "../../assets/icons/play_btn.svg";
+import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { useSelector } from "../../redux/store";
 
-const benefitsList: BenefitItemsType = [
-  {
-    title: "Safe",
-    description: "A financial institution Pci dss 3.2 certified",
-    icon: <SafeIcon />,
-  },
-  {
-    title: "Fast",
-    description: "Cross border transfers Faster than your current bank",
-    icon: <FastIcon />,
-  },
-  {
-    title: "Global",
-    description: "Account opening for 180 countries in 28 currencies",
-    icon: <GlobalIcon />,
-  },
-];
 export const MainPage: React.FC = (): JSX.Element => {
+  const { homePage } = useSelector(uiDataWebsiteText);
   const [showVideoContent, setShowVideoContent] = useState(false);
   const nav = useNavigate();
   const isMobile = useMediaQuery("sm");
   const handleClickDownloadApp = () => {
-    window.open("about:blank", "noopener norefferer");
+    window.open("https://apps.apple.com/us/app/black-banx/id1479949412", "noopener norefferer");
   };
 
   const handleClickRegister = () => {
@@ -49,7 +35,23 @@ export const MainPage: React.FC = (): JSX.Element => {
   const handleClickCover = () => {
     setShowVideoContent(true);
   };
-
+  const benefitsList: BenefitItemsType = [
+    {
+      title: homePage.hp_head_left,
+      description: homePage.hp_head_left_sub,
+      icon: <SafeIcon />,
+    },
+    {
+      title: homePage.hp_head_mid,
+      description: homePage.hp_head_mid_sub,
+      icon: <FastIcon />,
+    },
+    {
+      title: homePage.hp_head_right,
+      description: homePage.hp_head_right_sub,
+      icon: <GlobalIcon />,
+    },
+  ];
   return (
     <>
       <SlideSection
@@ -59,7 +61,7 @@ export const MainPage: React.FC = (): JSX.Element => {
           title: "Get started",
           onClick: handleClickRegister,
         }}
-        title={"Private or Business accounts set up in minutes"}
+        title={homePage.hp_sliderOne}
         mobile={isMobile}
         titleWidth={isMobile ? "100%" : "50%"}
         BgImageStyles={
@@ -92,7 +94,7 @@ export const MainPage: React.FC = (): JSX.Element => {
 
       <Section mainContent m={"8rem auto 0"}>
         <Wrap sx={{ textTransform: "uppercase" }}>
-          <h2>Open Accounts, Send and Receive Payments in 28 currencies</h2>
+          <h2>{homePage.hp_headTwo}</h2>
         </Wrap>
         {!isMobile && (
           <Wrap sx={{ width: "100%" }}>
@@ -100,7 +102,7 @@ export const MainPage: React.FC = (): JSX.Element => {
           </Wrap>
         )}
         <Wrap sx={{ marginLeft: "auto", marginBottom: "6rem" }}>
-          <ButtonArrow onClick={handleClickRegister}>Open Account</ButtonArrow>
+          <ButtonArrow onClick={handleClickRegister}>{homePage.hp_acop_txt}</ButtonArrow>
         </Wrap>
       </Section>
       {!isMobile && (
@@ -117,8 +119,8 @@ export const MainPage: React.FC = (): JSX.Element => {
               padding: !isMobile ? "4.7rem 9.2rem" : "2rem",
             }}
           >
-            <DownloadAppHeader>Download Black Banx App to have all your finances in your pocket</DownloadAppHeader>
-            <ButtonArrow onClick={handleClickDownloadApp}>Download the App</ButtonArrow>
+            <DownloadAppHeader>{homePage.hp_acop_lwr_sbhd}</DownloadAppHeader>
+            <ButtonArrow onClick={handleClickDownloadApp}>{homePage.hp_apdwn_text}</ButtonArrow>
           </Wrap>
         </Section>
       )}
