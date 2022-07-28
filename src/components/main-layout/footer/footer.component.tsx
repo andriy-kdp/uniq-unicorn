@@ -25,7 +25,6 @@ import { useMediaQuery } from "../../../utils/use-media-query";
 import { FooterConnect } from "./parts/connect.component";
 import { SelectLanguageAppLink } from "./parts/language-select-app";
 import { useDispatch, useSelector } from "../../../redux/store";
-import operations from "../../../redux/uiData/operations";
 import { uiDataLanguageList, uiDataWebsiteText } from "../../../redux/uiData/selectors";
 import { setSelectedLanguage } from "../../../redux/uiData/slice";
 
@@ -91,9 +90,6 @@ export const Footer = () => {
     setLanguage(value);
     dispatch(setSelectedLanguage(value));
   };
-  useEffect(() => {
-    dispatch(operations.getLanguages());
-  }, []);
 
   useEffect(() => {
     languageList && setLanguage(languageList[0]);

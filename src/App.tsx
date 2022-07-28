@@ -8,10 +8,11 @@ import { useEffect } from "react";
 import { useScrollToTop } from "./utils/use-scroll-to-top";
 import { useDispatch, useSelector } from "./redux/store";
 import operations from "./redux/uiData/operations";
-import { uiDataSelectedLanguageId } from "./redux/uiData/selectors";
-
+import { uiDataFetching, uiDataSelectedLanguageId } from "./redux/uiData/selectors";
+import Spinner from "./components/main-layout/spinner/spinner.component";
 const App = () => {
   const language = useSelector(uiDataSelectedLanguageId);
+  const loading = useSelector(uiDataFetching);
   const dispatch = useDispatch();
   const isMobile = useMediaQuery("xs");
 
@@ -25,11 +26,14 @@ const App = () => {
   useEffect(() => {
     dispatch(operations.getAllWebsiteText(language ?? "1"));
   }, [language]);
+  useEffect(() => {
+    dispatch(operations.getLanguages());
+  }, []);
 
   useScrollToTop();
-
   return (
     <Layout>
+      {loading && <Spinner />}
       <Header />
       <MainContent>
         <AppRouter />

@@ -47,7 +47,7 @@ export const fetchWebSiteTextAll = async (languageId: string) => {
     values.data.data.forEach((el) => {
       const [obj] = Object.entries(el);
       const [key, value] = obj;
-      dummyObj[key] = atob(value);
+      dummyObj[key] = value;
     });
     //@ts-ignore
     requests.push({ tab, data: dummyObj });

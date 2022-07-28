@@ -8,10 +8,8 @@ import {
 import { setUiDataFetching } from "./slice";
 
 const getLanguages = createAsyncThunk("/languageList", async (credentials, { dispatch }) => {
-  dispatch(setUiDataFetching(true));
   try {
     const { data } = await fetchLanguageList();
-    dispatch(setUiDataFetching(false));
     return data.data;
   } catch (err) {
     console.log(err);
@@ -24,6 +22,7 @@ const getWebsiteText = createAsyncThunk(
     dispatch(setUiDataFetching(true));
     try {
       const { data } = await fetchWebsiteText(credentials);
+      console.log(data.data);
       dispatch(setUiDataFetching(false));
       return data.data;
     } catch (err) {
