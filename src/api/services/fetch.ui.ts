@@ -52,5 +52,6 @@ export const fetchWebSiteTextAll = async (languageId: string) => {
     //@ts-ignore
     requests.push({ tab, data: dummyObj });
   }
+
   return await Promise.all(requests);
 };

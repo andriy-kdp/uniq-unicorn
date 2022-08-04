@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  fetchCountryOfResidence,
+  // fetchCountryOfResidence,
   fetchLanguageList,
   fetchWebsiteText,
   fetchWebSiteTextAll,
@@ -42,17 +42,17 @@ const getAllWebsiteText = createAsyncThunk("/websiteText", async (credentials: s
     return Promise.reject(err);
   }
 });
-const getCountryOfResidence = createAsyncThunk("/countryOfResidence", async (credentials, { dispatch }) => {
-  dispatch(setUiDataFetching(true));
-  try {
-    const { data } = await fetchCountryOfResidence();
-    dispatch(setUiDataFetching(false));
-    return data.data;
-  } catch (err) {
-    console.log(err);
-    return Promise.reject(err);
-  }
-});
+// const getCountryOfResidence = createAsyncThunk("/countryOfResidence", async (credentials, { dispatch }) => {
+//   dispatch(setUiDataFetching(true));
+//   try {
+//     const { data } = await fetchCountryOfResidence();
+//     dispatch(setUiDataFetching(false));
+//     return data.data;
+//   } catch (err) {
+//     console.log(err);
+//     return Promise.reject(err);
+//   }
+// });
 
 const operations = { getLanguages, getWebsiteText, getAllWebsiteText };
 export default operations;

@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { WebsiteTextGroups, WebsiteTextType } from "../../api/types/fetch.ui.types";
+import { WebsiteTextType } from "../../api/types/fetch.ui.types";
 import { SelectOptions } from "../../components/inputs/select/select.types";
 import operations from "./operations";
+import _ from "lodash";
 
 type InitialStateData = {
   loading: boolean;
@@ -402,11 +403,18 @@ const uiDataSlice = createSlice({
         }));
       })
       .addCase(operations.getAllWebsiteText.fulfilled, (state, action) => {
-        const value: WebsiteTextType = { ...initialState.websiteText };
+        const value: WebsiteTextType = _.cloneDeep(initialState.websiteText);
         action.payload.forEach((el) => {
           const { tab, data } = el;
-          //@ts-ignore
-          value[tab] = data;
+
+          try {
+            Object.entries(data).forEach(([key, val]) => {
+              //@ts-ignore
+              value[tab][key] = atob(val);
+            });
+          } catch (error) {
+            console.log("ERROR WHEN TRY TO PARSE", tab, error);
+          }
         });
         state.websiteText = value;
       });
