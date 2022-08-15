@@ -13,4 +13,5 @@ export const endpoints = {
   languageList: "/languageList/",
   websiteText: "/websiteText/",
   countryOfResidence: "/countryOfResidence/",
+  mediaCenterCoverage: "/mediaCenterCoverage/",
 };

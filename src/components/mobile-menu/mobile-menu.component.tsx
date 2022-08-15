@@ -8,9 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close_icon.svg";
 import { Divider } from "../divider/divider.styles";
 
-const MobileMenuItem: React.FC<
-  MenuItemType & { onClick: (path: string) => void }
-> = (props): JSX.Element => {
+const MobileMenuItem: React.FC<MenuItemType & { onClick: (path: string) => void }> = (props): JSX.Element => {
   const [showSubitems, setShowSubitems] = useState<boolean>(false);
   const { Root, Sub } = MobMenu.Item;
   const handleItemClick = (path?: string) => () => {
@@ -69,9 +67,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = (props) => {
     setOpen(false);
   };
 
-  const handleBackdropClick: MouseEventHandler<
-    HTMLButtonElement | HTMLDivElement
-  > = (e) => {
+  const handleBackdropClick: MouseEventHandler<HTMLButtonElement | HTMLDivElement> = (e) => {
     const { target } = e;
     const backdrop = backdropRef.current;
     if (target === backdrop) {
@@ -105,18 +101,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = (props) => {
               <CloseIcon />
             </Wrap>
             {items.map((menuItem, idx) => (
-              <MobileMenuItem
-                {...menuItem}
-                onClick={handleClickMenuItem}
-                key={`mobile-menu-section-${idx}`}
-              />
+              <MobileMenuItem {...menuItem} onClick={handleClickMenuItem} key={`mobile-menu-section-${idx}`} />
             ))}
 
-            <MobMenu.Item.Root
-              onClick={() => handleClickMenuItem("/auth/register")}
-            >
-              Sign Up
-            </MobMenu.Item.Root>
+            <MobMenu.Item.Root onClick={() => handleClickMenuItem("/auth/register")}>Sign Up</MobMenu.Item.Root>
           </MobMenu.Items.Root>
           <Divider />
         </MobMenu.Backdrop>

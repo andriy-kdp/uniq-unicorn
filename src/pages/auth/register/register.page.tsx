@@ -12,6 +12,8 @@ import { parseYupError } from "../../../utils/parseYupError";
 import { BusinessAccountFormType, FormFieldType, FormTypeKeys, PrivateAccountFormType } from "../auth.types";
 import { businessForm, privateForm } from "../../../utils/form-configs";
 import { InputProps } from "../../../components/inputs/input/input.types";
+import { useSelector } from "../../../redux/store";
+import { uiDataCountryOfResidence } from "../../../redux/uiData/selectors";
 
 const initBusinessForm: BusinessAccountFormType = {
   address: "",
@@ -64,12 +66,12 @@ const FormField: React.FC<InputProps & SelectProps & { type: FormFieldType["type
 };
 
 export const RegisterPage = () => {
+  const country = useSelector(uiDataCountryOfResidence);
   const [currentSection, setCurrentSection] = useState<number>(0);
   const [formSections, setFormSections] = useState<typeof businessForm | typeof privateForm | null>([]);
   const [helpForm, setHelpForm] = useState({ value: "", error: "" });
   const { type } = useParams();
   const [formData, setFormData] = useState<BusinessAccountFormType | PrivateAccountFormType | null>(null);
-
   const [formErrors, setFormErrors] = useState<Record<FormTypeKeys, string> | null>(null);
 
   const handleClickNextSection = () => {
@@ -178,7 +180,10 @@ export const RegisterPage = () => {
     setFormSections(businessForm);
     setFormData(initBusinessForm);
   }, []);
-
+  // useEffect(() => {
+  //   setFormSections((prev) => ({ ...prev, countryOfResidence: country }));
+  // }, [country]);
+  // console.log(formData);
   return (
     <Section mainContent>
       <Wrap sx={{ minHeight: "35rem", width: "100%" }}>

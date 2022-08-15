@@ -25,6 +25,8 @@ const App = () => {
 
   useEffect(() => {
     dispatch(operations.getAllWebsiteText(language ?? "1"));
+    dispatch(operations.getMediaCenterCoverage(language ?? "1"));
+    dispatch(operations.getCountryOfResidence());
   }, [language]);
   useEffect(() => {
     dispatch(operations.getLanguages());

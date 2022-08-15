@@ -7,12 +7,16 @@ import _ from "lodash";
 type InitialStateData = {
   loading: boolean;
   languageList: SelectOptions | null;
+  countryOfResidence: {} | null;
+  mediaCenterCoverage: [] | null;
   selectedLanguageId: number | null;
   websiteText: WebsiteTextType;
 };
 const initialState: InitialStateData = {
   loading: false,
   languageList: null,
+  countryOfResidence: null,
+  mediaCenterCoverage: null,
   selectedLanguageId: null,
   websiteText: {
     common: {
@@ -401,6 +405,12 @@ const uiDataSlice = createSlice({
           endIcon: el.country_flag,
           endIconBase64: true,
         }));
+      })
+      .addCase(operations.getCountryOfResidence.fulfilled, (state, action) => {
+        state.countryOfResidence = action.payload;
+      })
+      .addCase(operations.getMediaCenterCoverage.fulfilled, (state, action) => {
+        state.mediaCenterCoverage = action.payload.data;
       })
       .addCase(operations.getAllWebsiteText.fulfilled, (state, action) => {
         const value: WebsiteTextType = _.cloneDeep(initialState.websiteText);

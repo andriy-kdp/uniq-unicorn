@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MainBg from "../../assets/backgrounds/fees/fees_main_bg.png";
 import { Section } from "../../components/section/section.component";
@@ -14,7 +14,7 @@ import { IconButton } from "../../components/icon-button/icon-button.component";
 import { ReactComponent as ArrowIconLeft } from "../../assets/icons/arrow_left.svg";
 import { PlanInfoType } from "./fees.types";
 import { Transition } from "react-transition-group";
-import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { uiDataWebsiteText, uiDataCountryOfResidence } from "../../redux/uiData/selectors";
 import { useSelector } from "../../redux/store";
 
 const duration = 100;
@@ -57,6 +57,7 @@ const Carousel: React.FC<PropsWithChildren<{ in: boolean; reversed?: boolean }>>
 };
 
 export const FeesPage: React.FC = (): JSX.Element => {
+  const countryOfResidence = useSelector(uiDataCountryOfResidence);
   const { accountsFees } = useSelector(uiDataWebsiteText);
   const [currentPlan, setCurrentPlan] = useState<number>(0);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -91,6 +92,17 @@ export const FeesPage: React.FC = (): JSX.Element => {
 
   const handlePrevPlan = () => {
     promisedControl(false, () => setCurrentPlan((prev) => prev - 1));
+  };
+  const handleFilter = (e: any) => {
+    console.log(e);
+    //@ts-ignore
+    const searchWord = e.target.value.toLowerCase();
+    const country = countryOfResidence
+      .filter((el: any) => el)
+      .trim()
+      .toLowerCase()
+      .includes(searchWord.trim().toLowerCase());
+    console.log(country);
   };
   const planInfoItems: PlanInfoType[] = [
     {
@@ -288,6 +300,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
     { country: accountsFees.ac_fee_lower_drp_dflt_four },
     { country: accountsFees.ac_fee_lower_drp_dflt_five },
   ];
+
   return (
     <>
       <SlideSection
@@ -380,7 +393,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
                 value={searchValue}
                 startIcon={<SearchIcon />}
                 placeholder={"Please enter country"}
-                onChange={(e) => setSearchValue(e.target.value)}
+                onChange={(e) => handleFilter(e)}
                 helperText={"Didn’t find your country or residence in here?  Please Contact us"}
               />
             </Wrap>

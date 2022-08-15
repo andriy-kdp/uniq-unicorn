@@ -7,6 +7,15 @@ export const fetchLanguageList = (): AxiosPromise<ResLanguagesList> => axios.pos
 
 export const fetchCountryOfResidence = (): AxiosPromise<ResLanguagesList> => axios.post(endpoints.countryOfResidence);
 
+export const fetchMediaCenterCoverage = (credentials: { languageId: string }): AxiosPromise<any> => {
+  const data = new FD({ languageId: credentials }).get();
+  return axios({
+    method: "POST",
+    url: endpoints.mediaCenterCoverage,
+    data,
+  });
+};
+
 export const fetchWebsiteText = (credentials: {
   pageId: string;
   languageId: string;

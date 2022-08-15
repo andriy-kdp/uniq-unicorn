@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  // fetchCountryOfResidence,
+  fetchCountryOfResidence,
   fetchLanguageList,
+  fetchMediaCenterCoverage,
   fetchWebsiteText,
   fetchWebSiteTextAll,
 } from "../../api/services/fetch.ui";
@@ -42,17 +43,28 @@ const getAllWebsiteText = createAsyncThunk("/websiteText", async (credentials: s
     return Promise.reject(err);
   }
 });
-// const getCountryOfResidence = createAsyncThunk("/countryOfResidence", async (credentials, { dispatch }) => {
-//   dispatch(setUiDataFetching(true));
-//   try {
-//     const { data } = await fetchCountryOfResidence();
-//     dispatch(setUiDataFetching(false));
-//     return data.data;
-//   } catch (err) {
-//     console.log(err);
-//     return Promise.reject(err);
-//   }
-// });
+const getCountryOfResidence = createAsyncThunk("/countryOfResidence", async (credentials, { dispatch }) => {
+  try {
+    const { data } = await fetchCountryOfResidence();
+    return data.data;
+  } catch (err) {
+    console.log(err);
+    return Promise.reject(err);
+  }
+});
 
-const operations = { getLanguages, getWebsiteText, getAllWebsiteText };
+const getMediaCenterCoverage = createAsyncThunk(
+  "/mediaCenterCoverage",
+  async (credentials: { languageId: string }, { dispatch }) => {
+    try {
+      const data = await fetchMediaCenterCoverage(credentials);
+      return data;
+    } catch (err) {
+      console.log(err);
+      return Promise.reject(err);
+    }
+  },
+);
+
+const operations = { getLanguages, getWebsiteText, getAllWebsiteText, getCountryOfResidence, getMediaCenterCoverage };
 export default operations;

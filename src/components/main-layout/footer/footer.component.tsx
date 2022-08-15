@@ -33,10 +33,10 @@ export const socialNetworks: {
   icon: React.ReactNode;
   href: string;
 }[] = [
+  { label: "Twitter", icon: <TwitterIcon />, href: "" },
+  { label: "LinkedIn", icon: <LinkedInIcon />, href: "" },
   { label: "Facebook", icon: <FacebookIcon />, href: "" },
   { label: "Instagram", icon: <InstagramIcon />, href: "" },
-  { label: "LinkedIn", icon: <LinkedInIcon />, href: "" },
-  { label: "Twitter", icon: <TwitterIcon />, href: "" },
 ];
 
 // export const selectOptions: SelectOptions = [
