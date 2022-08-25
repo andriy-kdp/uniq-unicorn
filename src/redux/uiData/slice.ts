@@ -3,6 +3,7 @@ import { WebsiteTextType } from "../../api/types/fetch.ui.types";
 import { SelectOptions } from "../../components/inputs/select/select.types";
 import operations from "./operations";
 import _ from "lodash";
+import { Base64 } from "js-base64";
 
 type InitialStateData = {
   loading: boolean;
@@ -410,6 +411,8 @@ const uiDataSlice = createSlice({
         state.countryOfResidence = action.payload;
       })
       .addCase(operations.getMediaCenterCoverage.fulfilled, (state, action) => {
+        // action.payload.data.DATA.forEach((el) => {
+        // });
         state.mediaCenterCoverage = action.payload.data;
       })
       .addCase(operations.getAllWebsiteText.fulfilled, (state, action) => {
@@ -420,7 +423,7 @@ const uiDataSlice = createSlice({
           try {
             Object.entries(data).forEach(([key, val]) => {
               //@ts-ignore
-              value[tab][key] = atob(val);
+              value[tab][key] = Base64.decode(val);
             });
           } catch (error) {
             console.log("ERROR WHEN TRY TO PARSE", tab, error);
