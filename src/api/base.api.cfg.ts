@@ -14,4 +14,10 @@ export const endpoints = {
   websiteText: "/websiteText/",
   countryOfResidence: "/countryOfResidence/",
   mediaCenterCoverage: "/mediaCenterCoverage/",
+  mediaCenterNews: "/mediaCenterNews/",
+  mediaCenterBlog: "/mediaCenterBlog/",
+  mediaCenterBlogData: "/mediaCenterBlogData/",
+  careerDropDown: "/careerDropDown/",
+  careerJobs: "/careerJobs/",
+  careerJobDtls: "/careerJobDtls/",
 };

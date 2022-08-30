@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { WebsiteTextType } from "../../api/types/fetch.ui.types";
+import {
+  WebsiteTextType,
+  SiteContentMediaCoverage,
+  SiteContentMediaCenterNews,
+  SiteContentMediaCenterBlog,
+  SiteContentMediaCenterBlogData,
+} from "../../api/types/fetch.ui.types";
 import { SelectOptions } from "../../components/inputs/select/select.types";
 import operations from "./operations";
 import _ from "lodash";
@@ -9,7 +15,11 @@ type InitialStateData = {
   loading: boolean;
   languageList: SelectOptions | null;
   countryOfResidence: {} | null;
-  mediaCenterCoverage: [] | null;
+  careerDropDown: Record<string, SelectOptions> | null;
+  mediaCenterCoverage: SiteContentMediaCoverage[] | null;
+  mediaCenterNews: SiteContentMediaCenterNews[] | null;
+  mediaCenterBlog: SiteContentMediaCenterBlog[] | null;
+  mediaCenterBlogData: SiteContentMediaCenterBlogData[] | null;
   selectedLanguageId: number | null;
   websiteText: WebsiteTextType;
 };
@@ -17,7 +27,11 @@ const initialState: InitialStateData = {
   loading: false,
   languageList: null,
   countryOfResidence: null,
+  careerDropDown: { abtus_cr_day: null, abtus_cr_cntry: null },
   mediaCenterCoverage: null,
+  mediaCenterNews: null,
+  mediaCenterBlog: null,
+  mediaCenterBlogData: null,
   selectedLanguageId: null,
   websiteText: {
     common: {
@@ -410,10 +424,48 @@ const uiDataSlice = createSlice({
       .addCase(operations.getCountryOfResidence.fulfilled, (state, action) => {
         state.countryOfResidence = action.payload;
       })
+      .addCase(operations.getCareerDropDown.fulfilled, (state, action) => {
+        const select: Record<string, SelectOptions> = {};
+        const [payload] = action.payload;
+        Object.entries(payload).forEach(([tab, options]) => {
+          const option: SelectOptions = [];
+          Object.entries(options).forEach(([key, val]) => {
+            option.push({ id: key, label: val, value: val });
+          });
+          select[tab] = option;
+        });
+        state.careerDropDown = select;
+      })
       .addCase(operations.getMediaCenterCoverage.fulfilled, (state, action) => {
-        // action.payload.data.DATA.forEach((el) => {
+        //@ts-ignore
+        state.mediaCenterCoverage = action.payload.data.DATA.map((el) => ({
+          id: el.mc_media_id,
+          title: Base64.decode(el.mc_mcov_art),
+          img: Base64.decode(el.mc_mcov_art_img),
+          link: Base64.decode(el.mc_mcov_art_link),
+        }));
+      })
+      .addCase(operations.getMediaCenterNews.fulfilled, (state, action) => {
+        state.mediaCenterNews = action.payload.data.DATA.map((el: any) => {
+          const object: any = {};
+          Object.keys(el)
+            .filter((elem: any) => elem !== "mc_news_id")
+            .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+          return { mc_news_id: el.mc_news_id, ...object };
+        });
+      })
+      .addCase(operations.getMediaCenterBlog.fulfilled, (state, action) => {
+        state.mediaCenterBlog = action.payload.data.data;
+        //   .map((el: any) => {
+        //   const object: any = {};
+        //   Object.keys(el)
+        //     .filter((elem: any) => elem !== "bId")
+        //     .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+        //   return { mc_news_id: el.mc_news_id, ...object };
         // });
-        state.mediaCenterCoverage = action.payload.data;
+      })
+      .addCase(operations.getMediaCenterBlogData.fulfilled, (state, action) => {
+        state.mediaCenterBlogData = action.payload.data;
       })
       .addCase(operations.getAllWebsiteText.fulfilled, (state, action) => {
         const value: WebsiteTextType = _.cloneDeep(initialState.websiteText);

@@ -108,6 +108,10 @@ type SiteTextAboutCareersType =
 type SiteTextAboutCareers = Record<SiteTextAboutCareersType, string>;
 export type ResSiteTextAboutCareers = { data: SiteTextAboutCareers[] };
 
+type CareerDropdownOptionsType = "abtus_cr_cntry" | "abtus_cr_day";
+export type CareerDropdownOptions = Record<CareerDropdownOptionsType, string>;
+export type ResCareerDropdownOptions = { data: CareerDropdownOptions[] };
+
 type SiteTextAccountsBankAccountsType =
   | "ac_bnk_headOne"
   | "ac_bnk_hdtwo"
@@ -266,40 +270,33 @@ type SiteTextMediaCoverageType = "mc_mcov_headone" | "mc_mcov_art_rfa";
 type SiteTextMediaCoverage = Record<SiteTextMediaCoverageType, string>;
 export type ResSiteTextMediaCoverage = { data: SiteTextMediaCoverage[] };
 
-// type SiteContentMediaCoverageType =
-//     |{
-//       "mc_media_id",
-//       "mc_mcov_art_five",
-//       "mc_mcov_art_five_img",
-//       "mc_mcov_art_five_link",
-//     }
-//     {
-//       mc_media_id,
-//       mc_mcov_art_four_link,
-//       mc_mcov_art_four_img,
-//       mc_mcov_art_four,
-//     },
-//     {
-//       mc_media_id
-//       mc_mcov_art_three_img
-//       mc_mcov_art_three_link
-//       mc_mcov_art_three
-//     },
-//     {
-//       mc_media_id
-//       mc_mcov_art_two_img
-//       mc_mcov_art_two
-//       mc_mcov_art_two_link
-//     },
-//     {
-//       mc_media_id
-//       mc_mcov_art_one_link
-//       mc_mcov_art_one
-//       mc_mcov_art_one_img
-//       mc_mcov_btmline
-//     },
-// export type SiteContentMediaCoverage = Record<SiteContentMediaCoverageType, string>;
-// export type ResSiteContentMediaCoverage = { data: SiteContentMediaCoverage[] };
+type SiteContentMediaCoverageType = "mc_mcov_art" | "mc_media_id" | "mc_mcov_art_img" | "mc_mcov_art_link";
+
+export type SiteContentMediaCoverage = Record<SiteContentMediaCoverageType, string>;
+export type ResSiteContentMediaCoverage = { DATA: SiteContentMediaCoverage[] };
+
+type SiteContentMediaCenterNewsType =
+  | "mc_nws_date"
+  | "mc_nws_link_txt"
+  | "mc_nws_paraone"
+  | "mc_nws_link"
+  | "mc_news_id"
+  | "mc_nws_place"
+  | "mc_nws_paratwo"
+  | "mc_nws_intrvw_text_link";
+
+export type SiteContentMediaCenterNews = Record<SiteContentMediaCenterNewsType, string>;
+export type ResSiteContentMediaCenterNews = { DATA: SiteContentMediaCenterNews[] };
+
+type SiteContentMediaCenterBlogType = "bId" | "title" | "date" | "image" | "excerpt";
+
+export type SiteContentMediaCenterBlog = Record<SiteContentMediaCenterBlogType, string>;
+export type ResSiteContentMediaCenterBlog = { data: SiteContentMediaCenterBlog[] };
+
+type SiteContentMediaCenterBlogDataType = "bId" | "title" | "date" | "image" | "excerpt" | "description" | "metaData";
+
+export type SiteContentMediaCenterBlogData = Record<SiteContentMediaCenterBlogDataType, string>;
+export type ResSiteContentMediaCenterBlogData = { data: SiteContentMediaCenterBlogData[] };
 
 type SiteTextMediaNewsType = "mc_nws_headone" | "mc_nws_shre_txt" | "mc_nws_intrvw_text";
 type SiteTextMediaNews = Record<SiteTextMediaNewsType, string>;
