@@ -78,22 +78,23 @@ export const socialNetworks: {
 // ];
 
 export const Footer = () => {
-  const languageList = useSelector(uiDataLanguageList);
   const { common } = useSelector(uiDataWebsiteText);
-  const dispatch = useDispatch();
-
-  const [language, setLanguage] = useState<SelectOption | null>(null);
   const isMobile = useMediaQuery("sm");
 
-  const handleSetLanguage: SelectHandler = (e) => {
-    const { value } = e.target;
-    setLanguage(value);
-    dispatch(setSelectedLanguage(value));
-  };
+  // const languageList = useSelector(uiDataLanguageList);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    languageList && setLanguage(languageList[0]);
-  }, [languageList]);
+  // const [language, setLanguage] = useState<SelectOption | null>(null);
+
+  // const handleSetLanguage: SelectHandler = (e) => {
+  //   const { value } = e.target;
+  //   setLanguage(value);
+  //   dispatch(setSelectedLanguage(value));
+  // };
+
+  // useEffect(() => {
+  //   languageList && setLanguage(languageList[0]);
+  // }, [languageList]);
 
   const footerLinks: FooterLinkGroup[] = [
     {
@@ -131,12 +132,13 @@ export const Footer = () => {
         </FooterLinksRoot>
         {!isMobile ? (
           <FooterConnect>
-            <SelectLanguageAppLink options={languageList} language={language} onSelect={handleSetLanguage} />
+            {/* <SelectLanguageAppLink options={languageList} language={language} onSelect={handleSetLanguage} /> */}
           </FooterConnect>
         ) : (
-          <Wrap sx={{ display: "flex", width: "100%", marginTop: "2rem" }}>
-            <SelectLanguageAppLink options={languageList} language={language} onSelect={handleSetLanguage} reverse />
-          </Wrap>
+          <></>
+          // <Wrap sx={{ display: "flex", width: "100%", marginTop: "2rem" }}>
+          //   <SelectLanguageAppLink options={languageList} language={language} onSelect={handleSetLanguage} reverse />
+          // </Wrap>
         )}
       </FooterRoot>
       <CopyrightContainer>

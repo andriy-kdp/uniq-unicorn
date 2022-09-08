@@ -12,7 +12,7 @@ const SelectRoot = styled.div<Pick<SelectProps, "fullWidth" | "maxWidth">>`
   `}
   ${(props) => props.fullWidth && `width: 100%`}
 `;
-const OptionsContainer = styled.div<Pick<SelectProps, "optionsPosition" | "borderRadius">>`
+const OptionsContainer = styled.div<Pick<SelectProps, "optionsPosition" | "borderRadius" | "border">>`
   user-select: none;
   display: flex;
   flex-direction: column;
@@ -24,6 +24,7 @@ const OptionsContainer = styled.div<Pick<SelectProps, "optionsPosition" | "borde
   color: ${(props) => props.theme.colors.text.secondary};
   overflow: hidden;
   z-index: 1;
+  ${(props) => props.border === "none" && "border: none;   align-items: center;"};
   ${(props) => props.optionsPosition === "bottom" && "top: 0"};
   ${(props) => props.optionsPosition === "top" && "bottom: 0"};
   ${(props) => props.borderRadius === "small" && "border-radius: 0.7rem"};

@@ -8,12 +8,9 @@ export const FooterConnectRoot = styled.div`
 `;
 
 export const SelectLanguageAppLinkRoot = styled.div`
-  display: flex;
-  gap: 3rem;
   @media (${media.sm}) {
     flex-direction: row-reverse;
     max-width: 26rem;
-    gap: 2rem;
   }
 `;
 export const FooterConnectOptions = styled.div`

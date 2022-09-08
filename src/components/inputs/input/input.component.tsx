@@ -22,17 +22,20 @@ export const Input: React.FC<PropsWithChildren<InputProps>> = (props) => {
     borderColor,
     name,
     error,
+    border,
+    cursor,
   } = props;
   return (
     <Inp.Body fullWidth={fullWidth} {...RootProps}>
       {label && <Inp.Input.Label {...LabelRootProps}>{label}</Inp.Input.Label>}
-      <Inp.Root borderRadius={borderRadius} borderColor={borderColor} error={error}>
+      <Inp.Root borderRadius={borderRadius} borderColor={borderColor} error={error} border={border}>
         {startIcon && (
           <Inp.Icon.Root onClick={onIconClick} {...IconRootProps}>
             {startIcon}
           </Inp.Icon.Root>
         )}
         <Inp.Input.Input
+          cursor={cursor}
           name={name}
           value={value}
           onChange={onChange}

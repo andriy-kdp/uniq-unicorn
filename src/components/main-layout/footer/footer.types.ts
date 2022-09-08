@@ -10,4 +10,5 @@ export type SelectLanguageAppLinkProps = {
   language: SelectOption | null;
   onSelect: SelectHandler;
   reverse?: boolean;
+  optionsPosition?: "top" | "bottom";
 };

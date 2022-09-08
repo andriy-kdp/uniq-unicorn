@@ -17,7 +17,7 @@ const InputLabel = styled.span`
   color: ${(props) => props.theme.colors.text.secondary};
 `;
 
-const InputMain = styled.input<Pick<InputProps, "_select" | "startIcon">>`
+const InputMain = styled.input<Pick<InputProps, "_select" | "startIcon" | "cursor">>`
   background: none;
   border: none;
   outline: none;
@@ -34,7 +34,8 @@ const InputMain = styled.input<Pick<InputProps, "_select" | "startIcon">>`
     color: #828282;
   }
   ${(props) => props.startIcon && "padding: 1rem 0"};
-  ${(props) => props._select && `padding: 0.9rem 0.5rem`}
+  ${(props) => props._select && `padding: 0.9rem 0.5rem`};
+  ${(props) => props.cursor === "pointer" && `cursor: pointer`};
 `;
 
 const InputIconRoot = styled.div<Pick<InputProps, "IconRootProps">>`
@@ -50,28 +51,23 @@ const InputHelper = styled.div<Pick<InputProps, "error">>`
   line-height: 1.6rem;
   text-align: justify;
   margin-top: 1rem;
-  color: ${(props) =>
-    props.error ? "rgba(255,0,0,0.8)" : props.theme.colors.text.secondary};
+  color: ${(props) => (props.error ? "rgba(255,0,0,0.8)" : props.theme.colors.text.secondary)};
 `;
 
-const InputContainer = styled.div<
-  Pick<InputProps, "borderRadius" | "borderColor" | "error">
->`
+const InputContainer = styled.div<Pick<InputProps, "borderRadius" | "borderColor" | "error" | "border">>`
   display: flex;
   width: 100%;
   overflow: hidden;
   border: ${(props) =>
-    props.borderColor === "secondary"
-      ? " 1px solid #A6A6A6"
-      : "1px solid rgba(242, 242, 242, 0.2)"};
+    props.borderColor === "secondary" ? " 1px solid #A6A6A6" : "1px solid rgba(242, 242, 242, 0.2)"};
 
-  border-radius: ${(props) =>
-    props.borderRadius !== "small" ? "1.6rem" : "0.7rem"};
+  border-radius: ${(props) => (props.borderRadius !== "small" ? "1.6rem" : "0.7rem")};
   ${(props) =>
     props.error &&
     `
     border-color: rgba(255,0,0,0.5);
- `}
+    `}
+  border :${(props) => props.border === "none" && "none"};
 `;
 
 const Icon = {

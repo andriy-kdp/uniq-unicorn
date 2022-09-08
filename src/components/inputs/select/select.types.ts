@@ -8,10 +8,12 @@ export type SelectProps = {
   InputProps?: Omit<InputProps, "value">;
   optionsPosition?: "bottom" | "top";
   borderRadius?: InputProps["borderRadius"];
+  border?: CSSProperties["border"];
   fullWidth?: boolean;
   label?: InputProps["label"];
   name?: InputProps["name"];
   maxWidth?: CSSProperties["maxWidth"];
+  optionsWidth?: CSSProperties["width"];
   borderColor?: InputProps["borderColor"];
   noAdornment?: boolean;
   error?: boolean;
