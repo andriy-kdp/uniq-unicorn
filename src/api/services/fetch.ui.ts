@@ -41,8 +41,9 @@ export const fetchCareerJobDtls = (credentials: { languageId: string; jobId: str
 };
 export const fetchMediaCenterCoverage = (credentials: {
   languageId: string;
+  mcId?: string;
 }): AxiosPromise<ResSiteContentMediaCoverage> => {
-  const data = new FD({ languageId: credentials }).get();
+  const data = new FD(credentials).get();
   return axios({
     method: "POST",
     url: endpoints.mediaCenterCoverage,
@@ -50,9 +51,10 @@ export const fetchMediaCenterCoverage = (credentials: {
   });
 };
 export const fetchMediaCenterNews = (credentials: {
-  languageId: string;
+  languageId: any;
+  mnid?: any;
 }): AxiosPromise<ResSiteContentMediaCenterNews> => {
-  const data = new FD({ languageId: credentials }).get();
+  const data = new FD(credentials).get();
   return axios({
     method: "POST",
     url: endpoints.mediaCenterNews,

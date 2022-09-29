@@ -16,7 +16,6 @@ const FormSectionTitleRoot = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 4rem;
 `;
 
 const FormSectionTitleText = styled.h3``;
@@ -29,11 +28,40 @@ const FormSectionTitleSub = styled.span`
   color: #f2f2f2;
 `;
 
+const SupportRoot = styled.div``;
+const SupportWrapper = styled.div``;
+const SupportTitle = styled.h5`
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 3rem;
+`;
+const SupportText = styled.a`
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.1rem;
+  color: #828282;
+`;
+const SupportPhone = styled.a`
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.1rem;
+  color: #828282;
+  text-decoration: none;
+  margin-left: 1rem;
+`;
+
 export const ContactForm = {
   Root: FormSectionRoot,
   Title: {
     Root: FormSectionTitleRoot,
     Text: FormSectionTitleText,
     SubTitle: FormSectionTitleSub,
+  },
+  Support: {
+    Root: SupportRoot,
+    Wrapper: SupportWrapper,
+    Title: SupportTitle,
+    Text: SupportText,
+    Phone: SupportPhone,
   },
 };

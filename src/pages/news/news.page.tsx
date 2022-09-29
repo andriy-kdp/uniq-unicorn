@@ -9,11 +9,13 @@ import { SlideSection } from "../../components/silde-section/slide-section.compo
 import { useMediaQuery } from "../../utils/use-media-query";
 import { useNavigate } from "react-router-dom";
 import { mockNews } from "../../mock-data/news";
-import { uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { uiDataMediaCenterNews, uiDataWebsiteText } from "../../redux/uiData/selectors";
 import { useSelector } from "../../redux/store";
+import { SiteContentMediaCenterNews } from "../../api/types/fetch.ui.types";
 
 export const NewsPage: React.FC = (): JSX.Element => {
   const { mediaCenterNews } = useSelector(uiDataWebsiteText);
+  const mediaCenterNewsData = useSelector(uiDataMediaCenterNews);
   const isMobile = useMediaQuery("sm");
   const nav = useNavigate();
 
@@ -39,26 +41,43 @@ export const NewsPage: React.FC = (): JSX.Element => {
       />
       <Section mainContent>
         <News.Root>
-          {mockNews.map((item) => (
-            <News.Item.Root key={item.id} onClick={handleClick(item.id)}>
-              <SocialTitle date={item.date} linkedInLink="about:blank" title={item.title} twitterLink="about:blank" />
-              <News.Item.Preview multiImages={item.images.length > 1}>
-                {item.images.length === 1 && (
-                  <Wrap sx={{ gridArea: "image" }}>
-                    <img src={item.images[0]} alt={"img-1"} style={{ position: "relative", width: "100%" }} />
-                  </Wrap>
-                )}
-                {item.images.length > 1 &&
-                  item.images.map((image, idx) => (
-                    <Wrap sx={{ gridArea: idx === 0 ? "image" : "image-secondary" }} key={image}>
-                      <img src={image} alt={"img-1"} style={{ position: "relative", width: "100%" }} />
-                    </Wrap>
-                  ))}
-                {item.images.length <= 1 && <Divider variant="dashed" />}
-                <News.Item.Description>{item.preview}</News.Item.Description>
-              </News.Item.Preview>
-            </News.Item.Root>
-          ))}
+          {mediaCenterNewsData ? (
+            mediaCenterNewsData.map((item: SiteContentMediaCenterNews) => (
+              <>
+                <SocialTitle
+                  date={item.mc_nws_date}
+                  linkedInLink={item.mc_nws_linkedin}
+                  title={item.mc_nws_link_txt}
+                  twitterLink={item.mc_nws_twitter}
+                />
+                <News.Item.Root key={item.mc_news_id} onClick={handleClick(item.mc_news_id)}>
+                  <News.Item.Preview multiImages={Array.isArray(item.mc_nws_img)}>
+                    {item.mc_nws_img.length === 1 && (
+                      <Wrap sx={{ gridArea: "image" }}>
+                        <img src={item.mc_nws_img[0]} alt={"img-1"} style={{ position: "relative", width: "100%" }} />
+                      </Wrap>
+                    )}
+                    {Array.isArray(item.mc_nws_img) &&
+                      //@ts-ignore
+                      item.mc_nws_img.map((image, idx) => (
+                        <Wrap sx={{ gridArea: idx === 0 ? "image" : "image-secondary" }} key={image}>
+                          <img src={image} alt={"img-1"} style={{ position: "relative", width: "100%" }} />
+                        </Wrap>
+                      ))}
+                    {item.mc_nws_img.length > 1 && (
+                      <Wrap sx={{ gridArea: "image" }} key={item.mc_nws_img}>
+                        <img src={item.mc_nws_img} alt={"img-1"} style={{ position: "relative", width: "100%" }} />
+                      </Wrap>
+                    )}
+                    {item.mc_nws_img.length <= 1 && <Divider variant="dashed" />}
+                    <News.Item.Description>{item.mc_nws_paraone}</News.Item.Description>
+                  </News.Item.Preview>
+                </News.Item.Root>
+              </>
+            ))
+          ) : (
+            <></>
+          )}
         </News.Root>
       </Section>
     </>

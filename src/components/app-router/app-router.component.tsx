@@ -19,6 +19,9 @@ import { ContactPage } from "../../pages/contact/contact.page";
 import { NewsPage } from "../../pages/news/news.page";
 import { PrivacyPolicyPage } from "../../pages/privacy-policy-terms/privacy-policy.page";
 import { PolicesTermsPage } from "../../pages/privacy-policy-terms/policies-terms.page";
+import { LeadershipPage } from "../../pages/leadership/leadership.page";
+import { PersonPage } from "../../pages/leadership/person/person.page";
+import { FinancialStatementsPage } from "../../pages/financial-statements/financial-statements.page";
 const routesList: RouteItemType[] = [
   { path: "/", Component: <MainPage /> },
   { path: "/crypto_currency", Component: <CryptoCurrencyPage /> },
@@ -70,6 +73,14 @@ const routesList: RouteItemType[] = [
       { path: "articles/:id", Component: <BlogArticlePage /> },
     ],
   },
+  {
+    path: "/leadership",
+    nestedRoutes: [
+      { Component: <LeadershipPage />, index: true },
+      { path: ":id", Component: <PersonPage /> },
+    ],
+  },
+  { path: "/financialStatements", Component: <FinancialStatementsPage /> },
 ];
 
 const getRoutes = (routes: RouteItemType[]) => {

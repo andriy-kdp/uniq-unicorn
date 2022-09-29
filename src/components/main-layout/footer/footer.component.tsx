@@ -34,8 +34,8 @@ export const socialNetworks: {
   href: string;
 }[] = [
   { label: "Twitter", icon: <TwitterIcon />, href: "" },
-  { label: "LinkedIn", icon: <LinkedInIcon />, href: "" },
-  { label: "Facebook", icon: <FacebookIcon />, href: "" },
+  // { label: "LinkedIn", icon: <LinkedInIcon />, href: "" },
+  // { label: "Facebook", icon: <FacebookIcon />, href: "" },
   { label: "Instagram", icon: <InstagramIcon />, href: "" },
 ];
 
@@ -81,20 +81,20 @@ export const Footer = () => {
   const { common } = useSelector(uiDataWebsiteText);
   const isMobile = useMediaQuery("sm");
 
-  // const languageList = useSelector(uiDataLanguageList);
-  // const dispatch = useDispatch();
+  const languageList = useSelector(uiDataLanguageList);
+  const dispatch = useDispatch();
 
-  // const [language, setLanguage] = useState<SelectOption | null>(null);
+  const [language, setLanguage] = useState<SelectOption | null>(null);
 
-  // const handleSetLanguage: SelectHandler = (e) => {
-  //   const { value } = e.target;
-  //   setLanguage(value);
-  //   dispatch(setSelectedLanguage(value));
-  // };
+  const handleSetLanguage: SelectHandler = (e) => {
+    const { value } = e.target;
+    setLanguage(value);
+    dispatch(setSelectedLanguage(value));
+  };
 
-  // useEffect(() => {
-  //   languageList && setLanguage(languageList[0]);
-  // }, [languageList]);
+  useEffect(() => {
+    languageList && setLanguage(languageList[0]);
+  }, [languageList]);
 
   const footerLinks: FooterLinkGroup[] = [
     {
@@ -102,15 +102,36 @@ export const Footer = () => {
       links: [
         { label: common.hf_head_one_rt, path: "/mission" },
         { label: common.hf_foot_left_lineTwo, path: "/careers" },
-        { label: common.hf_foot_left_lineThree, path: "/fees" },
+        { label: common.hf_head_one_rt_subfive, path: "/careers" },
+        { label: common.hf_foot_left_lineFour, path: "/careers" },
+        { label: common.hf_foot_left_lineFive, path: "/careers" },
+        { label: common.hf_foot_left_lineSix, path: "/careers" },
+        { label: common.hf_foot_left_lineSeven, path: "/leadership" },
+        { label: common.hf_foot_left_lineEight, path: "/careers" },
+        { label: common.hf_foot_left_lineNine, path: "/careers" },
       ],
     },
     {
       title: common.hf_foot_mid_headOne,
       links: [
-        { label: common.hf_foot_mid_lineOne, path: "/contact" },
-        { label: common.hf_foot_mid_lineTwo, path: "/terms" },
-        { label: common.hf_foot_mid_lineThree, path: "/privacy_policy" },
+        { label: common.hf_foot_mid_headOne_lineOne, path: "/terms" },
+        { label: common.hf_foot_mid_headOne_lineTwo, path: "/terms" },
+        { label: common.hf_foot_mid_headOne_lineThree, path: "/terms" },
+        { label: common.hf_foot_mid_headOne_lineFour, path: "/privacy_policy" },
+        { label: common.hf_foot_mid_headOne_lineFive, path: "/privacy_policy" },
+        { label: common.hf_foot_mid_headOne_lineSix, path: "/privacy_policy" },
+        { label: common.hf_foot_mid_headOne_lineSeven, path: "/privacy_policy" },
+        { label: common.hf_foot_mid_headOne_lineEight, path: "/privacy_policy" },
+        { label: common.hf_foot_mid_headOne_lineNine, path: "/privacy_policy" },
+      ],
+    },
+    {
+      title: common.hf_foot_mid_headTwo,
+      links: [
+        { label: common.hf_foot_mid_headTwo_lineOne, path: "/fees" },
+        { label: common.hf_foot_mid_headTwo_lineTwo, path: "/fees" },
+        { label: common.hf_foot_mid_headTwo_lineThree, path: "/fees" },
+        { label: common.hf_foot_mid_headTwo_lineFour, path: "/fees" },
       ],
     },
   ];
@@ -135,10 +156,9 @@ export const Footer = () => {
             {/* <SelectLanguageAppLink options={languageList} language={language} onSelect={handleSetLanguage} /> */}
           </FooterConnect>
         ) : (
-          <></>
-          // <Wrap sx={{ display: "flex", width: "100%", marginTop: "2rem" }}>
-          //   <SelectLanguageAppLink options={languageList} language={language} onSelect={handleSetLanguage} reverse />
-          // </Wrap>
+          <Wrap sx={{ display: "flex", width: "100%", marginTop: "2rem" }}>
+            <SelectLanguageAppLink options={languageList} language={language} onSelect={handleSetLanguage} reverse />
+          </Wrap>
         )}
       </FooterRoot>
       <CopyrightContainer>
@@ -146,6 +166,7 @@ export const Footer = () => {
         {/* © 2021 Black Banx Inc. All rights reserved. Black Banx Inc. is authorised under Canadian law for providing
         financial services as MSB registration number M18324260. */}
       </CopyrightContainer>
+      <CopyrightContainer>{common.hf_foot_right_lineThree}</CopyrightContainer>
     </Section>
   );
 };

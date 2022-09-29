@@ -45,7 +45,19 @@ type SiteTextCommonType =
   | "hf_foot_cntrysix"
   | "hf_foot_cntryseven"
   | "hf_foot_cntryeight"
-  | "hf_foot_right_lineTwo";
+  | "hf_foot_right_lineTwo"
+  | "hf_foot_mid_headOne_lineFive"
+  | "hf_foot_mid_headOne_lineSix"
+  | "hf_foot_mid_headOne_lineSeven"
+  | "hf_foot_mid_headOne_lineEight"
+  | "hf_foot_mid_headOne_lineNine"
+  | "hf_foot_mid_headTwo"
+  | "hf_foot_right_lineThree"
+  | "hf_foot_mid_headTwo_lineOne"
+  | "hf_foot_mid_headTwo_lineTwo"
+  | "hf_foot_mid_headTwo_lineThree"
+  | "hf_foot_mid_headTwo_lineFour"
+  | "hf_foot_left_lineOne";
 type SiteTextCommon = Record<SiteTextCommonType, string>;
 export type ResSiteTextCommon = { data: SiteTextCommon[] };
 
@@ -270,7 +282,14 @@ type SiteTextMediaCoverageType = "mc_mcov_headone" | "mc_mcov_art_rfa";
 type SiteTextMediaCoverage = Record<SiteTextMediaCoverageType, string>;
 export type ResSiteTextMediaCoverage = { data: SiteTextMediaCoverage[] };
 
-type SiteContentMediaCoverageType = "mc_mcov_art" | "mc_media_id" | "mc_mcov_art_img" | "mc_mcov_art_link";
+type SiteContentMediaCoverageType =
+  | "mc_mcov_art"
+  | "mc_mcov_date"
+  | "mc_media_id"
+  | "mc_mcov_art_img"
+  | "mc_mcov_art_link"
+  | "mc_mcov_subheader"
+  | "mc_mcov_desc";
 
 export type SiteContentMediaCoverage = Record<SiteContentMediaCoverageType, string>;
 export type ResSiteContentMediaCoverage = { DATA: SiteContentMediaCoverage[] };
@@ -279,11 +298,12 @@ type SiteContentMediaCenterNewsType =
   | "mc_nws_date"
   | "mc_nws_link_txt"
   | "mc_nws_paraone"
+  | "mc_nws_twitter"
   | "mc_nws_link"
   | "mc_news_id"
+  | "mc_nws_img"
   | "mc_nws_place"
-  | "mc_nws_paratwo"
-  | "mc_nws_intrvw_text_link";
+  | "mc_nws_linkedin";
 
 export type SiteContentMediaCenterNews = Record<SiteContentMediaCenterNewsType, string>;
 export type ResSiteContentMediaCenterNews = { DATA: SiteContentMediaCenterNews[] };

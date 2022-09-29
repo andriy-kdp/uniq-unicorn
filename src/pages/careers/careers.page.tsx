@@ -3,6 +3,12 @@ import { SlideSection } from "../../components/silde-section/slide-section.compo
 import { Section } from "../../components/section/section.component";
 import careersBg from "../../assets/backgrounds/careers/careers_bg.png";
 import careersVideoPlugImg from "../../assets/backgrounds/careers/careers_video_plug.png";
+import { ReactComponent as SalaryBenefits } from "../../assets/icons/benefits-careers/salaryBenefits.svg";
+import { ReactComponent as Bonuses } from "../../assets/icons/benefits-careers/bonuses.svg";
+import { ReactComponent as EmployeeInsurance } from "../../assets/icons/benefits-careers/employeeInsurance.svg";
+import { ReactComponent as FlexibleWorkspace } from "../../assets/icons/benefits-careers/flexibleWorkspace.svg";
+import { ReactComponent as PlatinumAccount } from "../../assets/icons/benefits-careers/platinumAccount.svg";
+import { ReactComponent as SocialEvents } from "../../assets/icons/benefits-careers/socialEvents.svg";
 import { VacationsComponent } from "../../components/vacations/vacations.component";
 import { Input } from "../../components/inputs/input/input.component";
 import { Select } from "../../components/inputs/select/select.component";
@@ -81,6 +87,42 @@ export const CareersPage: React.FC = (): JSX.Element => {
     { value: "1", title: aboutUsCareers.abtus_cr_optwo },
     { value: "2", title: aboutUsCareers.abtus_cr_opthree },
   ];
+  const benefitsList: {
+    image: any;
+    title: string;
+    text: string;
+  }[] = [
+    {
+      image: <SalaryBenefits />,
+      title: "Salary Benefits",
+      text: "Get what you deserve a salary that actually makes you feel valued.",
+    },
+    {
+      image: <Bonuses />,
+      title: "Bonuses",
+      text: "Performance bonuses to let you know we appreciate your hard work",
+    },
+    {
+      image: <EmployeeInsurance />,
+      title: "Employee Insurance",
+      text: "Access to medical insurance for you and your spouse and dependents",
+    },
+    {
+      image: <FlexibleWorkspace />,
+      title: "Flexible workspace",
+      text: "Work from home for up to 20 days per month",
+    },
+    {
+      image: <PlatinumAccount />,
+      title: "Platinum account",
+      text: "A free Black Banx Platinum account",
+    },
+    {
+      image: <SocialEvents />,
+      title: "Social Events",
+      text: "Regular themed social events like summer and winter parties",
+    },
+  ];
   return (
     <>
       <SlideSection
@@ -108,6 +150,21 @@ export const CareersPage: React.FC = (): JSX.Element => {
           onClick: handleClickOpenAccount,
         }}
       />
+
+      <Section mainContent>
+        <Wrap sx={{ margin: isMobile ? "3rem 0" : "6rem 0" }}>
+          <h3>BENEFITS</h3>
+        </Wrap>
+        <Wrap sx={{ marginBottom: isMobile ? "3rem" : "9rem", width: "100%", display: "flex", flexWrap: "wrap" }}>
+          {benefitsList.map((el) => (
+            <Wrap sx={{ width: isMobile ? "50%" : "33%" }}>
+              <Wrap sx={{ marginTop: "3rem", marginBottom: "3rem" }}>{el.image}</Wrap>
+              <h5 style={{ marginBottom: "1.3rem" }}>{el.title}</h5>
+              <p style={{ maxWidth: "90%", fontSize: "2.2rem" }}>{el.text}</p>
+            </Wrap>
+          ))}
+        </Wrap>
+      </Section>
 
       <Section mainContent>
         <Wrap sx={{ margin: isMobile ? "3rem 0" : "6rem 0" }}>

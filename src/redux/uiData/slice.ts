@@ -16,10 +16,10 @@ type InitialStateData = {
   languageList: SelectOptions | null;
   countryOfResidence: {} | null;
   careerDropDown: Record<string, SelectOptions> | null;
-  mediaCenterCoverage: SiteContentMediaCoverage[] | null;
-  mediaCenterNews: SiteContentMediaCenterNews[] | null;
-  mediaCenterBlog: SiteContentMediaCenterBlog[] | null;
-  mediaCenterBlogData: SiteContentMediaCenterBlogData[] | null;
+  mediaCenterCoverageData: SiteContentMediaCoverage[] | null;
+  mediaCenterNewsData: SiteContentMediaCenterNews[] | null;
+  mediaCenterBlogData: SiteContentMediaCenterBlog[] | null;
+  mediaCenterBlogSingleData: SiteContentMediaCenterBlogData[] | null;
   selectedLanguageId: number | null;
   websiteText: WebsiteTextType;
 };
@@ -28,10 +28,10 @@ const initialState: InitialStateData = {
   languageList: null,
   countryOfResidence: null,
   careerDropDown: { abtus_cr_day: null, abtus_cr_cntry: null },
-  mediaCenterCoverage: null,
-  mediaCenterNews: null,
-  mediaCenterBlog: null,
+  mediaCenterCoverageData: null,
+  mediaCenterNewsData: null,
   mediaCenterBlogData: null,
+  mediaCenterBlogSingleData: null,
   selectedLanguageId: null,
   websiteText: {
     common: {
@@ -75,6 +75,18 @@ const initialState: InitialStateData = {
       hf_foot_cntryseven: "",
       hf_foot_cntryeight: "",
       hf_foot_right_lineTwo: "",
+      hf_foot_mid_headOne_lineFive: "",
+      hf_foot_mid_headOne_lineSix: "",
+      hf_foot_mid_headOne_lineSeven: "",
+      hf_foot_mid_headOne_lineEight: "",
+      hf_foot_mid_headOne_lineNine: "",
+      hf_foot_mid_headTwo: "",
+      hf_foot_right_lineThree: "",
+      hf_foot_mid_headTwo_lineOne: "",
+      hf_foot_mid_headTwo_lineTwo: "",
+      hf_foot_mid_headTwo_lineThree: "",
+      hf_foot_mid_headTwo_lineFour: "",
+      hf_foot_left_lineOne: "",
     },
     homePage: {
       hp_sliderOne: "",
@@ -438,40 +450,51 @@ const uiDataSlice = createSlice({
       })
       .addCase(operations.getMediaCenterCoverage.fulfilled, (state, action) => {
         //@ts-ignore
-        state.mediaCenterCoverage = action.payload.data.DATA.map((el) => ({
+        state.mediaCenterCoverageData = action.payload.data.DATA.map((el: SiteContentMediaCoverage) => ({
           id: el.mc_media_id,
+          date: Base64.decode(el.mc_mcov_date),
+          description: Base64.decode(el.mc_mcov_desc),
           title: Base64.decode(el.mc_mcov_art),
-          img: Base64.decode(el.mc_mcov_art_img),
+          img: el.mc_mcov_art_img,
           link: Base64.decode(el.mc_mcov_art_link),
+          subheader: Base64.decode(el.mc_mcov_subheader),
         }));
       })
       .addCase(operations.getMediaCenterNews.fulfilled, (state, action) => {
-        state.mediaCenterNews = action.payload.data.DATA.map((el: any) => {
+        state.mediaCenterNewsData = action.payload.data.DATA.map((el: SiteContentMediaCenterNews) => {
           const object: any = {};
           Object.keys(el)
-            .filter((elem: any) => elem !== "mc_news_id")
+            .filter((elem: any) => elem !== "mc_news_id" && elem !== "mc_nws_img")
+            //@ts-ignore
             .forEach((element: any) => (object[element] = Base64.decode(el[element])));
-          return { mc_news_id: el.mc_news_id, ...object };
+          return { mc_news_id: el.mc_news_id, mc_nws_img: el.mc_nws_img, ...object };
         });
       })
       .addCase(operations.getMediaCenterBlog.fulfilled, (state, action) => {
-        state.mediaCenterBlog = action.payload.data.data;
-        //   .map((el: any) => {
-        //   const object: any = {};
-        //   Object.keys(el)
-        //     .filter((elem: any) => elem !== "bId")
-        //     .forEach((element: any) => (object[element] = Base64.decode(el[element])));
-        //   return { mc_news_id: el.mc_news_id, ...object };
-        // });
+        state.mediaCenterBlogData = action.payload.data.data.map((el: SiteContentMediaCenterBlog) => {
+          const object: any = {};
+          Object.keys(el)
+            .filter((elem: any) => elem !== "image" && elem !== "bId")
+            //@ts-ignore
+            .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+          return { bId: el.bId, image: el.image, ...object };
+        });
       })
-      .addCase(operations.getMediaCenterBlogData.fulfilled, (state, action) => {
-        state.mediaCenterBlogData = action.payload.data;
+      .addCase(operations.getMediaCenterSingleBlog.fulfilled, (state, action) => {
+        state.mediaCenterBlogSingleData = action.payload.data.map((el: SiteContentMediaCenterBlogData) => {
+          const object: any = {};
+          Object.keys(el)
+            .filter((elem: any) => elem !== "image" && elem !== "bId")
+            //@ts-ignore
+            .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+          return { bId: el.bId, image: el.image, ...object };
+        });
       })
       .addCase(operations.getAllWebsiteText.fulfilled, (state, action) => {
         const value: WebsiteTextType = _.cloneDeep(initialState.websiteText);
         action.payload.forEach((el) => {
           const { tab, data } = el;
-
+          //@ts-ignore
           try {
             Object.entries(data).forEach(([key, val]) => {
               //@ts-ignore

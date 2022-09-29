@@ -7,6 +7,9 @@ import React, { MouseEventHandler, useEffect, useState } from "react";
 import { Section } from "../../section/section.component";
 import { Divider } from "../../divider/divider.styles";
 import { ReactComponent as BankAccountsIcon } from "../../../assets/icons/menu/bank_accounts_icon.svg";
+import { ReactComponent as CodeOfConductIcon } from "../../../assets/icons/menu/code_of_conduct.svg";
+import { ReactComponent as LeadershipIcon } from "../../../assets/icons/menu/leadership.svg";
+import { ReactComponent as BenefitsIcon } from "../../../assets/icons/menu/benefits.svg";
 import { ReactComponent as BlogIcon } from "../../../assets/icons/menu/blog_icon.svg";
 import { ReactComponent as CareersIcon } from "../../../assets/icons/menu/careers_icon.svg";
 import { ReactComponent as CryptoCurrencyIcon } from "../../../assets/icons/menu/crypto_currency_icon.svg";
@@ -87,6 +90,42 @@ export const Header = () => {
           description: common.hf_head_one_rt_subthree_sub,
           path: "/careers",
           icon: <CareersIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subfour,
+          description: common.hf_head_one_rt_subfour_sub,
+          path: "/culture",
+          icon: <MissionIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subfive,
+          description: common.hf_head_one_rt_subfive_sub,
+          path: "/code-of-conduct",
+          icon: <CodeOfConductIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subsix,
+          description: common.hf_head_one_rt_subsix_sub,
+          path: "/leadership",
+          icon: <LeadershipIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subseven,
+          description: common.hf_head_one_rt_subseven_sub,
+          path: "/financial-statements",
+          icon: <MissionIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subeight,
+          description: common.hf_head_one_rt_subeight_sub,
+          path: "/benefits",
+          icon: <BenefitsIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subnine,
+          description: common.hf_head_one_rt_subnine_sub,
+          path: "/black-Bank-news",
+          icon: <NewsIcon />,
         },
       ],
     },

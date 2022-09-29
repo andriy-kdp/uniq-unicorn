@@ -96,9 +96,10 @@ const getMediaCenterCoverage = createAsyncThunk(
     }
   },
 );
+
 const getMediaCenterNews = createAsyncThunk(
   "/mediaCenterNews",
-  async (credentials: { languageId: string }, { dispatch }) => {
+  async (credentials: { languageId: any; mnId?: any }, { dispatch }) => {
     try {
       const data = await fetchMediaCenterNews(credentials);
       return data;
@@ -120,7 +121,7 @@ const getMediaCenterBlog = createAsyncThunk(
     }
   },
 );
-const getMediaCenterBlogData = createAsyncThunk(
+const getMediaCenterSingleBlog = createAsyncThunk(
   "/mediaCenterBlogData",
   async (credentials: { blogId: string; languageId: string }, { dispatch }) => {
     try {
@@ -141,7 +142,7 @@ const operations = {
   getMediaCenterCoverage,
   getMediaCenterNews,
   getMediaCenterBlog,
-  getMediaCenterBlogData,
+  getMediaCenterSingleBlog,
   getCareerDropDown,
   getCareerJobs,
 };

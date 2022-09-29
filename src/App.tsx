@@ -25,10 +25,10 @@ const App = () => {
 
   useEffect(() => {
     dispatch(operations.getAllWebsiteText(language ?? "1"));
-    dispatch(operations.getMediaCenterCoverage(language ?? "1"));
-    dispatch(operations.getMediaCenterNews(language ?? "1"));
+    dispatch(operations.getMediaCenterCoverage({ languageId: language ?? "1" }));
+    dispatch(operations.getMediaCenterNews({ languageId: language ?? "1" }));
     dispatch(operations.getMediaCenterBlog(language ?? "1"));
-    dispatch(operations.getMediaCenterBlogData({ languageId: language ?? "1", blogId: "2" }));
+    dispatch(operations.getMediaCenterSingleBlog({ languageId: language ?? "1", blogId: "02" }));
     dispatch(operations.getCountryOfResidence());
     dispatch(operations.getCareerDropDown());
   }, [language]);

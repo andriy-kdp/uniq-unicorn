@@ -8,8 +8,12 @@ import { Blog } from "./blog.styles";
 import { SocialTitle } from "../../components/social-title/social-title.component";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { mockBlogItems } from "../../mock-data/blog";
+import { uiDataMediaCenterBlog } from "../../redux/uiData/selectors";
+import { useSelector } from "../../redux/store";
+import { SiteContentMediaCenterBlog } from "../../api/types/fetch.ui.types";
 
 export const BlogPage: React.FC = (): JSX.Element => {
+  const mediaCenterBlogData = useSelector(uiDataMediaCenterBlog);
   const goTo = useNavigate();
   const isMobile = useMediaQuery("sm");
   const handlePreviewClick =
@@ -37,24 +41,25 @@ export const BlogPage: React.FC = (): JSX.Element => {
         }
       />
       <Section mainContent m={"auto auto 4rem"}>
-        {mockBlogItems.map((post) => {
-          const { Preview } = Blog;
-          return (
-            <Preview.Root key={post.id}>
-              <SocialTitle
-                date={post.date}
-                title={post.title}
-                linkedInLink={"about:blank"}
-                twitterLink={"http://youtube.com"}
-              />
-              <Preview.Image.Root onClick={handlePreviewClick(post.id)}>
-                <img src={post.imgSrc} alt={post.title} style={{ width: "100%" }} />
-              </Preview.Image.Root>
-              <Divider variant="dashed" />
-              <Preview.Description onClick={handlePreviewClick(post.id)}>{post.description}</Preview.Description>
-            </Preview.Root>
-          );
-        })}
+        {mediaCenterBlogData?.length > 1 &&
+          mediaCenterBlogData.map((post: any) => {
+            const { Preview } = Blog;
+            return (
+              <Preview.Root key={post.bId}>
+                <SocialTitle
+                  date={post.date}
+                  title={post.title}
+                  linkedInLink={"about:blank"}
+                  twitterLink={"http://youtube.com"}
+                />
+                <Preview.Image.Root onClick={handlePreviewClick(post.bId)}>
+                  <img src={post.image} alt={post.title} style={{ width: "100%" }} />
+                </Preview.Image.Root>
+                <Divider variant="dashed" />
+                <Preview.Description onClick={handlePreviewClick(post.bId)}>{post.excerpt}</Preview.Description>
+              </Preview.Root>
+            );
+          })}
       </Section>
     </>
   );
