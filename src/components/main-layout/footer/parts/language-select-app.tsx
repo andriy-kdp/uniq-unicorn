@@ -6,10 +6,10 @@ import { SelectLanguageAppLinkProps } from "../footer.types";
 import { SelectLanguageAppLinkRoot } from "./connect.styles";
 
 export const SelectLanguageAppLink: React.FC<SelectLanguageAppLinkProps> = (props) => {
-  const { language, options, onSelect } = props;
-  const handleAppIconClick = () => {
-    window.open("about:blank", "noopener norefferer");
-  };
+  const { language, options, onSelect, optionsPosition } = props;
+  // const handleAppIconClick = () => {
+  //   window.open("about:blank", "noopener norefferer");
+  // };
   return (
     <SelectLanguageAppLinkRoot>
       {options && (
@@ -17,17 +17,18 @@ export const SelectLanguageAppLink: React.FC<SelectLanguageAppLinkProps> = (prop
           options={options}
           value={language}
           onSelect={onSelect}
-          optionsPosition={"top"}
-          borderRadius={"small"}
+          optionsPosition={optionsPosition}
+          border={"none"}
+          // borderRadius={"small"}
           fullWidth
-          borderColor={"secondary"}
+          // borderColor={"secondary"}
           noAdornment
         />
       )}
 
-      <Wrap sx={{ marginLeft: "auto", cursor: "pointer" }} onClick={handleAppIconClick}>
+      {/* <Wrap sx={{ marginLeft: "auto", cursor: "pointer" }} onClick={handleAppIconClick}>
         <AppStoreIcon />
-      </Wrap>
+      </Wrap> */}
     </SelectLanguageAppLinkRoot>
   );
 };

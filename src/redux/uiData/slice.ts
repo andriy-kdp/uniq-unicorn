@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { WebsiteTextType } from "../../api/types/fetch.ui.types";
+import {
+  WebsiteTextType,
+  SiteContentMediaCoverage,
+  SiteContentMediaCenterNews,
+  SiteContentMediaCenterBlog,
+  SiteContentMediaCenterBlogData,
+} from "../../api/types/fetch.ui.types";
 import { SelectOptions } from "../../components/inputs/select/select.types";
 import operations from "./operations";
 import _ from "lodash";
@@ -9,7 +15,11 @@ type InitialStateData = {
   loading: boolean;
   languageList: SelectOptions | null;
   countryOfResidence: {} | null;
-  mediaCenterCoverage: [] | null;
+  careerDropDown: Record<string, SelectOptions> | null;
+  mediaCenterCoverageData: SiteContentMediaCoverage[] | null;
+  mediaCenterNewsData: SiteContentMediaCenterNews[] | null;
+  mediaCenterBlogData: SiteContentMediaCenterBlog[] | null;
+  mediaCenterBlogSingleData: SiteContentMediaCenterBlogData[] | null;
   selectedLanguageId: number | null;
   websiteText: WebsiteTextType;
 };
@@ -17,7 +27,11 @@ const initialState: InitialStateData = {
   loading: false,
   languageList: null,
   countryOfResidence: null,
-  mediaCenterCoverage: null,
+  careerDropDown: { abtus_cr_day: null, abtus_cr_cntry: null },
+  mediaCenterCoverageData: null,
+  mediaCenterNewsData: null,
+  mediaCenterBlogData: null,
+  mediaCenterBlogSingleData: null,
   selectedLanguageId: null,
   websiteText: {
     common: {
@@ -61,6 +75,18 @@ const initialState: InitialStateData = {
       hf_foot_cntryseven: "",
       hf_foot_cntryeight: "",
       hf_foot_right_lineTwo: "",
+      hf_foot_mid_headOne_lineFive: "",
+      hf_foot_mid_headOne_lineSix: "",
+      hf_foot_mid_headOne_lineSeven: "",
+      hf_foot_mid_headOne_lineEight: "",
+      hf_foot_mid_headOne_lineNine: "",
+      hf_foot_mid_headTwo: "",
+      hf_foot_right_lineThree: "",
+      hf_foot_mid_headTwo_lineOne: "",
+      hf_foot_mid_headTwo_lineTwo: "",
+      hf_foot_mid_headTwo_lineThree: "",
+      hf_foot_mid_headTwo_lineFour: "",
+      hf_foot_left_lineOne: "",
     },
     homePage: {
       hp_sliderOne: "",
@@ -410,16 +436,65 @@ const uiDataSlice = createSlice({
       .addCase(operations.getCountryOfResidence.fulfilled, (state, action) => {
         state.countryOfResidence = action.payload;
       })
+      .addCase(operations.getCareerDropDown.fulfilled, (state, action) => {
+        const select: Record<string, SelectOptions> = {};
+        const [payload] = action.payload;
+        Object.entries(payload).forEach(([tab, options]) => {
+          const option: SelectOptions = [];
+          Object.entries(options).forEach(([key, val]) => {
+            option.push({ id: key, label: val, value: val });
+          });
+          select[tab] = option;
+        });
+        state.careerDropDown = select;
+      })
       .addCase(operations.getMediaCenterCoverage.fulfilled, (state, action) => {
-        // action.payload.data.DATA.forEach((el) => {
-        // });
-        state.mediaCenterCoverage = action.payload.data;
+        //@ts-ignore
+        state.mediaCenterCoverageData = action.payload.data.DATA.map((el: SiteContentMediaCoverage) => ({
+          id: el.mc_media_id,
+          date: Base64.decode(el.mc_mcov_date),
+          description: Base64.decode(el.mc_mcov_desc),
+          title: Base64.decode(el.mc_mcov_art),
+          img: el.mc_mcov_art_img,
+          link: Base64.decode(el.mc_mcov_art_link),
+          subheader: Base64.decode(el.mc_mcov_subheader),
+        }));
+      })
+      .addCase(operations.getMediaCenterNews.fulfilled, (state, action) => {
+        state.mediaCenterNewsData = action.payload.data.DATA.map((el: SiteContentMediaCenterNews) => {
+          const object: any = {};
+          Object.keys(el)
+            .filter((elem: any) => elem !== "mc_news_id" && elem !== "mc_nws_img")
+            //@ts-ignore
+            .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+          return { mc_news_id: el.mc_news_id, mc_nws_img: el.mc_nws_img, ...object };
+        });
+      })
+      .addCase(operations.getMediaCenterBlog.fulfilled, (state, action) => {
+        state.mediaCenterBlogData = action.payload.data.data.map((el: SiteContentMediaCenterBlog) => {
+          const object: any = {};
+          Object.keys(el)
+            .filter((elem: any) => elem !== "image" && elem !== "bId")
+            //@ts-ignore
+            .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+          return { bId: el.bId, image: el.image, ...object };
+        });
+      })
+      .addCase(operations.getMediaCenterSingleBlog.fulfilled, (state, action) => {
+        state.mediaCenterBlogSingleData = action.payload.data.map((el: SiteContentMediaCenterBlogData) => {
+          const object: any = {};
+          Object.keys(el)
+            .filter((elem: any) => elem !== "image" && elem !== "bId")
+            //@ts-ignore
+            .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+          return { bId: el.bId, image: el.image, ...object };
+        });
       })
       .addCase(operations.getAllWebsiteText.fulfilled, (state, action) => {
         const value: WebsiteTextType = _.cloneDeep(initialState.websiteText);
         action.payload.forEach((el) => {
           const { tab, data } = el;
-
+          //@ts-ignore
           try {
             Object.entries(data).forEach(([key, val]) => {
               //@ts-ignore

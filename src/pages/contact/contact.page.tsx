@@ -13,9 +13,10 @@ import { useSelector } from "../../redux/store";
 
 export const ContactPage: React.FC = (): JSX.Element => {
   const { contactBlackBanx } = useSelector(uiDataWebsiteText);
-  const [formData, setFormData] = useState<{ name: string; email: string }>({
+  const [formData, setFormData] = useState<{ name: string; email: string; message: string }>({
     name: "",
     email: "",
+    message: "",
   });
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -54,21 +55,61 @@ export const ContactPage: React.FC = (): JSX.Element => {
               <ContactForm.Title.SubTitle>{contactBlackBanx.cus_cntctus}</ContactForm.Title.SubTitle>
               <ContactForm.Title.Text>{contactBlackBanx.cus_qstn}</ContactForm.Title.Text>
             </ContactForm.Title.Root>
+            <Wrap sx={{ display: "flex", marginBottom: "4rem", width: "100%" }}>
+              <Wrap sx={{ maxWidth: "30rem", marginRight: "auto" }}>
+                <ContactForm.Support.Title>Customer Support inquiries:</ContactForm.Support.Title>
+                <Wrap sx={{ marginTop: "1rem", marginBottom: "2rem" }}>
+                  <ContactForm.Support.Text href={"mailto:support@blackbanx.com"}>
+                    support@blackbanx.com
+                  </ContactForm.Support.Text>
+                </Wrap>
+
+                <Wrap sx={{ display: "flex" }}>
+                  <ContactForm.Support.Text>Phone:</ContactForm.Support.Text>
+                  <Wrap>
+                    <ContactForm.Support.Phone href={"tel:+551145607888"}>+551145607888</ContactForm.Support.Phone>
+                    <ContactForm.Support.Phone href={"tel:+44740392488"}>+44740392488 </ContactForm.Support.Phone>
+                    <ContactForm.Support.Phone href={"tel:+27600702288"}>+27600702288</ContactForm.Support.Phone>
+                    <ContactForm.Support.Phone href={"tel:+164749224488"}>+164749224488 </ContactForm.Support.Phone>
+                  </Wrap>
+                </Wrap>
+              </Wrap>
+              <Wrap sx={{ marginLeft: "3rem" }}>
+                <ContactForm.Support.Title>PR/IR Contact inquiries:</ContactForm.Support.Title>
+                <Wrap sx={{ marginTop: "1rem", marginBottom: "2rem" }}>
+                  <ContactForm.Support.Text href={"mailto:ir@blackbanx.com"}>ir@blackbanx.com</ContactForm.Support.Text>
+                </Wrap>
+
+                <ContactForm.Support.Text href={"mailto:pr@blackbanx.com"}>pr@blackbanx.com</ContactForm.Support.Text>
+              </Wrap>
+            </Wrap>
+            <ContactForm.Support.Title>Or leave a short message instead</ContactForm.Support.Title>
             <Wrap sx={{ marginBottom: "2rem", width: "100%" }}>
               <Input
                 value={formData.name}
                 onChange={handleInputChange}
                 label={contactBlackBanx.cus_qstn_nme}
                 name={"name"}
+                placeholder="Please enter your full name"
                 fullWidth
               />
             </Wrap>
-            <Wrap sx={{ marginBottom: "5rem", width: "100%" }}>
+            <Wrap sx={{ marginBottom: "1rem", width: "100%" }}>
               <Input
                 value={formData.email}
                 onChange={handleInputChange}
                 label={contactBlackBanx.cus_qstn_eml}
                 name={"email"}
+                placeholder="Please enter your email"
+                fullWidth
+              />
+            </Wrap>
+            <Wrap sx={{ marginBottom: "5rem", width: "100%" }}>
+              <Input
+                value={formData.message}
+                onChange={handleInputChange}
+                name={"message"}
+                placeholder="Please enter your message"
                 fullWidth
               />
             </Wrap>

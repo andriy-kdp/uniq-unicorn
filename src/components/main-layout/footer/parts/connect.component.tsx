@@ -12,16 +12,16 @@ export const FooterConnect: React.FC<PropsWithChildren<any>> = (props): JSX.Elem
   const { children } = props;
   const isMobile = useMediaQuery("xs");
 
-  const cities: string[] = [
-    common.hf_foot_cntryone,
-    common.hf_foot_cntrytwo,
-    common.hf_foot_cntrythree,
-    common.hf_foot_cntryfour,
-    common.hf_foot_cntryfive,
-    common.hf_foot_cntrysix,
-    common.hf_foot_cntryseven,
-    common.hf_foot_cntryeight,
-  ];
+  // const cities: string[] = [
+  //   common.hf_foot_cntryone,
+  //   common.hf_foot_cntrytwo,
+  //   common.hf_foot_cntrythree,
+  //   common.hf_foot_cntryfour,
+  //   common.hf_foot_cntryfive,
+  //   common.hf_foot_cntrysix,
+  //   common.hf_foot_cntryseven,
+  //   common.hf_foot_cntryeight,
+  // ];
 
   return (
     <FooterConnectRoot>
@@ -50,11 +50,11 @@ export const FooterConnect: React.FC<PropsWithChildren<any>> = (props): JSX.Elem
         {children}
       </FooterConnectOptions>
 
-      <CitiesContainer>
+      {/* <CitiesContainer>
         {cities.map((city: string, idx) => (
           <div key={idx + city}>{city}</div>
         ))}
-      </CitiesContainer>
+      </CitiesContainer> */}
     </FooterConnectRoot>
   );
 };

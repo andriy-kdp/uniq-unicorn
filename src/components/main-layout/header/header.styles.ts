@@ -59,7 +59,7 @@ const DropdownMenuRoot = styled.div<{ mounted?: boolean }>`
   top: 7rem;
   left: 0;
   z-index: 1;
-  transition-duration: 200ms;
+  transition-duration: 20ms;
   ${(props) =>
     props.mounted &&
     `
@@ -73,6 +73,7 @@ const DropdownItemsRoot = styled.div`
   justify-content: space-around;
   width: 100%;
   padding: 0 5rem;
+  flex-wrap: wrap;
 `;
 const DropdownMenuItemRoot = styled.button`
   display: flex;

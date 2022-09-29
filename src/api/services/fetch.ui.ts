@@ -1,21 +1,87 @@
 import { axios, endpoints } from "../base.api.cfg";
 import { AxiosPromise } from "axios";
-import { ResLanguagesList, ResGetSiteTextData, WebsiteTextGroups } from "../types/fetch.ui.types";
+import {
+  ResLanguagesList,
+  ResGetSiteTextData,
+  WebsiteTextGroups,
+  ResSiteContentMediaCoverage,
+  ResSiteContentMediaCenterNews,
+  ResSiteContentMediaCenterBlogData,
+  ResSiteContentMediaCenterBlog,
+  ResCareerDropdownOptions,
+} from "../types/fetch.ui.types";
 import FD from "../../utils/object-to-form-data";
 
 export const fetchLanguageList = (): AxiosPromise<ResLanguagesList> => axios.post(endpoints.languageList);
 
+export const fetchCareerDropDown = (): AxiosPromise<ResCareerDropdownOptions> => axios.post(endpoints.careerDropDown);
+
 export const fetchCountryOfResidence = (): AxiosPromise<ResLanguagesList> => axios.post(endpoints.countryOfResidence);
 
-export const fetchMediaCenterCoverage = (credentials: { languageId: string }): AxiosPromise<any> => {
-  const data = new FD({ languageId: credentials }).get();
+export const fetchCareerJobs = (credentials: {
+  jobLocation: number;
+  postedDays: number;
+  keywords: string;
+  jobKeywordMatch: number;
+}): AxiosPromise<any> => {
+  const data = new FD(credentials).get();
+  return axios({
+    method: "POST",
+    url: endpoints.careerJobs,
+    data,
+  });
+};
+export const fetchCareerJobDtls = (credentials: { languageId: string; jobId: string }): AxiosPromise<any> => {
+  const data = new FD(credentials).get();
+  return axios({
+    method: "POST",
+    url: endpoints.careerJobDtls,
+    data,
+  });
+};
+export const fetchMediaCenterCoverage = (credentials: {
+  languageId: string;
+  mcId?: string;
+}): AxiosPromise<ResSiteContentMediaCoverage> => {
+  const data = new FD(credentials).get();
   return axios({
     method: "POST",
     url: endpoints.mediaCenterCoverage,
     data,
   });
 };
-
+export const fetchMediaCenterNews = (credentials: {
+  languageId: any;
+  mnid?: any;
+}): AxiosPromise<ResSiteContentMediaCenterNews> => {
+  const data = new FD(credentials).get();
+  return axios({
+    method: "POST",
+    url: endpoints.mediaCenterNews,
+    data,
+  });
+};
+export const fetchMediaCenterBlog = (credentials: {
+  languageId: string;
+}): AxiosPromise<ResSiteContentMediaCenterBlog> => {
+  const data = new FD({ languageId: credentials }).get();
+  return axios({
+    method: "POST",
+    url: endpoints.mediaCenterBlog,
+    data,
+  });
+};
+export const fetchMediaCenterBlogData = (credentials: {
+  blogId: string;
+  languageId: string;
+}): AxiosPromise<ResSiteContentMediaCenterBlogData> => {
+  const data = new FD(credentials).get();
+  return axios({
+    method: "POST",
+    url: endpoints.mediaCenterBlogData,
+    data,
+  });
+};
 export const fetchWebsiteText = (credentials: {
   pageId: string;
   languageId: string;

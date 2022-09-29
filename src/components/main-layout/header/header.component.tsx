@@ -3,10 +3,13 @@ import { MenuItemType, MenuPartProps } from "./header.types";
 
 import { Link, MenuButton } from "../../link/link.styles";
 import { ReactComponent as MainLogo } from "../../../assets/logo.svg";
-import React, { MouseEventHandler, useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import { Section } from "../../section/section.component";
 import { Divider } from "../../divider/divider.styles";
 import { ReactComponent as BankAccountsIcon } from "../../../assets/icons/menu/bank_accounts_icon.svg";
+import { ReactComponent as CodeOfConductIcon } from "../../../assets/icons/menu/code_of_conduct.svg";
+import { ReactComponent as LeadershipIcon } from "../../../assets/icons/menu/leadership.svg";
+import { ReactComponent as BenefitsIcon } from "../../../assets/icons/menu/benefits.svg";
 import { ReactComponent as BlogIcon } from "../../../assets/icons/menu/blog_icon.svg";
 import { ReactComponent as CareersIcon } from "../../../assets/icons/menu/careers_icon.svg";
 import { ReactComponent as CryptoCurrencyIcon } from "../../../assets/icons/menu/crypto_currency_icon.svg";
@@ -20,8 +23,11 @@ import { useMediaQuery } from "../../../utils/use-media-query";
 import { MobileMenu } from "../../mobile-menu/mobile-menu.component";
 import { ReactComponent as BlackBanxLogo } from "../../../assets/logo.svg";
 import { Wrap } from "../../wrap/wrap.component";
-import { useSelector } from "../../../redux/store";
-import { uiDataWebsiteText } from "../../../redux/uiData/selectors";
+import { useDispatch, useSelector } from "../../../redux/store";
+import { uiDataLanguageList, uiDataWebsiteText } from "../../../redux/uiData/selectors";
+import { SelectLanguageAppLink } from "../footer/parts/language-select-app";
+import { SelectHandler, SelectOption } from "../../inputs/select/select.types";
+import { setSelectedLanguage } from "../../../redux/uiData/slice";
 
 const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest }): JSX.Element => {
   const handleClick =
@@ -49,7 +55,20 @@ const MenuPart: React.FC<MenuPartProps> = ({ menuItems, setSubmenuItems, ...rest
 
 export const Header = () => {
   const { common } = useSelector(uiDataWebsiteText);
+  const languageList = useSelector(uiDataLanguageList);
+  const dispatch = useDispatch();
 
+  const [language, setLanguage] = useState<SelectOption | null>(null);
+
+  const handleSetLanguage: SelectHandler = (e) => {
+    const { value } = e.target;
+    setLanguage(value);
+    dispatch(setSelectedLanguage(value));
+  };
+
+  useEffect(() => {
+    languageList && setLanguage(languageList[0]);
+  }, [languageList]);
   const menuLeft: MenuItemType[] = [
     {
       label: common.hf_head_one_rt,
@@ -71,6 +90,42 @@ export const Header = () => {
           description: common.hf_head_one_rt_subthree_sub,
           path: "/careers",
           icon: <CareersIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subfour,
+          description: common.hf_head_one_rt_subfour_sub,
+          path: "/culture",
+          icon: <MissionIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subfive,
+          description: common.hf_head_one_rt_subfive_sub,
+          path: "/code-of-conduct",
+          icon: <CodeOfConductIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subsix,
+          description: common.hf_head_one_rt_subsix_sub,
+          path: "/leadership",
+          icon: <LeadershipIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subseven,
+          description: common.hf_head_one_rt_subseven_sub,
+          path: "/financial-statements",
+          icon: <MissionIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subeight,
+          description: common.hf_head_one_rt_subeight_sub,
+          path: "/benefits",
+          icon: <BenefitsIcon />,
+        },
+        {
+          label: common.hf_head_one_rt_subnine,
+          description: common.hf_head_one_rt_subnine_sub,
+          path: "/black-Bank-news",
+          icon: <NewsIcon />,
         },
       ],
     },
@@ -148,6 +203,14 @@ export const Header = () => {
       <>
         <Wrap onMouseLeave={() => setSubmenuItems(null)} sx={{ minHeight: "15rem" }}>
           <Section mainContent direction={"row"} justify={"center"}>
+            <Wrap sx={{ marginTop: "2rem", marginRight: "2rem", maxWidth: "8rem", minHeight: "3rem", zIndex: "2" }}>
+              <SelectLanguageAppLink
+                options={languageList}
+                language={language}
+                onSelect={handleSetLanguage}
+                optionsPosition={"bottom"}
+              />
+            </Wrap>
             <MenuPart menuItems={menuLeft} setSubmenuItems={setSubmenuItems} />
 
             <MenuPart menuItems={menuRight} right />

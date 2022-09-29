@@ -77,7 +77,7 @@ export const MainPage: React.FC = (): JSX.Element => {
         <Benefits items={benefitsList} vertical={isMobile} />
       </Section>
 
-      <Section mainContent m={"8rem auto 0"}>
+      {/* <Section mainContent m={"8rem auto 0"}>
         {showVideoContent ? (
           <VideoFrame
             src="https://www.youtube.com/embed/RLSQqb9hcXU?autoplay=1"
@@ -90,7 +90,7 @@ export const MainPage: React.FC = (): JSX.Element => {
             <PlayButton />
           </VideoCover>
         )}
-      </Section>
+      </Section> */}
 
       <Section mainContent m={"8rem auto 0"}>
         <Wrap sx={{ textTransform: "uppercase" }}>

@@ -7,7 +7,7 @@ const BgGradientContainer = styled.div<BgGradientType>((props) => ({
   backgroundRepeat: "no-repeat",
   display: "flex",
   width: "100%",
-  opacity: 0.4,
+  opacity: 0.8,
   ...props.sx,
 }));
 
@@ -26,7 +26,7 @@ export const BgGradientMain = styled(BgGradientContainer)`
       to bottom,
       ${(props) => props.theme.colors.background.primary},
       #ffffff00 20%,
-      ${(props) => props.theme.colors.background.primary} 90%,
+      ${(props) => props.theme.colors.background.primary} 120%,
       ${(props) => props.theme.colors.background.primary}
     );
   }

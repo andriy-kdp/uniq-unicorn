@@ -5,7 +5,7 @@ import { media } from "../../../utils/use-media-query";
 
 export const FooterRoot = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 0fr;
   margin: 2rem 0;
   gap: 2rem;
   width: 100%;
@@ -19,7 +19,7 @@ export const FooterLinksRoot = styled.div`
   //display: flex;
   flex-wrap: wrap;
   width: 100%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   column-gap: 2rem;
 `;
 
@@ -57,13 +57,14 @@ export const CopyrightContainer = styled.div`
   line-height: 1.8rem;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  justify-content: center;
+  justify-content: start;
   margin: 2rem 0;
   text-align: justify;
 `;
 
 export const SocialNetworkLinkIcon = styled.a`
   display: block;
+  margin-right: 1rem;
 `;
 
 export const SocialNetworksLinks = styled.div<{ small?: boolean }>`
