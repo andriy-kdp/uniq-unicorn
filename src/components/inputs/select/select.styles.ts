@@ -17,7 +17,7 @@ const OptionsContainer = styled.div<Pick<SelectProps, "optionsPosition" | "borde
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: 100%;
+  /* width: 100%; */
   background: ${(props) => props.theme.colors.background.primary};
   border-radius: 1.6rem;
   border: 1px solid #a6a6a6;

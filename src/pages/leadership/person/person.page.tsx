@@ -16,7 +16,7 @@ export const PersonPage: React.FC = (): JSX.Element => {
           width: "100%",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          backgroundSize: isMobile ? "cover" : "",
+          backgroundSize: "cover",
         }}
       >
         <Person.Wrapper>

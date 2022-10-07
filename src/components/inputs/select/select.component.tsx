@@ -90,7 +90,7 @@ export const Select: React.FC<SelectProps> = (props) => {
         {showOptions && (
           <Sel.Options.Root optionsPosition={optionsPosition} borderRadius={borderRadius} border={border}>
             {getOptionsWithUpArrow.map((option, index) => (
-              <Wrap key={`option-item-${index}`}>
+              <Wrap key={`option-item-${index}`} sx={{ width: "100%", alignItems: "center" }}>
                 <Sel.Options.Item.Root>
                   {option.startIcon && (
                     <Wrap sx={{ padding: "1rem 1rem 1rem 0" }}>
@@ -108,7 +108,7 @@ export const Select: React.FC<SelectProps> = (props) => {
                     </Sel.Options.Item.Icon>
                   )} */}
                 </Sel.Options.Item.Root>
-                {index !== options.length - 1 && <Divider variant="dashed" width={"90%"} />}
+                {index !== options.length - 1 && <Divider variant="solid" width={"90%"} />}
               </Wrap>
             ))}
           </Sel.Options.Root>

@@ -107,8 +107,8 @@ export const Footer = () => {
         { label: common.hf_foot_left_lineFive, path: "/careers" },
         { label: common.hf_foot_left_lineSix, path: "/careers" },
         { label: common.hf_foot_left_lineSeven, path: "/leadership" },
-        { label: common.hf_foot_left_lineEight, path: "/careers" },
-        { label: common.hf_foot_left_lineNine, path: "/careers" },
+        { label: common.hf_foot_left_lineEight, path: "/contact" },
+        { label: common.hf_foot_left_lineNine, path: "/financialStatements" },
       ],
     },
     {
@@ -128,10 +128,10 @@ export const Footer = () => {
     {
       title: common.hf_foot_mid_headTwo,
       links: [
-        { label: common.hf_foot_mid_headTwo_lineOne, path: "/fees" },
-        { label: common.hf_foot_mid_headTwo_lineTwo, path: "/fees" },
-        { label: common.hf_foot_mid_headTwo_lineThree, path: "/fees" },
-        { label: common.hf_foot_mid_headTwo_lineFour, path: "/fees" },
+        { label: common.hf_foot_mid_headTwo_lineOne, path: "/fees/0" },
+        { label: common.hf_foot_mid_headTwo_lineTwo, path: "/fees/1" },
+        { label: common.hf_foot_mid_headTwo_lineThree, path: "/fees/2" },
+        { label: common.hf_foot_mid_headTwo_lineFour, path: "/fees/3" },
       ],
     },
   ];

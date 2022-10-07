@@ -112,7 +112,7 @@ export const Header = () => {
         {
           label: common.hf_head_one_rt_subseven,
           description: common.hf_head_one_rt_subseven_sub,
-          path: "/financial-statements",
+          path: "/financialStatements",
           icon: <MissionIcon />,
         },
         {

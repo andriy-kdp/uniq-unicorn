@@ -16,6 +16,14 @@ export const Divider = styled.hr<DividerProps>`
     border-style: dashed;
     border-color: ${props.theme.colors.text.primary}
   `};
+  ${(props) =>
+    props.variant === "solid" &&
+    `
+    background: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${props.theme.colors.text.primary}
+  `};
   ${(props) => props.position === "left" && `margin-right: auto; margin-left: 0;`};
   ${(props) => props.position === "right" && `margin-left: auto; margin-right: 0;`}
 `;

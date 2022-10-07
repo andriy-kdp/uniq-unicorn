@@ -16,6 +16,7 @@ import { PlanInfoType } from "./fees.types";
 import { Transition } from "react-transition-group";
 import { uiDataWebsiteText, uiDataCountryOfResidence } from "../../redux/uiData/selectors";
 import { useSelector } from "../../redux/store";
+import { useParams } from "react-router-dom";
 
 const duration = 100;
 
@@ -65,7 +66,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
   const [slideDirection, setSlideDirection] = useState<boolean>(false);
   const isMobile = useMediaQuery("sm");
   const isTablet = useMediaQuery("md");
-
+  const { feeId } = useParams();
   const promisedControl = (reverse: boolean, cb: () => void) => {
     const p = new Promise((res) => {
       setSlideDirection(reverse);
@@ -300,6 +301,10 @@ export const FeesPage: React.FC = (): JSX.Element => {
     { country: accountsFees.ac_fee_lower_drp_dflt_four },
     { country: accountsFees.ac_fee_lower_drp_dflt_five },
   ];
+
+  useEffect(() => {
+    if (feeId) setCurrentPlan(+feeId);
+  }, [feeId]);
 
   return (
     <>
