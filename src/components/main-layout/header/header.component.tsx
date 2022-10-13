@@ -100,7 +100,7 @@ export const Header = () => {
         {
           label: common.hf_head_one_rt_subfive,
           description: common.hf_head_one_rt_subfive_sub,
-          path: "/code-of-conduct",
+          path: "/codeofconduct",
           icon: <CodeOfConductIcon />,
         },
         {
@@ -116,15 +116,15 @@ export const Header = () => {
           icon: <MissionIcon />,
         },
         {
-          label: common.hf_head_one_rt_subeight,
-          description: common.hf_head_one_rt_subeight_sub,
-          path: "/benefits",
+          label: "placeholder governance", //  hf_head_one_rt_subeight",
+          description: "hf_head_one_rt_subeight_sub",
+          path: "/governance",
           icon: <BenefitsIcon />,
         },
         {
           label: common.hf_head_one_rt_subnine,
           description: common.hf_head_one_rt_subnine_sub,
-          path: "/black-Bank-news",
+          path: "/blog",
           icon: <NewsIcon />,
         },
       ],
@@ -170,7 +170,7 @@ export const Header = () => {
         {
           label: common.hf_head_three_rt_subthree,
           description: common.hf_head_three_rt_subthree_sub,
-          path: "/blog",
+          path: "/contact",
           icon: <BlogIcon />,
         },
       ],

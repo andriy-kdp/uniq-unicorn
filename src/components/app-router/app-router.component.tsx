@@ -22,6 +22,11 @@ import { PolicesTermsPage } from "../../pages/privacy-policy-terms/policies-term
 import { LeadershipPage } from "../../pages/leadership/leadership.page";
 import { PersonPage } from "../../pages/leadership/person/person.page";
 import { FinancialStatementsPage } from "../../pages/financial-statements/financial-statements.page";
+import { ConductPage } from "../../pages/code-of-conduct/code-of-conduct.page";
+import { CulturePage } from "../../pages/culture/culture.page";
+import { RiskManagementPage } from "../../pages/r-management/r-management.page";
+import { GovernancePage } from "../../pages/governance/governance.page";
+import { SustainabilityPage } from "../../pages/sustainability/sustainability.page";
 const routesList: RouteItemType[] = [
   { path: "/", Component: <MainPage /> },
   { path: "/crypto_currency", Component: <CryptoCurrencyPage /> },
@@ -88,6 +93,11 @@ const routesList: RouteItemType[] = [
     ],
   },
   { path: "/financialStatements", Component: <FinancialStatementsPage /> },
+  { path: "/codeOfConduct", Component: <ConductPage /> },
+  { path: "/culture", Component: <CulturePage /> },
+  { path: "/riskManagement", Component: <RiskManagementPage /> },
+  { path: "/governance", Component: <GovernancePage /> },
+  { path: "/sustainability", Component: <SustainabilityPage /> },
 ];
 
 const getRoutes = (routes: RouteItemType[]) => {

@@ -110,15 +110,22 @@ export const fetchWebSiteTextAll = async (languageId: string) => {
   namesMap.set(12, "contactBlackBanx");
   namesMap.set(13, "policiesTerms");
   namesMap.set(14, "privacyPolicy");
+  namesMap.set(15, "codeOfConduct");
+  namesMap.set(16, "culture");
+  namesMap.set(17, "governance");
+  namesMap.set(18, "leadership");
+  namesMap.set(19, "riskManagement");
+  namesMap.set(20, "sustainabilityCareers");
+  namesMap.set(21, "financialStatements");
 
-  const max = 14;
+  const max = 21;
   const requests: { tab: WebsiteTextGroups; data: ResGetSiteTextData }[] = [];
   for (let i = 1; i <= max; i++) {
     const tab = namesMap.get(i);
     const dummyObj: Record<string, string> = {};
 
     const values = await fetchWebsiteText({ pageId: i.toString(), languageId });
-
+    console.log(tab, values.data.data);
     values.data.data.forEach((el) => {
       const [obj] = Object.entries(el);
       const [key, value] = obj;
