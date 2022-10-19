@@ -27,38 +27,38 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
   };
 
   const handleClickAppDownloadLink = () => {
-    window.open("about:blank", "noopener norefferer");
+    window.open(accountsCryptoCurrency.acnt_crypt_sectiontwo_txttwo_link, "noopener norefferer");
   };
 
   const benefitsItems: BenefitItemsType = [
     {
-      title: accountsCryptoCurrency.acnt_crypt_subhd_lnone_left,
-      description: accountsCryptoCurrency.acnt_crypt_subhd_lnone_left_para,
+      title: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_colleft_hdone,
+      description: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_colleft_txtone,
       icon: <ChartIcon />,
     },
     {
-      title: accountsCryptoCurrency.acnt_crypt_subhd_lnone_right,
-      description: accountsCryptoCurrency.acnt_crypt_subhd_lnone_right_para,
+      title: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_collmid_hdone,
+      description: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_collmid_txtone,
       icon: <ConversionIcon />,
     },
     {
-      title: accountsCryptoCurrency.acnt_crypt_subhd_lnone_mid,
-      description: accountsCryptoCurrency.acnt_crypt_subhd_lnone_mid_para,
+      title: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_collright_hdone,
+      description: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_collright_txtone,
       icon: <AccountIcon />,
     },
     {
-      title: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_left,
-      description: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_left_para,
+      title: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_colleft_hdtwo,
+      description: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_colleft_txttwo,
       icon: <MedalIcon />,
     },
     {
-      title: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_mid,
-      description: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_mid_para,
+      title: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_collmid_hdtwo,
+      description: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_collmid_txttwo,
       icon: <PlanetIcon />,
     },
     {
-      title: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_right,
-      description: accountsCryptoCurrency.acnt_crypt_subhd_lntwo_right_para,
+      title: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_collright_hdtwo,
+      description: accountsCryptoCurrency.acnt_crypt_sectionone_tbl_collright_txttwo,
       icon: <SuccessIcon />,
     },
   ];
@@ -67,7 +67,7 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
       <SlideSection
         mobile={isMobile}
         bgImage={MainBg}
-        title={accountsCryptoCurrency.acnt_crypt_headOne}
+        title={accountsCryptoCurrency.acnt_crypt_mainhead}
         titleWidth={!isMobile ? "50%" : "100%"}
         BgImageStyles={
           isMobile
@@ -78,20 +78,22 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
               }
         }
         button={{
-          title: accountsCryptoCurrency.acnt_crypt_acnt_opnlink_text,
+          title: "Open account",
           onClick: handleClick,
         }}
       />
 
       <Section mainContent>
-        <CryptoBenefitsTitle>{accountsCryptoCurrency.acnt_crypt_headtwo}</CryptoBenefitsTitle>
+        <CryptoBenefitsTitle>{accountsCryptoCurrency.acnt_crypt_sectionone}</CryptoBenefitsTitle>
         <Benefits items={benefitsItems} secondary vertical={isMobile} centered={isMobile} />
       </Section>
       <Section mainContent m={!isMobile ? "13rem auto 26rem" : "16rem auto 11rem !important"}>
         <MobileAppContainer>
-          <MobileAppTitle>Your bitcoin wallet in our App</MobileAppTitle>
+          <MobileAppTitle>{accountsCryptoCurrency.acnt_crypt_sectiontwo_txtone}</MobileAppTitle>
           <MobileAppImage src={PhonesBg} alt="IPhone" />
-          <ButtonArrow onClick={handleClickAppDownloadLink}>Download App</ButtonArrow>
+          <ButtonArrow onClick={handleClickAppDownloadLink}>
+            {accountsCryptoCurrency.acnt_crypt_sectiontwo_txttwo}
+          </ButtonArrow>
         </MobileAppContainer>
       </Section>
     </>

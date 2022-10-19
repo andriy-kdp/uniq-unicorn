@@ -37,11 +37,17 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
     nav(path);
   };
   const bankAccountProfs: { title: string; description: string }[] = [
-    { title: accountsBankAccounts.ac_bnk_hdtwo_left, description: accountsBankAccounts.ac_bnk_hdtwo_left_subone },
-    { title: accountsBankAccounts.ac_bnk_hdtwo_mid, description: accountsBankAccounts.ac_bnk_hdtwo_mid_subone },
     {
-      title: "Institutional clients",
-      description: "Cost-effective global payments",
+      title: accountsBankAccounts.ac_bnk_mainhead_txtone,
+      description: accountsBankAccounts.ac_bnk_sectionone_hdonetxt,
+    },
+    {
+      title: accountsBankAccounts.ac_bnk_mainhead_txttwo,
+      description: accountsBankAccounts.ac_bnk_sectionone_hdtwotxt,
+    },
+    {
+      title: accountsBankAccounts.ac_bnk_mainhead_txtthree,
+      description: accountsBankAccounts.ac_bnk_sectionone_hdthreetxt,
     },
   ];
 
@@ -53,48 +59,48 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
     link: string;
   }[] = [
     {
-      title: accountsBankAccounts.ac_bnk_hdtwo_left,
-      subtitle: accountsBankAccounts.ac_bnk_hdtwo_left_subtwo,
+      title: accountsBankAccounts.ac_bnk_mainhead_txtone,
+      subtitle: accountsBankAccounts.ac_bnk_sectiontwo_subhd,
       link: "/auth/register/private",
       description: [
-        accountsBankAccounts.ac_bnk_hdtwo_left_pntone,
-        accountsBankAccounts.ac_bnk_hdtwo_left_pnttwo,
-        accountsBankAccounts.ac_bnk_hdtwo_left_pntthree,
-        accountsBankAccounts.ac_bnk_hdtwo_left_pntfour,
-        accountsBankAccounts.ac_bnk_hdtwo_left_pntfive,
-        accountsBankAccounts.ac_bnk_hdtwo_left_pntsix,
-        accountsBankAccounts.ac_bnk_hdtwo_left_pntseven,
-        accountsBankAccounts.ac_bnk_hdtwo_left_pnteight,
-        accountsBankAccounts.ac_bnk_hdtwo_left_pntnine,
+        accountsBankAccounts.ac_bnk_sectiontwo_listleft_one,
+        accountsBankAccounts.ac_bnk_sectiontwo_listright_one,
+        accountsBankAccounts.ac_bnk_sectiontwo_listleft_two,
+        accountsBankAccounts.ac_bnk_sectiontwo_listright_two,
+        accountsBankAccounts.ac_bnk_sectiontwo_listleft_three,
+        accountsBankAccounts.ac_bnk_sectiontwo_listright_three,
+        accountsBankAccounts.ac_bnk_sectiontwo_listleft_four,
+        accountsBankAccounts.ac_bnk_sectiontwo_listright_four,
+        accountsBankAccounts.ac_bnk_sectiontwo_listleft_five,
       ],
       blockImgSrc: <CardIcon />,
     },
     {
-      title: accountsBankAccounts.ac_bnk_hdtwo_mid,
-      subtitle: accountsBankAccounts.ac_bnk_hdtwo_mid_subtwo,
+      title: accountsBankAccounts.ac_bnk_mainhead_txttwo,
+      subtitle: accountsBankAccounts.ac_bnk_sectionthree_subhd,
       link: "/auth/register/business",
       description: [
-        accountsBankAccounts.ac_bnk_hdtwo_mid_subone,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_subtwo,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pntone,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pnttwo,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pntthree,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pntfour,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pntfive,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pntsix,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pntseven,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pnteight,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pntnine,
-        accountsBankAccounts.ac_bnk_hdtwo_mid_pntten,
+        accountsBankAccounts.ac_bnk_sectionthree_listleft_one,
+        accountsBankAccounts.ac_bnk_sectionthree_listright_one,
+        accountsBankAccounts.ac_bnk_sectionthree_listleft_two,
+        accountsBankAccounts.ac_bnk_sectionthree_listright_two,
+        accountsBankAccounts.ac_bnk_sectionthree_listleft_three,
+        accountsBankAccounts.ac_bnk_sectionthree_listright_three,
+        accountsBankAccounts.ac_bnk_sectionthree_listleft_four,
+        accountsBankAccounts.ac_bnk_sectionthree_listright_four,
+        accountsBankAccounts.ac_bnk_sectionthree_listleft_five,
+        accountsBankAccounts.ac_bnk_sectionthree_listright_five,
+        accountsBankAccounts.ac_bnk_sectionthree_listleft_six,
+        accountsBankAccounts.ac_bnk_sectionthree_listright_six,
       ],
       blockImgSrc: <CaseIcon />,
     },
     {
       title: "INSTITUTIONAL CLIENTS",
-      subtitle: "If you are a Bank, a Fund or Financial Institution:",
+      subtitle: accountsBankAccounts.ac_bnk_sectionfour_subhd,
       link: "/auth/register/institutional",
-      description:
-        "Black Banx offers a cost effective, global cross border payment solution.We offer a network of local correspondent accounts in over 90 countries for incoming and outgoing payments. Integrating our cross border platform into your payment system would allow you to send and receive funds in a fraction of time. To reduce your fees, we offer attractive volume based pricing models.",
+      description: accountsBankAccounts.ac_bnk_sectionfour_paraone,
+
       blockImgSrc: <BuildingIcon />,
     },
   ];
@@ -102,7 +108,7 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
     <>
       <SlideSection
         bgImage={BgImage}
-        title={accountsBankAccounts.ac_bnk_headOne}
+        title={accountsBankAccounts.ac_bnk_mainhead}
         bgVariant={"gradient"}
         titleWidth={"100%"}
         justify={"center"}
@@ -132,8 +138,8 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
             ))}
           </ProfsContainer>
           <DescriptionContainer>
-            <DescriptionTitle>{accountsBankAccounts.ac_bnk_hdtwo}</DescriptionTitle>
-            <Description>{accountsBankAccounts.ac_bnk_hdtwo_Subpara}</Description>
+            <DescriptionTitle>{accountsBankAccounts.ac_bnk_sectionone}</DescriptionTitle>
+            <Description>{accountsBankAccounts.ac_bnk_sectiononetxt}</Description>
           </DescriptionContainer>
         </DescriptionWrapper>
       </Section>

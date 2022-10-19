@@ -18,7 +18,6 @@ const getLanguages = createAsyncThunk("/languageList", async (credentials, { dis
     const { data } = await fetchLanguageList();
     return data.data;
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
 });
@@ -27,7 +26,6 @@ const getCareerDropDown = createAsyncThunk("/careerDropDown", async (credentials
     const { data } = await fetchCareerDropDown();
     return data.data;
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
 });
@@ -41,7 +39,6 @@ const getWebsiteText = createAsyncThunk(
       dispatch(setUiDataFetching(false));
       return data.data;
     } catch (err) {
-      console.log(err);
       return Promise.reject(err);
     }
   },
@@ -58,7 +55,6 @@ const getCareerJobs = createAsyncThunk(
       console.log(data);
       return data;
     } catch (err) {
-      console.log(err);
       return Promise.reject(err);
     }
   },
@@ -70,7 +66,6 @@ const getAllWebsiteText = createAsyncThunk("/websiteText", async (credentials: s
     dispatch(setUiDataFetching(false));
     return data;
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
 });
@@ -79,7 +74,6 @@ const getCountryOfResidence = createAsyncThunk("/countryOfResidence", async (cre
     const { data } = await fetchCountryOfResidence();
     return data.data;
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
 });
@@ -91,7 +85,6 @@ const getMediaCenterCoverage = createAsyncThunk(
       const data = await fetchMediaCenterCoverage(credentials);
       return data;
     } catch (err) {
-      console.log(err);
       return Promise.reject(err);
     }
   },
@@ -104,7 +97,6 @@ const getMediaCenterNews = createAsyncThunk(
       const data = await fetchMediaCenterNews(credentials);
       return data;
     } catch (err) {
-      console.log(err);
       return Promise.reject(err);
     }
   },
@@ -116,7 +108,6 @@ const getMediaCenterBlog = createAsyncThunk(
       const data = await fetchMediaCenterBlog(credentials);
       return data;
     } catch (err) {
-      console.log(err);
       return Promise.reject(err);
     }
   },
@@ -128,7 +119,6 @@ const getMediaCenterSingleBlog = createAsyncThunk(
       const { data } = await fetchMediaCenterBlogData(credentials);
       return data;
     } catch (err) {
-      console.log(err);
       return Promise.reject(err);
     }
   },

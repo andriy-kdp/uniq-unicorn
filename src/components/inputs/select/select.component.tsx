@@ -78,13 +78,6 @@ export const Select: React.FC<SelectProps> = (props) => {
               {!value && !noAdornment && <Sel.Adornment.Label>Select</Sel.Adornment.Label>}
             </Sel.Adornment.Root>
           }
-          // endIcon={
-          //   value?.endIcon && (
-          //     <Sel.Adornment.Root>
-          //       {value.endIconBase64 ? <img src={value.endIcon} alt={value.label} width="30px" /> : value.endIcon}
-          //     </Sel.Adornment.Root>
-          //   )
-          // }
           {...InputProps}
         />
         {showOptions && (
@@ -98,15 +91,6 @@ export const Select: React.FC<SelectProps> = (props) => {
                     </Wrap>
                   )}
                   <Sel.Options.Item.Title onClick={handleSelect(option)}>{option.label}</Sel.Options.Item.Title>
-                  {/* {option.endIcon && (
-                    <Sel.Options.Item.Icon>
-                      {option.endIconBase64 ? (
-                        <img src={option.endIcon} alt={option.label} width="20px" />
-                      ) : (
-                        option.endIcon
-                      )}
-                    </Sel.Options.Item.Icon>
-                  )} */}
                 </Sel.Options.Item.Root>
                 {index !== options.length - 1 && <Divider variant="solid" width={"90%"} />}
               </Wrap>

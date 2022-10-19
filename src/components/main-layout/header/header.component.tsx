@@ -82,7 +82,7 @@ export const Header = () => {
         {
           label: common.hf_head_one_rt_subtwo,
           description: common.hf_head_one_rt_subtwo_sub,
-          path: "/security",
+          path: "/sustainability",
           icon: <SecurityIcon />,
         },
         {
@@ -116,8 +116,8 @@ export const Header = () => {
           icon: <MissionIcon />,
         },
         {
-          label: "placeholder governance", //  hf_head_one_rt_subeight",
-          description: "hf_head_one_rt_subeight_sub",
+          label: common.hf_head_one_rt_subeight,
+          description: common.hf_head_one_rt_subeight_sub,
           path: "/governance",
           icon: <BenefitsIcon />,
         },

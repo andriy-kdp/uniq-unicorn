@@ -27,7 +27,6 @@ export type SelectOption = {
   startIcon?: React.ReactNode;
   endIcon?: string;
   abbr?: string;
-  endIconBase64?: boolean;
 };
 
 export type SimpleSelectEvent = {

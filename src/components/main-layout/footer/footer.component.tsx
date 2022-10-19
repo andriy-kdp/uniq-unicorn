@@ -7,18 +7,18 @@ import {
   FooterRoot,
 } from "./footer.styles";
 
-import { ReactComponent as FacebookIcon } from "../../../assets/icons/social/facebook.svg";
+// import { ReactComponent as FacebookIcon } from "../../../assets/icons/social/facebook.svg";
 import { FooterLinkGroup } from "./footer.types";
 import { ReactComponent as InstagramIcon } from "../../../assets/icons/social/instagram.svg";
-import { ReactComponent as LinkedInIcon } from "../../../assets/icons/social/linked_in.svg";
+// import { ReactComponent as LinkedInIcon } from "../../../assets/icons/social/linked_in.svg";
 import React, { useEffect, useState } from "react";
 import { Section } from "../../section/section.component";
 import { ReactComponent as TwitterIcon } from "../../../assets/icons/social/twitter.svg";
-import { ReactComponent as FlagIconCn } from "../../../assets/icons/flags/flag_cn.svg";
-import { ReactComponent as FlagIconEsp } from "../../../assets/icons/flags/flag_esp.svg";
-import { ReactComponent as FlagIconPt } from "../../../assets/icons/flags/flag_pt.svg";
-import { ReactComponent as FlagIconRu } from "../../../assets/icons/flags/flag_ru.svg";
-import { ReactComponent as FlagIconUs } from "../../../assets/icons/flags/flag_us.svg";
+// import { ReactComponent as FlagIconCn } from "../../../assets/icons/flags/flag_cn.svg";
+// import { ReactComponent as FlagIconEsp } from "../../../assets/icons/flags/flag_esp.svg";
+// import { ReactComponent as FlagIconPt } from "../../../assets/icons/flags/flag_pt.svg";
+// import { ReactComponent as FlagIconRu } from "../../../assets/icons/flags/flag_ru.svg";
+// import { ReactComponent as FlagIconUs } from "../../../assets/icons/flags/flag_us.svg";
 import { SelectHandler, SelectOption, SelectOptions } from "../../inputs/select/select.types";
 import { Wrap } from "../../wrap/wrap.component";
 import { useMediaQuery } from "../../../utils/use-media-query";
@@ -109,9 +109,9 @@ export const Footer = () => {
         { label: common.hf_foot_left_lineSeven, path: "/leadership" },
         { label: common.hf_foot_left_lineEight, path: "/contact" },
         { label: common.hf_foot_left_lineNine, path: "/financialStatements" },
-        { label: "gov placeholder", path: "/governance" },
-        { label: "risk placeholder", path: "/riskManagement" },
-        { label: "security placeholder", path: "/financialStatements" },
+        { label: common.hf_foot_left_lineTen, path: "/governance" },
+        { label: common.hf_foot_left_lineEleven, path: "/riskManagement" },
+        { label: common.hf_foot_left_lineTwelve, path: "/financialStatements" },
       ],
     },
     {

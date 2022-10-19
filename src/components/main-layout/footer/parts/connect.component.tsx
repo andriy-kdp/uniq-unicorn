@@ -26,7 +26,7 @@ export const FooterConnect: React.FC<PropsWithChildren<any>> = (props): JSX.Elem
   return (
     <FooterConnectRoot>
       <FooterLinksTitle withSocialLinks={isMobile}>
-        {common.hf_foot_right_headOne}
+        {"Connect"}
         {isMobile && (
           <SocialNetworksLinks small={isMobile}>
             {socialNetworks.map((soc, idx) => (

@@ -25,7 +25,7 @@ export const MainPage: React.FC = (): JSX.Element => {
   const nav = useNavigate();
   const isMobile = useMediaQuery("sm");
   const handleClickDownloadApp = () => {
-    window.open("https://apps.apple.com/us/app/black-banx/id1479949412", "noopener norefferer");
+    window.open(homePage.hp_sectionThree_textlink, "noopener norefferer");
   };
 
   const handleClickRegister = () => {
@@ -61,7 +61,7 @@ export const MainPage: React.FC = (): JSX.Element => {
           title: "Get started",
           onClick: handleClickRegister,
         }}
-        title={homePage.hp_sliderOne}
+        title={homePage.hp_sectionOne_head}
         mobile={isMobile}
         titleWidth={isMobile ? "100%" : "50%"}
         BgImageStyles={
@@ -94,7 +94,7 @@ export const MainPage: React.FC = (): JSX.Element => {
 
       <Section mainContent m={"8rem auto 0"}>
         <Wrap sx={{ textTransform: "uppercase" }}>
-          <h2>{homePage.hp_headTwo}</h2>
+          <h2>{homePage.hp_sectionTwo_head}</h2>
         </Wrap>
         {!isMobile && (
           <Wrap sx={{ width: "100%" }}>
@@ -102,7 +102,7 @@ export const MainPage: React.FC = (): JSX.Element => {
           </Wrap>
         )}
         <Wrap sx={{ marginLeft: "auto", marginBottom: "6rem" }}>
-          <ButtonArrow onClick={handleClickRegister}>{homePage.hp_acop_txt}</ButtonArrow>
+          <ButtonArrow onClick={handleClickRegister}>{homePage.hp_sectionTwo_text}</ButtonArrow>
         </Wrap>
       </Section>
       {!isMobile && (
@@ -119,8 +119,8 @@ export const MainPage: React.FC = (): JSX.Element => {
               padding: !isMobile ? "4.7rem 9.2rem" : "2rem",
             }}
           >
-            <DownloadAppHeader>{homePage.hp_acop_lwr_sbhd}</DownloadAppHeader>
-            <ButtonArrow onClick={handleClickDownloadApp}>{homePage.hp_apdwn_text}</ButtonArrow>
+            <DownloadAppHeader>{homePage.hp_sectionThree_head}</DownloadAppHeader>
+            <ButtonArrow onClick={handleClickDownloadApp}>{homePage.hp_sectionThree_text}</ButtonArrow>
           </Wrap>
         </Section>
       )}

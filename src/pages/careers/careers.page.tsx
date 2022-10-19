@@ -83,9 +83,9 @@ export const CareersPage: React.FC = (): JSX.Element => {
     value: "0" | "1" | "2";
     title: string;
   }[] = [
-    { value: "0", title: aboutUsCareers.abtus_cr_opone },
-    { value: "1", title: aboutUsCareers.abtus_cr_optwo },
-    { value: "2", title: aboutUsCareers.abtus_cr_opthree },
+    { value: "0", title: "Exact match" },
+    { value: "1", title: "In job title" },
+    { value: "2", title: "In description" },
   ];
   const benefitsList: {
     image: any;
@@ -127,7 +127,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
     <>
       <SlideSection
         bgImage={careersBg}
-        title={aboutUsCareers.abtus_cr_headone}
+        title={"COME AND WORK WITH US ALL OVER THE WORLD"}
         justify={"center"}
         bgVariant={"gradient"}
         titleAlign={"center"}
@@ -168,7 +168,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
 
       <Section mainContent>
         <Wrap sx={{ margin: isMobile ? "3rem 0" : "6rem 0" }}>
-          <h3>{aboutUsCareers.abtus_cr_headtwo}</h3>
+          <h3>{"We're looking for talented people to join us"}</h3>
         </Wrap>
         <Wrap sx={{ marginBottom: isMobile ? "3rem" : "9rem", width: "100%" }}>
           <img src={careersVideoPlugImg} alt={"Careers video"} style={{ position: "relative", width: "100%" }} />
@@ -181,13 +181,13 @@ export const CareersPage: React.FC = (): JSX.Element => {
         </Wrap>
       </Section>
       <Section mainContent>
-        <h3>{aboutUsCareers.abtus_cr_headtwoSub}</h3>
+        <h3>{"Search for Openings:"}</h3>
         <Wrap sx={{ maxWidth: "76.8rem", width: "100%", margin: "4rem auto 14rem" }}>
           <Input
             fullWidth
             value={formData["keywords"]}
             onChange={handleInputChange}
-            label={aboutUsCareers.abtus_cr_bxone_title}
+            label={"Keywords"}
             startIcon={<SearchIcon />}
             placeholder={aboutUsCareers.abtus_cr_bxone_plcehldr}
             name={"keywords"}
@@ -226,7 +226,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
                 value={formData["jobLocation"]}
                 onSelect={handleSelect}
                 optionsPosition={"bottom"}
-                label={aboutUsCareers.abtus_cr_bxtwo_title}
+                label={"Location"}
                 name={"jobLocation"}
                 InputProps={{
                   LabelRootProps: { style: { marginBottom: "3.2rem" } },
