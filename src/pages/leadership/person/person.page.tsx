@@ -1,52 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Placeholder from "../../../assets/backgrounds/person/placeholder.png";
 import { useMediaQuery } from "../../../utils/use-media-query";
 import { Wrap } from "../../../components/wrap/wrap.component";
 import { Person } from "./person.styles";
+import { uiAboutUsLeadershipPerson, uiDataSelectedLanguageId } from "../../../redux/uiData/selectors";
+import { useDispatch, useSelector } from "../../../redux/store";
+import operations from "../../../redux/uiData/operations";
+import { useParams } from "react-router-dom";
 
 export const PersonPage: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery("sm");
+  const language = useSelector(uiDataSelectedLanguageId);
+  const { id } = useParams();
+  const data = useSelector(uiAboutUsLeadershipPerson);
+
+  useEffect(() => {
+    if (data === null) dispatch(operations.getAboutUsLeadership({ languageId: language, ldrId: id }));
+  }, []);
 
   return (
     <>
-      <Wrap
-        sx={{
-          background: `url(${Placeholder})`,
-          height: isMobile ? "34rem" : "65rem",
-          width: "100%",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-      >
-        <Person.Wrapper>
-          <Person.Title>Name Placeholder</Person.Title>
-          <Person.Subtitle>Job Description Placeholder</Person.Subtitle>
-        </Person.Wrapper>
-      </Wrap>
-      <Person.Root>
-        <Wrap>
-          <Person.Description>
-            Black banx protects your money with our global diversification concept
-          </Person.Description>
-          <Person.Paragraph>
-            We've developed strong relationships with the leading Banks in the world to ensure your funds are always
-            safe. Our client's money is never held at one Bank in one country. We provide the highest level of
-            protection by keeping segregated accounts at the leading Banks, in various countries. As a result your money
-            is globally diversified and protected by multiple jurisdictions.{" "}
-          </Person.Paragraph>
-        </Wrap>
-        <Wrap sx={{ marginLeft: "11.6rem" }}>
-          <Person.Description>Black Banx protects your money with industry-leading security tools </Person.Description>
-          <Person.Paragraph>
-            Black Banx is fully PCI DSS 3.2 certified. We comply with the highest Data Security Standards and have a
-            Team of Security experts paying utmost attention to protect your data. Our Servers are located in ISO
-            certified Data Centers, complying with the highest of standards in the banking industry. Our payment
-            software uses encrypted and secured ISO 20022 certified messaging schemes for payment execution and data
-            transfers.
-          </Person.Paragraph>
-        </Wrap>
-      </Person.Root>
+      {data && (
+        <>
+          <Wrap
+            sx={{
+              background: `url(${data[0]?.abtus_ldr_art_img})`,
+              height: isMobile ? "34rem" : "65rem",
+              width: "100%",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          >
+            <Person.Wrapper>
+              <Person.Title>{data[0]?.abtus_ldr_name}</Person.Title>
+              <Person.Subtitle>{data[0]?.abtus_ldr_jobdesc}</Person.Subtitle>
+            </Person.Wrapper>
+          </Wrap>
+          <Person.Root>
+            <Wrap>
+              <Person.Description>{data[0]?.abtus_ldr_paraone}</Person.Description>
+              <Person.Paragraph>{data[0]?.abtus_ldr_paraonetxt}</Person.Paragraph>
+            </Wrap>
+            <Wrap sx={{ marginLeft: "11.6rem" }}>
+              <Person.Description>{data[0]?.abtus_ldr_paratwo}</Person.Description>
+              <Person.Paragraph>{data[0]?.abtus_ldr_paratwotxt}</Person.Paragraph>
+            </Wrap>
+          </Person.Root>
+        </>
+      )}
     </>
   );
 };

@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MainBg from "../../assets/backgrounds/financialStatements/financialStatements_main_bg.png";
 import { Section } from "../../components/section/section.component";
 import { useMediaQuery } from "../../utils/use-media-query";
-import { uiDataWebsiteText } from "../../redux/uiData/selectors";
-import { useSelector } from "../../redux/store";
+import { uiAboutUsFinanStats, uiDataSelectedLanguageId, uiDataWebsiteText } from "../../redux/uiData/selectors";
+import { useDispatch, useSelector } from "../../redux/store";
 import { Select } from "../../components/inputs/select/select.component";
 import { Wrap } from "../../components/wrap/wrap.component";
 import { SelectHandler, SelectOptions } from "../../components/inputs/select/select.types";
+import operations from "../../redux/uiData/operations";
 
 export const FinancialStatementsPage: React.FC = (): JSX.Element => {
   const { accountsFees } = useSelector(uiDataWebsiteText);
+  const language = useSelector(uiDataSelectedLanguageId);
+  const aboutUsFinanStats = useSelector(uiAboutUsFinanStats);
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery("sm");
   const dummyData: SelectOptions = [
     { id: "1", value: "All Filings", label: "All Filings" },
@@ -31,6 +35,9 @@ export const FinancialStatementsPage: React.FC = (): JSX.Element => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+  useEffect(() => {
+    dispatch(operations.getAboutUsFinanStats({ languageId: language }));
+  }, []);
   return (
     <>
       <SlideSection
@@ -42,9 +49,13 @@ export const FinancialStatementsPage: React.FC = (): JSX.Element => {
         BgImageStyles={isMobile ? { backgroundSize: "cover", backgroundPosition: "40%" } : { backgroundSize: "cover" }}
       />
 
-      <Section mainContent m={isMobile ? "0rem auto 20rem" : "0 auto"} style={{ overflow: "hidden" }}>
+      <Section
+        mainContent
+        m={isMobile ? "0rem auto 20rem" : "0 auto"}
+        style={{ overflow: "hidden", marginBottom: "15rem" }}
+      >
         <Wrap sx={{ width: "100%", display: "flex" }}>
-          <Wrap sx={{ marginRight: "9rem", width: "100%", height: "65rem" }}>
+          <Wrap sx={{ marginRight: "9rem", width: "100%", height: "25rem" }}>
             <Select
               options={dummyData}
               value={formData.Filings}
@@ -72,6 +83,45 @@ export const FinancialStatementsPage: React.FC = (): JSX.Element => {
             name={"year"}
           ></Select>
         </Wrap>
+        {aboutUsFinanStats && (
+          <Wrap
+            sx={{
+              width: "100%",
+              display: "grid",
+              gridTemplateColumns: " 25% 25% 25% 25%",
+              textAlign: "center",
+              marginBottom: "3rem",
+            }}
+          >
+            <h3>Filling</h3>
+            <h3>Description</h3>
+            <h3>Date</h3>
+            <h3>Format</h3>
+          </Wrap>
+        )}
+        {aboutUsFinanStats?.slice(2).map((el: any, idx: any) => (
+          <Wrap
+            sx={{
+              width: "100%",
+              display: "grid",
+              gridTemplateColumns: " 25% 25% 25% 25%",
+              textAlign: "center",
+              key: idx + "list",
+              borderBottom: "0.1rem solid white",
+              borderTop: "0.1rem solid white",
+              padding: "1rem",
+            }}
+          >
+            <div>{el.abtus_finst_report_colone}</div>
+            <div>{el.abtus_finst_report_coltwo}</div>
+            <div>{el.abtus_finst_report_colthree}</div>
+            <div>
+              <a href={el.abtus_finst_report_pdflink}>PDF </a>
+              <a href={el.abtus_finst_report_rtflink}>RTF </a>
+              <a href={el.abtus_finst_report_xlslink}>XLS </a>
+            </div>
+          </Wrap>
+        ))}
       </Section>
     </>
   );

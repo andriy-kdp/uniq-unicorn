@@ -7,6 +7,10 @@ export const uiDataMediaCenterNews = (state) => state.uiDataSlice.mediaCenterNew
 export const uiDataMediaCenterBlog = (state) => state.uiDataSlice.mediaCenterBlogData;
 export const uiMediaCenterCoverage = (state) => state.uiDataSlice.mediaCenterCoverageData;
 export const uiCareerDropDown = (state) => state.uiDataSlice.careerDropDown;
+export const uiAboutUsLeadership = (state) => state.uiDataSlice.aboutUsLeadership;
+export const uiAboutUsLeadershipPerson = (state) => state.uiDataSlice.aboutUsLeadershipPerson;
+export const uiAboutUsFinanStats = (state) => state.uiDataSlice.aboutUsFinanStats;
+export const uiCareerJobs = (state) => state.uiDataSlice.careerJobs;
 
 const uiDataSelectors = {
   uiDataLanguageList,
@@ -17,5 +21,9 @@ const uiDataSelectors = {
   uiDataMediaCenterBlog,
   uiMediaCenterCoverage,
   uiCareerDropDown,
+  uiAboutUsLeadership,
+  uiAboutUsLeadershipPerson,
+  uiAboutUsFinanStats,
+  uiCareerJobs,
 };
 export default uiDataSelectors;

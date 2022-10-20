@@ -19,22 +19,21 @@ import { Button } from "../../components/button/button.component";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { vacationsList } from "../../mock-data/careets";
-import { uiCareerDropDown, uiDataWebsiteText } from "../../redux/uiData/selectors";
+import {
+  uiCareerDropDown,
+  uiCareerJobs,
+  uiDataSelectedLanguageId,
+  uiDataWebsiteText,
+} from "../../redux/uiData/selectors";
 import { useDispatch, useSelector } from "../../redux/store";
 import operations from "../../redux/uiData/operations";
 import _ from "lodash";
 
-// const selectOptions: SelectOptions = [
-//   { id: "opt-0", label: "Select", value: "none" },
-//   { id: "opt-1", label: "1-30 days", value: "1-30" },
-//   { id: "opt-2", label: "1-60 days", value: "1-60" },
-//   { id: "opt-3", label: "1-90 days", value: "1-90" },
-//   { id: "opt-4", label: "1-120 days", value: "1-120" },
-// ];
-
 export const CareersPage: React.FC = (): JSX.Element => {
   const careersDropDown = useSelector(uiCareerDropDown);
   const { aboutUsCareers } = useSelector(uiDataWebsiteText);
+  const language = useSelector(uiDataSelectedLanguageId);
+  const careerJobs = useSelector(uiCareerJobs);
   const dispatch = useDispatch();
   const [formData, setFormdata] = useState<{
     jobKeywordMatch: "0" | "1" | "2";
@@ -53,15 +52,14 @@ export const CareersPage: React.FC = (): JSX.Element => {
     const { name, value } = e.target;
     if (name) {
       commonHandler(name, value);
-      //@ts-ignore - add lodash debounce
-      // dispatch(
-      //   operations.getCareerJobs({
-      //     jobLocation: Number(formData.jobLocation.id),
-      //     postedDays: Number(formData.postedDays.id),
-      //     keywords: formData.keywords,
-      //     jobKeywordMatch: Number(formData.jobKeywordMatch),
-      //   }),
-      // )
+      dispatch(
+        operations.getCareerJobs({
+          jobLocation: Number(formData.jobLocation.id),
+          postedDays: Number(formData.postedDays.id),
+          keywords: formData.keywords,
+          jobKeywordMatch: Number(formData.jobKeywordMatch),
+        }),
+      );
     }
   };
 
@@ -123,6 +121,26 @@ export const CareersPage: React.FC = (): JSX.Element => {
       text: "Regular themed social events like summer and winter parties",
     },
   ];
+
+  useEffect(() => {
+    dispatch(operations.getCareerJobs({ languageId: language }));
+  }, []);
+  const data = careerJobs.map((element: any) => {
+    return {
+      title: element.department,
+      vacations: [
+        //@ts-ignore
+        {
+          title: element.title,
+          description: element.description,
+          salary: { to: element.salary },
+          variant: element.type,
+        },
+      ],
+    };
+  });
+
+  // vacations: [] } });)
   return (
     <>
       <SlideSection
@@ -177,7 +195,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
 
       <Section mainContent>
         <Wrap sx={{ maxWidth: "76.8rem", width: "100%", margin: "0 auto" }}>
-          <VacationsComponent sections={vacationsList} />
+          <VacationsComponent sections={data} />
         </Wrap>
       </Section>
       <Section mainContent>

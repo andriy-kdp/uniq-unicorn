@@ -1353,6 +1353,43 @@ type SiteTextFinancialStatementsType =
 type SiteTextFinancialStatements = Record<SiteTextFinancialStatementsType, string>;
 export type ResSiteTextFinancialStatements = { data: SiteTextFinancialStatements[] };
 
+type AboutUsLeadershipType =
+  | "abtus_ldr_paratwo"
+  | "abtus_ldr_paraonetxt"
+  | "abtus_ldr_art_img"
+  | "abtus_ldr_id"
+  | "abtus_ldr_paraone"
+  | "abtus_ldr_jobdesc"
+  | "abtus_ldr_name"
+  | "abtus_ldr_paratwotxt";
+
+export type AboutUsLeadership = Record<AboutUsLeadershipType, string>;
+export type ResAboutUsLeadership = { DATA: AboutUsLeadership[] };
+
+type AboutUsFinanStatsType =
+  | "abtus_finst_report_colfour"
+  | "abtus_finst_report_colone"
+  | "abtus_finst_report_coltwo"
+  | "abtus_finst_report_colthree"
+  | "abtus_finst_report_pdflink"
+  | "abtus_finst_report_rtflink"
+  | "abtus_finst_report_xlslink"
+  | "abtus_findata_id"
+  | "abtus_finst_list_txtone"
+  | "abtus_lst_id"
+  | "abtus_finst_list_txtthree"
+  | "abtus_finst_list_txttwo"
+  | "abtus_finst_list_txtfive"
+  | "abtus_finst_list_txtfour";
+
+export type AboutUsFinanStats = Record<AboutUsFinanStatsType, string>;
+export type ResAboutUsFinanStats = { DATA: AboutUsFinanStats[] };
+
+type CareerJobsType = "jid" | "department" | "description" | "location" | "posted" | "salary" | "title" | "type";
+
+export type CareerJobs = Record<CareerJobsType, string>;
+export type ResCareerJobs = { data: CareerJobs[] };
+
 export type WebsiteTextType = {
   common: Record<SiteTextCommonType, string>;
   homePage: Record<SiteTextHomeType, string>;

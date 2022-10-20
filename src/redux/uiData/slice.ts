@@ -5,6 +5,9 @@ import {
   SiteContentMediaCenterNews,
   SiteContentMediaCenterBlog,
   SiteContentMediaCenterBlogData,
+  AboutUsLeadership,
+  AboutUsFinanStats,
+  CareerJobs,
 } from "../../api/types/fetch.ui.types";
 import { SelectOptions } from "../../components/inputs/select/select.types";
 import operations from "./operations";
@@ -20,8 +23,12 @@ type InitialStateData = {
   mediaCenterNewsData: SiteContentMediaCenterNews[] | null;
   mediaCenterBlogData: SiteContentMediaCenterBlog[] | null;
   mediaCenterBlogSingleData: SiteContentMediaCenterBlogData[] | null;
-  selectedLanguageId: number | null;
+  selectedLanguageId: string | null;
   websiteText: WebsiteTextType;
+  aboutUsLeadership: AboutUsLeadership[] | null;
+  aboutUsLeadershipPerson: AboutUsLeadership[] | null;
+  aboutUsFinanStats: AboutUsFinanStats[] | null;
+  careerJobs: CareerJobs[] | null;
 };
 const initialState: InitialStateData = {
   loading: false,
@@ -32,7 +39,7 @@ const initialState: InitialStateData = {
   mediaCenterNewsData: null,
   mediaCenterBlogData: null,
   mediaCenterBlogSingleData: null,
-  selectedLanguageId: null,
+  selectedLanguageId: "1",
   websiteText: {
     common: {
       hf_head_one_rt: "",
@@ -1056,6 +1063,10 @@ const initialState: InitialStateData = {
       abtus_finst_report_fttwo: "",
     },
   },
+  aboutUsLeadership: null,
+  aboutUsLeadershipPerson: null,
+  aboutUsFinanStats: null,
+  careerJobs: null,
 };
 
 const uiDataSlice = createSlice({
@@ -1067,6 +1078,9 @@ const uiDataSlice = createSlice({
     },
     setSelectedLanguage: (state, action) => {
       state.selectedLanguageId = action.payload.id;
+    },
+    setUsLeadershipPerson: (state, action) => {
+      state.aboutUsLeadershipPerson = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -1137,6 +1151,46 @@ const uiDataSlice = createSlice({
           return { bId: el.bId, image: el.image, ...object };
         });
       })
+
+      .addCase(operations.getAboutUsLeadership.fulfilled, (state, action) => {
+        action.payload.DATA.length > 1
+          ? (state.aboutUsLeadership = action.payload.DATA.map((el: AboutUsLeadership) => {
+              const object: any = {};
+              Object.keys(el)
+                .filter((elem: any) => elem !== "abtus_ldr_art_img" && elem !== "abtus_ldr_id")
+                //@ts-ignore
+                .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+              return { abtus_ldr_art_img: el.abtus_ldr_art_img, abtus_ldr_id: el.abtus_ldr_id, ...object };
+            }))
+          : (state.aboutUsLeadershipPerson = action.payload.DATA.map((el: AboutUsLeadership) => {
+              const object: any = {};
+              Object.keys(el)
+                .filter((elem: any) => elem !== "abtus_ldr_art_img" && elem !== "abtus_ldr_id")
+                //@ts-ignore
+                .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+              return { abtus_ldr_art_img: el.abtus_ldr_art_img, abtus_ldr_id: el.abtus_ldr_id, ...object };
+            }));
+      })
+      .addCase(operations.getAboutUsFinanStats.fulfilled, (state, action) => {
+        state.aboutUsFinanStats = action.payload.DATA.map((el: AboutUsFinanStats) => {
+          const object: any = {};
+          Object.keys(el)
+            .filter((elem: any) => elem !== "abtus_findata_id" && elem !== "abtus_lst_id")
+            //@ts-ignore
+            .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+          return { abtus_lst_id: el.abtus_lst_id, abtus_findata_id: el.abtus_findata_id, ...object };
+        });
+      })
+      .addCase(operations.getCareerJobs.fulfilled, (state, action) => {
+        state.careerJobs = action.payload.data.map((el: CareerJobs) => {
+          const object: any = {};
+          Object.keys(el)
+            .filter((elem: any) => elem !== "jid")
+            //@ts-ignore
+            .forEach((element: any) => (object[element] = Base64.decode(el[element])));
+          return { jid: el.jid, ...object };
+        });
+      })
       .addCase(operations.getAllWebsiteText.fulfilled, (state, action) => {
         const value: WebsiteTextType = _.cloneDeep(initialState.websiteText);
         action.payload.forEach((el) => {
@@ -1156,5 +1210,5 @@ const uiDataSlice = createSlice({
   },
 });
 
-export const { setUiDataFetching, setSelectedLanguage } = uiDataSlice.actions;
+export const { setUiDataFetching, setSelectedLanguage, setUsLeadershipPerson } = uiDataSlice.actions;
 export default uiDataSlice.reducer;

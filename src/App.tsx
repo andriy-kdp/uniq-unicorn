@@ -24,11 +24,11 @@ const App = () => {
   }, [isMobile]);
 
   useEffect(() => {
-    dispatch(operations.getAllWebsiteText(language ?? "1"));
-    dispatch(operations.getMediaCenterCoverage({ languageId: language ?? "1" }));
-    dispatch(operations.getMediaCenterNews({ languageId: language ?? "1" }));
-    dispatch(operations.getMediaCenterBlog(language ?? "1"));
-    dispatch(operations.getMediaCenterSingleBlog({ languageId: language ?? "1", blogId: "02" }));
+    dispatch(operations.getAllWebsiteText(language));
+    dispatch(operations.getMediaCenterCoverage({ languageId: language }));
+    dispatch(operations.getMediaCenterNews({ languageId: language }));
+    dispatch(operations.getMediaCenterBlog(language));
+    dispatch(operations.getMediaCenterSingleBlog({ languageId: language, blogId: "02" }));
     dispatch(operations.getCountryOfResidence());
     dispatch(operations.getCareerDropDown());
   }, [language]);

@@ -9,6 +9,9 @@ import {
   ResSiteContentMediaCenterBlogData,
   ResSiteContentMediaCenterBlog,
   ResCareerDropdownOptions,
+  ResAboutUsLeadership,
+  ResAboutUsFinanStats,
+  ResCareerJobs,
 } from "../types/fetch.ui.types";
 import FD from "../../utils/object-to-form-data";
 
@@ -18,12 +21,13 @@ export const fetchCareerDropDown = (): AxiosPromise<ResCareerDropdownOptions> =>
 
 export const fetchCountryOfResidence = (): AxiosPromise<ResLanguagesList> => axios.post(endpoints.countryOfResidence);
 
-export const fetchCareerJobs = (credentials: {
-  jobLocation: number;
-  postedDays: number;
-  keywords: string;
-  jobKeywordMatch: number;
-}): AxiosPromise<any> => {
+export const fetchCareerJobs = (credentials?: {
+  languageId?: string;
+  jobLocation?: number;
+  postedDays?: number;
+  keywords?: string;
+  jobKeywordMatch?: number;
+}): AxiosPromise<ResCareerJobs> => {
   const data = new FD(credentials).get();
   return axios({
     method: "POST",
@@ -31,7 +35,7 @@ export const fetchCareerJobs = (credentials: {
     data,
   });
 };
-export const fetchCareerJobDtls = (credentials: { languageId: string; jobId: string }): AxiosPromise<any> => {
+export const fetchCareerJobDtls = (credentials: { jobId: string }): AxiosPromise<any> => {
   const data = new FD(credentials).get();
   return axios({
     method: "POST",
@@ -94,6 +98,29 @@ export const fetchWebsiteText = (credentials: {
   });
 };
 
+export const fetchAboutUsLeadership = (credentials: {
+  ldrId?: string;
+  languageId: string;
+}): AxiosPromise<ResAboutUsLeadership> => {
+  const data = new FD(credentials).get();
+  return axios({
+    method: "POST",
+    url: endpoints.aboutUsLeadership,
+    data,
+  });
+};
+export const fetchAboutUsFinanStats = (credentials: {
+  languageId: string;
+  finDataId?: string;
+}): AxiosPromise<ResAboutUsFinanStats> => {
+  const data = new FD(credentials).get();
+  return axios({
+    method: "POST",
+    url: endpoints.aboutUsFinanStats,
+    data,
+  });
+};
+
 export const fetchWebSiteTextAll = async (languageId: string) => {
   const namesMap = new Map();
   namesMap.set(1, "common");
@@ -125,7 +152,6 @@ export const fetchWebSiteTextAll = async (languageId: string) => {
     const dummyObj: Record<string, string> = {};
 
     const values = await fetchWebsiteText({ pageId: i.toString(), languageId });
-    console.log(tab, values.data.data);
     values.data.data.forEach((el) => {
       const [obj] = Object.entries(el);
       const [key, value] = obj;

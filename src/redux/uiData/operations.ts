@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  fetchAboutUsFinanStats,
+  fetchAboutUsLeadership,
   fetchCareerDropDown,
   fetchCareerJobs,
   fetchCountryOfResidence,
@@ -35,7 +37,6 @@ const getWebsiteText = createAsyncThunk(
     dispatch(setUiDataFetching(true));
     try {
       const { data } = await fetchWebsiteText(credentials);
-      console.log(data.data);
       dispatch(setUiDataFetching(false));
       return data.data;
     } catch (err) {
@@ -43,22 +44,39 @@ const getWebsiteText = createAsyncThunk(
     }
   },
 );
+
 const getCareerJobs = createAsyncThunk(
   "/careerJobs",
-  async (
-    credentials: { jobLocation: number; postedDays: number; keywords: string; jobKeywordMatch: number },
-    { dispatch },
-  ) => {
+  async (credentials?: {
+    languageId?: string;
+    jobLocation?: number;
+    postedDays?: number;
+    keywords?: string;
+    jobKeywordMatch?: number;
+  }) => {
     try {
-      console.log("careerJobs");
       const { data } = await fetchCareerJobs(credentials);
-      console.log(data);
       return data;
     } catch (err) {
       return Promise.reject(err);
     }
   },
 );
+
+// const getCareerJobs = createAsyncThunk(
+//   "/careerJobs",
+//   async (
+//     credentials: { jobLocation?: number; postedDays?: number; keywords?: string; jobKeywordMatch?: number },
+//     { dispatch },
+//   ) => {
+//     try {
+//       const { data } = await fetchCareerJobs(credentials);
+//       return data;
+//     } catch (err) {
+//       return Promise.reject(err);
+//     }
+//   },
+// );
 const getAllWebsiteText = createAsyncThunk("/websiteText", async (credentials: string, { dispatch }) => {
   dispatch(setUiDataFetching(true));
   try {
@@ -124,6 +142,29 @@ const getMediaCenterSingleBlog = createAsyncThunk(
   },
 );
 
+const getAboutUsLeadership = createAsyncThunk(
+  "/aboutUsLeadership",
+  async (credentials: { ldrId?: string; languageId: string }, { dispatch }) => {
+    try {
+      const { data } = await fetchAboutUsLeadership(credentials);
+      return data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+);
+const getAboutUsFinanStats = createAsyncThunk(
+  "/aboutUsFinanStats",
+  async (credentials: { languageId: string; finDataId?: string }, { dispatch }) => {
+    try {
+      const { data } = await fetchAboutUsFinanStats(credentials);
+      return data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+);
+
 const operations = {
   getLanguages,
   getWebsiteText,
@@ -135,5 +176,7 @@ const operations = {
   getMediaCenterSingleBlog,
   getCareerDropDown,
   getCareerJobs,
+  getAboutUsLeadership,
+  getAboutUsFinanStats,
 };
 export default operations;

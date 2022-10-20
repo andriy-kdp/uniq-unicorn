@@ -10,7 +10,7 @@ const CardItem = styled.div`
 `;
 
 const CardRoot = styled.div`
-  max-width: 25rem;
+  width: 25rem;
   background-color: #5c5c5c;
   margin: 0 auto 15.1rem;
   border-radius: 5px;
@@ -39,7 +39,10 @@ const CardDescription = styled.div`
 `;
 
 const CardImg = styled.img`
+  object-fit: cover;
   width: 100%;
+  height: 70%;
+  border-radius: 0.5rem 0.5rem 0 0;
   @media (${media.md}) {
   }
 `;

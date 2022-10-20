@@ -20,4 +20,6 @@ export const endpoints = {
   careerDropDown: "/careerDropDown/",
   careerJobs: "/careerJobs/",
   careerJobDtls: "/careerJobDtls/",
+  aboutUsLeadership: "/aboutUsLeadership/",
+  aboutUsFinanStats: "/aboutUsFinanStats/",
 };
