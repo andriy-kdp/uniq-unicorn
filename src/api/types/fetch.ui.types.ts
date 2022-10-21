@@ -336,21 +336,29 @@ type SiteTextAboutCareersType =
   // | "abtus_cr_bx_btnone"
   // | "abtus_cr_bx_btntwo"
 
-  | "abtus_cr_headone"
-  | "abtus_cr_headone"
-  | "abtus_cr_bxone_plcehldr"
+  // | "abtus_cr_headone"
+  // | "abtus_cr_headone"
+  // | "abtus_cr_bxone_plcehldr"
+  // | "abtus_cr_mainhead"
+  // | "abtus_cr_paraone"
+  // | "abtus_cr_paratwo"
+  // | "abtus_cr_parathree"
+  // | "abtus_cr_parafour"
+  // | "abtus_cr_parafive"
+  // | "abtus_cr_parasix"
+  // | "abtus_cr_subheadone"
+  // | "abtus_cr_headone_paratwo"
+  // | "abtus_cr_headone_parathree"
+  // | "abtus_cr_headone_parafour"
+  // | "abtus_cr_headone_parafive"
+
+  | "abtus_cr_benefit_nxt"
   | "abtus_cr_mainhead"
-  | "abtus_cr_paraone"
-  | "abtus_cr_paratwo"
-  | "abtus_cr_parathree"
-  | "abtus_cr_parafour"
-  | "abtus_cr_parafive"
-  | "abtus_cr_parasix"
-  | "abtus_cr_subheadone"
-  | "abtus_cr_headone_paratwo"
-  | "abtus_cr_headone_parathree"
-  | "abtus_cr_headone_parafour"
-  | "abtus_cr_headone_parafive";
+  | "abtus_cr_openaccount"
+  | "abtus_cr_sectionone"
+  | "abtus_cr_sectiontwo"
+  | "abtus_cr_benefit"
+  | "abtus_cr_searchsection";
 
 type SiteTextAboutCareers = Record<SiteTextAboutCareersType, string>;
 export type ResSiteTextAboutCareers = { data: SiteTextAboutCareers[] };
