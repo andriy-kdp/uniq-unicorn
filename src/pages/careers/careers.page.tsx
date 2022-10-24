@@ -170,7 +170,7 @@ export const CareersPage: React.FC = (): JSX.Element => {
         }}
       />
       <Section mainContent>
-        <Wrap sx={{ margin: isMobile ? "3rem 0" : "6rem 0" }}>
+        <Wrap sx={{ marginTop: isMobile ? "3rem" : "6rem" }}>
           <h3>CAREERS AND DIVERSITY</h3>
         </Wrap>
         <MissionDescription>
