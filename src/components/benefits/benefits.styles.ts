@@ -19,7 +19,7 @@ export const BenefitTitle = styled.h3`
   font-weight: 500;
   font-size: 4.4rem;
   line-height: 5.7rem;
-  text-align: justify;
+  text-align: center;
   text-transform: uppercase;
   margin: 2rem 0 1rem;
   color: ${(props) => props.theme.colors.text.primary};

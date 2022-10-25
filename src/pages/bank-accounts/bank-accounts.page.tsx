@@ -96,7 +96,7 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
       blockImgSrc: <CaseIcon />,
     },
     {
-      title: "INSTITUTIONAL CLIENTS",
+      title: accountsBankAccounts.ac_bnk_mainhead_txtthree,
       subtitle: accountsBankAccounts.ac_bnk_sectionfour_subhd,
       link: "/auth/register/institutional",
       description: accountsBankAccounts.ac_bnk_sectionfour_paraone,
@@ -160,7 +160,9 @@ export const BankAccountsPage: React.FC = (): JSX.Element => {
               )}
               {!isMobile && (
                 <Wrap sx={{ marginLeft: "auto" }}>
-                  <ButtonArrow onClick={handleClickButton(block.link)}>Open Account</ButtonArrow>
+                  <ButtonArrow onClick={handleClickButton(block.link)}>
+                    {accountsBankAccounts.ac_bnk_mainhead_actionname}
+                  </ButtonArrow>
                 </Wrap>
               )}
             </InfoWrapper>

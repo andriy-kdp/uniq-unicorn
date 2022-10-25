@@ -1,7 +1,7 @@
 import { CSSProperties } from "react";
 
 export type SectionProps = {
-  direction?: "row" | " column"; // default: column
+  direction?: "row" | " column";
   p?: CSSProperties["padding"];
   justify?: CSSProperties["justifyContent"];
   align?: CSSProperties["alignItems"];

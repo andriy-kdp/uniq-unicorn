@@ -359,6 +359,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  maxHeight: "50rem",
                 }}
               >
                 <PlanInfo.Img src={planInfoItems[currentPlan].imgSrc} alt={"Plan info"} />
@@ -404,10 +405,7 @@ export const FeesPage: React.FC = (): JSX.Element => {
             </Wrap>
           )}
           <Wrap sx={{ gridArea: "title" }}>
-            <FindCountry.Title>
-              We’re proud to announce that we’re in more than 180 countries all over the world, find out if we’re in
-              yours!
-            </FindCountry.Title>
+            <FindCountry.Title>{accountsFees.ac_fee_typslde_subfoot_one}</FindCountry.Title>
           </Wrap>
           {!isMobile && (
             <Wrap

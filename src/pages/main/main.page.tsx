@@ -58,7 +58,7 @@ export const MainPage: React.FC = (): JSX.Element => {
         bgImage={MainBg}
         m={isMobile ? "4rem auto 9rem" : "4rem auto 4rem"}
         button={{
-          title: "Get started",
+          title: homePage.hp_sectionOne_text,
           onClick: handleClickRegister,
         }}
         title={homePage.hp_sectionOne_head}

@@ -28,7 +28,11 @@ import {
 import { useDispatch, useSelector } from "../../redux/store";
 import operations from "../../redux/uiData/operations";
 import _ from "lodash";
-import { MissionDescription, MissionSubTitle, MissionTitle } from "../mission/mission.styles";
+import {
+  TextDescription,
+  TextSubTitle,
+  TextTitle,
+} from "../../components/main-layout/text-content/text-content.styles";
 
 export const CareersPage: React.FC = (): JSX.Element => {
   const careersDropDown = useSelector(uiCareerDropDown);
@@ -141,7 +145,6 @@ export const CareersPage: React.FC = (): JSX.Element => {
     };
   });
 
-  // vacations: [] } });)
   return (
     <>
       <SlideSection
@@ -173,64 +176,63 @@ export const CareersPage: React.FC = (): JSX.Element => {
         <Wrap sx={{ marginTop: isMobile ? "3rem" : "6rem" }}>
           <h3>CAREERS AND DIVERSITY</h3>
         </Wrap>
-        <MissionDescription>
+        <TextDescription>
           Diversity and inclusion, equal opportunity and building trust in the workplace are key priorities for us.
           Mutual respect is the foundation to developing trust and to working in partnership.
-        </MissionDescription>
-        <MissionDescription>
+        </TextDescription>
+        <TextDescription>
           We are committed to social equality as exemplified in our Culture and Code of Conduct and employment policies.
           We believe in providing accessibility to job opportunities, and fair and equal treatment to all nationalities
           in the context of our desire for racial and gender equality.
-        </MissionDescription>
-        <MissionDescription>
+        </TextDescription>
+        <TextDescription>
           That is why we do not tolerate disrespectful behaviour, discrimination or harassment, including sexual
           harassment, or any threatening, hostile or abusive behaviour. We work together without discrimination based on
           an individual’s race, colour, sex, nationality, ethnicity, age, religion, disability, marital status,
           pregnancy, sexual orientation, gender identity and expression, citizenship or any other characteristic
           protected by law.
-        </MissionDescription>
-        <MissionDescription>
+        </TextDescription>
+        <TextDescription>
           We are caring, responsible employers and the well-being of our employees is paramount. We do all we can to
           ensure that working conditions, working hours, working from home, remuneration, pension and health insurance
           arrangements are as tailored to the needs of each local market as possible.
-        </MissionDescription>
-        <MissionDescription>
+        </TextDescription>
+        <TextDescription>
           We think that optimal customer service is provided by teams who understand local market dynamics and employ
           local teams in each of our operating markets to ensure that we are closely involved in all countries where we
           operate.
-        </MissionDescription>
-        <MissionDescription>
+        </TextDescription>
+        <TextDescription>
           Our current global workforce of more than 2,000 employees is a well diversified mix of different races and
           different gender working for us around the globe.
-        </MissionDescription>
-        <MissionTitle>
+        </TextDescription>
+        <TextTitle>
           <h3>Global Workforce - Gender & Race</h3>
-        </MissionTitle>
-        <MissionDescription>
+        </TextTitle>
+        <TextDescription>
           Despite already having an extremely diverse mix of gender and races, we are aiming to increase our global
           workforce to 8,000 employees and diversify the gender balance further with a minimum of 40% females overall
           and a growing proportion of females in leadership roles by the end of 2025.
-        </MissionDescription>
-        <MissionDescription>
-          {" "}
+        </TextDescription>
+        <TextDescription>
           We believe success comes from our people and our culture. That’s why we offer a wide range of meaningful
           benefits ensuring our people thrive no matter what their role is. Our salaries are centred around achievement
           and making people feel valued, whilst performance bonuses reflect our appreciation of going the extra mile and
           making an impact. We offer generous annual leave and family leave policies for new parents, as well as a free
           Black Banx Platinum account for every employee.
-        </MissionDescription>
-        <MissionDescription>
-          Our <MissionSubTitle>‘Stay at Home’</MissionSubTitle> policy is integral to our sustainability programme. We
+        </TextDescription>
+        <TextDescription>
+          Our <TextSubTitle>‘Stay at Home’</TextSubTitle> policy is integral to our sustainability programme. We
           encourage employees to work from home, and are targeting a 99% reduction in commuting to work and related GHG
           emissions since by 2030. We have also launched our ‘Work from anywhere’ initiative, reducing global office
           space in order to reduce our ecological footprint and achieve our goal of net zero emissions by 2030.
           Employees can work from any country where they are resident, regardless of whether Black Banx has an office
           there or not. This policy gives potential employees enormous opportunity regardless of their nationality or
           country of residence.
-        </MissionDescription>
-        <MissionDescription>
+        </TextDescription>
+        <TextDescription>
           Join one of our Black Banx teams and be a part of redefining the way banking works on a global scale.{" "}
-        </MissionDescription>
+        </TextDescription>
         <Wrap sx={{ margin: isMobile ? "3rem 0" : "6rem 0" }}>
           <h3>BENEFITS</h3>
         </Wrap>

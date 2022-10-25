@@ -1,6 +1,5 @@
 import { Dropdown, LogoContainer, MenuItemContainer, MenuPartContainer, MobileHeader } from "./header.styles";
 import { MenuItemType, MenuPartProps } from "./header.types";
-
 import { Link, MenuButton } from "../../link/link.styles";
 import { ReactComponent as MainLogo } from "../../../assets/logo.svg";
 import React, { MouseEventHandler, useEffect, useState } from "react";
@@ -201,8 +200,8 @@ export const Header = () => {
   if (!isMobile) {
     return (
       <>
-        <Wrap onMouseLeave={() => setSubmenuItems(null)} sx={{ minHeight: "15rem" }}>
-          <Section mainContent direction={"row"} justify={"center"}>
+        <Wrap onMouseLeave={() => setSubmenuItems(null)} sx={{ minHeight: "15rem", padding: "0 5rem" }}>
+          <Section direction={"row"} justify={"center"}>
             <Wrap sx={{ marginTop: "2rem", marginRight: "2rem", maxWidth: "8rem", minHeight: "3rem", zIndex: "2" }}>
               <SelectLanguageAppLink
                 options={languageList}

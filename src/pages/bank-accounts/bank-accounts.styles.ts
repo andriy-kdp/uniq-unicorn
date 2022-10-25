@@ -57,6 +57,7 @@ export const Description = styled.div`
   line-height: 2.8rem;
   font-size: 2rem;
   margin-top: 2.4rem;
+  text-align: justify;
 `;
 
 export const InfoWrapper = styled.div`
@@ -92,6 +93,7 @@ export const InfoListContainer = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 2rem;
+  align-items: center;
   @media (${media.sm}) {
     grid-template-columns: 1fr;
     margin-bottom: 3rem;

@@ -2,11 +2,10 @@ import React from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MissionBg from "../../assets/backgrounds/mission/home_slider.png";
 import { Section } from "../../components/section/section.component";
-import { MissionDescription, MissionSubTitle, MissionTitle } from "./mission.styles";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { uiDataWebsiteText } from "../../redux/uiData/selectors";
 import { useSelector } from "../../redux/store";
-import { Wrap } from "../../components/wrap/wrap.component";
+import { IPageContent, TextContent } from "../../components/main-layout/text-content/text-content";
 
 export const MissionPage = () => {
   const { aboutUsMission } = useSelector(uiDataWebsiteText);
@@ -85,7 +84,7 @@ export const MissionPage = () => {
   const strategySection = {
     title: aboutUsMission.abtus_misn_headFour,
     article: [aboutUsMission.abtus_misn_headFour_ParaOne, aboutUsMission.abtus_misn_headFour_ParaTwo],
-    strategyList: [
+    titledList: [
       {
         upperSubtitle: aboutUsMission.abtus_misn_subheadFour_One,
         article: [aboutUsMission.abtus_misn_subheadFour_One_txtone],
@@ -104,7 +103,9 @@ export const MissionPage = () => {
           "- private and business Group accounts in 28 FIAT and 2 crypto currencies",
           "- International payments in 28 FIAT and 2 crypto currencies using local instant settlement system where possible (e.g. FPS, SEPA instant credit, etc.)",
           " - Inter platform instant payments in 28 FIAT and 2 crypto currencies",
-          " - Multi Currency Mastercard Debit Card (plastic and metal) + virtual cards, - Real time 24/7 currency exchange services, - Real time 24/7 crypto trading services",
+          " - Multi Currency Mastercard Debit Card (plastic and metal) + virtual cards",
+          " - Real time 24/7 currency exchange services",
+          " - Real time 24/7 crypto trading services",
           " - Interest bearing savings accounts in EURO, USD, GBP, JPY",
           " - Batch upload or API to execute large number of payments for business customers",
         ],
@@ -131,29 +132,11 @@ export const MissionPage = () => {
         inlineSubtitle: aboutUsMission.abtus_misn_headFive_ParaHeadFour,
         article: [aboutUsMission.abtus_misn_headFive_ParaHeadFour_txtone],
       },
-      {
-        article: [aboutUsMission.abtus_misn_headSix_ParaOne, aboutUsMission.abtus_misn_headSix_ParaTwo],
-      },
     ],
+
+    article: [aboutUsMission.abtus_misn_headSix_ParaOne, aboutUsMission.abtus_misn_headSix_ParaTwo],
   };
-  interface IPageContent {
-    title?: string;
-    inlineSubtitle?: string;
-    upperSubtitle?: string;
-    article?: string[];
-    list?: string[];
-    table?: { sign: string; title: string }[];
-    inlineList?: {
-      inlineSubtitle?: string;
-      article?: string[];
-    }[];
-    strategyList?: {
-      title?: string;
-      upperSubtitle?: string;
-      article?: string[];
-      list?: string[];
-    }[];
-  }
+
   const content: IPageContent[] = [
     missionSection,
     operatingSection,
@@ -186,72 +169,7 @@ export const MissionPage = () => {
         }
       />
       <Section mainContent m={"9rem auto 19rem"}>
-        {content?.map((el) => (
-          <>
-            {el.title && <MissionTitle>{el.title}</MissionTitle>}
-            {el.article &&
-              el.article.map((ar) => (
-                <MissionDescription>
-                  {el.inlineSubtitle && <MissionSubTitle>{el.inlineSubtitle}</MissionSubTitle>}
-                  {ar}
-                </MissionDescription>
-              ))}
-            {el.inlineList &&
-              el.inlineList.map((el) => (
-                <MissionDescription>
-                  <MissionSubTitle>{el.inlineSubtitle}</MissionSubTitle>
-                  {el.article}
-                </MissionDescription>
-              ))}
-            {el.strategyList &&
-              el.strategyList.map((element) => (
-                <>
-                  {element.article.map((el) => (
-                    <MissionDescription>
-                      {element.upperSubtitle && (
-                        <>
-                          <MissionSubTitle>{element.upperSubtitle}</MissionSubTitle>
-                          <br />
-                        </>
-                      )}
-                      {el}
-                    </MissionDescription>
-                  ))}
-                  {element.list && (
-                    <MissionDescription>
-                      {element.list?.map((el) => (
-                        <span>
-                          {el}
-                          <br />
-                        </span>
-                      ))}
-                    </MissionDescription>
-                  )}
-                </>
-              ))}
-            {el.table && (
-              <Wrap
-                sx={{
-                  width: "100%",
-                  display: "grid",
-                  gridTemplateColumns: "33% 33% 33%",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  margin: "5rem 0",
-                }}
-              >
-                {el.table.map((el) => (
-                  <MissionTitle>
-                    <Wrap sx={{ display: "column", alignItems: "center", width: "100%", textAlign: "center" }}>
-                      <Wrap sx={{ fontSize: "5rem", marginBottom: "1rem" }}>{el.sign}</Wrap>
-                      <div>{el.title}</div>
-                    </Wrap>
-                  </MissionTitle>
-                ))}
-              </Wrap>
-            )}
-          </>
-        ))}
+        <TextContent content={content} />
       </Section>
     </>
   );

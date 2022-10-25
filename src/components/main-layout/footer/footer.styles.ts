@@ -41,7 +41,7 @@ export const FooterLinksGroup = styled.div<{
 export const FooterLinkItem = styled(Link)`
   font-style: normal;
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 1.8rem;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
@@ -53,7 +53,7 @@ export const CopyrightContainer = styled.div`
   width: 100%;
   font-style: normal;
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 0.9rem;
   line-height: 1.8rem;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;

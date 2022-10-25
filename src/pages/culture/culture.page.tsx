@@ -1,15 +1,47 @@
-import React from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MissionBg from "../../assets/backgrounds/mission/home_slider.png";
 import { Section } from "../../components/section/section.component";
-import { CultureDescription, CultureMainTitle, CultureSubTitle, CultureTitle } from "./culture.styles";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { uiDataWebsiteText } from "../../redux/uiData/selectors";
 import { useSelector } from "../../redux/store";
+import { IPageContent, TextContent } from "../../components/main-layout/text-content/text-content";
 
 export const CulturePage = () => {
   const { culture } = useSelector(uiDataWebsiteText);
   const isMobile = useMediaQuery("sm");
+
+  const cultureUpper: IPageContent = {
+    mainTitle: culture.abtus_cult_mainhead,
+    article: [
+      culture.abtus_cult_mainhead_paraone,
+      culture.abtus_cult_mainhead_paratwo,
+      culture.abtus_cult_mainhead_parathree,
+      culture.abtus_cult_mainhead_parafour,
+    ],
+  };
+  const cultureMiddle: IPageContent = {
+    title: culture.abtus_cult_headone,
+    titledList: [
+      {
+        upperSubtitle: culture.abtus_cult_headone_subheadone,
+        article: [culture.abtus_cult_headone_subheadone_paraone],
+      },
+      {
+        upperSubtitle: culture.abtus_cult_headone_subheadtwo,
+        article: [culture.abtus_cult_headone_subheadtwo_paraone],
+      },
+      {
+        upperSubtitle: culture.abtus_cult_headone_subheadthree,
+        article: [culture.abtus_cult_headone_subheadtwo_parathree],
+      },
+      {
+        upperSubtitle: culture.abtus_cult_headone_subheadfour,
+        article: [culture.abtus_cult_headone_subheadtwo_parafour],
+      },
+    ],
+  };
+
+  const content: IPageContent[] = [cultureUpper, cultureMiddle];
   return (
     <>
       <SlideSection
@@ -33,28 +65,7 @@ export const CulturePage = () => {
         }
       />
       <Section mainContent m={"9rem auto 19rem"}>
-        <CultureMainTitle>{culture.abtus_cult_mainhead}</CultureMainTitle>
-        <CultureDescription>{culture.abtus_cult_mainhead_paraone}</CultureDescription>
-        <CultureDescription>{culture.abtus_cult_mainhead_paratwo}</CultureDescription>
-        <CultureDescription>{culture.abtus_cult_mainhead_parathree}</CultureDescription>
-        <CultureDescription>{culture.abtus_cult_mainhead_parafour}</CultureDescription>
-        <CultureTitle>{culture.abtus_cult_headone}</CultureTitle>
-        <CultureDescription>
-          <CultureSubTitle>{culture.abtus_cult_headone_subheadone}</CultureSubTitle>
-          <br /> {culture.abtus_cult_headone_subheadone_paraone}
-        </CultureDescription>
-        <CultureDescription>
-          <CultureSubTitle>{culture.abtus_cult_headone_subheadtwo}</CultureSubTitle>
-          <br /> {culture.abtus_cult_headone_subheadtwo_paraone}
-        </CultureDescription>
-        <CultureDescription>
-          <CultureSubTitle>{culture.abtus_cult_headone_subheadthree}</CultureSubTitle>
-          <br /> {culture.abtus_cult_headone_subheadtwo_parathree}
-        </CultureDescription>
-        <CultureDescription>
-          <CultureSubTitle>{culture.abtus_cult_headone_subheadfour}</CultureSubTitle>
-          <br /> {culture.abtus_cult_headone_subheadtwo_parafour}
-        </CultureDescription>
+        <TextContent content={content} />
       </Section>
     </>
   );
