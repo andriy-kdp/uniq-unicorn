@@ -78,7 +78,7 @@ export const CryptoCurrencyPage: React.FC = (): JSX.Element => {
               }
         }
         button={{
-          title: "Open account",
+          title: "Open account" + accountsCryptoCurrency.acnt_crypt_acnt_opnlink_text,
           onClick: handleClick,
         }}
       />

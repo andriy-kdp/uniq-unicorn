@@ -1,15 +1,90 @@
-import React from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MissionBg from "../../assets/backgrounds/mission/home_slider.png";
 import { Section } from "../../components/section/section.component";
-import { RiskDescription, RiskMainTitle, RiskSubTitle } from "./r-management.styles";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { uiDataWebsiteText } from "../../redux/uiData/selectors";
 import { useSelector } from "../../redux/store";
+import { IPageContent, TextContent } from "../../components/main-layout/text-content/text-content";
 
 export const RiskManagementPage = () => {
   const { riskManagement } = useSelector(uiDataWebsiteText);
   const isMobile = useMediaQuery("sm");
+
+  const textValue: IPageContent[] = [
+    { mainTitle: riskManagement.abtus_rism_mainhead, article: [riskManagement.abtus_rism_mainhead_paraone] },
+    {
+      titledList: [
+        {
+          upperSubtitle: riskManagement.abtus_rism_headone,
+          article: [riskManagement.abtus_rism_headone_paraone],
+        },
+      ],
+      article: [riskManagement.abtus_rism_headone_paratwo, riskManagement.abtus_rism_headone_parathree],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: riskManagement.abtus_rism_headtwo,
+          article: [riskManagement.abtus_rism_headtwo_paraone],
+        },
+      ],
+      article: [riskManagement.abtus_rism_headtwo_paratwo, riskManagement.abtus_rism_headtwo_parathree],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: riskManagement.abtus_rism_headthree,
+          article: [riskManagement.abtus_rism_headthree_paraone],
+        },
+      ],
+      article: [riskManagement.abtus_rism_headthree_paratwo, riskManagement.abtus_rism_headthree_parathree],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: riskManagement.abtus_rism_headfour,
+          article: [riskManagement.abtus_rism_headfour_paraone],
+        },
+      ],
+      article: [riskManagement.abtus_rism_headfour_paratwo, riskManagement.abtus_rism_headfour_parathree],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: riskManagement.abtus_rism_headfive,
+          article: [riskManagement.abtus_rism_headfive_paraone],
+        },
+      ],
+      article: [riskManagement.abtus_rism_headfive_paratwo],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: riskManagement.abtus_rism_headsix,
+          article: [riskManagement.abtus_rism_headsix_paraone],
+        },
+      ],
+      article: [riskManagement.abtus_rism_headsix_paratwo],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: riskManagement.abtus_rism_headseven,
+          article: [riskManagement.abtus_rism_headseven_paraone],
+        },
+      ],
+      article: [riskManagement.abtus_rism_headseven_paratwo],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: riskManagement.abtus_rism_headeight,
+          article: [riskManagement.abtus_rism_headeight_paraone],
+        },
+      ],
+      article: [riskManagement.abtus_rism_headeight_paratwo, riskManagement.abtus_rism_headeight_parathree],
+    },
+  ];
   return (
     <>
       <SlideSection
@@ -33,53 +108,7 @@ export const RiskManagementPage = () => {
         }
       />
       <Section mainContent m={"9rem auto 19rem"}>
-        <RiskMainTitle>{riskManagement.abtus_rism_mainhead}</RiskMainTitle>
-        <RiskDescription>{riskManagement.abtus_rism_mainhead_paraone}</RiskDescription>
-        <RiskDescription>
-          <RiskSubTitle>{riskManagement.abtus_rism_headone}</RiskSubTitle>
-          <br /> {riskManagement.abtus_rism_headone_paraone}
-        </RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headone_paratwo}</RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headone_parathree}</RiskDescription>
-        <RiskDescription>
-          <RiskSubTitle>{riskManagement.abtus_rism_headtwo}</RiskSubTitle>
-          <br /> {riskManagement.abtus_rism_headtwo_paraone}
-        </RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headtwo_paratwo}</RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headtwo_parathree}</RiskDescription>
-        <RiskDescription>
-          <RiskSubTitle>{riskManagement.abtus_rism_headthree}</RiskSubTitle>
-          <br /> {riskManagement.abtus_rism_headthree_paraone}
-        </RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headthree_paratwo}</RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headthree_parathree}</RiskDescription>
-        <RiskDescription>
-          <RiskSubTitle>{riskManagement.abtus_rism_headfour}</RiskSubTitle>
-          <br /> {riskManagement.abtus_rism_headfour_paraone}
-        </RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headfour_paratwo}</RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headfour_parathree}</RiskDescription>
-        <RiskDescription>
-          <RiskSubTitle>{riskManagement.abtus_rism_headfive}</RiskSubTitle>
-          <br /> {riskManagement.abtus_rism_headfive_paraone}
-        </RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headfive_paratwo}</RiskDescription>
-        <RiskDescription>
-          <RiskSubTitle>{riskManagement.abtus_rism_headsix}</RiskSubTitle>
-          <br /> {riskManagement.abtus_rism_headsix_paraone}
-        </RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headsix_paratwo}</RiskDescription>
-        <RiskDescription>
-          <RiskSubTitle>{riskManagement.abtus_rism_headseven}</RiskSubTitle>
-          <br /> {riskManagement.abtus_rism_headseven_paraone}
-        </RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headseven_paratwo}</RiskDescription>
-        <RiskDescription>
-          <RiskSubTitle>{riskManagement.abtus_rism_headeight}</RiskSubTitle>
-          <br /> {riskManagement.abtus_rism_headeight_paraone}
-        </RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headeight_paratwo}</RiskDescription>
-        <RiskDescription>{riskManagement.abtus_rism_headeight_parathree}</RiskDescription>
+        <TextContent content={textValue} />
       </Section>
     </>
   );

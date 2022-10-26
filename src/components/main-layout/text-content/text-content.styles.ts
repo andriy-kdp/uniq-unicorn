@@ -4,6 +4,11 @@ export const TextMainContainer = styled.div``;
 export const TextMainTitle = styled.h3`
   line-height: 3.8rem;
 `;
+export const TextMiniTitle = styled.h5`
+  margin-top: 2rem;
+  line-height: 3.8rem;
+  font-size: 1.8rem;
+`;
 export const TextTitle = styled.h3`
   margin-top: 4rem;
   line-height: 3.8rem;

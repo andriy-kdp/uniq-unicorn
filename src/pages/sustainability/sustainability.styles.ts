@@ -1,28 +1,5 @@
 import styled from "styled-components";
 
-export const SustainabilityMainTitle = styled.h3`
-  line-height: 3.8rem;
-`;
-export const SustainabilityTitle = styled.h3`
-  margin-top: 4rem;
-  line-height: 3.8rem;
-  font-size: 2.4rem;
-`;
-export const SustainabilityMiniTitle = styled.h5`
-  margin-top: 2rem;
-  line-height: 3.8rem;
-  font-size: 2rem;
-`;
-export const SustainabilitySubTitle = styled.span`
-  font-weight: bold;
-  margin-top: 2.4rem;
-  margin-right: 1rem;
-`;
-
-export const SustainabilityDescription = styled.div`
-  text-align: justify;
-  margin-top: 2.4rem;
-`;
 export const SustainabilityTabTitle = styled.div`
   text-align: center;
   font-weight: 700;

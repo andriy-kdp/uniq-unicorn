@@ -1,24 +1,189 @@
-import React from "react";
 import { SlideSection } from "../../components/silde-section/slide-section.component";
 import MissionBg from "../../assets/backgrounds/mission/home_slider.png";
 import { Section } from "../../components/section/section.component";
-import {
-  AreasLocation,
-  AreasTitle,
-  BlockScheme,
-  GovernanceDescription,
-  GovernanceMainTitle,
-  GovernanceSubTitle,
-  GovernanceTitle,
-} from "./governance.styles";
+import { AreasLocation, AreasTitle } from "./governance.styles";
 import { useMediaQuery } from "../../utils/use-media-query";
 import { uiDataWebsiteText } from "../../redux/uiData/selectors";
 import { useSelector } from "../../redux/store";
 import { Wrap } from "../../components/wrap/wrap.component";
+import { IPageContent, TextContent } from "../../components/main-layout/text-content/text-content";
+import { RootlikeBlockScheme, RootlikeBlockSchemeProps } from "../../components/tree-block-scheme/tree-block-scheme";
 
 export const GovernancePage = () => {
   const { governance } = useSelector(uiDataWebsiteText);
   const isMobile = useMediaQuery("sm");
+  const upperTextValue: IPageContent[] = [
+    {
+      mainTitle: governance.abtus_gvrn_mainhead,
+      article: [governance.abtus_gvrn_mainhead_paraone, governance.abtus_gvrn_mainhead_paratwo],
+    },
+    {
+      titledList: [{ upperSubtitle: governance.abtus_gvrn_headone, article: [governance.abtus_gvrn_headone_paraone] }],
+      article: [governance.abtus_gvrn_headone_paratwo, governance.abtus_gvrn_headone_parathree],
+    },
+    {
+      titledList: [{ upperSubtitle: governance.abtus_gvrn_headtwo, article: [governance.abtus_gvrn_headtwo_paraone] }],
+      article: [governance.abtus_gvrn_headtwo_paratwo, governance.abtus_gvrn_headtwo_parathree],
+    },
+    {
+      titledList: [
+        { upperSubtitle: governance.abtus_gvrn_headthree, article: [governance.abtus_gvrn_headthree_paraone] },
+      ],
+      article: [
+        governance.abtus_gvrn_headthree_paratwo,
+        governance.abtus_gvrn_headthree_parathree,
+        governance.abtus_gvrn_headthree_parafour,
+        governance.abtus_gvrn_headthree_parafive,
+      ],
+    },
+    {
+      titledList: [
+        { upperSubtitle: governance.abtus_gvrn_headfour, article: [governance.abtus_gvrn_headfour_paraone] },
+      ],
+      article: [
+        governance.abtus_gvrn_headfour_paratwo,
+        governance.abtus_gvrn_headfour_parathree,
+        governance.abtus_gvrn_headfour_parafour,
+      ],
+    },
+    {
+      titledList: [
+        { upperSubtitle: governance.abtus_gvrn_headfive, article: [governance.abtus_gvrn_headfive_paraone] },
+      ],
+      article: [governance.abtus_gvrn_headfive_paratwo],
+    },
+  ];
+  const middleTextValue: IPageContent[] = [
+    {
+      inlineList: [
+        {
+          inlineSubtitle: governance.abtus_gvrn_headfive_hdone,
+          article: [governance.abtus_gvrn_headfive_txtone],
+        },
+        {
+          inlineSubtitle: governance.abtus_gvrn_headfive_hdtwo,
+          article: [governance.abtus_gvrn_headfive_txttwo],
+        },
+        {
+          inlineSubtitle: governance.abtus_gvrn_headfive_hdthree,
+          article: [governance.abtus_gvrn_headfive_txtthree],
+        },
+        {
+          inlineSubtitle: governance.abtus_gvrn_headfive_hdfour,
+          article: [governance.abtus_gvrn_headfive_txtfour],
+        },
+      ],
+    },
+    {
+      titledList: [{ upperSubtitle: governance.abtus_gvrn_headsix, article: [governance.abtus_gvrn_headsix_paraone] }],
+      article: [governance.abtus_gvrn_headsix_paratwo],
+    },
+    {
+      titledList: [
+        { upperSubtitle: governance.abtus_gvrn_headseven, article: [governance.abtus_gvrn_headseven_paraone] },
+      ],
+      article: [
+        governance.abtus_gvrn_headseven_paratwo,
+        governance.abtus_gvrn_headseven_parathree,
+        governance.abtus_gvrn_headseven_parafour,
+        governance.abtus_gvrn_headseven_parafive,
+      ],
+    },
+    {
+      titledList: [
+        { upperSubtitle: governance.abtus_gvrn_headeight, article: [governance.abtus_gvrn_headeight_paraone] },
+      ],
+      article: [
+        governance.abtus_gvrn_headeight_paratwo,
+        governance.abtus_gvrn_headeight_parathree,
+        governance.abtus_gvrn_headeight_parafour,
+        governance.abtus_gvrn_headeight_parafive,
+      ],
+    },
+    {
+      title: governance.abtus_gvrn_headnine,
+      article: [
+        governance.abtus_gvrn_headnine_paraone,
+        governance.abtus_gvrn_headnine_paratwo,
+        governance.abtus_gvrn_headnine_parathree,
+      ],
+    },
+    {
+      titledList: [{ upperSubtitle: governance.abtus_gvrn_headten, article: [governance.abtus_gvrn_headten_paraone] }],
+    },
+  ];
+  const bottomTextValue: IPageContent[] = [
+    {
+      titledList: [
+        {
+          upperSubtitle: governance.abtus_gvrn_headeleven,
+          article: [governance.abtus_gvrn_headeleven_paraone],
+        },
+        {
+          upperSubtitle: governance.abtus_gvrn_headtwelve,
+          article: [governance.abtus_gvrn_headtwelve_paraone],
+        },
+        {
+          upperSubtitle: governance.abtus_gvrn_headthirteen,
+          article: [governance.abtus_gvrn_headthirteen_paraone],
+        },
+        {
+          upperSubtitle: governance.abtus_gvrn_headfourteen,
+          article: [governance.abtus_gvrn_headfourteen_paraone],
+        },
+        {
+          upperSubtitle: governance.abtus_gvrn_headfifteen,
+          article: [governance.abtus_gvrn_headfifteen_paraone],
+        },
+      ],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: governance.abtus_gvrn_headsixteen,
+          article: [governance.abtus_gvrn_headsixteen_paraone],
+        },
+      ],
+      article: [governance.abtus_gvrn_headsixteen_paratwo, governance.abtus_gvrn_headsixteen_parathree],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: governance.abtus_gvrn_headseventeen,
+          article: [governance.abtus_gvrn_headseventeen_paraone],
+        },
+      ],
+      article: [governance.abtus_gvrn_headseventeen_paratwo],
+    },
+    {
+      titledList: [
+        {
+          upperSubtitle: governance.abtus_gvrn_headeighteen,
+          article: [governance.abtus_gvrn_headeighteen_paraone],
+        },
+      ],
+      article: [
+        governance.abtus_gvrn_headeighteen_paratwo,
+        governance.abtus_gvrn_headeighteen_parathree,
+        governance.abtus_gvrn_headeighteen_parafour,
+        governance.abtus_gvrn_headeighteen_parafour_subtxtone,
+        governance.abtus_gvrn_headeighteen_parafour_subtxttwo,
+        governance.abtus_gvrn_headeighteen_parafour_subtxtthree,
+        governance.abtus_gvrn_headeighteen_parafive,
+        governance.abtus_gvrn_headeighteen_parasix,
+        governance.abtus_gvrn_headeighteen_paraseven,
+      ],
+    },
+  ];
+  const schemeElements: RootlikeBlockSchemeProps = {
+    root: governance.abtus_gvrn_headfive_chartheadone,
+    li: [
+      governance.abtus_gvrn_headfive_chartheadone_leafone,
+      governance.abtus_gvrn_headfive_chartheadone_leaftwo,
+      governance.abtus_gvrn_headfive_chartheadone_leafthree,
+      governance.abtus_gvrn_headfive_chartheadone_leaffour,
+    ],
+  };
   return (
     <>
       <SlideSection
@@ -42,105 +207,9 @@ export const GovernancePage = () => {
         }
       />
       <Section mainContent m={"9rem auto 19rem"}>
-        <GovernanceMainTitle>{governance.abtus_gvrn_mainhead}</GovernanceMainTitle>
-        <GovernanceDescription>{governance.abtus_gvrn_mainhead_paraone}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_mainhead_paratwo}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headone}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headone_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headone_paratwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headone_parathree}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headtwo}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headtwo_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headtwo_paratwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headtwo_parathree}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headthree}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headthree_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headthree_paratwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headthree_parathree}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headthree_parafour}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headthree_parafive}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headfour}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headfour_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headfour_paratwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headfour_parathree}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headfour_parafour}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headfive}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headfive_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headfive_paratwo}</GovernanceDescription>
-        <BlockScheme>
-          <span>{governance.abtus_gvrn_headfive_chartheadone}</span>
-          <ul>
-            <li>
-              <code>{governance.abtus_gvrn_headfive_chartheadone_leafone}</code>
-            </li>
-            <li>
-              <code>{governance.abtus_gvrn_headfive_chartheadone_leaftwo}</code>
-            </li>
-            <li>
-              <code>{governance.abtus_gvrn_headfive_chartheadone_leafthree}</code>
-            </li>
-            <li>
-              <code>{governance.abtus_gvrn_headfive_chartheadone_leaffour}</code>
-            </li>
-          </ul>
-        </BlockScheme>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headfive_hdone}</GovernanceSubTitle>
-          {governance.abtus_gvrn_headfive_txtone}
-        </GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headfive_hdtwo}</GovernanceSubTitle>
-          {governance.abtus_gvrn_headfive_txttwo}
-        </GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headfive_hdthree}</GovernanceSubTitle>
-          {governance.abtus_gvrn_headfive_txtthree}
-        </GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headfive_hdfour}</GovernanceSubTitle>
-          {governance.abtus_gvrn_headfive_txtfour}
-        </GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headsix}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headsix_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headsix_paratwo}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headseven}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headseven_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headseven_paratwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headseven_parathree}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headseven_parafour}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headseven_parafive}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headeight}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headeight_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeight_paratwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeight_parathree}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeight_parafour}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeight_parafive}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceTitle>{governance.abtus_gvrn_headnine}</GovernanceTitle>
-          <br /> {governance.abtus_gvrn_headnine_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headnine_paratwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headnine_parathree}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headten}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headten_paraone}
-        </GovernanceDescription>
+        <TextContent content={upperTextValue} />
+        <RootlikeBlockScheme props={schemeElements} />
+        <TextContent content={middleTextValue} />
         <Wrap
           sx={{
             display: "grid",
@@ -175,51 +244,7 @@ export const GovernancePage = () => {
             <AreasLocation>{governance.abtus_gvrn_headten_midheadtwo_rowtwotxt}</AreasLocation>
           </Wrap>
         </Wrap>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headeleven}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headeleven_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headtwelve}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headtwelve_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headthirteen}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headthirteen_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headfourteen}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headfourteen_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headfifteen}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headfifteen_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headfifteen_paratwo}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headsixteen}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headsixteen_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headsixteen_paratwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headsixteen_parathree}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headseventeen}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headseventeen_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headseventeen_paratwo}</GovernanceDescription>
-        <GovernanceDescription>
-          <GovernanceSubTitle>{governance.abtus_gvrn_headeighteen}</GovernanceSubTitle>
-          <br /> {governance.abtus_gvrn_headeighteen_paraone}
-        </GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeighteen_paratwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeighteen_parathree}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeighteen_parafour}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeighteen_parafour_subtxtone}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeighteen_parafour_subtxttwo}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeighteen_parafour_subtxtthree}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeighteen_parafive}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeighteen_parasix}</GovernanceDescription>
-        <GovernanceDescription>{governance.abtus_gvrn_headeighteen_paraseven}</GovernanceDescription>
+        <TextContent content={bottomTextValue} />
       </Section>
     </>
   );

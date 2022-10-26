@@ -120,6 +120,9 @@ export const FeesPage: React.FC = (): JSX.Element => {
             accountsFees.ac_fee_typslde_hdone_subhdtwo_pone,
             accountsFees.ac_fee_typslde_hdone_subhdtwo_ptwo,
             accountsFees.ac_fee_typslde_hdone_subhdtwo_pthree,
+            accountsFees.ac_fee_typslde_hdone_subhdtwo_pfour,
+            accountsFees.ac_fee_typslde_hdone_subhdtwo_pfive,
+            accountsFees.ac_fee_typslde_hdone_subhdtwo_psix,
           ],
         },
         {

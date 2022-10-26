@@ -11,7 +11,7 @@ import { SelectHandler, SelectOptions } from "../../components/inputs/select/sel
 import operations from "../../redux/uiData/operations";
 
 export const FinancialStatementsPage: React.FC = (): JSX.Element => {
-  const { accountsFees } = useSelector(uiDataWebsiteText);
+  const { financialStatements } = useSelector(uiDataWebsiteText);
   const language = useSelector(uiDataSelectedLanguageId);
   const aboutUsFinanStats = useSelector(uiAboutUsFinanStats);
   const dispatch = useDispatch();

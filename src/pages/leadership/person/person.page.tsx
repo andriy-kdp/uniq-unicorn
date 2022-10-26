@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Placeholder from "../../../assets/backgrounds/person/placeholder.png";
 import { useMediaQuery } from "../../../utils/use-media-query";
 import { Wrap } from "../../../components/wrap/wrap.component";
 import { Person } from "./person.styles";

@@ -1,9 +1,17 @@
 import { Wrap } from "../../wrap/wrap.component";
-import { TextDescription, TextMainContainer, TextMainTitle, TextSubTitle, TextTitle } from "./text-content.styles";
+import {
+  TextDescription,
+  TextMainContainer,
+  TextMainTitle,
+  TextMiniTitle,
+  TextSubTitle,
+  TextTitle,
+} from "./text-content.styles";
 
 export interface IPageContent {
   mainTitle?: string;
   title?: string;
+  miniTitle?: string;
   inlineSubtitle?: string;
   upperSubtitle?: string;
   article?: string[];
@@ -31,6 +39,7 @@ export const TextContent: React.FC<contentProps> = ({ content }: contentProps): 
       <>
         {root.mainTitle && <TextMainTitle>{root.mainTitle}</TextMainTitle>}
         {root.title && <TextTitle>{root.title}</TextTitle>}
+        {root.miniTitle && <TextMiniTitle>{root.miniTitle}</TextMiniTitle>}
         {root.inlineList &&
           root.inlineList.map((list) => (
             <TextDescription>
