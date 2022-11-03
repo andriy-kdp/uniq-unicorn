@@ -9,23 +9,58 @@ import { Input } from "../../components/inputs/input/input.component";
 import { ButtonArrow } from "../../components/button-arrow/button-arrow.component";
 import MaoMarkers from "../../assets/backgrounds/contact/map_bg.png";
 import { uiDataWebsiteText } from "../../redux/uiData/selectors";
-import { useSelector } from "../../redux/store";
+import { useDispatch, useSelector } from "../../redux/store";
+import operations from "../../redux/uiData/operations";
+import * as yup from "yup";
+import { parseYupError } from "../../utils/parseYupError";
 
 export const ContactPage: React.FC = (): JSX.Element => {
+  const dispatch = useDispatch();
   const { contactBlackBanx } = useSelector(uiDataWebsiteText);
   const [formData, setFormData] = useState<{ name: string; email: string; message: string }>({
     name: "",
     email: "",
     message: "",
   });
-
+  //-----------------
+  const [errors, setErrors] = useState<{
+    name: string | null;
+    email: string | null;
+    message: string | null;
+  }>({ name: null, email: null, message: null });
+  console.log(errors);
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = () => {
-    console.log(formData);
+    const schema = yup.object().shape({
+      name: yup.string().min(2, { name: "Enter contact name" }).required({ name: "The field is required" }),
+      email: yup.string().email({ email: "Email must be correct" }).required({ email: "The field is required" }),
+      message: yup
+        .string()
+        .min(5, { message: "The message must contain at least 80 characters" })
+        .required({ message: "The field is required" }),
+    });
+
+    schema
+      .validate(formData, { abortEarly: false })
+      .then(() =>
+        dispatch(
+          operations.postSendCompanyMessage({
+            destination: formData.email,
+            subject: formData.name,
+            mailContent: formData.message,
+          }),
+        ),
+      )
+      .then(() => setErrors({ name: null, email: null, message: null }))
+      .catch((err) => {
+        const errors = parseYupError(err);
+        setErrors(errors as { name: string; email: string; message: string });
+      });
+    //----------
   };
 
   return (
@@ -92,6 +127,8 @@ export const ContactPage: React.FC = (): JSX.Element => {
                 name={"name"}
                 placeholder="Please enter your full name"
                 fullWidth
+                error={Boolean(errors.name)}
+                helperText={errors.name as string}
               />
             </Wrap>
             <Wrap sx={{ marginBottom: "1rem", width: "100%" }}>
@@ -102,6 +139,8 @@ export const ContactPage: React.FC = (): JSX.Element => {
                 name={"email"}
                 placeholder="Please enter your email"
                 fullWidth
+                error={Boolean(errors.email)}
+                helperText={errors.email as string}
               />
             </Wrap>
             <Wrap sx={{ marginBottom: "5rem", width: "100%" }}>
@@ -111,6 +150,8 @@ export const ContactPage: React.FC = (): JSX.Element => {
                 name={"message"}
                 placeholder="Please enter your message"
                 fullWidth
+                error={Boolean(errors.message)}
+                helperText={errors.message as string}
               />
             </Wrap>
             <ButtonArrow onClick={handleSubmit}>{contactBlackBanx.cus_qstn_sntbtn}</ButtonArrow>

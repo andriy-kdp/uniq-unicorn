@@ -12,6 +12,7 @@ import {
   ResAboutUsLeadership,
   ResAboutUsFinanStats,
   ResCareerJobs,
+  PostSentCompanyEmail,
 } from "../types/fetch.ui.types";
 import FD from "../../utils/object-to-form-data";
 
@@ -117,6 +118,18 @@ export const fetchAboutUsFinanStats = (credentials: {
   return axios({
     method: "POST",
     url: endpoints.aboutUsFinanStats,
+    data,
+  });
+};
+export const fetchSendCompanyMessage = (credentials: {
+  destination: string;
+  subject: string;
+  mailContent: string;
+}): AxiosPromise<PostSentCompanyEmail> => {
+  const data = new FD(credentials).get();
+  return axios({
+    method: "POST",
+    url: endpoints.contactBlackBanxEmail,
     data,
   });
 };

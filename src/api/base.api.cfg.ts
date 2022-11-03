@@ -22,4 +22,5 @@ export const endpoints = {
   careerJobDtls: "/careerJobDtls/",
   aboutUsLeadership: "/aboutUsLeadership/",
   aboutUsFinanStats: "/aboutUsFinanStats/",
+  contactBlackBanxEmail: "/contactBlackBanxEmail/",
 };

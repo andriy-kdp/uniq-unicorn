@@ -12,6 +12,7 @@ import {
   fetchMediaCenterNews,
   fetchWebsiteText,
   fetchWebSiteTextAll,
+  fetchSendCompanyMessage,
 } from "../../api/services/fetch.ui";
 import { setUiDataFetching } from "./slice";
 
@@ -164,6 +165,18 @@ const getAboutUsFinanStats = createAsyncThunk(
     }
   },
 );
+const postSendCompanyMessage = createAsyncThunk(
+  "/contactBlackBanxEmail",
+  async (credentials: { destination: string; subject: string; mailContent: string }, { dispatch }) => {
+    try {
+      const { data } = await fetchSendCompanyMessage(credentials);
+      console.log(data);
+      return data;
+    } catch (err) {
+      return Promise.reject(err);
+    }
+  },
+);
 
 const operations = {
   getLanguages,
@@ -178,5 +191,6 @@ const operations = {
   getCareerJobs,
   getAboutUsLeadership,
   getAboutUsFinanStats,
+  postSendCompanyMessage,
 };
 export default operations;

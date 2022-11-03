@@ -200,8 +200,8 @@ export const Header = () => {
   if (!isMobile) {
     return (
       <>
-        <Wrap onMouseLeave={() => setSubmenuItems(null)} sx={{ minHeight: "15rem", padding: "0 5rem" }}>
-          <Section direction={"row"} justify={"center"}>
+        <Wrap onMouseLeave={() => setSubmenuItems(null)} sx={{ minHeight: "15rem" }}>
+          <Section direction={"row"} justify={"center"} p={"0 5rem"}>
             <Wrap sx={{ marginTop: "2rem", marginRight: "2rem", maxWidth: "8rem", minHeight: "3rem", zIndex: "2" }}>
               <SelectLanguageAppLink
                 options={languageList}

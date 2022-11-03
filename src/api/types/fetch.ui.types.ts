@@ -1175,6 +1175,8 @@ type CareerJobsType = "jid" | "department" | "description" | "location" | "poste
 export type CareerJobs = Record<CareerJobsType, string>;
 export type ResCareerJobs = { data: CareerJobs[] };
 
+export type PostSentCompanyEmail = { status: string; status_msg: string };
+
 export type WebsiteTextType = {
   common: Record<SiteTextCommonType, string>;
   homePage: Record<SiteTextHomeType, string>;
